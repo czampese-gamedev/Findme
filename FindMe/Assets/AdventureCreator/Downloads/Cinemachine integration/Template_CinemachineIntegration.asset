@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6815c9661ca97094393d898d26ce86c5, type: 3}
+  m_Name: Template_CinemachineIntegration
+  m_EditorClassIdentifier: 
+  exampleScenes:
+  - {fileID: 102900000, guid: 0206c940fb859c14cb4942910b45fa89, type: 3}
+  - {fileID: 102900000, guid: f049a3b2f2436714db06c46d5d3bc733, type: 3}
+  actionsFolderObj: {fileID: 102900000, guid: 8894262639c16474aa05f19f291df24e, type: 3}
+  cameraIcon: {fileID: 2800000, guid: 29c140477927044a8aac146aeec5fde5, type: 3}
+  brainPrefab: {fileID: 1150613819184786898, guid: 268d231ea22391545b643e7560ba48db,
+    type: 3}
+  mixerPrefab: {fileID: 6545087760274928132, guid: 90abeceba0531284fb1cf4eaf7af3eaa,
+    type: 3}
+  vCamPrefab: {fileID: 5413520855363406569, guid: 5af1ded3c87b29b429024cc193880a6b,
+    type: 3}

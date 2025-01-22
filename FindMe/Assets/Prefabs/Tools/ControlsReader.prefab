@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3011144673047754832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3011144673047754834}
+  - component: {fileID: 3011144673047754835}
+  - component: {fileID: 2472924372040378038}
+  m_Layer: 0
+  m_Name: ControlsReader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3011144673047754834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011144673047754832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3011144673047754835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011144673047754832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ed1fbd7791f0b48a196d0ab424949b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 2472924372040378038}
+  globalStringVariable: 
+  onSetControlScheme:
+    m_PersistentCalls:
+      m_Calls: []
+  useEnhancedTouchSupport: 0
+  autoSyncInputMethod: 1
+  controlSchemeLinks:
+  - controlScheme: Mouse and keyboard
+    linkedInputMethod: 0
+  - controlScheme: Gamepad
+    linkedInputMethod: 1
+  - controlScheme: Touchscreen
+    linkedInputMethod: 2
+--- !u!114 &2472924372040378038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011144673047754832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 39c8fff7d1c7a8e4ca7c4b294b8b1ad5, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c9f74693-fc76-4f44-901e-9abdd296349d
+    m_ActionName: Player/Horizontal[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 958e893c-6461-4d92-ac97-ff57a8d029f6
+    m_ActionName: Player/Vertical[/Keyboard/s,/Keyboard/w,/Keyboard/downArrow,/Keyboard/upArrow,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 197fdbcb-8136-4c6f-9639-12f969c22ffd
+    m_ActionName: Player/Run[/Keyboard/leftShift,/DualShock4GamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 85a3de3a-c524-4ddf-8429-493d4b162370
+    m_ActionName: Player/InteractionA[/Keyboard/e,/DualShock4GamepadHID/buttonSouth,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c39dd96-e0e7-4f16-841d-b82bb11ab969
+    m_ActionName: Player/InteractionB[/Keyboard/z,/DualShock4GamepadHID/buttonEast,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 572f2e16-0ea8-4a2c-9ee1-20f2380c9180
+    m_ActionName: Player/FlashHotspots[/Keyboard/tab,/DualShock4GamepadHID/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 779c9dba-d9aa-4cbd-96de-2ce9858d35c5
+    m_ActionName: Player/EndCutscene[/Keyboard/escape,/DualShock4GamepadHID/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2d8b6792-b372-4b9d-bb4a-7c9f8a6f253f
+    m_ActionName: UI/CursorHorizontal[/Keyboard/leftArrow,/Keyboard/rightArrow,/DualShock4GamepadHID/rightStick/left,/DualShock4GamepadHID/rightStick/right,/Mouse/delta/left,/Mouse/delta/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b23e93c-9bd5-4c0e-a014-cbc32415d467
+    m_ActionName: UI/CursorVertical[/Keyboard/downArrow,/Keyboard/upArrow,/DualShock4GamepadHID/rightStick/down,/DualShock4GamepadHID/rightStick/up,/Mouse/delta/down,/Mouse/delta/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0fa7629d-45db-4ce7-afd2-e28066c45666
+    m_ActionName: UI/Menu[/Keyboard/escape,/DualShock4GamepadHID/start]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
