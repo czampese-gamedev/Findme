@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   threshold:
     m_OverrideState: 1
     m_Value: 0.78
@@ -102,7 +102,7 @@ MonoBehaviour:
     m_Value: 62
   saturation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 13
 --- !u!114 &-5915899025678989705
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -233,19 +233,19 @@ MonoBehaviour:
   active: 1
   airDensity:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0.268
   fogDensityGlobal:
     m_OverrideState: 0
-    m_Value: 0.083
+    m_Value: 0.017
   fogDensityPerLightModifier:
     m_OverrideState: 0
-    m_Value: 0.5
+    m_Value: 0.401
   fogScattering:
     m_OverrideState: 0
-    m_Value: 0.556
+    m_Value: 0.245
   fogColor:
     m_OverrideState: 0
-    m_Value: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+    m_Value: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
 --- !u!114 &-1481910988856050941
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -306,10 +306,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.451
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.504
+    m_Value: 0.097
   rounded:
     m_OverrideState: 0
     m_Value: 0
