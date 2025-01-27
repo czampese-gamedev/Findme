@@ -93,7 +93,7 @@ MonoBehaviour:
     m_Value: 0.25
   contrast:
     m_OverrideState: 1
-    m_Value: -25
+    m_Value: 24
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -102,7 +102,7 @@ MonoBehaviour:
     m_Value: 62
   saturation:
     m_OverrideState: 1
-    m_Value: 13
+    m_Value: -100
 --- !u!114 &-5915899025678989705
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -190,10 +190,10 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 12.69
+    m_Value: 7.8
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 19.3
+    m_Value: 10
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 0.979
@@ -233,19 +233,19 @@ MonoBehaviour:
   active: 1
   airDensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.949
   fogDensityGlobal:
     m_OverrideState: 1
-    m_Value: 0.126
+    m_Value: 0.023
   fogDensityPerLightModifier:
     m_OverrideState: 0
     m_Value: 0.401
   fogScattering:
-    m_OverrideState: 1
-    m_Value: 0.685
+    m_OverrideState: 0
+    m_Value: 0.402
   fogColor:
     m_OverrideState: 1
-    m_Value: {r: 0.94509804, g: 0.34117657, b: 0.3411765, a: 1}
+    m_Value: {r: 0.6203275, g: 0.63654083, b: 0.6415094, a: 1}
 --- !u!114 &-1481910988856050941
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -297,10 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.18867922, g: 0.0062299776, b: 0.0062299776, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
