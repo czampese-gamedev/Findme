@@ -56,12 +56,12 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.90373945, z: 0.88157654, w: 0.20534764}
+    m_Value: {x: 1, y: 0.68186224, z: 0.69335014, w: 0.08289866}
   midtones:
-    m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9302773, z: 0.677156, w: 0.10204081}
+    m_OverrideState: 0
+    m_Value: {x: 0.98127073, y: 1, z: 0.9918904, w: 0.02040816}
   highlights:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.96617866, y: 0.9587903, z: 1, w: 0.1078666}
   shadowsStart:
     m_OverrideState: 1
@@ -93,7 +93,7 @@ MonoBehaviour:
     m_Value: 0.25
   contrast:
     m_OverrideState: 1
-    m_Value: -0
+    m_Value: -6
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -162,16 +162,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   lift:
     m_OverrideState: 1
     m_Value: {x: 0.9322615, y: 0.9721006, z: 1, w: -0.020408155}
   gamma:
-    m_OverrideState: 0
-    m_Value: {x: 0.98221767, y: 1, z: 0.9931783, w: 0.01775995}
+    m_OverrideState: 1
+    m_Value: {x: 0.98221767, y: 1, z: 0.9931783, w: 0.14020893}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.80118775, z: 0.9371397, w: 0.3930969}
+    m_Value: {x: 1, y: 0.95752275, z: 0.74648464, w: 0.3930969}
 --- !u!114 &-2764795061077874546
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -190,10 +190,10 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 7.8
+    m_Value: 9.73
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 20.11
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 0.979
@@ -233,10 +233,10 @@ MonoBehaviour:
   active: 1
   airDensity:
     m_OverrideState: 1
-    m_Value: 0.949
+    m_Value: 0.469
   fogDensityGlobal:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 0.01
   fogDensityPerLightModifier:
     m_OverrideState: 0
     m_Value: 0.401
@@ -244,8 +244,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.402
   fogColor:
-    m_OverrideState: 1
-    m_Value: {r: 0.6203275, g: 0.63654083, b: 0.6415094, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 0.4056604, g: 0.34583935, b: 0.2238786, a: 1}
 --- !u!114 &-1481910988856050941
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -261,7 +261,7 @@ MonoBehaviour:
   active: 0
   mode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -306,10 +306,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.435
+    m_Value: 0.256
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.383
+    m_Value: 0.332
   rounded:
     m_OverrideState: 0
     m_Value: 0
