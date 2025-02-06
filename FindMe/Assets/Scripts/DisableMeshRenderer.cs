@@ -7,7 +7,7 @@ public class DisableMeshRenderer : MonoBehaviour
 
     public MeshRenderer m;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
 
         m.enabled = false;

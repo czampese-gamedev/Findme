@@ -98,11 +98,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    m_OverrideState: 0
-    m_Value: 62
+    m_OverrideState: 1
+    m_Value: -18
   saturation:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: -22
 --- !u!114 &-5915899025678989705
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -118,19 +118,19 @@ MonoBehaviour:
   active: 0
   intensity:
     m_OverrideState: 1
-    m_Value: -0.05
+    m_Value: -0.01
   xMultiplier:
     m_OverrideState: 1
-    m_Value: 0.827
+    m_Value: 0.583
   yMultiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.334
   center:
     m_OverrideState: 1
     m_Value: {x: 8.68, y: 0.5}
   scale:
     m_OverrideState: 1
-    m_Value: 1.96
+    m_Value: 1
 --- !u!114 &-5898898633481442698
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -233,10 +233,10 @@ MonoBehaviour:
   active: 1
   airDensity:
     m_OverrideState: 1
-    m_Value: 0.469
+    m_Value: 0.353
   fogDensityGlobal:
     m_OverrideState: 0
-    m_Value: 0.01
+    m_Value: 0.11
   fogDensityPerLightModifier:
     m_OverrideState: 0
     m_Value: 0.401
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.402
   fogColor:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 0.4056604, g: 0.34583935, b: 0.2238786, a: 1}
 --- !u!114 &-1481910988856050941
 MonoBehaviour:

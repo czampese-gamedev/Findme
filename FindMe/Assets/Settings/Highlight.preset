@@ -38,11 +38,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: fadeTime
-    value: 0.3
+    value: 0.2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: flashHoldTime
-    value: 0.8
+    value: 0.6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.size
@@ -50,23 +50,23 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[0].time
-    value: 0
+    value: 0.0020980835
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[0].value
-    value: 1
+    value: 0.99823
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[0].inSlope
-    value: 1
+    value: 0.509913
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[0].outSlope
-    value: 1
+    value: 0.509913
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[0].tangentMode
-    value: 0
+    value: 34
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[0].weightedMode
@@ -78,27 +78,27 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[0].outWeight
-    value: 0
+    value: 0.33333334
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[1].time
-    value: 1
+    value: 0.9976196
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[1].value
-    value: 2
+    value: 1.5058594
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[1].inSlope
-    value: 1
+    value: 0.509913
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[1].outSlope
-    value: 1
+    value: 0.509913
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[1].tangentMode
-    value: 0
+    value: 34
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[1].weightedMode
@@ -106,7 +106,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[1].inWeight
-    value: 0
+    value: 0.33333334
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: highlightCurve.m_Curve.Array.data[1].outWeight
