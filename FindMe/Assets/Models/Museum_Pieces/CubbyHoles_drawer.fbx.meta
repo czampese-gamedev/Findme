@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Drawer
+    second: {fileID: 2100000, guid: e88fed0759be7a642bf4cb128eac9c3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Label
+    second: {fileID: 2100000, guid: e88fed0759be7a642bf4cb128eac9c3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: e88fed0759be7a642bf4cb128eac9c3e, type: 2}
   materials:
