@@ -1275,7 +1275,22 @@ MonoBehaviour:
   passUnhandledHotspotAsParameter: 0
   unhandledGive: {fileID: 0}
   recipes: []
-  documents: []
+  documents:
+  - ID: 0
+    title: Test_SympbolsDoc
+    titleLineID: -1
+    rememberLastOpenPage: 1
+    carryOnStart: 0
+    texture: {fileID: 2800000, guid: 65f52a0ef75ca7a4f92a6c0ee0b6eaf5, type: 3}
+    pages:
+    - lineID: -1
+      text: These symbols might be useful...
+      texture: {fileID: 2800000, guid: b1a0fe2f58a5fa54999b0a96d6d98a00, type: 3}
+    - lineID: -1
+      text: test page 2?
+      texture: {fileID: 2800000, guid: bce43503518074f40aaca9d808ac14a3, type: 3}
+    binID: -1
+    vars: []
   objectives: []
   objectiveStateActiveLabel:
     label: Active

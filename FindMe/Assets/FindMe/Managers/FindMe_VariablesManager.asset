@@ -55,6 +55,11 @@ MonoBehaviour:
     description: CHeck to see if player has visited 1440
   varPresets: []
   updateRuntime: 1
-  popUpLabelData: []
+  popUpLabelData:
+  - editorLabel: New label set
+    id: 1
+    labels: []
+    lineID: -1
+    canTranslate: 0
   timers: []
   scrollPos: {x: 0, y: 0}
