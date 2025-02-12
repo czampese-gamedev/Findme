@@ -14,6 +14,7 @@ namespace AC
 		public int objectiveParameterID = -1;
 
 		public int newStateID;
+		public int newStateIDParameterID = -1;
 		public bool selectAfter;
 		public int playerID;
 		public bool setPlayer;
@@ -27,6 +28,7 @@ namespace AC
 		public override void AssignValues (List<ActionParameter> parameters)
 		{
 			objectiveID = AssignObjectiveID (parameters, objectiveParameterID, objectiveID);
+			newStateID = AssignInteger (parameters, newStateIDParameterID, newStateID);
 		}
 
 
@@ -67,7 +69,13 @@ namespace AC
 				Objective objective = KickStarter.inventoryManager.GetObjective (objectiveID);
 				if (objective != null)
 				{
-					newStateID = objective.StateSelectorList (newStateID, "Set to state:");
+					ActionParameter[] filteredParameters = GetFilteredParameters (parameters, new ParameterType[] { ParameterType.Integer });
+					bool parameterOverride = SmartFieldStart ("Set to state:", filteredParameters, ref newStateIDParameterID, "Set to state ID:");
+					if (!parameterOverride)
+					{
+						newStateID = objective.StateSelectorList (newStateID, "Set to state:");
+					}
+					SmartFieldEnd (filteredParameters, parameterOverride, ref newStateIDParameterID);
 
 					if (KickStarter.inventoryManager.ObjectiveIsPerPlayer (objectiveID))
 					{
@@ -89,7 +97,7 @@ namespace AC
 			}
 			else
 			{
-				newStateID = EditorGUILayout.IntField ("Set to state ID:", newStateID);
+				IntField ("Set to state ID:", ref newStateID, parameters, ref newStateIDParameterID);
 			}
 		}
 		

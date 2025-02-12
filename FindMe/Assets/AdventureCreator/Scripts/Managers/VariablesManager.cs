@@ -57,7 +57,7 @@ namespace AC
 		private VariableType typeFilter;
 		private VarFilter varFilter;
 
-		public Vector2 scrollPos;
+		private Vector2 scrollPos;
 		private bool showGlobalTab = true;
 		private bool showLocalTab = false;
 

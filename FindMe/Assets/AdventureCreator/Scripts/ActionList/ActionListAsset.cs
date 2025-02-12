@@ -391,6 +391,15 @@ namespace AC
 			}
 			newAsset = AddActionsToAsset (newAsset, _actions, false);
 			newAsset.actionListType = actionListType;
+
+			foreach (Action action in newAsset.actions)
+			{
+				if (action != null)
+				{
+					action.SkipActionGUI (newAsset.actions, false);
+				}
+			}
+
 			EditorUtility.SetDirty (newAsset);
 			
 			AssetDatabase.SaveAssets ();
@@ -1172,6 +1181,7 @@ namespace AC
 			}
 
 			if (showALAEditor == null) showALAEditor = _showALAEditor;
+			else if (_showALAEditor == null) _showALAEditor = showALAEditor;
 
 			if (showALAEditor != null && actionListAsset && GUILayout.Button (string.Empty, CustomStyles.IconNodes, GUILayout.Height (21)))
 			{

@@ -107,6 +107,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11418238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +265,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11425638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -662,6 +664,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -726,6 +729,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -790,6 +794,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1771,6 +1776,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2163,6 +2169,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2313,8 +2320,8 @@ MonoBehaviour:
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiTextTMP: {fileID: 0}
-  hideScrollingCharacters: 0
-  uiText: {fileID: 0}
+  hideScrollingCharacters: 1
+  uiText: {fileID: 11400000, guid: d25cd33c0b9154ea6b72a0c3107dfb69, type: 3}
   _label: Dialogue text
   anchor: 0
   textEffects: 0
@@ -2331,6 +2338,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2395,6 +2403,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4155,6 +4164,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4219,6 +4229,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11451480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4283,6 +4294,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11454980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4463,6 +4475,7 @@ MonoBehaviour:
   journalType: 2
   pageOffset: 0
   otherJournalTitle: 
+  uiComponentHideStyle: 0
 --- !u!114 &11457324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4526,6 +4539,7 @@ MonoBehaviour:
   uiRawImage: {fileID: 0}
   uiImageType: 0
   linkedJournalElementName: 
+  uiComponentHideStyle: 0
 --- !u!114 &11457588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4701,6 +4715,7 @@ MonoBehaviour:
   uiRawImage: {fileID: 0}
   uiImageType: 0
   linkedJournalElementName: 
+  uiComponentHideStyle: 0
 --- !u!114 &11458358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5302,6 +5317,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11458374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5871,6 +5887,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11458390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6446,6 +6463,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 4
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11480472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6510,6 +6528,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11482328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6574,6 +6593,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11485176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6780,6 +6800,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 1
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11497528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6930,6 +6951,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11499722
 MonoBehaviour:
   m_ObjectHideFlags: 1

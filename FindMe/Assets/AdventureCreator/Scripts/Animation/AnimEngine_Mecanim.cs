@@ -318,20 +318,6 @@ namespace AC
 						action.newSpeed = EditorGUILayout.FloatField ("Walk speed scale:", action.newSpeed);
 						action.parameterValue = EditorGUILayout.FloatField ("Run speed scale:", action.parameterValue);
 					}
-
-					action.changeSound = EditorGUILayout.Toggle ("Change sound?", action.changeSound);
-					if (action.changeSound)
-					{
-						action.standard = (AnimStandard) EditorGUILayout.EnumPopup ("Change:", action.standard);
-						if (action.standard == AnimStandard.Walk || action.standard == AnimStandard.Run)
-						{
-							action.newSound = (AudioClip) EditorGUILayout.ObjectField ("New sound:", action.newSound, typeof (AudioClip), false);
-						}
-						else
-						{
-							EditorGUILayout.HelpBox ("Only Walk and Run have a standard sounds.", MessageType.Info);
-						}
-					}
 				}
 			}
 
@@ -339,7 +325,7 @@ namespace AC
 			{
 				action.TextField ("Clip name:", ref action.clip2D, parameters, ref action.clip2DParameterID);
 				
-				action.layerInt = EditorGUILayout.IntField ("Mecanim layer:", action.layerInt);
+				action.layerInt = EditorGUILayout.IntField ("Layer index:", action.layerInt);
 				action.fadeTime = EditorGUILayout.FloatField ("Transition time:", action.fadeTime);
 				action.willWait = EditorGUILayout.Toggle ("Wait until finish?", action.willWait);
 			}
@@ -402,18 +388,6 @@ namespace AC
 						{
 							character.walkSpeedScale = action.newSpeed;
 							character.runSpeedScale = action.parameterValue;
-						}
-
-						if (action.changeSound)
-						{
-							if (action.standard == AnimStandard.Walk)
-							{
-								character.walkSound = action.newSound;
-							}
-							else if (action.standard == AnimStandard.Run)
-							{
-								character.runSound = action.newSound;
-							}
 						}
 					}
 					else if (action.mecanimCharParameter == MecanimCharParameter.TalkBool)
@@ -552,7 +526,7 @@ namespace AC
 			{
 				action.TextField ("Clip name:", ref action.clip2D, parameters, ref action.clip2DParameterID);
 
-				action.layerInt = EditorGUILayout.IntField ("Mecanim layer:", action.layerInt);
+				action.layerInt = EditorGUILayout.IntField ("Layer index:", action.layerInt);
 				action.fadeTime = EditorGUILayout.FloatField ("Transition time:", action.fadeTime);
 				action.willWait = EditorGUILayout.Toggle ("Wait until finish?", action.willWait);
 			}

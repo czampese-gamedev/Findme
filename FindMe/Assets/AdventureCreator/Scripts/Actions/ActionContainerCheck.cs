@@ -33,6 +33,9 @@ namespace AC
 		public Container container;
 		protected Container runtimeContainer;
 
+		public enum CheckToMake { HasSpecificItem, IsFull };
+		public CheckToMake checkToMake = CheckToMake.HasSpecificItem;
+
 		public bool doCount;
 		public int intValue = 1;
 		public enum IntCondition { EqualTo, NotEqualTo, LessThan, MoreThan };
@@ -50,9 +53,12 @@ namespace AC
 
 		public override void AssignValues (List<ActionParameter> parameters)
 		{
-			runtimeContainer = AssignFile <Container> (parameters, parameterID, constantID, container);
-			invID = AssignInvItemID (parameters, invParameterID, invID);
+			if (checkToMake == CheckToMake.HasSpecificItem)
+			{
+				invID = AssignInvItemID (parameters, invParameterID, invID);
+			}
 
+			runtimeContainer = AssignFile <Container> (parameters, parameterID, constantID, container);
 			if (useActive)
 			{
 				runtimeContainer = KickStarter.playerInput.activeContainer;
@@ -67,30 +73,40 @@ namespace AC
 				return false;
 			}
 
-			int count = runtimeContainer.GetCount (invID);
-			
-			if (doCount)
+			switch (checkToMake)
 			{
-				switch (intCondition)
+				case CheckToMake.HasSpecificItem:
 				{
-					case IntCondition.EqualTo:
-						return (count == intValue);
+					int count = runtimeContainer.GetCount (invID);
+					if (doCount)
+					{
+						switch (intCondition)
+						{
+							case IntCondition.EqualTo:
+								return (count == intValue);
 
-					case IntCondition.NotEqualTo:
-						return (count != intValue);
+							case IntCondition.NotEqualTo:
+								return (count != intValue);
 
-					case IntCondition.LessThan:
-						return (count < intValue);
+							case IntCondition.LessThan:
+								return (count < intValue);
 
-					case IntCondition.MoreThan:
-						return (count > intValue);
+							case IntCondition.MoreThan:
+								return (count > intValue);
 
-					default:
-						return false;
+							default:
+								return false;
+						}
+					}
+					return (count > 0);
 				}
+					
+				case CheckToMake.IsFull:
+					return runtimeContainer.IsFull;
+
+				default:
+					return false;
 			}
-			
-			return (count > 0);
 		}
 		
 
@@ -103,44 +119,55 @@ namespace AC
 			if (inventoryManager)
 			{
 				// Create a string List of the field's names (for the PopUp box)
-				if (inventoryManager.items.Count > 0)
+				useActive = EditorGUILayout.Toggle ("Affect active container?", useActive);
+				if (!useActive)
 				{
-					useActive = EditorGUILayout.Toggle ("Affect active container?", useActive);
-					if (!useActive)
-					{
-						ComponentField ("Container:", ref container, ref constantID, parameters, ref parameterID);
-					}
-
-					ItemField ("Item to check:", ref invID, parameters, ref invParameterID, "Item to check ID:");
-
-					if (inventoryManager.GetItem (invID) != null && inventoryManager.GetItem (invID).canCarryMultiple)
-					{
-						doCount = EditorGUILayout.Toggle ("Query count?", doCount);
-					
-						if (doCount)
-						{
-							EditorGUILayout.BeginHorizontal ();
-							EditorGUILayout.LabelField ("Count is:", GUILayout.MaxWidth (70));
-							intCondition = (IntCondition) EditorGUILayout.EnumPopup (intCondition);
-							intValue = EditorGUILayout.IntField (intValue);
-						
-							if (intValue < 1)
-							{
-								intValue = 1;
-							}
-							EditorGUILayout.EndHorizontal ();
-						}
-					}
-					else
-					{
-						doCount = false;
-					}
+					ComponentField ("Container:", ref container, ref constantID, parameters, ref parameterID);
 				}
 
-				else
+				checkToMake = (CheckToMake) EditorGUILayout.EnumPopup ("Check to make:", checkToMake);
+
+				switch (checkToMake)
 				{
-					EditorGUILayout.LabelField ("No inventory items exist!");
-					invID = -1;
+					case CheckToMake.HasSpecificItem:
+					{
+						if (inventoryManager.items.Count > 0)
+						{
+							ItemField ("Item to check:", ref invID, parameters, ref invParameterID, "Item to check ID:");
+
+							if (inventoryManager.GetItem (invID) != null && inventoryManager.GetItem (invID).canCarryMultiple)
+							{
+								doCount = EditorGUILayout.Toggle ("Query count?", doCount);
+							
+								if (doCount)
+								{
+									EditorGUILayout.BeginHorizontal ();
+									EditorGUILayout.LabelField ("Count is:", GUILayout.MaxWidth (70));
+									intCondition = (IntCondition) EditorGUILayout.EnumPopup (intCondition);
+									intValue = EditorGUILayout.IntField (intValue);
+								
+									if (intValue < 1)
+									{
+										intValue = 1;
+									}
+									EditorGUILayout.EndHorizontal ();
+								}
+							}
+							else
+							{
+								doCount = false;
+							}
+						}
+						else
+						{
+							EditorGUILayout.LabelField ("No inventory items exist!");
+							invID = -1;
+						}
+						break;
+					}
+
+					default:
+						break;
 				}
 			}
 		}

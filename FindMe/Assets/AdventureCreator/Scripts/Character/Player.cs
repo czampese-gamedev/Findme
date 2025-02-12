@@ -57,8 +57,10 @@ namespace AC
 		public bool freeAimLocked = false;
 		public bool jumpingLocked = false;
 
+
 		#if UNITY_2019_2_OR_NEWER
 		public bool autoStickToNavMesh = false;
+		private PolygonCollider2D[] autoStickPolys;
 		#endif
 
 		#endregion
@@ -68,11 +70,6 @@ namespace AC
 
 		protected new void Awake ()
 		{
-			if (soundChild && soundChild.audioSource)
-			{
-				audioSource = soundChild.audioSource;
-			}
-
 			skinnedMeshRenderers = GetComponentsInChildren <SkinnedMeshRenderer>();
 
 			if (hotspotDetector == null)
@@ -118,6 +115,7 @@ namespace AC
 			base.OnEnable ();
 			EventManager.OnSetPlayer += OnSetPlayer;
 			EventManager.OnBeforeLoading += OnBeforeLoading;
+			EventManager.OnInitialiseScene += OnInitialiseScene;
 			
 			AutoSyncHotspot ();
 		}
@@ -128,6 +126,7 @@ namespace AC
 			base.OnDisable ();
 			EventManager.OnSetPlayer -= OnSetPlayer;
 			EventManager.OnBeforeLoading -= OnBeforeLoading;
+			EventManager.OnInitialiseScene -= OnInitialiseScene;
 		}
 
 
@@ -349,7 +348,7 @@ namespace AC
 					}
 					else
 					{
-						_rigidbody.velocity = UpDirection * jumpSpeed;
+						UnityVersionHandler.SetRigidbodyVelocity (_rigidbody, UpDirection * jumpSpeed);
 					}
 					isJumping = true;
 
@@ -704,10 +703,6 @@ namespace AC
 				playerData = GetAnimEngine ().SavePlayerData (playerData, this);
 			}
 						
-			// Sound
-			playerData.playerWalkSound = AssetLoader.GetAssetInstanceID (walkSound);
-			playerData.playerRunSound = AssetLoader.GetAssetInstanceID (runSound);
-			
 			// Portrait graphic
 			playerData.playerPortraitGraphic = AssetLoader.GetAssetInstanceID (portraitIcon.texture);
 
@@ -1137,8 +1132,8 @@ namespace AC
 				playerData.attachmentPointDatas = new AttachmentPointData[2] { new AttachmentPointData (0, playerData.leftHandSceneItemConstantID), new AttachmentPointData (1, playerData.rightHandSceneItemConstantID) };
 			}
 
-			GameObject[] heldObjectsToSpawn = new GameObject[playerData.attachmentPointDatas.Length];
-			for (int i = 0; i < playerData.attachmentPointDatas.Length; i++)
+			GameObject[] heldObjectsToSpawn = (playerData.attachmentPointDatas != null) ? new GameObject[playerData.attachmentPointDatas.Length] : new GameObject[0];
+			for (int i = 0; i < heldObjectsToSpawn.Length; i++)
 			{
 				if (playerData.attachmentPointDatas[i].heldSceneItemConstantID != 0 && i < attachmentPoints.Length && attachmentPoints[i].transform)
 				{
@@ -1149,13 +1144,16 @@ namespace AC
 							SceneItemData data = Serializer.LoadScriptData<SceneItemData> (scriptData.data);
 							if (data == null) continue;
 
+							var attachmentPoint = GetAttachmentPoint (playerData.attachmentPointDatas[i].attachmentPointID);
+							if (attachmentPoint == null) continue;
+
 							InvInstance invInstance = InvInstance.LoadData (data.invInstanceData);
 							if (!InvInstance.IsValid (invInstance) || invInstance.InvItem.linkedPrefab == null) continue;
 
 							heldObjectsToSpawn[i] = Instantiate (invInstance.InvItem.linkedPrefab);
 							heldObjectsToSpawn[i].name = invInstance.InvItem.linkedPrefab.name;
 							heldObjectsToSpawn[i].GetComponent<RememberSceneItem> ().SetManualID (playerData.attachmentPointDatas[i].heldSceneItemConstantID);
-							heldObjectsToSpawn[i].transform.SetParent (attachmentPoints[i].transform);
+							heldObjectsToSpawn[i].transform.SetParent (attachmentPoint.transform);
 							heldObjectsToSpawn[i].transform.localPosition = Vector3.zero;
 							heldObjectsToSpawn[i].transform.localEulerAngles = Vector3.zero;
 						}
@@ -1185,6 +1183,17 @@ namespace AC
 				if (i < attachmentPoints.Length)
 					HoldObject (heldObjectsToSpawn[i], attachmentPoints[i].ID);
 			}
+		}
+
+
+		private AttachmentPoint GetAttachmentPoint (int ID)
+		{
+			if (attachmentPoints == null) return null;
+			foreach (var attachmentPoint in attachmentPoints)
+			{
+				if (attachmentPoint.ID == ID) return attachmentPoint;
+			}
+			return null;
 		}
 
 
@@ -1282,16 +1291,40 @@ namespace AC
 			if (IsMovingAlongPath () || !SceneSettings.IsUnity2D () || KickStarter.sceneSettings == null || KickStarter.sceneSettings.navMesh == null || KickStarter.settingsManager.movementMethod == MovementMethod.PointAndClick) return;
 
 			#if UNITY_2019_2_OR_NEWER
-			Vector3 position = transform.position;
-			var poly = KickStarter.sceneSettings.navMesh.GetComponent<PolygonCollider2D> ();
-			if (poly)
-			{
-				position = poly.ClosestPoint (position);
 
-				if (position != transform.position)
+			if (autoStickPolys == null || autoStickPolys.Length == 0 || autoStickPolys[0] == null || autoStickPolys[0].gameObject != KickStarter.sceneSettings.navMesh.gameObject)
+			{
+				autoStickPolys = KickStarter.sceneSettings.navMesh.GetComponents<PolygonCollider2D> ();
+			}
+
+			float minSqrDist = 0f;
+			int bestIndex = -1;
+			Vector3 bestPosition = Vector3.zero;
+
+			for (int i = 0; i < autoStickPolys.Length; i++)
+			{
+				if (autoStickPolys[i] == null) continue;
+
+				Vector3 newPosition = autoStickPolys[i].ClosestPoint (transform.position);
+				
+				float sqrDist = (newPosition - transform.position).sqrMagnitude;
+				if (sqrDist == 0f)
 				{
-					Teleport (position);
+					// Already inside
+					return;
 				}
+
+				if (bestIndex < 0 || sqrDist < minSqrDist)
+				{
+					minSqrDist = sqrDist;
+					bestIndex = i;
+					bestPosition = newPosition;
+				}
+			}
+
+			if (bestIndex >= 0)
+			{
+				Teleport (bestPosition);
 			}
 			#endif
 		}
@@ -1341,6 +1374,12 @@ namespace AC
 					}
 				}
 			}
+		}
+
+
+		protected void OnInitialiseScene ()
+		{
+			autoStickPolys = null;
 		}
 
 
@@ -1395,6 +1434,10 @@ namespace AC
 		{
 			get
 			{
+				if (firstPersonCameraTransform == null && FirstPersonCameraComponent)
+				{
+					firstPersonCameraTransform = FirstPersonCamera.transform;
+				}
 				return firstPersonCameraTransform;
 			}
 			set
@@ -1408,6 +1451,10 @@ namespace AC
 		{
 			get
 			{
+				if (firstPersonCamera == null)
+				{
+					firstPersonCamera = GetComponentInChildren <FirstPersonCamera>();
+				}
 				return firstPersonCamera;
 			}
 		}

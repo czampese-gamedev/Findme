@@ -66,6 +66,7 @@ namespace AC
 		
 		private bool isTakingSaveScreenshot;
 		private static string persistentDataPath;
+		private static string overrideDataPath;
 
 
 		protected void OnEnable ()
@@ -80,8 +81,11 @@ namespace AC
 		}
 
 
-		/** Searches the filesystem for all available save files, and stores them in foundSaveFiles. */
-		public List<SaveFile> GatherSaveFiles ()
+		/** 
+		 * <summary>Searches the filesystem for all available save files, and stores them in foundSaveFiles.</summary>
+		 * <param name = "callback">A callback to invoke upon completion</param>
+		 */
+		public void GatherSaveFiles (System.Action<List<SaveFile>> callback = null)
 		{
 			if (foundSaveFiles != null)
 			{
@@ -91,21 +95,67 @@ namespace AC
 				}
 			}
 
-			foundSaveFiles = SaveFileHandler.GatherSaveFiles (Options.GetActiveProfileID ());
+			SaveFileHandler.GatherSaveFiles (Options.GetActiveProfileID (), OnGatherFilesFromHandler);
+
+			void OnGatherFilesFromHandler (List<SaveFile> saveFiles)
+			{
+				foundSaveFiles = saveFiles;
+
+				if (KickStarter.settingsManager && KickStarter.settingsManager.orderSavesByUpdateTime)
+				{
+					foundSaveFiles.Sort (delegate (SaveFile a, SaveFile b) { return a.updatedTime.CompareTo (b.updatedTime); });
+				}
+				
+				foundSaveFiles.Sort (delegate (SaveFile a, SaveFile b) { return b.IsAutoSave.CompareTo (a.IsAutoSave); });
+
+				UpdateSaveFileLabels (ref foundSaveFiles);
+				KickStarter.eventManager.Call_OnGatherSaves (ref foundSaveFiles);
+
+				callback?.Invoke (foundSaveFiles);
+			}
+		}
+
+
+		protected void UpdateSaveList (SaveFile saveFile)
+		{
+			if (saveFile == null) return;
+
+			bool replacedExisting = false;
+			for (int i = 0; i < foundSaveFiles.Count; i++)
+			{
+				if (foundSaveFiles[i].saveID == saveFile.saveID)
+				{
+					if (foundSaveFiles[i].screenShot) Destroy (foundSaveFiles[i].screenShot);
+					foundSaveFiles[i] = saveFile;
+					replacedExisting = true;
+					break;
+				}
+			}
+
+			if (!replacedExisting)
+			{
+				foundSaveFiles.Add (saveFile);
+			}
 
 			if (KickStarter.settingsManager && KickStarter.settingsManager.orderSavesByUpdateTime)
 			{
 				foundSaveFiles.Sort (delegate (SaveFile a, SaveFile b) { return a.updatedTime.CompareTo (b.updatedTime); });
 			}
+			else
+			{
+				foundSaveFiles.Sort (delegate (SaveFile a, SaveFile b) { return a.saveID.CompareTo (b.saveID); });
+			}
 
-			UpdateSaveFileLabels (ref foundSaveFiles);
+			foundSaveFiles.Sort (delegate (SaveFile a, SaveFile b) { return b.IsAutoSave.CompareTo (a.IsAutoSave); });
 
-			return foundSaveFiles;
+			//UpdateSaveFileLabels (ref foundSaveFiles);
 		}
 
 
 		public static void UpdateSaveFileLabels (ref List<SaveFile> _saveFiles)
 		{
+			if (_saveFiles == null) return;
+
 			// Now get save file labels
 			if (Options.optionsData != null && !string.IsNullOrEmpty (Options.optionsData.saveFileNames))
 			{
@@ -137,15 +187,20 @@ namespace AC
 		 * <param name = "projectName">The project name of the game whose save files we're looking to import</param>
 		 * <param name = "filePrefix">The "save filename" of the game whose save files we're looking to import, as set in the Settings Manager</param>
 		 * <param name = "boolID">If >= 0, the ID of the boolean Global Variable that must be True for the file to be considered valid for import</param>
+		 * <param name = "callback">A callback to invoke, with the files, once complete</param>
 		 */
-		public List<SaveFile> GatherImportFiles (string projectName, string filePrefix, int boolID)
+		public void GatherImportFiles (string projectName, string filePrefix, int boolID, System.Action<List<SaveFile>> callback)
 		{
 			#if !UNITY_STANDALONE
 			ACDebug.LogWarning ("Cannot import save files unless running on Windows, Mac or Linux standalone platforms.");
-			return new List<SaveFile> ();
+			callback?.Invoke (new List<SaveFile> ());
+			return;
 			#else
-			foundImportFiles = SaveFileHandler.GatherImportFiles (Options.GetActiveProfileID (), boolID, projectName, filePrefix);
-			return foundImportFiles;
+			SaveFileHandler.GatherImportFiles (Options.GetActiveProfileID (), boolID, projectName, filePrefix, OnGatherImportFiles);
+			void OnGatherImportFiles (List<SaveFile> foundImportFiles)
+			{
+				callback?.Invoke (foundImportFiles);
+			}
 			#endif
 		}
 
@@ -282,42 +337,35 @@ namespace AC
 		}
 
 
-		public static bool ContinueGame (int tagID)
+		/** Loads the last-recorded save game file. */
+		public static void ContinueGame (System.Action onFail = null)
 		{
-			KickStarter.saveSystem.GatherSaveFiles ();
-			int maxTime = 0;
-			SaveFile mostRecentSave = null;
+			KickStarter.saveSystem.GatherSaveFiles (OnGatherSaveFiles);
 
-			foreach (SaveFile saveFile in KickStarter.saveSystem.foundSaveFiles)
+			void OnGatherSaveFiles (List<SaveFile> saveFiles)
 			{
-				var time = -saveFile.updatedTime;
-				if (time > maxTime)
+				int maxTime = 0;
+				SaveFile mostRecentSave = null;
+
+				foreach (SaveFile saveFile in saveFiles)
 				{
-					maxTime = time;
-					mostRecentSave = saveFile;
+					var time = -saveFile.updatedTime;
+					if (time > maxTime)
+					{
+						maxTime = time;
+						mostRecentSave = saveFile;
+					}
+				}
+
+				if (mostRecentSave != null)
+				{
+					LoadGame (mostRecentSave);
+				}
+				else
+				{
+					onFail?.Invoke ();
 				}
 			}
-
-			if (mostRecentSave != null)
-			{
-				LoadGame (mostRecentSave);
-				return true;
-			}
-			return false;
-		}
-
-
-		/**
-		 * <summary>Loads the last-recorded save game file.</summary>
-		 * <returns>True if a save-game file was found to load, False otherwise</returns>
-		 */
-		public static bool ContinueGame ()
-		{
-			if (Options.optionsData != null && Options.optionsData.lastSaveID >= 0)
-			{
-				return LoadGame (Options.optionsData.lastSaveID);
-			}
-			return false;
 		}
 
 
@@ -879,19 +927,20 @@ namespace AC
 		 * <summary>Create a new save game file.</summary>
 		 * <param name = "overwriteLabel">True if the label should be updated</param>
 		 * <param name = "newLabel">The new label, if it can be set</param>
+		 * <param name = "onComplete">A callback to invoke upon completion</param>
 		 */
-		public static void SaveNewGame (bool overwriteLabel = true, string newLabel = "")
+		public static void SaveNewGame (bool overwriteLabel = true, string newLabel = "", System.Action onComplete = null)
 		{
 			if (KickStarter.saveSystem)
 			{
-				KickStarter.saveSystem.SaveNewSaveGame (overwriteLabel, newLabel);
+				KickStarter.saveSystem.SaveNewSaveGame (overwriteLabel, newLabel, onComplete);
 			}
 		}
 		
 
-		private void SaveNewSaveGame (bool overwriteLabel = true, string newLabel = "")
+		private void SaveNewSaveGame (bool overwriteLabel = true, string newLabel = "", System.Action onComplete = null)
 		{
-			SaveSaveGame (GetNewSaveID (), overwriteLabel, newLabel);
+			SaveSaveGame (GetNewSaveID (), overwriteLabel, newLabel, onComplete);
 		}
 
 
@@ -945,10 +994,11 @@ namespace AC
 		 * <param name = "saveID">The save ID to save</param>
 		 * <param name = "overwriteLabel">True if the label should be updated</param>
 		 * <param name = "newLabel">The new label, if it can be set. If blank, a default label will be generated.</param>
+		 * <param name = "onComplete">A callback to invoke upon completion</param>
 		 */
-		public static void SaveGame (int saveID, bool overwriteLabel = true, string newLabel = "")
+		public static void SaveGame (int saveID, bool overwriteLabel = true, string newLabel = "", System.Action onComplete = null)
 		{
-			SaveSystem.SaveGame (0, saveID, true, overwriteLabel, newLabel);
+			SaveSystem.SaveGame (0, saveID, true, overwriteLabel, newLabel, onComplete);
 		}
 
 
@@ -960,7 +1010,7 @@ namespace AC
 		 * <param name = "overwriteLabel">True if the label should be updated</param>
 		 * <param name = "newLabel">The new label, if it can be set. If blank, a default label will be generated.</param>
 		 */
-		public static void SaveGame (int elementSlot, int saveID, bool useSaveID, bool overwriteLabel = true, string newLabel = "")
+		public static void SaveGame (int elementSlot, int saveID, bool useSaveID, bool overwriteLabel = true, string newLabel = "", System.Action onComplete = null)
 		{
 			if (KickStarter.saveSystem)
 			{
@@ -978,17 +1028,17 @@ namespace AC
 
 				if (saveID == -1)
 				{
-					SaveSystem.SaveNewGame (overwriteLabel, newLabel);
+					SaveSystem.SaveNewGame (overwriteLabel, newLabel, onComplete);
 				}
 				else
 				{
-					KickStarter.saveSystem.SaveSaveGame (saveID, overwriteLabel, newLabel);
+					KickStarter.saveSystem.SaveSaveGame (saveID, overwriteLabel, newLabel, onComplete);
 				}
 			}
 		}
 
 
-		private void SaveSaveGame (int saveID, bool overwriteLabel = true, string newLabel = "")
+		private void SaveSaveGame (int saveID, bool overwriteLabel = true, string newLabel = "", System.Action onComplete = null)
 		{
 			if (GetNumSaves () >= KickStarter.settingsManager.maxSaves && !DoesSaveExist (saveID))
 			{
@@ -1016,11 +1066,11 @@ namespace AC
 				}
 			}
 
-			StartCoroutine (PrepareSaveCoroutine (saveID, overwriteLabel, newLabel));
+			StartCoroutine (PrepareSaveCoroutine (saveID, overwriteLabel, newLabel, onComplete));
 		}
 
 		
-		private IEnumerator PrepareSaveCoroutine (int saveID, bool overwriteLabel = true, string newLabel = "")
+		private IEnumerator PrepareSaveCoroutine (int saveID, bool overwriteLabel = true, string newLabel = "", System.Action onComplete = null)
 		{
 			while (loadingGame != LoadingGame.No)
 			{
@@ -1073,11 +1123,11 @@ namespace AC
 			saveData.mainData = KickStarter.levelStorage.SavePersistentData (saveData.mainData);
 
 			SaveOperation saveOperation = gameObject.AddComponent <SaveOperation>();
-			saveOperation.BeginOperation (ref saveData, saveFile);
+			saveOperation.BeginOperation (ref saveData, saveFile, onComplete);
 		}
 
 
-		public void OnCompleteSaveOperation (SaveFile saveFile, bool wasSuccesful, SaveOperation saveOperation)
+		public void OnCompleteSaveOperation (SaveFile saveFile, bool wasSuccesful, SaveOperation saveOperation, System.Action onComplete)
 		{
 			Destroy (saveOperation);
 
@@ -1086,40 +1136,17 @@ namespace AC
 				return;
 			}
 
-			GatherSaveFiles ();
-
-			// Update label
-			if (!string.IsNullOrEmpty (saveFile.label))
-			{
-				for (int i = 0; i < foundSaveFiles.Count; i++)
-				{
-					if (foundSaveFiles[i].saveID == saveFile.saveID)
-					{
-						SaveFile newSaveFile = new SaveFile (foundSaveFiles[i]);
-						newSaveFile.SetLabel (saveFile.label);
-						foundSaveFiles[i] = newSaveFile;
-						break;
-					}
-				}
-			}
+			string label = saveFile.label;
+			saveFile = SaveFileHandler.GetSaveFile (saveFile.saveID, Options.GetActiveProfileID ()); // Get screenshot
+			saveFile.label = label;
+			UpdateSaveList (saveFile);
 
 			// Update PlayerPrefs
-			List<int> previousSaveIDs = Options.optionsData.GetPreviousSaveIDs ();
-			if (Options.optionsData.lastSaveID >= 0)
-			{
-				previousSaveIDs.Add (Options.optionsData.lastSaveID);
-			}
-			Options.optionsData.lastSaveID = saveFile.saveID;
-			if (previousSaveIDs.Contains (saveFile.saveID))
-			{
-				previousSaveIDs.Remove (saveFile.saveID);
-			}
-			Options.optionsData.SetPreviousSaveIDs (previousSaveIDs);
-
 			Options.UpdateSaveLabels (foundSaveFiles.ToArray ());
 
 			UpdateSaveFileLabels (ref foundSaveFiles);
 
+			onComplete?.Invoke ();
 			KickStarter.eventManager.Call_OnSave (FileAccessState.After, saveFile.saveID, saveFile);
 		}
 
@@ -1921,7 +1948,7 @@ namespace AC
 							break;
 
 						case VariableType.GameObject:
-							if (_var.GameObjectValue)
+							if (!string.IsNullOrEmpty (_var.TextValue))
 							{
 								if (location == VariableLocation.Global)
 								{
@@ -1929,28 +1956,24 @@ namespace AC
 								}
 								else if (_var.SavePrefabReference)
 								{
-									variablesString.Append (_var.GameObjectValue.name);
+									variablesString.Append (_var.TextValue);
 								}
 								else
 								{
-									ConstantID constantID = _var.GameObjectValue.GetComponent <ConstantID>();
-									if (constantID)
+									if (_var.IntegerValue != 0)
 									{
-										variablesString.Append (constantID.constantID.ToString ());
+										variablesString.Append (_var.IntegerValue.ToString ());
 									}
 									else
 									{
-										ACDebug.LogWarning ("Cannot save the value of " + location + " GameObject variable " + _var.label + ", because the assigned object, '" + _var.GameObjectValue.name + "', has no Constant ID value.", _var.GameObjectValue);
+										ACDebug.LogWarning ("Cannot save the value of " + location + " GameObject variable " + _var.label + ", because the assigned object, '" + _var.TextValue + "', has no Constant ID value.", _var.GameObjectValue);
 									}
 								}
 							}
 							break;
 
 						case VariableType.UnityObject:
-							if (_var.UnityObjectValue)
-							{
-								variablesString.Append (_var.TextValue);
-							}
+							variablesString.Append (_var.TextValue);
 							break;
 
 						default:
@@ -2368,7 +2391,7 @@ namespace AC
 				return;
 			}
 
-			GatherSaveFiles ();
+			//GatherSaveFiles ();
 
 			if (foundSaveFiles.Count > saveIndex && saveIndex >= 0)
 			{
@@ -2392,7 +2415,7 @@ namespace AC
 				return;
 			}
 
-			GatherSaveFiles ();
+			//GatherSaveFiles ();
 
 			for (int i=0; i<foundSaveFiles.Count; i++)
 			{
@@ -2456,11 +2479,18 @@ namespace AC
 			Options.DeleteProfilePrefs (profileID);
 			if (isActive)
 			{
-				GatherSaveFiles ();
+				GatherSaveFiles (OnGatherSaveFiles);
 			}
-			KickStarter.playerMenus.RecalculateAll ();
+			else
+			{
+				OnGatherSaveFiles (null);
+			}
 
-			ACDebug.Log ("Profile ID " + profileID + " deleted.");
+			void OnGatherSaveFiles (List<SaveFile> saveFiles)
+			{
+				KickStarter.playerMenus.RecalculateAll ();
+				ACDebug.Log ("Profile ID " + profileID + " deleted.");
+			}
 		}
 
 
@@ -2502,45 +2532,22 @@ namespace AC
 			}
 
 			// Also remove save label
-			GatherSaveFiles ();
-			foreach (SaveFile saveFile in foundSaveFiles)
+			GatherSaveFiles (OnGatherSaveFiles);
+
+			void OnGatherSaveFiles (List<SaveFile> saveFiles)
 			{
-				if (saveFile.saveID == saveID)
+				foreach (SaveFile saveFile in foundSaveFiles)
 				{
-					foundSaveFiles.Remove (saveFile);
-					Options.UpdateSaveLabels (foundSaveFiles.ToArray ());
-					break;
-				}
-			}
-
-			if (Options.optionsData != null)
-			{
-				List<int> previousSaveIDs = Options.optionsData.GetPreviousSaveIDs ();
-				if (previousSaveIDs.Contains (saveID))
-				{
-					previousSaveIDs.Remove (saveID);
-				}
-
-
-				if (Options.optionsData.lastSaveID == saveID)
-				{
-					// Deleting the "last save", find a replacement
-					if (previousSaveIDs.Count > 0)
+					if (saveFile.saveID == saveID)
 					{
-						Options.optionsData.lastSaveID = previousSaveIDs[previousSaveIDs.Count - 1];
-						previousSaveIDs.RemoveAt (previousSaveIDs.Count - 1);
-					}
-					else
-					{
-						Options.optionsData.lastSaveID = -1;
+						foundSaveFiles.Remove (saveFile);
+						Options.UpdateSaveLabels (foundSaveFiles.ToArray ());
+						break;
 					}
 				}
 
-				Options.optionsData.SetPreviousSaveIDs (previousSaveIDs);
-				
-				Options.SavePrefs ();
+				KickStarter.playerMenus.RecalculateAll ();
 			}
-			KickStarter.playerMenus.RecalculateAll ();
 		}
 
 
@@ -2691,15 +2698,24 @@ namespace AC
 		}
 
 
+		/** The root path to store save-game files. If set to a non-empty value, this will override the default (Application.persistentDataPath) */
 		public static string PersistentDataPath
 		{
 			get
 			{
+				if (!string.IsNullOrEmpty (overrideDataPath))
+				{
+					return overrideDataPath;
+				}
 				if (string.IsNullOrEmpty (persistentDataPath))
 				{
 					persistentDataPath = Application.persistentDataPath;
 				}
 				return persistentDataPath;
+			}
+			set
+			{
+				overrideDataPath = value;
 			}
 		}
 

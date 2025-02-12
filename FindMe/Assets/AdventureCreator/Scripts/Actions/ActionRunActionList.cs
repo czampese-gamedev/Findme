@@ -51,6 +51,7 @@ namespace AC
 		protected bool isAwaitingDelay;
 
 		protected RuntimeActionList runtimeActionList;
+		protected Conversation[] conversations;
 
 		[SerializeField] protected RunMode runMode = RunMode.RunOnly;
 		protected RunMode runtimeRunMode;
@@ -106,7 +107,7 @@ namespace AC
 				}
 			}
 
-			if (localParameters != null && localParameters.Count > 0)
+			if (localParameters != null && localParameters.Count > 0 && parameters != null)
 			{
 				for (int i=0; i<localParameters.Count; i++)
 				{
@@ -246,11 +247,21 @@ namespace AC
 							}
 							else if (KickStarter.actionListManager.IsListRunning (actionList))
 							{
+								if (nestedAwaitingActiveList == null)
+								{
+									ActiveList nextActiveList = GetNextActiveList ();
+									if (nextActiveList != null && KickStarter.actionListManager.IsNestedAwaiting (nextActiveList))
+									{
+										nestedAwaitingActiveList = new ActionListManager.NestedAwaitingActiveList (GetActiveList (), null, actionList);
+										KickStarter.actionListManager.SetActionPendingState (nestedAwaitingActiveList, true);
+									}
+								}
+
 								isAwaitingDelay = false;
 								EventManager.OnEndActionList -= OnEndActionList;
 								return defaultPauseTime;
 							}
-							else if (nestedAwaitingActiveList != null)
+							else if (nestedAwaitingActiveList != null && nestedAwaitingActiveList.Conversation)
 							{
 								if (nestedAwaitingActiveList.Conversation.IsOverridingActionList (actionList))
 								{
@@ -259,7 +270,10 @@ namespace AC
 							}
 							else
 							{
-								Conversation[] conversations = UnityVersionHandler.FindObjectsOfType<Conversation> ();
+								if (conversations == null)
+								{
+									conversations = UnityVersionHandler.FindObjectsOfType<Conversation> ();
+								}
 								foreach (Conversation conversation in conversations)
 								{
 									if (conversation.IsOverridingActionList (actionList))
@@ -285,10 +299,17 @@ namespace AC
 								{
 									if (KickStarter.actionListManager.IsListRunning (runtimeActionList))
 									{
+										ActiveList nextActiveList = GetNextActiveList ();
+										if (nextActiveList != null && KickStarter.actionListManager.IsNestedAwaiting (nextActiveList))
+										{
+											nestedAwaitingActiveList = new ActionListManager.NestedAwaitingActiveList (GetActiveList (), null, runtimeActionList);
+											KickStarter.actionListManager.SetActionPendingState (nestedAwaitingActiveList, true);
+										}
+
 										return defaultPauseTime;
 									}
 
-									if (nestedAwaitingActiveList.Conversation)
+									if (nestedAwaitingActiveList != null && nestedAwaitingActiveList.Conversation)
 									{
 										if (nestedAwaitingActiveList.Conversation.IsOverridingActionList (runtimeActionList))
 										{
@@ -297,7 +318,10 @@ namespace AC
 									}
 									else
 									{
-										Conversation[] conversations = UnityVersionHandler.FindObjectsOfType<Conversation> ();
+										if (conversations == null)
+										{
+											conversations = UnityVersionHandler.FindObjectsOfType<Conversation> ();
+										}
 										foreach (Conversation conversation in conversations)
 										{
 											if (conversation.IsOverridingActionList (runtimeActionList))
@@ -356,6 +380,36 @@ namespace AC
 					return activeList;
 				}
 			}
+			return null;
+		}
+
+
+		private ActiveList GetNextActiveList ()
+		{
+			if (listSource == ListSource.InScene)
+			{
+				foreach (var activeList in KickStarter.actionListManager.ActiveLists)
+				{
+					if (activeList.actionList == null) continue;
+					if (activeList.actionList == actionList)
+					{
+						return activeList;
+					}
+				}
+			}
+			else if (listSource == ListSource.AssetFile)
+			{
+				foreach (var activeList in KickStarter.actionListAssetManager.ActiveLists)
+				{
+					if (activeList.actionList == null) continue;
+					if (activeList.actionList == runtimeActionList)
+					{
+						return activeList;
+					}
+				}
+			}
+			
+			
 			return null;
 		}
 

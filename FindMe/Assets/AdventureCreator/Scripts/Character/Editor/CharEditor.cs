@@ -199,16 +199,13 @@ namespace AC
 			_target.groundCheckLayerMask = LayerMaskField ("Ground-check layer(s):", _target.groundCheckLayerMask);
 			CustomGUILayout.EndVertical ();
 
-			CustomGUILayout.Header ("Audio clips");
+			CustomGUILayout.Header ("Audio");
 			CustomGUILayout.BeginVertical ();
 		
-			_target.walkSound = (AudioClip) CustomGUILayout.ObjectField <AudioClip> ("Walk sound:", _target.walkSound, false, "", "The sound to play when walking");
-			_target.runSound = (AudioClip) CustomGUILayout.ObjectField <AudioClip> ("Run sound:", _target.runSound, false, "", "The sound to play when running");
 			if (KickStarter.speechManager != null && KickStarter.speechManager.scrollSubtitles)
 			{
 				_target.textScrollClip = (AudioClip) CustomGUILayout.ObjectField <AudioClip> ("Text scroll override:", _target.textScrollClip, false, "", "The sound to play when the character's speech text is scrolling");
 			}
-			_target.soundChild = (Sound) CustomGUILayout.ObjectField <Sound> ("SFX Sound child:", _target.soundChild, true, "", "");
 			_target.speechAudioSource = (AudioSource) CustomGUILayout.ObjectField <AudioSource> ("Speech AudioSource:", _target.speechAudioSource, true, "", "The AudioSource from which to play speech audio");
 			CustomGUILayout.EndVertical ();
 			

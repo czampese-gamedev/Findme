@@ -596,7 +596,7 @@ namespace AC
 		 */
 		public bool IsGlobalVariable ()
 		{
-			if (Application.isPlaying && KickStarter.runtimeVariables)
+			if (KickStarter.runtimeVariables)
 			{
 				foreach (GVar gVar in KickStarter.runtimeVariables.globalVars)
 				{
@@ -747,7 +747,7 @@ namespace AC
 
 				val = value;
 
-				if (originalValue != val && Application.isPlaying && KickStarter.eventManager)
+				if (originalValue != val && KickStarter.eventManager)
 				{
 					KickStarter.eventManager.Call_OnVariableChange (this);
 				}
@@ -777,7 +777,7 @@ namespace AC
 				int originalValue = val;
 				val = (value) ? 1 : 0;
 
-				if (originalValue != val && Application.isPlaying && KickStarter.eventManager)
+				if (originalValue != val && KickStarter.eventManager)
 				{
 					KickStarter.eventManager.Call_OnVariableChange (this);
 				}
@@ -798,7 +798,7 @@ namespace AC
 
 				floatVal = value;
 
-				if (!Mathf.Approximately (originalValue, floatVal) && Application.isPlaying && KickStarter.eventManager)
+				if (!Mathf.Approximately (originalValue, floatVal) && KickStarter.eventManager)
 				{
 					KickStarter.eventManager.Call_OnVariableChange (this);
 				}
@@ -819,7 +819,7 @@ namespace AC
 
 				textVal = value;
 
-				if (originalValue != textVal && Application.isPlaying && KickStarter.eventManager)
+				if (originalValue != textVal && KickStarter.eventManager)
 				{
 					KickStarter.eventManager.Call_OnVariableChange (this);
 				}
@@ -840,7 +840,7 @@ namespace AC
 
 				vector3Val = value;
 
-				if (originalValue != vector3Val && Application.isPlaying && KickStarter.eventManager)
+				if (originalValue != vector3Val && KickStarter.eventManager)
 				{
 					KickStarter.eventManager.Call_OnVariableChange (this);
 				}
@@ -862,7 +862,17 @@ namespace AC
 				gameObjectVal = value;
 				textVal = (gameObjectVal) ? gameObjectVal.name : string.Empty;
 
-				if (originalValue != gameObjectVal && Application.isPlaying && KickStarter.eventManager)
+				val = 0;
+				if (gameObjectVal)
+				{
+					ConstantID constantID = gameObjectVal.GetComponent <ConstantID>();
+					if (constantID)
+					{
+						val = constantID.constantID;
+					}
+				}
+
+				if (originalValue != gameObjectVal && KickStarter.eventManager)
 				{
 					KickStarter.eventManager.Call_OnVariableChange (this);
 				}
@@ -893,7 +903,7 @@ namespace AC
 				objectVal = value;
 				textVal = (objectVal) ? objectVal.name : string.Empty;
 
-				if (originalValue != objectVal && Application.isPlaying && KickStarter.eventManager)
+				if (originalValue != objectVal && KickStarter.eventManager)
 				{
 					KickStarter.eventManager.Call_OnVariableChange (this);
 				}
@@ -1079,6 +1089,8 @@ namespace AC
 				EditorGUILayout.LabelField ("Type: " + type.ToString ());
 			}
 
+			EditorGUI.BeginChangeCheck ();
+
 			switch (type)
 			{
 				case VariableType.Boolean:
@@ -1166,6 +1178,11 @@ namespace AC
 
 				default:
 					break;
+			}
+
+			if (!canEdit && KickStarter.eventManager && EditorGUI.EndChangeCheck ())
+			{
+				KickStarter.eventManager.Call_OnVariableChange (this);
 			}
 
 			switch (location)

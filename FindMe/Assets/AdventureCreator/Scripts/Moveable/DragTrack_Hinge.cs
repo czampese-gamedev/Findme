@@ -202,17 +202,17 @@ namespace AC
 
 			float result = startToPointAngle / startToEndAngle;
 
-			if (Loops)
+			if (!Loops && drag)
 			{
 				// Prevent turning a revolution when crossing over the maxangle
-				float currentPositionAlong = drag.GetPositionAlong ();
-				if ((currentPositionAlong - result) > 0.5f)
+				float currentPositionAlong = drag.GetPositionAlong();
+				if (currentPositionAlong > 0.99f && (result > 1f || result < 0f))
 				{
-					result += 1f;
+					result = 1f;
 				}
-				else if ((result - currentPositionAlong) > 0.5f)
+				else if (currentPositionAlong < 0.01f && (result > 1f || result < 0f))
 				{
-					result -= 1f;
+					result = 0f;
 				}
 			}
 

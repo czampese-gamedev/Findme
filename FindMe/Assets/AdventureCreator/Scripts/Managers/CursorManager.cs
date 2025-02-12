@@ -176,6 +176,14 @@ namespace AC
 
 					case CursorRendering.UnityUI:
 						uiCursorPrefab = (GameObject) CustomGUILayout.ObjectField <GameObject> ("Unity UI Cursor prefab:", uiCursorPrefab, false, "AC.KickStarter.cursorManager.uiCursorPrefab", "The cursor prefab to spawn at runtime");
+						if (uiCursorPrefab)
+						{
+							UnityUICursor uiCursor = uiCursorPrefab.GetComponent<UnityUICursor> ();
+							if (uiCursor && !uiCursor.SetsCursorAutomatically)
+							{
+								EditorGUILayout.HelpBox ("The UI Cursor prefab has no 'Raw Image to control' assigned - the cursors assigned below may require scripting or animation to be displayed.", MessageType.Info);
+							}
+						}
 						break;
 				}
 				
@@ -586,16 +594,14 @@ namespace AC
 		{
 			if (KickStarter.settingsManager)
 			{
-				if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot)
+				switch (KickStarter.settingsManager.interactionMethod)
 				{
-					return true;
-				}
-				else if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction)
-				{
-					if (KickStarter.settingsManager.selectInteractions != SelectInteractions.CyclingCursorAndClickingHotspot && !KickStarter.settingsManager.autoHideInteractionIcons)
-					{
+					case AC_InteractionMethod.ChooseInteractionThenHotspot:
+					case AC_InteractionMethod.CustomScript:
 						return true;
-					}
+
+					case AC_InteractionMethod.ChooseHotspotThenInteraction:
+						return KickStarter.settingsManager.selectInteractions != SelectInteractions.CyclingCursorAndClickingHotspot && !KickStarter.settingsManager.autoHideInteractionIcons;
 				}
 			}
 			return false;

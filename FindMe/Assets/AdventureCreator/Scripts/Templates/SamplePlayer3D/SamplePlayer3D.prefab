@@ -1415,6 +1415,13 @@ MonoBehaviour:
   lipSyncGroupID: 0
   leftHandBone: {fileID: 113505227989676799}
   rightHandBone: {fileID: 3990554772511022384}
+  attachmentPoints:
+  - ID: 0
+    label: Left hand
+    transform: {fileID: 113505227989676799}
+  - ID: 1
+    label: Right hand
+    transform: {fileID: 3990554772511022384}
   idleAnim: {fileID: 0}
   walkAnim: {fileID: 0}
   runAnim: {fileID: 0}
@@ -1551,9 +1558,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 5123638515458636495}
-  heightThreshold: 1.5
+  fallThreshold: 0.5
   landTrigger: Land
-  slowMovementTime: 0.7
+  slowMovementTime: 0.5
   slowMovementFactor: 0.2
 --- !u!82 &-5605704264361354362
 AudioSource:

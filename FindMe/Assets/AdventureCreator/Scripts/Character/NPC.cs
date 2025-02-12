@@ -201,9 +201,6 @@ namespace AC
 			// Animation
 			npcData = GetAnimEngine ().SaveNPCData (npcData, this);
 
-			npcData.walkSound = AssetLoader.GetAssetInstanceID (walkSound);
-			npcData.runSound = AssetLoader.GetAssetInstanceID (runSound);
-
 			npcData.speechLabel = GetName ();
 			npcData.displayLineID = displayLineID;
 			npcData.portraitGraphic = AssetLoader.GetAssetInstanceID (portraitIcon.texture);

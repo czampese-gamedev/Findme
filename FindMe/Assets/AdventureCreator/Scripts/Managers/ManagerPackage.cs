@@ -133,11 +133,6 @@ namespace AC
 					KickStarter.ClearManagerCache ();
 				}
 
-				if (KickStarter.sceneManager)
-				{
-					KickStarter.sceneManager.GetPrefabsInScene ();
-				}
-
 				UnityVersionHandler.CustomSetDirty (AdvGame.GetReferences (), true);
 				AssetDatabase.SaveAssets ();
 				#endif
@@ -146,7 +141,7 @@ namespace AC
 				{
 					if (numAssigned == 0)
 					{
-						ACDebug.Log (this.name + " No Mangers assigned.");
+						ACDebug.Log (this.name + " No Managers assigned.");
 					}
 					else if (numAssigned == 1)
 					{

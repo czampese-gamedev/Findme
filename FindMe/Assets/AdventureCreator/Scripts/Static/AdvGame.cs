@@ -50,6 +50,21 @@ namespace AC
 			{
 				float attenuation = (volume > 0f) ? (Mathf.Log10 (volume) * 20f) : -80f;
 				audioMixerGroup.audioMixer.SetFloat (parameter, attenuation);
+
+				#if AddressableIsPresent
+				if (parameter == KickStarter.settingsManager.sfxAttentuationParameter &&
+					KickStarter.settingsManager.loadScenesFromAddressable)
+				{
+					if (KickStarter.sceneSettings && KickStarter.sceneSettings.defaultSound && KickStarter.sceneSettings.defaultSound.audioSource && KickStarter.sceneSettings.defaultSound.audioSource.outputAudioMixerGroup)
+					{
+						var defaultSFXMixer = KickStarter.sceneSettings.defaultSound.audioSource.outputAudioMixerGroup.audioMixer;
+						if (defaultSFXMixer != null && defaultSFXMixer != audioMixerGroup.audioMixer)
+						{
+							defaultSFXMixer.SetFloat (parameter, attenuation);
+						}
+					}
+				}
+				#endif
 			}
 		}
 
@@ -629,6 +644,32 @@ namespace AC
 											}
 										}
 									}
+								}
+							}
+						}
+					}
+
+					// Timers
+					tokenStart = "[timer:";
+					tokenIndex = _text.IndexOf (tokenStart);
+					if (tokenIndex >= 0)
+					{
+						tokenValueStartIndex = tokenIndex + tokenStart.Length;
+						tokenValueEndIndex = _text.Substring (tokenValueStartIndex).IndexOf ("]");
+
+						if (tokenValueEndIndex > 0)
+						{
+							string stringValue = _text.Substring (tokenValueStartIndex, tokenValueEndIndex);
+							int _timerID = -1;
+							if (int.TryParse (stringValue, out _timerID))
+							{
+								Timer timer = KickStarter.variablesManager.GetTimer (_timerID);
+								if (timer != null)
+								{
+									string fullToken = tokenStart + stringValue + "]";
+									string timerValue = timer.GetFormattedValue ();
+									_text = _text.Replace (fullToken, timerValue);
+									numIterations = 2;
 								}
 							}
 						}
@@ -1904,9 +1945,9 @@ namespace AC
 			int i=0;
 			string effectText = text;
 
-			if (effectText != null)
+			if (!string.IsNullOrEmpty (text))
 			{
-				while (i < text.Length && text.IndexOf ("<color=", i) >= 0)
+				while (i < effectText.Length && effectText.IndexOf ("<color=", i) >= 0)
 				{
 					int startPos = effectText.IndexOf ("<color=", i);
 					int endPos = 0;

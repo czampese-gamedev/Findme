@@ -348,7 +348,7 @@ namespace AC
 		 * <param name = "newSpeed">The new speed, if walk or run and greater than zero</param>
 		 * <returns>The generated Action</returns>
 		 */
-		public static ActionCharAnim CreateNew_SpritesUnity_SetStandard (AC.Char characterToAnimate, AnimStandard standardToChange, string newStandardName, AudioClip newSound = null, float newSpeed = 0f)
+		public static ActionCharAnim CreateNew_SpritesUnity_SetStandard (AC.Char characterToAnimate, AnimStandard standardToChange, string newStandardName, float newSpeed = 0f)
 		{
 			ActionCharAnim newAction = CreateNew<ActionCharAnim> ();
 			newAction.animChar = characterToAnimate;
@@ -357,11 +357,6 @@ namespace AC
 
 			newAction.standard = standardToChange;
 			newAction.clip2D = newStandardName;
-			if (newSound != null)
-			{
-				newAction.changeSound = true;
-				newAction.newSound = newSound;
-			}
 			if (newSpeed > 0f)
 			{
 				newAction.changeSpeed = true;

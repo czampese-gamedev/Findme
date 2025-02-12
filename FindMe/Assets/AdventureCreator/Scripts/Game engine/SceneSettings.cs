@@ -166,7 +166,7 @@ namespace AC
 		 * <summary>Gets the appropriate PlayerStart to use when the scene begins.</summary>
 		 * <returns>The appropriate PlayerStart to use when the scene begins</returns>
 		 */
-		public PlayerStart GetPlayerStart (int playerID)
+		public PlayerStart GetPlayerStart (int playerID, bool canAcceptEmpty = false)
 		{
 			PlayerStart[] startersArray = UnityVersionHandler.FindObjectsOfType<PlayerStart> ();
 
@@ -186,7 +186,7 @@ namespace AC
 
 			foreach (PlayerStart starter in starters)
 			{
-				if (starter.MatchesPreviousScene (playerID))
+				if (starter.MatchesPreviousScene (playerID, canAcceptEmpty))
 				{
 					return starter;
 				}
@@ -439,9 +439,7 @@ namespace AC
 
 		#region GetSet
 
-		/**
-		 * The camera perspective of the current scene.
-		 */
+		/** The camera perspective of the current scene. */
 		public static CameraPerspective CameraPerspective
 		{
 			get

@@ -657,7 +657,7 @@ namespace AC
 
 		public void FloatField (string label, ref float value, List<ActionParameter> _parameters, ref int _parameterID, string parameterLabel = "")
 		{
-			ActionParameter[] filteredParameters = GetFilteredParameters (_parameters, ParameterType.Float);
+			ActionParameter[] filteredParameters = GetFilteredParameters (_parameters, new ParameterType [] { ParameterType.Float, ParameterType.Integer });
 			
 			bool parameterOverride = SmartFieldStart (label, filteredParameters, ref _parameterID, parameterLabel);
 			if (!parameterOverride)
@@ -1393,7 +1393,7 @@ namespace AC
 		public int FieldToID (GameObject field, int _constantID)
 		{
 			if (field) AddSearchTerm (field.name);
-			return FieldToID (field, _constantID, false, parentActionListInEditor);
+			return FieldToID (field, _constantID, false, isAssetFile, parentActionListInEditor);
 		}
 
 		
@@ -1445,7 +1445,7 @@ namespace AC
 
 		public GameObject IDToField (GameObject field, int _constantID, bool moreInfo)
 		{
-			return IDToField (field, _constantID, moreInfo, false, parentActionListInEditor);
+			return IDToField (field, _constantID, moreInfo, false);
 		}
 		
 		
@@ -1647,7 +1647,7 @@ namespace AC
 		}
 
 
-		protected int ChoosePlayerGUI (int _playerID, bool includeActiveOption = false, string label = "Player:")
+		public static int ChoosePlayerGUI (int _playerID, bool includeActiveOption = false, string label = "Player:")
 		{
 			SettingsManager settingsManager = KickStarter.settingsManager;
 			if (settingsManager == null || settingsManager.playerSwitching == PlayerSwitching.DoNotAllow) return _playerID;
@@ -1688,7 +1688,7 @@ namespace AC
 				if ((includeActiveOption && playerNumber == 0) || (!includeActiveOption && playerNumber == -1))
 				{
 					// Wasn't found (item was possibly deleted), so revert to zero
-					LogWarning ("Previously chosen Player no longer exists!");
+					Debug.LogWarning ("Previously chosen Player no longer exists!");
 
 					playerNumber = 0;
 				}
@@ -1968,6 +1968,10 @@ namespace AC
 			if (parameter != null && parameter.parameterType == ParameterType.Float)
 			{
 				return (parameter.floatValue);
+			}
+			if (parameter != null && parameter.parameterType == ParameterType.Integer)
+			{
+				return (float) (parameter.intValue);
 			}
 			return field;
 		}

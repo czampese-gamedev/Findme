@@ -570,10 +570,10 @@ namespace AC
 				_target.isSkippable = CustomGUILayout.Toggle ("Is skippable?", _target.isSkippable);
 				_target.unfreezePauseMenus = CustomGUILayout.Toggle ("Unfreeze 'pause' Menus?", _target.unfreezePauseMenus);
 			}
-			_target.canRunMultipleInstances = CustomGUILayout.Toggle ("Can run multiple instances?", _target.canRunMultipleInstances);
+			_target.canRunMultipleInstances = CustomGUILayout.Toggle ("Can run multiple at once?", _target.canRunMultipleInstances);
 			if (!_target.IsSkippable ())
 			{
-				_target.canSurviveSceneChanges = CustomGUILayout.Toggle ("Can survive scene changes?", _target.canSurviveSceneChanges);
+				_target.canSurviveSceneChanges = CustomGUILayout.Toggle ("Survives scene changes?", _target.canSurviveSceneChanges);
 			}
 			_target.useParameters = CustomGUILayout.Toggle ("Use parameters?", _target.useParameters);
 			if (_target.useParameters)

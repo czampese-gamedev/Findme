@@ -40,6 +40,8 @@ namespace AC
 		public ActionListAsset actionListOnEnter = null;
 		/** If True, all Objectives in the sub-category will begin automatically when this state is entered */
 		public bool autoStartSubObjectives = false;
+		/** A texture that can override the Objective's main texture when this state is active */
+		public Texture2D texture;
 
 		[SerializeField] private int autoStateIDOnAllSubObsCompletePlusOne = 0;
 		[SerializeField] private int autoStateIDOnAnySubObsCompletePlusOne = 0;
@@ -63,6 +65,7 @@ namespace AC
 			actionListOnEnter = null;
 			linkedCategoryIDPlusOne = 0;
 			autoStartSubObjectives = false;
+			texture = null;
 		}
 
 
@@ -76,6 +79,7 @@ namespace AC
 			actionListOnEnter = null;
 			linkedCategoryIDPlusOne = 0;
 			autoStartSubObjectives = false;
+			texture = null;
 
 			ID = 0;
 			// Update id based on array
@@ -213,7 +217,8 @@ namespace AC
 				EditorGUILayout.LabelField ("Speech Manager ID:", descriptionLineID.ToString ());
 			}
 
-			actionListOnEnter = ActionListAssetMenu.AssetGUI ("ActionList on enter:", actionListOnEnter, objective.Title + "_" + Label + "_OnEnter", string.Empty, string.Empty, null, showALAEditor);
+			texture = (Texture2D) CustomGUILayout.ObjectField <Texture2D> ("Override texture:", texture, false, apiPrefix + "texture", "A texture that can override the Objective's main texture when this state is active");
+			actionListOnEnter = ActionListAssetMenu.AssetGUI ("ActionList on enter:", actionListOnEnter, objective.Title + "_" + Label + "_OnEnter", apiPrefix + "actionListOnEnter", string.Empty, null, showALAEditor);
 
 			LinkedCategoryID = KickStarter.inventoryManager.ChooseCategoryGUI ("Sub-Objectives category:", LinkedCategoryID, false, false, true, apiPrefix + "LinkedCategoryID", "A category for Objectives considered to be this state's 'sub-objectives'", true);
 

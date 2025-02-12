@@ -70,6 +70,8 @@ namespace AC
 		public SelectedObjectiveLabelType selectedObjectiveLabelType = SelectedObjectiveLabelType.Title;
 		/** The InventoryBox slot number to retrieve properties for, if itemInInventoryBox = ItemInInventoryBox.ItemInSlot */
 		public int itemSlotNumber;
+		/** The change to make to the associated UI object when invisible */
+		public UIComponentHideStyle uiComponentHideStyle = UIComponentHideStyle.DisableObject;
 
 		private string newLabel = "";
 		private string overrideLabel;
@@ -103,6 +105,7 @@ namespace AC
 			itemPropertyID = 0;
 			itemSlotNumber = 0;
 			multiplyByItemCount = false;
+			uiComponentHideStyle = UIComponentHideStyle.DisableObject;
 			#if TextMeshProIsPresent
 			uiTextTMP = null;
 			hideScrollingCharacters = false;
@@ -155,6 +158,7 @@ namespace AC
 			itemPropertyID = _element.itemPropertyID;
 			itemSlotNumber = _element.itemSlotNumber;
 			multiplyByItemCount = _element.multiplyByItemCount;
+			uiComponentHideStyle = _element.uiComponentHideStyle;
 			#if TextMeshProIsPresent
 			hideScrollingCharacters = _element.hideScrollingCharacters;
 			#endif
@@ -255,7 +259,7 @@ namespace AC
 					showPendingWhileMovingToHotspot = CustomGUILayout.ToggleLeft ("Show pending Interaction while moving to Hotspot?", showPendingWhileMovingToHotspot, apiPrefix + ".showPendingWhileMovingToHotspot", "If True, then the label will not change while the player is moving towards a Hotspot in order to run an interaction");
 				}
 				#if TextMeshProIsPresent
-				else if (labelType == AC_LabelType.DialogueLine && (KickStarter.speechManager.scrollSubtitles || KickStarter.speechManager.scrollNarration))
+				else if (menu.menuSource != MenuSource.AdventureCreator && menu.useTextMeshProComponents && labelType == AC_LabelType.DialogueLine && KickStarter.speechManager && (KickStarter.speechManager.scrollSubtitles || KickStarter.speechManager.scrollNarration))
 				{
 					hideScrollingCharacters = CustomGUILayout.Toggle ("TMPro Typewriter effect?", hideScrollingCharacters, apiPrefix + ".hideScrollingCharacters", "If True, all speech text will be fed to the TMPro Text component, and shown as speech scrolls. Otherwise, scrolling text will be fed character-by-character.");
 				}
@@ -306,6 +310,11 @@ namespace AC
 				{
 					EditorGUILayout.HelpBox ("No Inventory Manager assigned!", MessageType.Warning);
 				}
+			}
+
+			if (menu.menuSource != MenuSource.AdventureCreator)
+			{
+				uiComponentHideStyle = (UIComponentHideStyle) CustomGUILayout.EnumPopup ("When invisible:", uiComponentHideStyle, apiPrefix + ".uiComponentHideStyle", "The method by which this element (or slots within it) are hidden from view when made invisible");
 			}
 
 			CustomGUILayout.EndVertical ();
@@ -464,14 +473,14 @@ namespace AC
 			if (uiTextTMP && Application.isPlaying)
 			{
 				uiTextTMP.text = newLabel;
-				UpdateUIElement (uiTextTMP);
+				UpdateUIElement (uiTextTMP, uiComponentHideStyle);
 			}
 			else
 			#endif
 			if (uiText && Application.isPlaying)
 			{
 				uiText.text = newLabel;
-				UpdateUIElement (uiText);
+				UpdateUIElement (uiText, uiComponentHideStyle);
 			}
 		}
 
@@ -498,7 +507,7 @@ namespace AC
 
 			if (!string.IsNullOrEmpty (overrideLabel))
 			{
-				newLabel = overrideLabel;
+				newLabel = KickStarter.runtimeLanguages.GetTranslation (overrideLabel, lineID, languageNumber, AC_TextType.MenuElement);
 			}
 			else
 			{
@@ -574,7 +583,7 @@ namespace AC
 								string line = speech.displayText;
 
 								#if TextMeshProIsPresent
-								if (uiTextTMP && hideScrollingCharacters)
+								if (uiTextTMP && hideScrollingCharacters && (KickStarter.speechManager.scrollSubtitles || KickStarter.speechManager.scrollNarration))
 								{
 									if (KickStarter.runtimeLanguages.LanguageReadsRightToLeft (Options.GetLanguageName ()))
 									{

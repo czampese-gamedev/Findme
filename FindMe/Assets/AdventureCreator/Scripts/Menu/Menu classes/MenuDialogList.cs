@@ -681,6 +681,18 @@ namespace AC
 
 									bool chosen = linkedConversation.OptionHasBeenChosen (optionToShow - 1);
 									optionReferences[0] = new DialogueOptionReference (label, icon, chosen);
+
+									if (markAlreadyChosen && source != MenuSource.AdventureCreator && uiSlots.Length > 0)
+									{
+										if (optionReferences[0].Chosen)
+										{
+											uiSlots[0].SetColours (alreadyChosenFontColour, alreadyChosenFontHighlightedColour);
+										}
+										else
+										{
+											uiSlots[0].RestoreColour ();
+										}
+									}
 								}
 							}
 							break;
@@ -700,6 +712,18 @@ namespace AC
 
 									bool chosen = linkedConversation.OptionWithIDHasBeenChosen (optionToShow);
 									optionReferences[0] = new DialogueOptionReference (label, icon, chosen);
+
+									if (markAlreadyChosen && source != MenuSource.AdventureCreator && uiSlots.Length > 0)
+									{
+										if (optionReferences[0].Chosen)
+										{
+											uiSlots[0].SetColours (alreadyChosenFontColour, alreadyChosenFontHighlightedColour);
+										}
+										else
+										{
+											uiSlots[0].RestoreColour ();
+										}
+									}
 								}
 								else
 								{
@@ -772,6 +796,12 @@ namespace AC
 		{
 			base.OnMenuTurnOn (menu);
 
+			AssignConversation ();
+		}
+
+
+		private void AssignConversation ()
+		{
 			Conversation oldConversation = linkedConversation;
 			linkedConversation = (overrideConversation) ? overrideConversation : KickStarter.playerInput.activeConversation;
 			if (linkedConversation)
@@ -877,6 +907,11 @@ namespace AC
 			set
 			{
 				overrideConversation = value;
+
+				if (parentMenu && parentMenu.IsOn ())
+				{
+					AssignConversation ();
+				}
 			}
 		}
 

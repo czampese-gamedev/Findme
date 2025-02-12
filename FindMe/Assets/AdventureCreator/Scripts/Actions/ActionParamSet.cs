@@ -851,8 +851,7 @@ namespace AC
 				if (!parameterOverride)
 				{
 					variables = (Variables) EditorGUILayout.ObjectField ("Component:", variables, typeof (Variables), true);
-					EditorGUILayout.EndHorizontal ();
-					EditorGUILayout.BeginHorizontal ();
+					SmartFieldEnd (filteredParameters, parameterOverride, ref globalVariableParameterID);
 					gameObjectConstantID = FieldToID<Variables> (variables, gameObjectConstantID);
 					variables = IDToField<Variables> (variables, gameObjectConstantID, false);
 
@@ -932,10 +931,13 @@ namespace AC
 					}
 					else if (variables)
 					{
-						EditorGUILayout.HelpBox ("No Global Variables found!", MessageType.Warning);
+						EditorGUILayout.HelpBox ("No Component Variables found!", MessageType.Warning);
 					}
 				}
-				SmartFieldEnd (filteredParameters, parameterOverride, ref globalVariableParameterID);
+				else
+				{
+					SmartFieldEnd (filteredParameters, parameterOverride, ref globalVariableParameterID);
+				}
 			}
 			else if (setParamMethod == SetParamMethod.CopiedFromParameter)
 			{

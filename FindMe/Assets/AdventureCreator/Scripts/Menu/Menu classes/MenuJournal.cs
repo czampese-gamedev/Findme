@@ -57,6 +57,8 @@ namespace AC
 		public int pageOffset;
 		/** The name of the Journal element within the same Menu that is used as reference, if journalType = JournalType.DisplayExistingJournal) */
 		public string otherJournalTitle;
+		/** The change to make to the associated UI object when invisible */
+		public UIComponentHideStyle uiComponentHideStyle = UIComponentHideStyle.DisableObject;
 
 		private string fullText;
 		private MenuJournal otherJournal;
@@ -92,6 +94,7 @@ namespace AC
 			journalType = JournalType.NewJournal;
 			pageOffset = 0;
 			otherJournalTitle = "";
+			uiComponentHideStyle = UIComponentHideStyle.DisableObject;
 
 			base.Declare ();
 		}
@@ -150,7 +153,8 @@ namespace AC
 			actionListOnAddPage = _element.actionListOnAddPage;
 			journalType = _element.journalType;
 			pageOffset = _element.pageOffset;
-			otherJournalTitle = _element.otherJournalTitle;;
+			otherJournalTitle = _element.otherJournalTitle;
+			uiComponentHideStyle = _element.uiComponentHideStyle;
 
 			base.Copy (_element);
 		}
@@ -206,6 +210,14 @@ namespace AC
 		 */
 		public int GetCurrentPageNumber ()
 		{
+			if (journalType == JournalType.DisplayExistingJournal)
+			{
+				if (otherJournal != null)
+				{
+					return otherJournal.showPage + pageOffset;
+				}
+				return 0;
+			}
 			return showPage;
 		}
 
@@ -216,6 +228,19 @@ namespace AC
 		 */
 		public JournalPage GetCurrentPage ()
 		{
+			if (journalType == JournalType.DisplayExistingJournal)
+			{
+				if (otherJournal != null)
+				{
+					int _pageIndex = otherJournal.showPage + pageOffset - 1;
+					if (_pageIndex >= 0 && _pageIndex < otherJournal.pages.Count)
+					{
+						return otherJournal.pages[_pageIndex];
+					}
+				}
+				return null;
+			}
+
 			int pageIndex = showPage - 1;
 			if (pageIndex >= 0 && pageIndex < pages.Count)
 			{
@@ -232,6 +257,15 @@ namespace AC
 		 */
 		public int GetTotalNumberOfPages ()
 		{
+			if (journalType == JournalType.DisplayExistingJournal)
+			{
+				if (otherJournal != null)
+				{
+					return otherJournal.pages.Count;
+				}
+				return 0;
+			}
+
 			if (pages != null)
 			{
 				return pages.Count;
@@ -364,6 +398,11 @@ namespace AC
 			if (journalType == JournalType.NewJournal)
 			{
 				actionListOnAddPage = ActionListAssetMenu.AssetGUI ("ActionList on add page:", actionListOnAddPage, title + "_OnAddPAge", apiPrefix + ".actionListOnAddPage", "An ActionList to run whenever a new page is added", null, showALAEditor);
+			}
+
+			if (menu.menuSource != MenuSource.AdventureCreator)
+			{
+				uiComponentHideStyle = (UIComponentHideStyle) CustomGUILayout.EnumPopup ("When invisible:", uiComponentHideStyle, apiPrefix + ".uiComponentHideStyle", "The method by which this element (or slots within it) are hidden from view when made invisible");
 			}
 
 			CustomGUILayout.EndVertical ();
@@ -620,14 +659,14 @@ namespace AC
 			#if TextMeshProIsPresent
 			if (uiTextTMP)
 			{
-				UpdateUIElement (uiTextTMP);
+				UpdateUIElement (uiTextTMP, uiComponentHideStyle);
 				uiTextTMP.text = fullText;
 			}
 			else
 			#endif
 			if (uiText)
 			{
-				UpdateUIElement (uiText);
+				UpdateUIElement (uiText, uiComponentHideStyle);
 				uiText.text = fullText;
 			}
 		}
@@ -745,7 +784,7 @@ namespace AC
 		{
 			if (Application.isPlaying)
 			{
-				return KickStarter.runtimeLanguages.GetTranslation (page.text, page.lineID, languageNumber, AC_TextType.JournalEntry);
+				return KickStarter.runtimeLanguages.GetTranslation (page.text, page.lineID, languageNumber, (journalType == JournalType.DisplayActiveDocument) ? AC_TextType.Document : AC_TextType.JournalEntry);
 			}
 			return page.text;
 		}

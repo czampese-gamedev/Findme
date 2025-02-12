@@ -162,13 +162,10 @@ namespace AC.Templates.GraphicOptions
 
 			// Quality preset
 			{
-				List<string> qualityPresetLabels = new List<string> ();
-				foreach (string qualityName in QualitySettings.names)
+				if (QualitySettings.names.Length != GetDropdownCount (qualityPresetDropdown) - 1)
 				{
-					qualityPresetLabels.Add (qualityName);
+					ACDebug.LogWarning ("Quality Settings value mismatch - the GraphicOptions Menu's Quality Dropdown element's values do not match the number listed in the project's Quality Settings.  The Dropdown must list the available Quality Settings as options, followed by 'Custom', in order to work correctly.");
 				}
-				qualityPresetLabels.Add ("Custom");
-				SetDropdownOptions (qualityPresetDropdown, qualityPresetLabels.ToArray ());
 				if (usingAdvancedOptions)
 				{
 					SetDropdownValue (qualityPresetDropdown, GetDropdownCount (qualityPresetDropdown));
@@ -250,6 +247,18 @@ namespace AC.Templates.GraphicOptions
 		private void SetDropdownValue (GameObject dropdownObject, int value)
 		{
 			if (dropdownObject == null) return;
+
+			var canvas = GetComponent<Canvas> ();
+			Menu menu = KickStarter.playerMenus.GetMenuWithCanvas (canvas);
+			if (menu != null)
+			{
+				var element = menu.GetElementWithGameObject (dropdownObject);
+				if (element != null)
+				{
+					(element as MenuCycle).SetValue (value);
+					return;
+				}
+			}
 
 			#if TextMeshProIsPresent
 			TMP_Dropdown dropdownTMP = dropdownObject.GetComponent<TMP_Dropdown> ();

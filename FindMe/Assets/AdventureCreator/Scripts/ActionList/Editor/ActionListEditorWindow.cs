@@ -1185,7 +1185,7 @@ namespace AC
 					viewingAllToggle = !viewingAllToggle;
 				}
 
-				if (GUI.Button (new Rect (position.width - 202, 3, 100, 20), "Ping object", EditorStyles.miniButtonMid))
+				if (GUI.Button (new Rect (position.width - 202, 3, 100, 20), "Ping asset", EditorStyles.miniButtonMid))
 				{
 					if (windowData.targetAsset != null)
 					{
@@ -2780,6 +2780,11 @@ namespace AC
 			menu.AddItem (new GUIContent ("Toggle comment"), false, EmptyCallback, "Toggle comment");
 			menu.AddItem (new GUIContent ("Toggle output socket(s)"), false, EmptyCallback, "Toggle output socket(s)");
 
+			if (_action.endings != null && _action.endings.Count > 0)
+			{
+				menu.AddItem (new GUIContent ("View/Connected"), false, EmptyCallback, "View/Connected");
+			}
+
 			menu.AddItem (new GUIContent ("Colour/Default"), false, EmptyCallback, "ColorDefault");
 			menu.AddItem (new GUIContent ("Colour/Blue"), false, EmptyCallback, "ColorBlue");
 			menu.AddItem (new GUIContent ("Colour/Red"), false, EmptyCallback, "ColorRed");
@@ -3334,6 +3339,46 @@ namespace AC
 					{
 						action.showOutputSockets = !action.showOutputSockets;
 						action.isMarked = false;
+					}
+				}
+			}
+			else if (objString == "View/Connected")
+			{
+				for (int i = 0; i < actionList.Count; i++)
+				{
+					Action action = actionList[i];
+					if (action != null && action.isMarked)
+					{
+						if (action.endings != null && action.endings.Count > 0)
+						{
+							UnmarkAll ();
+
+							foreach (var ending in action.endings)
+							{
+								int index = -1;
+								switch (ending.resultAction)
+								{
+									case ResultAction.Continue:
+										index = i+1;
+										break;
+
+									case ResultAction.Skip:
+										index = ending.skipAction;
+										break;
+									
+									default:
+										break;
+								}
+
+								if (index >= 0 && index < actionList.Count)
+								{
+									actionList[index].isMarked = true;
+								}
+							}
+						}
+
+						FocusOnActions ();
+						break;
 					}
 				}
 			}

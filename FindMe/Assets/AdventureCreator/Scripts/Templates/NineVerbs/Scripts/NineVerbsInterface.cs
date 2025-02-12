@@ -74,6 +74,8 @@ namespace AC.Templates.NineVerbs
 
 		private void Update ()
 		{
+			if (menu == null) return;
+			
 			if (KickStarter.stateHandler.IsInGameplay ())
 			{
 				menu.SetHotspot (KickStarter.playerInteraction.GetActiveHotspot (), KickStarter.runtimeInventory.HoverInstance);
@@ -221,7 +223,7 @@ namespace AC.Templates.NineVerbs
 		private string OnRequestMenuElementHotspotLabel (Menu menu, MenuElement element, int slot, int language)
 		{
 			MenuInventoryBox inventoryBox = element as MenuInventoryBox;
-			if (inventoryBox != null)
+			if (menu == this.menu && inventoryBox != null)
 			{
 				InvItem hoverItem = inventoryBox.GetItem (slot);
 				if (hoverItem != null)
@@ -278,7 +280,7 @@ namespace AC.Templates.NineVerbs
 		private void OnMenuElementClick (Menu menu, MenuElement element, int slot, int buttonPressed)
 		{
 			MenuInventoryBox inventoryBox = element as MenuInventoryBox;
-			if (inventoryBox != null)
+			if (menu == this.menu && inventoryBox != null)
 			{
 				InvInstance hoverInstance = inventoryBox.GetInstance (slot);
 				if (InvInstance.IsValid (hoverInstance))
@@ -346,6 +348,8 @@ namespace AC.Templates.NineVerbs
 		private void InitVerbButtons ()
 		{
 			List<MenuInteraction> verbElementsList = new List<MenuInteraction> ();
+			if (menu == null) return;
+
 			foreach (MenuElement element in menu.elements)
 			{
 				MenuInteraction menuInteraction = element as MenuInteraction;

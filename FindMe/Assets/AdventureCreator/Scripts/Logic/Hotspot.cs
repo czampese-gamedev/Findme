@@ -312,7 +312,7 @@ namespace AC
 				}
 				else
 				{
-					float amount = (GetIconScreenPosition () - KickStarter.playerInput.GetMousePosition ()).magnitude / ACScreen.safeArea.size.magnitude;
+					float amount = (GetIconScreenPosition () - KickStarter.playerInput.GetMousePosition ()).magnitude / KickStarter.mainCamera.PlayableScreenDiagonalLength;
 					highlight.SetMinHighlight (1f - (amount * KickStarter.settingsManager.highlightProximityFactor));
 				}
 			}
@@ -399,11 +399,7 @@ namespace AC
 				}
 				else
 				{
-					if (iconRenderer)
-					{
-						Destroy (iconRenderer.gameObject);
-						iconRenderer = null;
-					}
+					DeleteWorldSpaceIcon ();
 
 					Color c = GUI.color;
 					Color tempColor = c;
@@ -440,6 +436,16 @@ namespace AC
 				Color tempColor = iconRenderer.color;
 				tempColor.a = iconAlpha;
 				iconRenderer.color = tempColor;
+			}
+		}
+
+
+		public void DeleteWorldSpaceIcon ()
+		{
+			if (iconRenderer)
+			{
+				Destroy (iconRenderer.gameObject);
+				iconRenderer = null;
 			}
 		}
 		
@@ -895,6 +901,30 @@ namespace AC
 				return true;
 			}
 			return false;
+		}
+
+
+		/**
+		 * <summary>Checks if a given Button has a valid interaction associated with it</summary>
+		 * <param name = "button">The Button to check</param>
+		 * <returns>True if the Button has a valid interaction</returns>
+		 */
+		public bool ButtonHasInteraction (Button button)
+		{
+			if (button == null) return false;
+
+			switch (interactionSource)
+			{
+				case InteractionSource.InScene:
+				default:
+					return button.interaction;
+
+				case InteractionSource.AssetFile:
+					return button.assetFile;
+
+				case InteractionSource.CustomScript:
+					return true;
+			}
 		}
 
 
@@ -1482,13 +1512,6 @@ namespace AC
 				return;
 			}
 			
-			if (provideUseInteraction && useButton != null && useButton.iconID >= 0 && !useButton.isDisabled)
-			{
-				mainIcon = new CursorIcon ();
-				mainIcon.Copy (KickStarter.cursorManager.GetCursorIconFromID (useButton.iconID), true);
-				return;
-			}
-			
 			if (provideLookInteraction && lookButton != null && lookButton.iconID >= 0 && !lookButton.isDisabled)
 			{
 				mainIcon = new CursorIcon ();
@@ -1507,6 +1530,13 @@ namespace AC
 						return;
 					}
 				}
+			}
+
+			if (provideUseInteraction && useButton != null && useButton.iconID >= 0 && !useButton.isDisabled)
+			{
+				mainIcon = new CursorIcon ();
+				mainIcon.Copy (KickStarter.cursorManager.GetCursorIconFromID (useButton.iconID), true);
+				return;
 			}
 		}
 

@@ -99,6 +99,8 @@ namespace AC
 		private string cachedLabel;
 		protected Menu parentMenu;
 
+		private List<EventTrigger.Entry> definedTriggers = new List<EventTrigger.Entry> ();
+
 		[SerializeField] protected Rect relativeRect;
 		[SerializeField] protected Vector2 relativePosition;
 		[SerializeField] protected int numSlots;
@@ -206,20 +208,31 @@ namespace AC
 		protected void CreateUIEvent (UnityEngine.UI.Button uiButton, AC.Menu _menu, UIPointerState uiPointerState = UIPointerState.PointerClick, int _slotIndex = 0, bool liveState = true)
 		{
 			liveState = false; // Causing issues, just use Event System
-
-			if (uiPointerState == UIPointerState.PointerClick)
+			/*if (uiPointerState == UIPointerState.PointerClick)
 			{
 				uiButton.onClick.AddListener (() => {
 					ProcessClickUI (_menu, _slotIndex, liveState ? KickStarter.playerInput.GetMouseState () : MouseState.SingleClick);
 				});
 			}
-			else
+			else*/
 			{
 				EventTrigger eventTrigger = uiButton.gameObject.GetComponent <EventTrigger>();
-				if (eventTrigger == null)
+				if (eventTrigger)
+				{
+					// Clear previous
+					foreach (var definedTrigger in definedTriggers)
+					{
+						if (eventTrigger.triggers.Contains (definedTrigger))
+						{
+							eventTrigger.triggers.Remove (definedTrigger);
+						}
+					}
+				}
+				else
 				{
 					eventTrigger = uiButton.gameObject.AddComponent <EventTrigger>();
 				}
+
 				EventTrigger.Entry entry = new EventTrigger.Entry ();
 
 				if (uiPointerState == UIPointerState.PointerDown)
@@ -230,12 +243,31 @@ namespace AC
 				{
 					entry.eventID = EventTriggerType.PointerEnter;
 				}
+				else if (uiPointerState == UIPointerState.PointerClick)
+				{
+					entry.eventID = EventTriggerType.PointerClick;
+				}
 
 				entry.callback.AddListener ((eventData) => {
-					ProcessClickUI (_menu, _slotIndex, liveState ? KickStarter.playerInput.GetMouseState () : MouseState.SingleClick);
+					ProcessClickUI ((PointerEventData) eventData, _menu, _slotIndex);
+					//ProcessClickUI (_menu, _slotIndex, liveState ? KickStarter.playerInput.GetMouseState () : MouseState.SingleClick);
 				} );
 
 				eventTrigger.triggers.Add (entry);
+
+				EventTrigger.Entry submitEntry = new EventTrigger.Entry ();
+				submitEntry.eventID = EventTriggerType.Submit;
+				submitEntry.callback.AddListener ((eventData) => { ProcessClickUI (_menu, _slotIndex, MouseState.SingleClick); } );
+				eventTrigger.triggers.Add (submitEntry);
+
+				EventTrigger.Entry cancelEntry = new EventTrigger.Entry ();
+				cancelEntry.eventID = EventTriggerType.Cancel;
+				cancelEntry.callback.AddListener ((eventData) => { ProcessClickUI (_menu, _slotIndex, MouseState.RightClick); } );
+				eventTrigger.triggers.Add (cancelEntry);
+
+				definedTriggers.Add (entry);
+				definedTriggers.Add (submitEntry);
+				definedTriggers.Add (cancelEntry);
 			}
 		}
 
@@ -252,6 +284,19 @@ namespace AC
 			{
 				uiSlotClick = selectable.gameObject.AddComponent<UISlotClick>();
 				uiSlotClick.Setup (_menu, this, _slotIndex);
+			}
+		}
+
+
+		private void ProcessClickUI (PointerEventData data, Menu _menu, int _slotIndex)
+		{
+			if (data.button == PointerEventData.InputButton.Left)
+			{
+				ProcessClickUI (_menu, _slotIndex, MouseState.SingleClick);
+			}
+			else if (data.button == PointerEventData.InputButton.Right)
+			{
+				ProcessClick (_menu, _slotIndex, MouseState.RightClick);
 			}
 		}
 
@@ -688,7 +733,7 @@ namespace AC
 		{
 			string apiPrefix = "AC.PlayerMenus.GetElementWithName (\"" + menu.title + "\", \"" + title + "\")";
 
-			changeCursor = CustomGUILayout.Toggle ("Change cursor when over?", changeCursor, apiPrefix + ".changeCursor", "If True, then the mouse cursor will change when it hovers over the element");
+			changeCursor = CustomGUILayout.Toggle ("Change cursor on hover?", changeCursor, apiPrefix + ".changeCursor", "If True, then the mouse cursor will change when it hovers over the element");
 			if (changeCursor)
 			{
 				CursorManager cursorManager = KickStarter.cursorManager;
@@ -1391,11 +1436,10 @@ namespace AC
 
 				if (field == null)
 				{
-					if (parentMenu && parentMenu.menuSource == MenuSource.UnityUiInScene)
+					if (!(parentMenu && parentMenu.menuSource == MenuSource.UnityUiInScene))
 					{
-						return;
+						ACDebug.LogWarning ("Cannot find " + typeof (T) + " for menu element " + title + " in Canvas " + canvas.name, canvas);
 					}
-					ACDebug.LogWarning ("Cannot find " + typeof (T) + " for menu element " + title + " in Canvas " + canvas.name, canvas);
 				}
 
 				existingField = field;
@@ -1411,23 +1455,40 @@ namespace AC
 		{
 			if (Application.isPlaying && field)
 			{
-				if (uiSelectableHideStyle == UISelectableHideStyle.DisableObject)
+				switch (uiSelectableHideStyle)
 				{
-					field.gameObject.SetActive (IsVisible);
-				}
-				else if (uiSelectableHideStyle == UISelectableHideStyle.DisableInteractability)
-				{
-					field.interactable = IsVisible;
+					case UISelectableHideStyle.DisableObject:
+						field.gameObject.SetActive (IsVisible);
+						break;
+
+					case  UISelectableHideStyle.DisableInteractability:
+						field.interactable = IsVisible;
+						break;
+
+					default:
+						break;
 				}
 			}
 		}
 
 
-		protected void UpdateUIElement <T> (T field) where T : Behaviour
+		protected void UpdateUIElement <T> (T field, UIComponentHideStyle uiComponentHideStyle) where T : Behaviour
 		{
-			if (Application.isPlaying && field && field.gameObject.activeSelf != IsVisible)
+			if (Application.isPlaying && field)
 			{
-				field.gameObject.SetActive (IsVisible);
+				switch (uiComponentHideStyle)
+				{
+					case UIComponentHideStyle.DisableObject:
+						field.gameObject.SetActive (IsVisible);
+						break;
+
+					case  UIComponentHideStyle.DisableComponent:
+						field.enabled = IsVisible;
+						break;
+
+					default:
+						break;
+				}
 			}
 		}
 

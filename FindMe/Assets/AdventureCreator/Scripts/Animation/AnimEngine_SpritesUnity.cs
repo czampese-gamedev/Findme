@@ -223,7 +223,7 @@ namespace AC
 					}
 				}
 
-				action.layerInt = EditorGUILayout.IntField ("Mecanim layer:", action.layerInt);
+				action.layerInt = EditorGUILayout.IntField ("Layer index:", action.layerInt);
 				action.fadeTime = EditorGUILayout.Slider ("Transition time:", action.fadeTime, 0f, 1f);
 				action.willWait = EditorGUILayout.Toggle ("Wait until finish?", action.willWait);
 				if (action.willWait)
@@ -242,11 +242,6 @@ namespace AC
 
 				if (action.standard == AnimStandard.Walk || action.standard == AnimStandard.Run)
 				{
-					action.changeSound = EditorGUILayout.Toggle ("Change sound?", action.changeSound);
-					if (action.changeSound)
-					{
-						action.AssetField ("New sound:", ref action.newSound, parameters, ref action.newSoundParameterID);
-					}
 					action.changeSpeed = EditorGUILayout.Toggle ("Change speed?", action.changeSpeed);
 					if (action.changeSpeed)
 					{
@@ -358,32 +353,6 @@ namespace AC
 						else if (action.standard == AnimStandard.Run)
 						{
 							character.runSpeedScale = action.newSpeed;
-						}
-					}
-
-					if (action.changeSound)
-					{
-						if (action.standard == AnimStandard.Walk)
-						{
-							if (action.newSound)
-							{
-								character.walkSound = action.newSound;
-							}
-							else
-							{
-								character.walkSound = null;
-							}
-						}
-						else if (action.standard == AnimStandard.Run)
-						{
-							if (action.newSound)
-							{
-								character.runSound = action.newSound;
-							}
-							else
-							{
-								character.runSound = null;
-							}
 						}
 					}
 				}
@@ -503,12 +472,12 @@ namespace AC
 			{
 				action.play2DHeadAnim = EditorGUILayout.BeginToggleGroup ("Custom head animation?", action.play2DHeadAnim);
 				action.headClip2D = EditorGUILayout.TextField ("Head animation:", action.headClip2D);
-				action.headLayer = EditorGUILayout.IntField ("Mecanim layer:", action.headLayer);
+				action.headLayer = EditorGUILayout.IntField ("Layer index:", action.headLayer);
 				EditorGUILayout.EndToggleGroup ();
 
 				action.play2DMouthAnim = EditorGUILayout.BeginToggleGroup ("Custom mouth animation?", action.play2DMouthAnim);
 				action.mouthClip2D = EditorGUILayout.TextField ("Mouth animation:", action.mouthClip2D);
-				action.mouthLayer = EditorGUILayout.IntField ("Mecanim layer:", action.mouthLayer);
+				action.mouthLayer = EditorGUILayout.IntField ("Layer index:", action.mouthLayer);
 				EditorGUILayout.EndToggleGroup ();
 			}
 
@@ -552,7 +521,7 @@ namespace AC
 				action.ComponentField ("Animator:", ref action.animator, ref action.constantID, parameters, ref action.parameterID);
 				action.TextField ("Clip:", ref action.clip2D, parameters, ref action.clip2DParameterID);
 
-				action.layerInt = EditorGUILayout.IntField ("Mecanim layer:", action.layerInt);
+				action.layerInt = EditorGUILayout.IntField ("Layer index:", action.layerInt);
 				action.fadeTime = EditorGUILayout.Slider ("Transition time:", action.fadeTime, 0f, 2f);
 				action.willWait = EditorGUILayout.Toggle ("Wait until finish?", action.willWait);
 			}

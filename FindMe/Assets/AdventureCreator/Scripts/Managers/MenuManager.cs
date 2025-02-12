@@ -134,9 +134,9 @@ namespace AC
 				if (KickStarter.settingsManager && KickStarter.settingsManager.inputMethod != InputMethod.TouchScreen)
 				{
 					EditorGUILayout.Space ();
-					keyboardControlWhenPaused = CustomGUILayout.ToggleLeft ("Directly-navigate Menus when paused?", keyboardControlWhenPaused, "AC.KickStarter.menuManager.keyboardControlWhenPaused", "If True, then Menus will be navigated directly, not with the cursor, when the game is paused");
-					keyboardControlWhenCutscene = CustomGUILayout.ToggleLeft ("Directly-navigate Menus during Cutscenes?", keyboardControlWhenCutscene, "AC.KickStarter.menuManager.keyboardControlWhenCutscene", "If True, then Menus will be navigated directly, not with the cursor, when the game is in a cutscene");
-					keyboardControlWhenDialogOptions = CustomGUILayout.ToggleLeft ("Directly-navigate Menus during Conversations?", keyboardControlWhenDialogOptions, "AC.KickStarter.menuManager.keyboardControlWhenDialogOptions", "If True, then Menus will be navigated directly, not with the cursor, when Conversation dialogue options are shown");
+					keyboardControlWhenPaused = CustomGUILayout.ToggleLeft ("Directly navigate when paused?", keyboardControlWhenPaused, "AC.KickStarter.menuManager.keyboardControlWhenPaused", "If True, then Menus will be navigated directly, not with the cursor, when the game is paused");
+					keyboardControlWhenCutscene = CustomGUILayout.ToggleLeft ("Directly navigate during Cutscenes?", keyboardControlWhenCutscene, "AC.KickStarter.menuManager.keyboardControlWhenCutscene", "If True, then Menus will be navigated directly, not with the cursor, when the game is in a cutscene");
+					keyboardControlWhenDialogOptions = CustomGUILayout.ToggleLeft ("Directly navigate during Conversations?", keyboardControlWhenDialogOptions, "AC.KickStarter.menuManager.keyboardControlWhenDialogOptions", "If True, then Menus will be navigated directly, not with the cursor, when Conversation dialogue options are shown");
 
 					if (keyboardControlWhenPaused || keyboardControlWhenCutscene || keyboardControlWhenDialogOptions)
 					{
@@ -1157,7 +1157,7 @@ namespace AC
 								if (thisNumReferences > 0)
 								{
 									totalNumReferences += thisNumReferences;
-									ACDebug.Log ("Found " + thisNumReferences + " reference(s) to Menu '" + menu.title + "' in " + currentComponent.GetType () + " in scene '" + sceneFile + "'" + ActionList.logSuffix, currentObj);
+									ACDebug.Log ("Found " + thisNumReferences + " reference(s) to Menu '" + menu.title + "' in " + currentComponent.GetType () + " '" + currentObj.gameObject.name + "' in scene '" + sceneFile + "'" + ActionList.logSuffix, currentObj);
 								}
 							}
 						}
@@ -1291,34 +1291,6 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Gets a MenuElement by name.</summary>
-		 * <param name = "menuName">The title of the Menu that the MenuElement is a part of</param>
-		 * <param name = "menuElementName">The title of the MenuElement to return</param>
-		 * <returns>The MenuElement</returns>
-		 */
-		public static MenuElement GetElementWithName (string menuName, string menuElementName)
-		{
-			if (KickStarter.menuManager)
-			{
-				foreach (AC.Menu menu in KickStarter.menuManager.menus)
-				{
-					if (menu.title == menuName)
-					{
-						foreach (MenuElement menuElement in menu.elements)
-						{
-							if (menuElement.title == menuElementName)
-							{
-								return menuElement;
-							}
-						}
-					}
-				}
-			}
-
-			return null;
-		}
-
 
 		/**
 		 * <summary>Converts the Menu Managers's references from a given global variable to a given local variable</summary>
@@ -1413,6 +1385,34 @@ namespace AC
 		}
 
 #endif
+
+		/**
+		 * <summary>Gets a MenuElement by name.</summary>
+		 * <param name = "menuName">The title of the Menu that the MenuElement is a part of</param>
+		 * <param name = "menuElementName">The title of the MenuElement to return</param>
+		 * <returns>The MenuElement</returns>
+		 */
+		public static MenuElement GetElementWithName (string menuName, string menuElementName)
+		{
+			if (KickStarter.menuManager)
+			{
+				foreach (AC.Menu menu in KickStarter.menuManager.menus)
+				{
+					if (menu.title == menuName)
+					{
+						foreach (MenuElement menuElement in menu.elements)
+						{
+							if (menuElement.title == menuElementName)
+							{
+								return menuElement;
+							}
+						}
+					}
+				}
+			}
+
+			return null;
+		}
 
 
 		/**

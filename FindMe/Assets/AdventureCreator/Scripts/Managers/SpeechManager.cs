@@ -503,12 +503,10 @@ namespace AC
 				if (GUILayout.Button ("Gather text", EditorStyles.miniButtonLeft))
 				{
 					PopulateList ();
-					return;
 				}
 				if (GUILayout.Button ("Reset text", EditorStyles.miniButtonRight))
 				{
 					ClearList ();
-					return;
 				}
 				EditorGUILayout.EndHorizontal ();
 
@@ -1450,7 +1448,7 @@ namespace AC
 
 			if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo ())
 			{
-				Undo.RecordObject (this, "Update speech list");
+				Undo.RecordObject (this, "Update gathered text");
 				
 				int originalLineCount = (lines != null) ? lines.Count : 0;
 				addedLines.Clear ();
@@ -2969,6 +2967,17 @@ namespace AC
 						SmartAddAsset (activeInput.actionListAsset);
 					}
 				}
+
+#if UNITY_2019_4_OR_NEWER
+				if (settingsManager.events != null)
+				{
+					foreach (EventBase _event in settingsManager.events)
+					{
+						if (_event == null) continue;
+						SmartAddAsset (_event.ActionListAsset);
+					}
+				}
+#endif
 
 				if (settingsManager.playerSwitching == PlayerSwitching.DoNotAllow && settingsManager.PlayerPrefab.EditorPrefab != null)
 				{

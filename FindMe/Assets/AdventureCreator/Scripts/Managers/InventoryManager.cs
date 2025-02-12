@@ -204,7 +204,7 @@ namespace AC
 					unhandledGive = ActionListAssetMenu.AssetGUI ("Give:", unhandledGive, "Inventory_Unhandled_Give", "AC.KickStarter.runtimeInventory.unhandledGive", "The default ActionList asset to run if giving an inventory item to an NPC is unhandled ");
 				}
 
-				passUnhandledHotspotAsParameter = CustomGUILayout.ToggleLeft ("Pass Hotspot as GO parameter to unhandled interactions?", passUnhandledHotspotAsParameter, "AC.KickStarter.inventoryManager.passUnhandledHotspotAsParameter", "If True, the Hotspot clicked on to initiate unhandledHotspot will be sent as a parameter to the ActionList asset");
+				passUnhandledHotspotAsParameter = CustomGUILayout.ToggleLeft ("Pass Hotspot as GameObject parameter to unhandled interactions?", passUnhandledHotspotAsParameter, "AC.KickStarter.inventoryManager.passUnhandledHotspotAsParameter", "If True, the Hotspot clicked on to initiate unhandledHotspot will be sent as a parameter to the ActionList asset");
 				if (passUnhandledHotspotAsParameter && unhandledHotspot != null)
 				{
 					EditorGUILayout.HelpBox ("The Hotspot will be set as " + unhandledHotspot.name + "'s first parameter, which must be set to type 'GameObject'.", MessageType.Info);
@@ -1177,10 +1177,19 @@ namespace AC
 				{
 					Undo.RecordObject (this, "Create inventory item");
 					
-					ResetFilter ();
+					int newItemCategory = (categoryFilter > 0 && bins.Count >= (categoryFilter-1)) ? bins[categoryFilter-1].id : -1;
+					if (newItemCategory < 0)
+					{
+						ResetFilter ();
+					}
 					InvItem newItem = CreateNewItem ();
 					DeactivateAllItems ();
 					ActivateItem (newItem);
+
+					if (newItemCategory >= 0)
+					{
+						newItem.binID = newItemCategory;
+					}
 				}
 
 				if (GUILayout.Button (string.Empty, CustomStyles.IconCog))
@@ -1550,6 +1559,7 @@ namespace AC
 			menu.AddSeparator (string.Empty);
 			menu.AddItem (new GUIContent ("Find references"), false, Callback, "Find references");
 			menu.AddItem (new GUIContent ("Change ID"), false, Callback, "Change ID");
+			menu.AddItem (new GUIContent ("Create Recipe"), false, Callback, "Create Recipe");
 
 			if (Application.isPlaying)
 			{
@@ -1675,6 +1685,14 @@ namespace AC
 
 					case "Change ID":
 						ReferenceUpdaterWindow.Init (ReferenceUpdaterWindow.ReferenceType.InventoryItem, tempItem.label, tempItem.id);
+						break;
+
+					case "Create Recipe":
+						Recipe recipe = new Recipe (GetIDArrayRecipe ());
+						recipe.resultID = tempItem.id;
+						recipes.Add (recipe);
+						SetTab (2);
+						ActivateRecipe (recipe);
 						break;
 
 					case "Give to Player":
@@ -1825,10 +1843,64 @@ namespace AC
 					return;
 				}
 
-				CustomGUILayout.BeginScrollView (ref scrollPos, recipes.Count);
+				if (recipes != null && recipes.Count > 0)
+				{
+					nameFilter = EditorGUILayout.TextField ("Name filter:", nameFilter);
+					
+					List<string> binList = new List<string>();
+					foreach (InvBin bin in bins)
+					{
+						binList.Add (bin.label);
+					}
+			
+					if (binList != null && binList.Count > 0)
+					{
+						string[] binArray = new string[binList.Count+1];
+						binArray[0] = "(Any)";
+						for (int i=0; i<binList.Count; i++)
+						{
+							binArray[i+1] = binList[i];
+						}
+
+						categoryFilter = EditorGUILayout.Popup ("Category filter:", categoryFilter, binArray);
+					}
+					else
+					{
+						categoryFilter = 0;
+					}
+					EditorGUILayout.Space ();
+				}
+
+				List<Recipe> recipesInFilter = new List<Recipe> ();
 				for (int i = 0; i < recipes.Count; i++)
 				{
-					Recipe recipe = recipes[i];
+					if (!string.IsNullOrEmpty (nameFilter) && !recipes[i].label.ToLower ().Contains (nameFilter.ToLower ()))
+					{
+						if (selectedRecipe == recipes[i])
+						{
+							DeactivateAllRecipes ();
+						}
+						continue;
+					}
+					if (categoryFilter > 0 && bins.Count > (categoryFilter-1))
+					{
+						var item = GetItem (recipes[i].resultID);
+						if (item != null && item.binID != bins[categoryFilter-1].id)
+						{
+							if (selectedRecipe == recipes[i])
+							{
+								DeactivateAllRecipes ();
+							}
+							continue;
+						}
+					}
+					recipesInFilter.Add (recipes[i]);
+				}
+
+				CustomGUILayout.BeginScrollView (ref scrollPos, recipesInFilter.Count);
+				for (int i = 0; i < recipesInFilter.Count; i++)
+				{
+					Recipe recipe = recipesInFilter[i];
 					EditorGUILayout.BeginHorizontal ();
 					
 					string buttonLabel = recipe.label;
@@ -1890,12 +1962,9 @@ namespace AC
 					CustomGUILayout.BeginVertical ();
 					selectedRecipe.label = CustomGUILayout.TextField ("Name:", selectedRecipe.label, apiPrefix + ".label", "The recipe's editor name");
 					
-					EditorGUILayout.BeginHorizontal ();
-					EditorGUILayout.LabelField ("Resulting item:", GUILayout.Width (146f));
 					int i = GetArraySlot (selectedRecipe.resultID);
-					i = CustomGUILayout.Popup (i, GetLabelList (), apiPrefix + ".resultID");
+					i = CustomGUILayout.Popup ("Resulting item:", i, GetLabelList ());
 					selectedRecipe.resultID = items[i].id;
-					EditorGUILayout.EndHorizontal ();
 					
 					selectedRecipe.useSpecificSlots = CustomGUILayout.Toggle ("Uses specific pattern?", selectedRecipe.useSpecificSlots, apiPrefix + ".useSpecificSlots", "If True, then the ingredients must be placed in specific slots within a Crafting menu element");
 					selectedRecipe.actionListOnCreate = ActionListAssetMenu.AssetGUI ("ActionList when create:", selectedRecipe.actionListOnCreate, "Recipe_" + selectedRecipe.label + "_OnCreate", apiPrefix + ".actionListOnCreate", "The ActionList asset to run when the recipe is created", null, showALAEditor);

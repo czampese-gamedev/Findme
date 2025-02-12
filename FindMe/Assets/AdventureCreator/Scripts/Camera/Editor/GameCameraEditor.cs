@@ -41,8 +41,12 @@ namespace AC
 				if (_target.limitX)
 				{
 					CustomGUILayout.BeginVertical ();
-					_target.constrainX[0] = CustomGUILayout.FloatField ("Minimum constraint:", _target.constrainX[0], "", "The lower X-axis movement limit");
-					_target.constrainX[1] = CustomGUILayout.FloatField ("Maximum constraint:", _target.constrainX[1], "", "The upper X-axis movement limit");
+					_target.boxColliderBounds = (BoxCollider) CustomGUILayout.ObjectField<BoxCollider> ("BoxCollider bounds (optional):", _target.boxColliderBounds, true, "", "If set, the camera's position will be constrained within this boundary");
+					if (_target.boxColliderBounds == null)
+					{
+						_target.constrainX[0] = CustomGUILayout.FloatField ("Minimum constraint:", _target.constrainX[0], "", "The lower X-axis movement limit");
+						_target.constrainX[1] = CustomGUILayout.FloatField ("Maximum constraint:", _target.constrainX[1], "", "The upper X-axis movement limit");
+					}
 					CustomGUILayout.EndVertical ();
 				}
 			}
@@ -74,8 +78,12 @@ namespace AC
 				if (_target.limitYLoc)
 				{
 					CustomGUILayout.BeginVertical ();
-					_target.constrainYLoc[0] = CustomGUILayout.FloatField ("Minimum constraint:", _target.constrainYLoc[0], "", "The lower Y-axis movement limit");
-					_target.constrainYLoc[1] = CustomGUILayout.FloatField ("Maximum constraint:", _target.constrainYLoc[1], "", "The upper Y-axis movement limit");
+					_target.boxColliderBounds = (BoxCollider) CustomGUILayout.ObjectField<BoxCollider> ("BoxCollider bounds (optional):", _target.boxColliderBounds, true, "", "If set, the camera's position will be constrained within this boundary");
+					if (_target.boxColliderBounds == null)
+					{
+						_target.constrainYLoc[0] = CustomGUILayout.FloatField ("Minimum constraint:", _target.constrainYLoc[0], "", "The lower Y-axis movement limit");
+						_target.constrainYLoc[1] = CustomGUILayout.FloatField ("Maximum constraint:", _target.constrainYLoc[1], "", "The upper Y-axis movement limit");
+					}
 					CustomGUILayout.EndVertical ();
 				}
 			}
@@ -107,8 +115,12 @@ namespace AC
 				if (_target.limitZ)
 				{
 					CustomGUILayout.BeginVertical ();
-					_target.constrainZ[0] = CustomGUILayout.FloatField ("Minimum constraint:", _target.constrainZ[0], "", "The lower Z-axis movement limit");
-					_target.constrainZ[1] = CustomGUILayout.FloatField ("Maximum constraint:", _target.constrainZ[1], "", "The upper Z-axis movement limit");
+					_target.boxColliderBounds = (BoxCollider) CustomGUILayout.ObjectField<BoxCollider> ("BoxCollider bound (optional):", _target.boxColliderBounds, true, "", "If set, the camera's position will be constrained within this boundary");
+					if (_target.boxColliderBounds == null)
+					{
+						_target.constrainZ[0] = CustomGUILayout.FloatField ("Minimum constraint:", _target.constrainZ[0], "", "The lower Z-axis movement limit");
+						_target.constrainZ[1] = CustomGUILayout.FloatField ("Maximum constraint:", _target.constrainZ[1], "", "The upper Z-axis movement limit");
+					}
 					CustomGUILayout.EndVertical ();
 				}
 			}
@@ -261,7 +273,11 @@ namespace AC
 				
 				_target.dampSpeed = CustomGUILayout.Slider ("Follow speed:", _target.dampSpeed, 0.01f, 1f, "", "The follow speed when tracking a target");
 				_target.actFromDefaultPlayerStart = CustomGUILayout.Toggle ("Use default PlayerStart?", _target.actFromDefaultPlayerStart, "", "If True, then the camera's position will be relative to the scene's default PlayerStart, rather then the Player's initial position. This ensures that camera movement is the same regardless of where the Player begins in the scene");
-				_target.updateWhilePaused = CustomGUILayout.Toggle ("Update while paused?", _target.updateWhilePaused, "", "If True, the camera will not be frozen while the game is paused");
+
+				if (!_target.followCursor)
+				{
+					_target.updateWhilePaused = CustomGUILayout.Toggle ("Update while paused?", _target.updateWhilePaused, "", "If True, the camera will not be frozen while the game is paused");
+				}
 				CustomGUILayout.EndVertical ();
 			}
 

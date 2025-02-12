@@ -214,6 +214,14 @@ namespace AC
 				else
 				{
 					runtimeObToMove.transform.position = position;
+
+					Rigidbody rigidbody = runtimeObToMove.GetComponent<Rigidbody> ();
+					if (rigidbody) rigidbody.position = position;
+					else
+					{
+						Rigidbody2D rigidbody2D = runtimeObToMove.GetComponent<Rigidbody2D> ();
+						if (rigidbody2D) rigidbody2D.position = position;
+					}
 				}
 
 				if (isPlayer && snapCamera)

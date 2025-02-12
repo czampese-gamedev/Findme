@@ -103,7 +103,8 @@ namespace AC
 				EditorGUILayout.BeginHorizontal ();
 				
 				string buttonLabel = option.ID + ": " + option.label;
-				if (option.label == "")
+				if (buttonLabel.Length > 40) buttonLabel = buttonLabel.Substring (0, 40) + "...";
+				if (string.IsNullOrEmpty (option.label))
 				{
 					buttonLabel += "(Untitled)";	
 				}

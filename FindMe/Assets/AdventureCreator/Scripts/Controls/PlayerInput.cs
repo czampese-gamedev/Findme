@@ -96,7 +96,7 @@ namespace AC
 		protected Vector2 deltaDragMouse;
 
 		/** The active Conversation */
-		public Conversation activeConversation = null;
+		[HideInInspector] public Conversation activeConversation = null;
 		protected Conversation pendingOptionConversation = null;
 		/** The active ArrowPrompt */
 		[HideInInspector] public ArrowPrompt activeArrows = null;
@@ -247,6 +247,7 @@ namespace AC
 				if (KickStarter.stateHandler.gameState == GameState.Cutscene && InputGetButtonDown ("EndCutscene") && !isSkippingMovie)
 				{
 					KickStarter.actionListManager.EndCutscene ();
+					ResetClick ();
 				}
 
 				bool oldCursorLock = cursorIsLocked;
@@ -955,7 +956,7 @@ namespace AC
 			{
 				toggleCursorOn = KickStarter.settingsManager.lockCursorOnStart;
 
-				if (toggleCursorOn && !KickStarter.settingsManager.IsInFirstPerson () && KickStarter.settingsManager.inputMethod == InputMethod.MouseAndKeyboard && KickStarter.settingsManager.hotspotDetection == HotspotDetection.MouseOver)
+				if (toggleCursorOn && movementMethod != MovementMethod.FirstPerson && KickStarter.settingsManager.inputMethod == InputMethod.MouseAndKeyboard && KickStarter.settingsManager.hotspotDetection == HotspotDetection.MouseOver)
 				{
 					ACDebug.Log ("Starting a non-First Person game with a locked cursor - is this correct?"); 
 				}
@@ -1417,7 +1418,7 @@ namespace AC
 			if (cameraLockSnap)
 			{
 				Vector2 newMoveKeys = new Vector2 (h, v);
-				if (newMoveKeys.sqrMagnitude < 0.01f || Vector2.Angle (newMoveKeys, moveKeys) > KickStarter.settingsManager.cameraLockSnapAngleThreshold)
+				if (newMoveKeys.sqrMagnitude < 0.01f || moveKeys.sqrMagnitude < 0.01f || Vector2.Angle (newMoveKeys, moveKeys) > KickStarter.settingsManager.cameraLockSnapAngleThreshold)
 				{
 					cameraLockSnap = false;
 					return newMoveKeys;
@@ -1453,7 +1454,8 @@ namespace AC
 		}
 
 
-		protected virtual void FlashHotspots ()
+		/** Invokes the 'Flash' function on all enabled Hotspots that the Player can interact with */
+		public void FlashHotspots ()
 		{
 			foreach (Hotspot hotspot in KickStarter.stateHandler.Hotspots)
 			{
@@ -2433,11 +2435,11 @@ namespace AC
 
 		/**
 		 * <summary>Sets the timeScale.</summary>
-		 * <param name = "_timeScale">The new timeScale. A value of 0 will have no effect<param>
+		 * <param name = "_timeScale">The new timeScale. A negative value will have no effect<param>
 		 */
 		public void SetTimeScale (float _timeScale, bool affectFixedDeltaTime)
 		{
-			if (_timeScale > 0f)
+			if (_timeScale >= 0f)
 			{
 				timeScale = _timeScale;
 				if (KickStarter.stateHandler.gameState != GameState.Paused)

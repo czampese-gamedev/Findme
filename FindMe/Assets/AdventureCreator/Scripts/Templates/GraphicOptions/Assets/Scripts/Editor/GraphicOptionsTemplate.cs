@@ -75,6 +75,11 @@ namespace AC.Templates.GraphicOptions
 				return;
 			}
 
+			if (graphicOptionsMenu.pauseWhenEnabled && Resource.References.settingsManager.inputMethod == InputMethod.KeyboardOrController)
+			{
+				graphicOptionsMenu.firstSelectedElement = "BackButton";
+			}
+
 			Menu optionsMenu = Resource.References.menuManager.GetMenuWithName ("Options");
 			if (optionsMenu != null)
 			{

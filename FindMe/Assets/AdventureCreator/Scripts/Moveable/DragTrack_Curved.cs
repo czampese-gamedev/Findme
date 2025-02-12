@@ -67,7 +67,7 @@ namespace AC
 					deltaForce *= draggable.maxSpeed / deltaForce.magnitude;
 				}
 			
-				deltaForce -= draggable.Rigidbody.velocity;
+				deltaForce -= UnityVersionHandler.GetRigidbodyVelocity (draggable.Rigidbody);
 				draggable.Rigidbody.AddForce (deltaForce, ForceMode.VelocityChange);
 			}
 			else
@@ -162,17 +162,17 @@ namespace AC
 
 			float result = startToPointAngle / startToEndAngle;
 
-			if (Loops && drag)
+			if (!Loops && drag)
 			{
 				// Prevent turning a revolution when crossing over the maxangle
-				float currentPositionAlong = drag.GetPositionAlong ();
-				if ((currentPositionAlong - result) > 0.5f)
+				float currentPositionAlong = drag.GetPositionAlong();
+				if (currentPositionAlong > 0.99f && (result > 1f || result < 0f))
 				{
-					result += 1f;
+					result = 1f;
 				}
-				else if ((result - currentPositionAlong) > 0.5f)
+				else if (currentPositionAlong < 0.01f && (result > 1f || result < 0f))
 				{
-					result -= 1f;
+					result = 0f;
 				}
 			}
 
@@ -225,10 +225,10 @@ namespace AC
 			// Limit velocity to just along track
 			if (draggable.UsesRigidbody)
 			{
-				Vector3 localVelocity = draggable.Transform.InverseTransformDirection (draggable.Rigidbody.velocity);
+				Vector3 localVelocity = draggable.Transform.InverseTransformDirection (UnityVersionHandler.GetRigidbodyVelocity (draggable.Rigidbody));
 				localVelocity.x = 0;
 				localVelocity.z = 0;
-				draggable.Rigidbody.velocity = draggable.Transform.TransformDirection (localVelocity);
+				UnityVersionHandler.SetRigidbodyVelocity (draggable.Rigidbody, draggable.Transform.TransformDirection (localVelocity));
 			}
 
 			float proportionAlong = Mathf.Clamp01 (GetDecimalAlong (draggable));

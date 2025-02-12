@@ -78,7 +78,7 @@ namespace AC
 
 		#if UNITY_EDITOR
 
-		public TrackSnapData ShowGUI (DragTrack dragTrack, bool useAngles)
+		public TrackSnapData ShowGUI (DragTrack dragTrack, bool useAngles, System.Action<ActionList> showALEditor, System.Action<ActionListAsset> showALAEditor)
 		{
 			label = CustomGUILayout.TextField ("Editor label:", label, string.Empty, "The region's label when displayed in Actions.");
 
@@ -93,14 +93,29 @@ namespace AC
 
 			if (dragTrack.doSnapping)
 			{
+				EditorGUILayout.BeginHorizontal ();
 				if (dragTrack.actionListSource == ActionListSource.InScene)
 				{
-					cutsceneOnSnap = (Cutscene) CustomGUILayout.ObjectField <Cutscene> ("Cutscene on snap:", cutsceneOnSnap, true, "", "An optional Cutscene to run when a Draggable object snaps to this region");
+					cutsceneOnSnap = CustomGUILayout.AutoCreateField <Cutscene> ("Cutscene on snap:", cutsceneOnSnap, AutoCreateCutsceneOnSnap, "", "An optional Cutscene to run when a Draggable object snaps to this region");
+					if (cutsceneOnSnap && GUILayout.Button (string.Empty, CustomStyles.IconNodes))
+					{
+						showALEditor.Invoke (cutsceneOnSnap);
+					}
 				}
 				else if (dragTrack.actionListSource == ActionListSource.AssetFile)
 				{
 					actionListAssetOnSnap = (ActionListAsset) CustomGUILayout.ObjectField <ActionListAsset> ("ActionList on snap:", actionListAssetOnSnap, false, "", "An optional ActionList asset to run when a Draggable object snaps to this region");
+
+					if (actionListAssetOnSnap == null && CustomGUILayout.ClickedCreateButton ())
+					{
+						actionListAssetOnSnap = ActionListAssetMenu.CreateAsset (dragTrack.gameObject.name + "_OnSnap_" + id);
+					}
+					if (actionListAssetOnSnap && GUILayout.Button (string.Empty, CustomStyles.IconNodes))
+					{
+						showALAEditor.Invoke (actionListAssetOnSnap);
+					}
 				}
+				EditorGUILayout.EndHorizontal ();
 			}
 			soundOnEnter = (AudioClip) EditorGUILayout.ObjectField ("Sound on enter:", soundOnEnter, typeof (AudioClip), false);
 
@@ -136,6 +151,13 @@ namespace AC
 
 			}
 			return this;
+
+			Cutscene AutoCreateCutsceneOnSnap ()
+			{
+				GameObject newOb = new GameObject (dragTrack.gameObject.name + "_OnSnap_" + id);
+				Cutscene newCutscene = newOb.AddComponent<Cutscene> ();
+				return newCutscene;
+			}
 		}
 
 

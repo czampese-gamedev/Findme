@@ -291,7 +291,7 @@ namespace AC
 				}
 				else if (qteType == QTEType.HoldKey)
 				{
-					EditorGUILayout.HelpBox ("The Menu's UI must have an Animator with 2 States: Win, Lose, and 1 Trigger: Held.", MessageType.Info);
+					EditorGUILayout.HelpBox ("The Menu's UI must have an Animator with 2 States: Win, Lose, and 1 Bool: Held.", MessageType.Info);
 				}
 			}
 		}

@@ -25,6 +25,7 @@ namespace AC
 		private SaveData saveData;
 		private SaveFile requestedSave;
 		private string allData;
+		private System.Action onComplete;
 
 		#endregion
 
@@ -39,7 +40,7 @@ namespace AC
 
 				if (SaveSystem.SaveFileHandler.SupportsSaveThreading ())
 				{
-					KickStarter.saveSystem.OnCompleteSaveOperation (requestedSave, true, this);
+					KickStarter.saveSystem.OnCompleteSaveOperation (requestedSave, true, this, onComplete);
 				}
 				else
 				{
@@ -58,9 +59,10 @@ namespace AC
 		 * <param name="saveData">The SaveData class, already filled with data that cannot be saved through threading</param>
 		 * <param name="saveFile">The SaveFile to write to</param>
 		 */
-		public void BeginOperation (ref SaveData saveData, SaveFile saveFile)
+		public void BeginOperation (ref SaveData saveData, SaveFile saveFile, System.Action _onComplete)
 		{
 			this.saveData = saveData;
+			onComplete = _onComplete;
 			requestedSave = new SaveFile (saveFile);
 
 			if (KickStarter.settingsManager.saveWithThreading)
@@ -116,7 +118,7 @@ namespace AC
 			if (!wasSuccesful)
 			{
 				KickStarter.eventManager.Call_OnSave (FileAccessState.Fail, requestedSave.saveID);
-				KickStarter.saveSystem.OnCompleteSaveOperation (requestedSave, false, this);
+				KickStarter.saveSystem.OnCompleteSaveOperation (requestedSave, false, this, onComplete);
 				return;
 			}
 
@@ -126,7 +128,7 @@ namespace AC
 			}
 			else
 			{
-				KickStarter.saveSystem.OnCompleteSaveOperation (requestedSave, true, this);
+				KickStarter.saveSystem.OnCompleteSaveOperation (requestedSave, true, this, onComplete);
 			}
 		}
 

@@ -11,11 +11,11 @@ namespace AC.Templates.SamplePlayer3D
 		#region Variables
 		
 		[SerializeField] private Player player = null;
-		[SerializeField] private float heightThreshold = 1.5f;
+		[SerializeField] private float fallThreshold = 1.5f;
 		[SerializeField] private string landTrigger = "Land";
 		[SerializeField] private float slowMovementTime = 0.7f;
 		[SerializeField] [Range (0f, 1f)] private float slowMovementFactor = 0.2f;
-		private float lastGroundedHeight;
+		private float peakMidAirHeight;
 		private bool isPlayingAnim;
 
 		#endregion
@@ -27,12 +27,19 @@ namespace AC.Templates.SamplePlayer3D
 		{
 			if (player.IsGrounded ())
 			{
-				float heightDiff = lastGroundedHeight - player.transform.position.y;
-				if (heightDiff >= heightThreshold && !isPlayingAnim)
+				float heightDiff = peakMidAirHeight - player.transform.position.y;
+				if (heightDiff >= fallThreshold && !isPlayingAnim)
 				{
 					StartCoroutine (PlayLandAnim ());
 				}
-				lastGroundedHeight = player.transform.position.y;
+				peakMidAirHeight = -Mathf.Infinity;
+			}
+			else
+			{
+				if (player.transform.position.y > peakMidAirHeight)
+				{
+					peakMidAirHeight = player.transform.position.y;
+				}
 			}
 		}
 

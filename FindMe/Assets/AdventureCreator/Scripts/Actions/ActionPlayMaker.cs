@@ -40,7 +40,7 @@ namespace AC
 
 
 		public override ActionCategory Category { get { return ActionCategory.ThirdParty; }}
-		public override string Title { get { return "PlayMaker"; }}
+		public override string Title { get { return "Playmaker"; }}
 		public override string Description { get { return "Calls a specified Event within a PlayMaker FSM. Note that PlayMaker is a separate Unity Asset, and the 'PlayMakerIsPresent' preprocessor must be defined for this to work."; }}
 
 
@@ -100,6 +100,7 @@ namespace AC
 					GameObjectField ("Playmaker FSM:", ref linkedObject, ref constantID, parameters, ref parameterID);
 				}
 
+				TextField ("Event name:", ref eventName, parameters, ref eventNameParameterID);
 				TextField ("FSM to call (optional):", ref fsmName, parameters, ref fsmNameParameterID);
 			}
 			else

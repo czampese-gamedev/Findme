@@ -28,14 +28,54 @@ namespace AC
 
 		protected bool forcePresence;
 		protected List<GameObject> playersPresent = new List<GameObject>();
+		private Collider _collider;
+		private Collider2D _collider2D;
 
+		/** The way in which objects are detected (RigidbodyCollision, TransformPosition) */
+		public TriggerDetectionMethod detectionMethod = TriggerDetectionMethod.RigidbodyCollision;
+		
 		#endregion
 
 
 		#region UnityStandards
 
+		private void Awake ()
+		{
+			_collider = GetComponent<Collider> ();
+			_collider2D = GetComponent<Collider2D> ();
+		}
+
+
+		protected void Update ()
+		{
+			if (detectionMethod == TriggerDetectionMethod.RigidbodyCollision) return;
+			if (_collider == null && _collider2D == null) return;
+
+			Bounds bounds = _collider ? _collider.bounds : _collider2D.bounds;
+
+			foreach (Player player in KickStarter.stateHandler.Players)
+			{
+				if (bounds.Contains (player.Transform.position))
+				{
+					if (!playersPresent.Contains (player.gameObject))
+					{
+						playersPresent.Add (player.gameObject);
+					}
+				}
+				else
+				{
+					if (playersPresent.Contains (player.gameObject))
+					{
+						playersPresent.Remove (player.gameObject);
+					}
+				}
+			}
+		}
+
+
 		protected void OnTriggerEnter (Collider other)
 		{
+			if (detectionMethod == TriggerDetectionMethod.TransformPosition) return;
 			if (KickStarter.player && other.gameObject == KickStarter.player.gameObject && !playersPresent.Contains (other.gameObject))
 			{
 				playersPresent.Add (other.gameObject);
@@ -45,6 +85,7 @@ namespace AC
 
 		protected void OnTriggerExit (Collider other)
 		{
+			if (detectionMethod == TriggerDetectionMethod.TransformPosition) return;
 			if (KickStarter.player && other.gameObject == KickStarter.player.gameObject && playersPresent.Contains (other.gameObject))
 			{
 				playersPresent.Remove (other.gameObject);
@@ -54,6 +95,7 @@ namespace AC
 
 		protected void OnTriggerEnter2D (Collider2D other)
 		{
+			if (detectionMethod == TriggerDetectionMethod.TransformPosition) return;
 			if (KickStarter.player && other.gameObject == KickStarter.player.gameObject && !playersPresent.Contains (other.gameObject))
 			{
 				playersPresent.Add (other.gameObject);
@@ -63,6 +105,7 @@ namespace AC
 
 		protected void OnTriggerExit2D (Collider2D other)
 		{
+			if (detectionMethod == TriggerDetectionMethod.TransformPosition) return;
 			if (KickStarter.player && other.gameObject == KickStarter.player.gameObject && playersPresent.Contains (other.gameObject))
 			{
 				playersPresent.Remove (other.gameObject);

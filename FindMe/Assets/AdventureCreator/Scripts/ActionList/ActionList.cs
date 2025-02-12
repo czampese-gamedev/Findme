@@ -548,7 +548,7 @@ namespace AC
 			action.isRunning = false;
 
 			int endIndex = action.GetNextOutputIndex ();
-			ActionEnd actionEnd = (endIndex < 0 || endIndex > action.endings.Count) ? Action.GenerateStopActionEnd () : action.endings[endIndex];
+			ActionEnd actionEnd = (endIndex < 0 || endIndex >= action.endings.Count) ? Action.GenerateStopActionEnd () : action.endings[endIndex];
 			
 			if (action.NumSockets <= 0)
 			{
@@ -938,9 +938,7 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Pauses the ActionList once it has finished running it's current Action.</summary>
-		 */
+		/** Pauses the ActionList once it has finished running it's current Action. */
 		public void Pause ()
 		{
 			resumeIndices.Clear ();
@@ -1520,7 +1518,7 @@ namespace AC
 							if (objectiveReferencerAction.ReferencesAsset (actionListAsset))
 							{
 								string actionLabel = (KickStarter.actionsManager != null) ? (" (" + KickStarter.actionsManager.GetActionTypeLabel (action) + ")") : "";
-								Debug.Log ("'" + actionListAsset.name + "' is referenced by Action #" + actions.IndexOf (action) + actionLabel + " in ActionList '" + gameObject.name + "' in scene '" + gameObject.scene.name + "'", this);
+								//Debug.Log ("'" + actionListAsset.name + "' is referenced by Action #" + actions.IndexOf (action) + actionLabel + " in ActionList '" + gameObject.name + "' in scene '" + gameObject.scene.name + "'", this);
 								foundReference = true;
 							}
 						}

@@ -204,8 +204,10 @@ namespace AC
 		public bool inventoryDropLookNoDrag = false;
 		/** How many interactions an inventory item can have (Single, Multiple) */
 		public InventoryInteractions inventoryInteractions = InventoryInteractions.Single;
-		/** If True, then left-clicking will de-select an inventory item */
+		/** (DEPRECRATED - use leftClickDeselect instead) */
 		public bool inventoryDisableLeft = true;
+		/** Determines when left-clicking will de-select an inventory item */
+		public LeftClickDeselect leftClickDeselect = LeftClickDeselect.Always;
 		/** If True, interactionMethod = AC_InteractionMethod.ChooseInteractionThenHotspot and inventoryInteractions = InventoryInteractions.Multiple, then invoking the 'DefaultInteractions' input button will run the first-enabled 'Standard' interaction of the active Inventory item */
 		public bool allowDefaultInventoryInteractions = false;
 		/** If True, then triggering an unhandled Inventory interaction will de-select the active inventory item */
@@ -242,6 +244,8 @@ namespace AC
 		public int giveInvWithIconID = 0;
 		/** If True, Hotspots that have no interaction associated with a given inventory item will not be active while that item is selected */
 		public bool autoDisableUnhandledHotspots = false;
+		/** If True, and items can be given, then the item's selection mode will be automatically set to Use or Give depending on the Hotspot */
+		public bool autoToggleGiveMode = true;
 	
 		// Movement settings
 
@@ -394,6 +398,8 @@ namespace AC
 		public bool closeInteractionMenusIfPlayerLeavesVicinity = false;
 		/** If True, and hotspotDetection = HotspotDetection.PlayerVicinity, then distant Hotspots will be placed on a different layer  */
 		public bool placeDistantHotspotsOnSeparateLayer = true;
+		/** If True, and hotspotDetection = HotspotDetection.PlayerVicinity, then the cursor must still be over the nearest Hotspot in order to use it */
+		public bool cursorMustBeOverNearestHotspot = false;
 		/** What Hotspots gets detected, if hotspotDetection = HotspotDetection.PlayerVicinity (NearestOnly, CycleMultiple, ShowAll) */
 		public HotspotsInVicinity hotspotsInVicinity = HotspotsInVicinity.NearestOnly;
 		/** If True, all detected Hotspots will be highlighted, not just the selected one, if hotspotDetection = HotspotDetection.PlayerVicinity */
@@ -1051,13 +1057,18 @@ namespace AC
 					autoDisableUnhandledHotspots = CustomGUILayout.ToggleLeft ("Auto-disable Hotspots with no interaction for selected item?", autoDisableUnhandledHotspots, "AC.KickStarter.settingsManager.autoDisableUnhandledHotspots", "If True, Hotspots that have no interaction associated with a given inventory item will not be active while that item is selected");
 				}
 
+				if (CanGiveItems () && (interactionMethod == AC_InteractionMethod.ContextSensitive || inventoryInteractions == InventoryInteractions.Single))
+				{
+					autoToggleGiveMode = CustomGUILayout.ToggleLeft ("Auto-toggle 'Give' mode?", autoToggleGiveMode, "AC.KickStarter.settingsManager.autoToggleGiveMode", "If True, then the item's selection mode will be automatically set to Use or Give depending on the Hotspot");
+				}
+
 				if (CanSelectItems (false) && !inventoryDragDrop)
 				{
 					inventoryDisableDefined = CustomGUILayout.ToggleLeft ("Defined interactions deselect active item?", inventoryDisableDefined, "AC.KickStarter.settingsManager.inventoryDisableDefined", "If True, then triggering a defined Inventory interaction will-deselect the active inventory item");
 					inventoryDisableUnhandled = CustomGUILayout.ToggleLeft ("Unhandled interactions deselect active item?", inventoryDisableUnhandled, "AC.KickStarter.settingsManager.inventoryDisableUnhandled", "If True, then triggering an unhandled Inventory interaction will de-select the active inventory item");
-					inventoryDisableLeft = CustomGUILayout.ToggleLeft ("Left-click deselects active item?", inventoryDisableLeft, "AC.KickStarter.settingsManager.inventoryDisableLeft", "If True, then left-clicking will de-select an inventory item");
 
-					if (movementMethod == MovementMethod.PointAndClick && !inventoryDisableLeft)
+					leftClickDeselect = (LeftClickDeselect) CustomGUILayout.EnumPopup ("Left-click deselects item:", leftClickDeselect, "AC.KickStarter.settingsManager.leftClickDeselect", "Determines when left-clicking will de-select an inventory item");
+					if (movementMethod == MovementMethod.PointAndClick && leftClickDeselect == LeftClickDeselect.Never)
 					{
 						canMoveWhenActive = CustomGUILayout.ToggleLeft ("Can move player if an Item is active?", canMoveWhenActive, "AC.KickStarter.settingsManager.canMoveWhenActive", "If True, then the player can move while an inventory item is selected");
 					}
@@ -1396,6 +1407,11 @@ namespace AC
 					if (movementMethod == MovementMethod.Direct || IsInFirstPerson ())
 					{
 						hotspotsInVicinity = (HotspotsInVicinity) CustomGUILayout.EnumPopup ("Hotspots in vicinity:", hotspotsInVicinity, "AC.KickStarter.settingsManager.hotspotsInVicinity", "What Hotspots gets detected");
+
+						if (movementMethod == MovementMethod.Direct && hotspotsInVicinity != HotspotsInVicinity.ShowAll)
+						{
+							cursorMustBeOverNearestHotspot = CustomGUILayout.ToggleLeft ("Cursor must still be over nearest Hotspot?", cursorMustBeOverNearestHotspot, "AC.KickStarter.settingsManager.cursorMustBeOverNearestHotspot", "If True, then the cursor must still be over the nearest Hotspot in order to use it.");
+						}
 					}
 					else
 					{
@@ -2335,7 +2351,7 @@ namespace AC
 		 */
 		public bool CanGiveItems ()
 		{
-			if (interactionMethod != AC_InteractionMethod.ContextSensitive && CanSelectItems (false))
+			if (CanSelectItems (false))
 			{
 				return true;
 			}
@@ -2508,16 +2524,44 @@ namespace AC
 
 #if UNITY_EDITOR
 
+		private bool CurrentSceneIsInBuildSettings ()
+		{
+			var activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene ();
+			string activeScenePath = activeScene.path;
+
+			EditorBuildSettingsScene[] buildScenes = EditorBuildSettings.scenes;
+
+			foreach (EditorBuildSettingsScene buildScene in buildScenes)
+			{
+				if (buildScene.path == activeScenePath)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+
 		private void AssignSaveScripts ()
 		{
-			bool canProceed = EditorUtility.DisplayDialog ("Add save scripts", "AC will now go through your game, and attempt to add 'Remember' components where appropriate.\n\nThese components are required for saving to function, and are covered in Section 9.1.1 of the Manual.\n\nAs this process cannot be undone without manually removing each script, it is recommended to back up your project beforehand.", "OK", "Cancel");
+			bool canProceed = EditorUtility.DisplayDialog ("Add save scripts", "AC will now go through your Build Settings, and attempt to add 'Remember' components where appropriate.\n\nThese components are required for saving to function, and are covered in the Manual's 'Saving scene objects' chapter.\n\nAs this process cannot be undone without manually removing each script, it is recommended to back up your project beforehand.", "OK", "Cancel");
 			if (!canProceed) return;
+
+			bool includeCurrentScene = false;
+			if (!CurrentSceneIsInBuildSettings ())
+			{
+				includeCurrentScene = EditorUtility.DisplayDialog ("Include current scene?", "The active scene is not currently listed in Unity's Build Settings.  Do you want this process to add scene components to this scene as well?", "OK", "Cancel");
+				if (includeCurrentScene)
+				{
+					AssignSaveScriptsInScene (string.Empty);
+				}
+			}
 
 			if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo ())
 			{
 				string originalScene = UnityVersionHandler.GetCurrentSceneFilepath ();
 
-				Undo.RecordObject (this, "Update speech list");
+				//Undo.RecordObject (this, "Update speech list");
 				string[] sceneFiles = AdvGame.GetSceneFiles ();
 
 				// First look for lines that already have an assigned lineID
@@ -2540,14 +2584,17 @@ namespace AC
 					}
 				}
 
-				ACDebug.Log ("Process complete - updated Managers and " + sceneFiles.Length + " scenes.");
+				ACDebug.Log ("Process complete - updated Managers and " + (sceneFiles.Length + (includeCurrentScene ? 1 : 0)) + " scenes.");
 			}
 		}
 
 
 		private void AssignSaveScriptsInScene (string sceneFile)
 		{
-			UnityVersionHandler.OpenScene (sceneFile);
+			if (!string.IsNullOrEmpty (sceneFile))
+			{
+				UnityVersionHandler.OpenScene (sceneFile);
+			}
 			
 			// Speech lines and journal entries
 			ActionList[] actionLists = UnityVersionHandler.FindObjectsOfType<ActionList> ();

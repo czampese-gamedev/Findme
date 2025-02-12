@@ -428,10 +428,12 @@ namespace AC
 		}
 
 
-		public static ActiveInput CreateActiveInput (string label, string input, FlagsGameState gameStateFlags, ActionListAsset actionListAsset)
+		public static ActiveInput CreateActiveInput (string label, string input, FlagsGameState gameStateFlags, ActionListAsset actionListAsset, SettingsManager settingsManager = null)
 		{
+			if (settingsManager == null) settingsManager = KickStarter.settingsManager;
+
 			List<int> idArray = new List<int> ();
-			foreach (ActiveInput activeInput in KickStarter.settingsManager.activeInputs)
+			foreach (ActiveInput activeInput in settingsManager.activeInputs)
 			{
 				idArray.Add (activeInput.ID);
 			}
@@ -443,7 +445,8 @@ namespace AC
 			newActiveInput.actionListAsset = actionListAsset;
 			newActiveInput.gameStateFlags = gameStateFlags;
 
-			KickStarter.settingsManager.activeInputs.Add (newActiveInput);
+			settingsManager.activeInputs.Add (newActiveInput);
+			EditorUtility.SetDirty (settingsManager);
 
 			return newActiveInput;
 		}
@@ -470,6 +473,15 @@ namespace AC
 							newButtonOb.name = newName;
 							newButtonOb.transform.SetParent (originalButtonUI.transform.parent);
 							newButtonOb.GetComponent<RectTransform> ().localScale = Vector3.one;
+
+							UnityEngine.UI.Text text = newButtonOb.GetComponentInChildren<UnityEngine.UI.Text> ();
+							if (text) text.text = "txt" + newName;
+
+							#if TextMeshProIsPresent
+							TMPro.TextMeshProUGUI tmpProText = newButtonOb.GetComponentInChildren<TMPro.TextMeshProUGUI> ();
+							if (tmpProText) tmpProText.text = "txt" + newName;
+							#endif
+
 							ConstantID newButtonConstantID = newButtonOb.GetComponent<ConstantID> ();
 							newButtonConstantID.SetNewID_Prefab ();
 							newButton.linkedUiID = newButtonConstantID.constantID;

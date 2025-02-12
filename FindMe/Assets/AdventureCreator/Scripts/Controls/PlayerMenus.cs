@@ -79,6 +79,8 @@ namespace AC
 		protected GUIStyle highlightedStyle = new GUIStyle();
 		protected Rect lastSafeRect;
 		protected float lastAspectRatio;
+
+		private string savedJournalData = "";
 		
 		#if (UNITY_IPHONE || UNITY_ANDROID) && !UNITY_EDITOR
 		protected TouchScreenKeyboard keyboard;
@@ -109,6 +111,8 @@ namespace AC
 			EventManager.OnMouseOverMenu += OnMouseOverMenu;
 			EventManager.OnChangeLanguage += OnChangeLanguage;
 			EventManager.OnDocumentOpen += OnDocumentOpen;
+			EventManager.OnBeforeSaving += OnBeforeSaving;
+			EventManager.OnBeforeChangeScene += OnBeforeChangeScene;
 		}
 
 
@@ -120,6 +124,14 @@ namespace AC
 			EventManager.OnMouseOverMenu -= OnMouseOverMenu;
 			EventManager.OnChangeLanguage -= OnChangeLanguage;
 			EventManager.OnDocumentOpen -= OnDocumentOpen;
+			EventManager.OnBeforeSaving -= OnBeforeSaving;
+			EventManager.OnBeforeChangeScene -= OnBeforeChangeScene;
+		}
+
+
+		private void OnApplicationFocus (bool focus)
+		{
+			if (focus) RecalculateAll ();
 		}
 
 
@@ -146,6 +158,8 @@ namespace AC
 			}
 
 			menus = new List<Menu>();
+			
+			CreateEventSystem ();
 			
 			if (menuManager)
 			{
@@ -180,7 +194,6 @@ namespace AC
 				}
 			}
 			
-			CreateEventSystem ();
 			OnChangeLanguage (Options.GetLanguage ());
 			
 			foreach (AC.Menu menu in menus)
@@ -197,6 +210,30 @@ namespace AC
 			CycleMouseOverUIs ();
 			#endif
 		}
+
+
+		private void OnBeforeSaving (int saveID)
+		{
+			savedJournalData = CreateMenuJournalData ();
+		}
+
+
+		private void OnBeforeChangeScene (string nextSceneName)
+		{
+			foreach (var menu in dupHotspotMenus)
+			{
+				menu.ForceOff ();
+			}
+			dupHotspotMenus.Clear ();
+
+			foreach (var menu in dupSpeechMenus)
+			{
+				menu.ForceOff ();
+			}
+			dupSpeechMenus.Clear ();
+
+			hotspotLabelData.ClearString ();
+		}	
 
 
 		private IEnumerator RecalcWebMenus ()
@@ -261,12 +298,21 @@ namespace AC
 
 				if (KickStarter.menuManager)
 				{
+					bool haveUIMenus = false;
+					foreach (AC.Menu menu in KickStarter.menuManager.menus)
+					{
+						if (menu.menuSource == MenuSource.UnityUiInScene || menu.menuSource == MenuSource.UnityUiPrefab)
+						{
+							haveUIMenus = true;
+						}
+					}
+
 					if (KickStarter.menuManager.eventSystem)
 					{
 						_eventSystem = (UnityEngine.EventSystems.EventSystem) Instantiate (KickStarter.menuManager.eventSystem);
 						_eventSystem.gameObject.name = KickStarter.menuManager.eventSystem.name;
 					}
-					else if (AreAnyMenusUI () || force)
+					else if (haveUIMenus || force)
 					{
 						GameObject eventSystemObject = new GameObject ();
 						eventSystemObject.name = "EventSystem";
@@ -1031,7 +1077,7 @@ namespace AC
 					menu.HotspotLabelData.Copy (hotspotLabelData);
 				}
 			}
-			else
+			else if (!customMenus.Contains (menu))
 			{
 				menu.HotspotLabelData.Copy (hotspotLabelData);
 			}
@@ -1350,8 +1396,12 @@ namespace AC
 							{
 								foundMouseOverInteractionMenu = true;
 							}
-							else if (!menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks && !KickStarter.playerInput.IsCursorLocked () && KickStarter.playerInteraction.GetActiveHotspot () == null && !InvInstance.IsValid (KickStarter.runtimeInventory.HoverInstance) &&
-								(KickStarter.settingsManager.interactionMethod != AC_InteractionMethod.ChooseHotspotThenInteraction || KickStarter.settingsManager.cancelInteractions == CancelInteractions.CursorLeavesMenuOrHotspot))
+							else if (!menu.IsPointInside (invertedMouse) && 
+								!menu.ignoreMouseClicks &&
+								//!KickStarter.playerInput.IsCursorLocked () &&
+								KickStarter.playerInteraction.GetActiveHotspot () == null && 
+								!InvInstance.IsValid (KickStarter.runtimeInventory.HoverInstance) &&
+								((KickStarter.settingsManager.interactionMethod != AC_InteractionMethod.ChooseHotspotThenInteraction && !KickStarter.playerInput.IsCursorLocked ()) || (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseHotspotThenInteraction && KickStarter.settingsManager.cancelInteractions == CancelInteractions.CursorLeavesMenuOrHotspot)))
 							{
 								menu.TurnOff (true);
 							}
@@ -1515,7 +1565,7 @@ namespace AC
 					MenuCrafting menuCrafting = menu.elements[j] as MenuCrafting;
 					MenuInput menuInput = menu.elements[j] as MenuInput;
 
-					if (menu.IsVisible () && menu.elements[j].IsVisible && menu.elements[j].isClickable)
+					if (menu.IsVisible () && menu.elements[j].IsVisible && menu.elements[j].isClickable && !menu.NeedsOneFrameWakeUp)
 					{
 						if (i == 0 && !string.IsNullOrEmpty (menu.elements[j].alternativeInputButton))
 						{
@@ -1644,7 +1694,8 @@ namespace AC
 							_hotspotLabelOverride = menu.elements[j].GetHotspotLabelOverride (i, languageNumber);
 						}
 
-						if (!string.IsNullOrEmpty (_hotspotLabelOverride))
+						if (!string.IsNullOrEmpty (_hotspotLabelOverride) &&
+							((menu.IsUnityUI () && menu.uiPositionType != UIPositionType.OnHotspot) || (!menu.IsUnityUI () && menu.positionType != AC_PositionType.OnHotspot))) // Needed to prevent repositioning self
 						{
 							if (menuInventoryBox)
 							{
@@ -1689,6 +1740,7 @@ namespace AC
 									hotspotLabelData.SetData (menu.elements[j], i, _hotspotLabelOverride);
 								}
 							}
+							menu.HotspotLabelData.Copy (hotspotLabelData);//
 						}
 					}
 				}
@@ -2051,6 +2103,8 @@ namespace AC
 
 		private void CheckForDirectNav ()
 		{
+			if (!KickStarter.stateHandler.InputSystemIsEnabled) return;
+
 			GameState gameState = KickStarter.stateHandler.gameState;
 
 			for (int i=customMenus.Count-1; i >= 0; i--)
@@ -3101,12 +3155,14 @@ namespace AC
 				ForceOffSubtitles (menu, speechMenuLimit);
 			}
 
-			foreach (AC.Menu menu in dupSpeechMenus)
+			Menu[] dubSpeechMenusArray = dupSpeechMenus.ToArray ();
+			foreach (AC.Menu menu in dubSpeechMenusArray)
 			{
 				ForceOffSubtitles (menu, speechMenuLimit);
 			}
 
-			foreach (AC.Menu menu in customMenus)
+			Menu[] customMenusArray = customMenus.ToArray ();
+			foreach (AC.Menu menu in customMenusArray)
 			{
 				ForceOffSubtitles (menu, speechMenuLimit);
 			}
@@ -3443,7 +3499,8 @@ namespace AC
 			mainData.menuLockData = CreateMenuLockData ();
 			mainData.menuVisibilityData = CreateMenuVisibilityData ();
 			mainData.menuElementVisibilityData = CreateMenuElementVisibilityData ();
-			mainData.menuJournalData = CreateMenuJournalData ();
+			mainData.menuJournalData = savedJournalData;
+			savedJournalData = string.Empty;
 
 			return mainData;
 		}
@@ -3568,8 +3625,12 @@ namespace AC
 						foreach (JournalPage page in journal.pages)
 						{
 							journalString.Append (page.lineID);
-							//journalString.Append ("*");
-							//journalString.Append (page.text);
+
+							if (page.texture)
+							{
+								journalString.Append ("*");
+								journalString.Append (AssetLoader.GetAssetInstanceID (page.texture));
+							}
 							journalString.Append ("~");
 						}
 						
@@ -3770,32 +3831,44 @@ namespace AC
 										int lineID = -1;
 										string[] chunkData3 = chunkData2.Split ("*"[0]);
 										int.TryParse (chunkData3[0], out lineID);
-
-										if (chunkData3.Length > 1)
+										
+										if (lineID >= 0)
 										{
-											// Backwards-compatibility for old save files
-
-											if (!clearedJournal)
-											{
-												journal.pages = new List<JournalPage>();
-												journal.showPage = 1;
-												clearedJournal = true;
-											}
-											journal.pages.Add (new JournalPage (lineID, chunkData3[1]));
-										}
-										else if (lineID >= 0)
-										{
-											if (!clearedJournal)
-											{
-												journal.pages = new List<JournalPage>();
-												journal.showPage = 1;
-												clearedJournal = true;
-											}
-
 											SpeechLine speechLine = KickStarter.speechManager.GetLine (lineID);
 											if (speechLine != null && speechLine.textType == AC_TextType.JournalEntry)
 											{
-												journal.pages.Add (new JournalPage (lineID, speechLine.text));
+												if (!clearedJournal)
+												{
+													journal.pages = new List<JournalPage>();
+													journal.showPage = 1;
+													clearedJournal = true;
+												}
+
+												Texture2D texture = null;
+												if (chunkData3.Length > 1)
+												{
+													texture = AssetLoader.RetrieveAsset<Texture2D> (null, chunkData3[1], false);
+												}
+												if (texture == null)
+												{
+													var originalElement = MenuManager.GetElementWithName (_menu.title, _element.title);
+													if (originalElement && originalElement is MenuJournal)
+													{
+														MenuJournal originalJournal = originalElement as MenuJournal;
+														if (originalJournal.journalType == JournalType.NewJournal)
+														{
+															foreach (var page in originalJournal.pages)
+															{
+																if (page.lineID == lineID)
+																{
+																	texture  = page.texture;
+																}
+															}
+														}
+													}
+												}
+
+												journal.pages.Add (new JournalPage (lineID, speechLine.text, texture));
 											}
 										}
 									}

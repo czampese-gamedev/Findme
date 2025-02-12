@@ -22,7 +22,7 @@ namespace AC
 
 		private int selectedProfileID = 0;
 		private int selectedSaveIndex = -1;
-		private List<SaveFile> foundSaveFiles = new List<SaveFile> ();
+		private List<SaveFile> foundSaveFiles = null;
 		private SaveData cachedSaveData;
 		private List<SingleLevelData> cachedLevelData;
 
@@ -35,6 +35,12 @@ namespace AC
 			window.titleContent.text = "Save-game Manager";
 			window.position = new Rect (300, 200, 450, 660);
 			window.minSize = new Vector2 (300, 180);
+		}
+
+
+		private void OnGatherSaveFiles (List<SaveFile> saveFiles)
+		{
+			foundSaveFiles = saveFiles;
 		}
 
 
@@ -80,15 +86,9 @@ namespace AC
 			if (showHandlers)
 			{
 				CustomGUILayout.BeginVertical ();
-				if (saveFileHandler != null)
-				{
-					EditorGUILayout.LabelField ("Save file location:", saveFileHandler.GetType ().Name);
-				}
+				EditorGUILayout.LabelField ("Save file location:", saveFileHandler.GetType ().Name);
 
-				if (optionsFileHandler != null)
-				{
-					EditorGUILayout.LabelField ("Options location:", optionsFileHandler.GetType ().Name);
-				}
+				EditorGUILayout.LabelField ("Options location:", optionsFileHandler.GetType ().Name);
 
 				if (fileFormatHandler != null)
 				{
@@ -133,7 +133,8 @@ namespace AC
 								{
 									selectedProfileID = profileID;
 									selectedSaveIndex = -1;
-									foundSaveFiles.Clear ();
+									if (foundSaveFiles != null) foundSaveFiles.Clear ();
+									saveFileHandler.GatherSaveFiles (selectedProfileID, OnGatherSaveFiles);
 								}
 							}
 						}
@@ -151,6 +152,7 @@ namespace AC
 			else
 			{
 				selectedProfileID = 0;
+				if (GUI.changed || foundSaveFiles == null) saveFileHandler.GatherSaveFiles (selectedProfileID, OnGatherSaveFiles);
 				foundSome = true;
 			}
 
@@ -172,8 +174,6 @@ namespace AC
 				{
 					EditorGUILayout.LabelField ("Label:", prefsData.label);
 					EditorGUILayout.LabelField ("ID:", prefsData.ID.ToString ());
-					EditorGUILayout.LabelField ("Last save ID:", prefsData.lastSaveID.ToString ());
-					EditorGUILayout.LabelField ("Previous save IDs:", prefsData.previousSaveIDs);
 					EditorGUILayout.LabelField ("Language:", prefsData.language.ToString ());
 					if (prefsData.language != prefsData.voiceLanguage)
 					{
@@ -226,7 +226,6 @@ namespace AC
 
 			EditorGUILayout.Space ();
 
-			foundSaveFiles = saveFileHandler.GatherSaveFiles (selectedProfileID);
 			SaveSystem.UpdateSaveFileLabels (ref foundSaveFiles);
 
 			showSaves = CustomGUILayout.ToggleHeader (showSaves, "Save game files");
@@ -279,6 +278,7 @@ namespace AC
 					if (canDelete)
 					{
 						saveFileHandler.DeleteAll (selectedProfileID);
+						saveFileHandler.GatherSaveFiles (selectedProfileID, OnGatherSaveFiles);
 					}
 				}
 				CustomGUILayout.EndVertical ();
@@ -338,6 +338,7 @@ namespace AC
 					if (canDelete)
 					{
 						saveFileHandler.Delete (selectedSaveFile);
+						saveFileHandler.GatherSaveFiles (selectedProfileID, OnGatherSaveFiles);
 					}
 				}
 				GUILayout.EndHorizontal ();

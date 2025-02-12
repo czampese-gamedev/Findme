@@ -353,11 +353,15 @@ namespace AC
 				
 			if (Application.isPlaying)
 			{
-				KickStarter.saveSystem.GatherSaveFiles ();
-				KickStarter.playerMenus.RecalculateAll ();
+				KickStarter.saveSystem.GatherSaveFiles (OnGatherSaveFiles);
 			}
 
 			return newProfileID;
+
+			void OnGatherSaveFiles (List<SaveFile> saveFiles)
+			{
+				KickStarter.playerMenus.RecalculateAll ();
+			}
 		}
 
 
@@ -604,14 +608,19 @@ namespace AC
 			
 			if (Application.isPlaying)
 			{
-				KickStarter.saveSystem.GatherSaveFiles ();
-				KickStarter.playerMenus.RecalculateAll ();
-				KickStarter.runtimeVariables.AssignOptionsLinkedVariables ();
+				KickStarter.saveSystem.GatherSaveFiles (OnGatherSaveFiles);
+
 			}
 
 			KickStarter.eventManager.Call_OnSwitchProfile (profileID);
 
 			return true;
+
+			void OnGatherSaveFiles (List<SaveFile> saveFiles)
+			{
+				KickStarter.playerMenus.RecalculateAll ();
+				KickStarter.runtimeVariables.AssignOptionsLinkedVariables ();
+			}
 		}
 		
 

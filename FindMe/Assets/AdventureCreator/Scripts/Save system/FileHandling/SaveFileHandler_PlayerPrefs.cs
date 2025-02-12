@@ -28,17 +28,14 @@ namespace AC
 							? SaveSystem.AutosaveLabel
 							: (SaveSystem.SaveLabel + " " + saveID.ToString ());
 
+			label += GetTimeString (System.DateTime.Now);
 			return label;
 		}
 
 
 		public virtual void DeleteAll (int profileID)
 		{
-			List<SaveFile> allSaveFiles = GatherSaveFiles (profileID);
-			foreach (SaveFile saveFile in allSaveFiles)
-			{
-				Delete (saveFile);
-			}
+			GatherSaveFiles (profileID, OnGatherFilesForDeletion);
 		}
 
 
@@ -92,7 +89,7 @@ namespace AC
 
 	 			try
 	 			{
-					DateTime startDate = new DateTime (2000, 1, 1, 0, 0, 0).ToUniversalTime ();
+					DateTime startDate = new DateTime (2000, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
 					int secs = (int) (DateTime.UtcNow - startDate).TotalSeconds;
 					string timestampData = secs.ToString ();
@@ -132,9 +129,9 @@ namespace AC
 		}
 
 
-		public virtual List<SaveFile> GatherSaveFiles (int profileID)
+		public virtual void GatherSaveFiles (int profileID, System.Action<List<SaveFile>> callback)
 		{
-			return GatherSaveFiles (profileID, false, -1, string.Empty);
+			GatherSaveFiles (profileID, false, -1, string.Empty, callback);
 		}
 
 
@@ -144,13 +141,12 @@ namespace AC
 		}
 
 
-		public virtual List<SaveFile> GatherImportFiles (int profileID, int boolID, string separateProductName, string separateFilePrefix)
+		public virtual void GatherImportFiles (int profileID, int boolID, string separateProductName, string separateFilePrefix, System.Action<List<SaveFile>> callback)
 		{
 			if (!string.IsNullOrEmpty (separateProductName) && !string.IsNullOrEmpty (separateFilePrefix))
 			{
-				return GatherSaveFiles (profileID, true, boolID, separateFilePrefix);
+				GatherSaveFiles (profileID, true, boolID, separateFilePrefix, callback);
 			}
-			return null;
 		}
 
 
@@ -180,7 +176,7 @@ namespace AC
 
 		#region ProtectedFunctions
 
-		protected virtual List<SaveFile> GatherSaveFiles (int profileID, bool isImport, int boolID, string separateFilePrefix)
+		protected virtual void GatherSaveFiles (int profileID, bool isImport, int boolID, string separateFilePrefix, System.Action<List<SaveFile>> callback)
 		{
 			List<SaveFile> gatheredSaveFiles = new List<SaveFile>();
 
@@ -193,7 +189,7 @@ namespace AC
 				}
 			}
 
-			return gatheredSaveFiles;
+			callback?.Invoke (gatheredSaveFiles);
 		}
 
 
@@ -242,14 +238,15 @@ namespace AC
 					string timestampData = PlayerPrefs.GetString (dateKey);
 					if (!string.IsNullOrEmpty (timestampData))
 					{
-						if (int.TryParse (timestampData, out updateTime) && !isAutoSave)
+						if (int.TryParse (timestampData, out updateTime))
 						{
-							DateTime startDate = new DateTime (2000, 1, 1, 0, 0, 0).ToUniversalTime ();
+							DateTime startDate = new DateTime (2000, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 							DateTime saveDate = startDate.AddSeconds (updateTime);
+							DateTime localDate = saveDate.ToLocalTime ();
 
 							if (KickStarter.settingsManager.saveTimeDisplay != SaveTimeDisplay.None)
 							{
-								label += GetTimeString (saveDate);
+								label += GetTimeString (localDate);
 							}
 						}
 					}
@@ -305,6 +302,19 @@ namespace AC
 			}
 
 			return string.Empty;
+		}
+
+		#endregion
+
+
+		#region PrivateFunctions
+
+		private void OnGatherFilesForDeletion (List<SaveFile> saveFiles)
+		{
+			foreach (SaveFile saveFile in saveFiles)
+			{
+				Delete (saveFile);
+			}
 		}
 
 		#endregion

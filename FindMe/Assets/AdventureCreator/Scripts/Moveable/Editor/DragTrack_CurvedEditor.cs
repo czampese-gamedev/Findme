@@ -36,20 +36,22 @@ namespace AC
 			
 			CustomGUILayout.EndVertical ();
 			
-			CustomGUILayout.Header ("End-colliders");
-			CustomGUILayout.BeginVertical ();
-			
 			if (!_target.Loops)
 			{
+				CustomGUILayout.Header ("End-colliders");
+				CustomGUILayout.BeginVertical ();
 				_target.generateColliders = CustomGUILayout.Toggle ("Generate end-colliders?", _target.generateColliders);
-			}
-			if (_target.generateColliders && !_target.Loops)
-			{
-				_target.colliderMaterial = (PhysicMaterial) CustomGUILayout.ObjectField <PhysicMaterial> ("Material:", _target.colliderMaterial, false, "", "Physics Material to give the track's end colliders");
+				if (_target.generateColliders)
+				{
+	#if UNITY_6000_0_OR_NEWER
+					_target.colliderMaterial = (PhysicsMaterial) CustomGUILayout.ObjectField <PhysicsMaterial> ("Material:", _target.colliderMaterial, false, "", "Physics Material to give the track's end colliders");
+	#else
+					_target.colliderMaterial = (PhysicMaterial) CustomGUILayout.ObjectField <PhysicMaterial> ("Material:", _target.colliderMaterial, false, "", "Physics Material to give the track's end colliders");
+	#endif
+				}
+				CustomGUILayout.EndVertical ();
 			}
 			
-			CustomGUILayout.EndVertical ();
-
 			SnapDataGUI (_target, true);
 			
 			UnityVersionHandler.CustomSetDirty (_target);

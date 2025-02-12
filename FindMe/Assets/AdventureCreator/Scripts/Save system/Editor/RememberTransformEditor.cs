@@ -23,7 +23,6 @@ namespace AC
 			{
 				_target.saveScenePresence = CustomGUILayout.Toggle ("Save scene presence?", _target.saveScenePresence, "", "If True, the GameObject's change in scene presence should be recorded");
 			}
-			_target.loadOrder = CustomGUILayout.IntField ("Relative load order:", _target.loadOrder, "", "The order, relative to other Remember Transform components, that data is loaded in");
 
 			if (_target.saveScenePresence)
 			{
@@ -49,6 +48,7 @@ namespace AC
 					}
 				}
 			}
+			_target.loadOrder = CustomGUILayout.IntField ("Relative load order:", _target.loadOrder, "", "The order, relative to other Remember Transform components, that data is loaded in");
 			CustomGUILayout.EndVertical ();
 
 			SharedGUI ();

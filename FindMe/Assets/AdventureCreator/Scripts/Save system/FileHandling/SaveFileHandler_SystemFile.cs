@@ -35,11 +35,7 @@ namespace AC
 
 		public virtual void DeleteAll (int profileID)
 		{
-			List<SaveFile> allSaveFiles = GatherSaveFiles (profileID);
-			foreach (SaveFile saveFile in allSaveFiles)
-			{
-				Delete (saveFile);
-			}
+			GatherSaveFiles (profileID, OnGatherFilesForDeletion);
 		}
 
 
@@ -134,19 +130,18 @@ namespace AC
 		}
 
 
-		public virtual List<SaveFile> GatherSaveFiles (int profileID)
+		public virtual void GatherSaveFiles (int profileID, System.Action<List<SaveFile>> callback)
 		{
-			return GatherSaveFiles (profileID, false, -1, string.Empty, string.Empty);
+			GatherSaveFiles (profileID, false, -1, string.Empty, string.Empty, callback);
 		}
 
 
-		public virtual List<SaveFile> GatherImportFiles (int profileID, int boolID, string separateProjectName, string separateFilePrefix)
+		public virtual void GatherImportFiles (int profileID, int boolID, string separateProjectName, string separateFilePrefix, System.Action<List<SaveFile>> callback)
 		{
 			if (!string.IsNullOrEmpty (separateProjectName) && !string.IsNullOrEmpty (separateFilePrefix))
 			{
-				return GatherSaveFiles (profileID, true, boolID, separateProjectName, separateFilePrefix);
+				GatherSaveFiles (profileID, true, boolID, separateProjectName, separateFilePrefix, callback);
 			}
-			return null;
 		}
 
 
@@ -224,11 +219,8 @@ namespace AC
 					isAutoSave = true;
 				}
 
-				if (!isAutoSave)
-				{
-					System.TimeSpan t = fileInfo.LastWriteTime - new System.DateTime (2015, 1, 1);
-					updateTime = (int) t.TotalSeconds;
-				}
+				System.TimeSpan t = fileInfo.LastWriteTime - new System.DateTime (2015, 1, 1);
+				updateTime = (int) t.TotalSeconds;
 
 				if (KickStarter.settingsManager.saveTimeDisplay != SaveTimeDisplay.None)
 				{
@@ -250,7 +242,7 @@ namespace AC
 		}
 
 
-		protected virtual List<SaveFile> GatherSaveFiles (int profileID, bool isImport, int boolID, string separateProductName, string separateFilePrefix)
+		protected virtual void GatherSaveFiles (int profileID, bool isImport, int boolID, string separateProductName, string separateFilePrefix, System.Action<List<SaveFile>> callback)
 		{
 			List<SaveFile> gatheredFiles = new List<SaveFile> ();
 
@@ -267,7 +259,7 @@ namespace AC
 				}
 			}
 
-			return gatheredFiles;
+			callback?.Invoke (gatheredFiles);
 		}
 
 
@@ -367,6 +359,19 @@ namespace AC
 				ACDebug.Log ("File Read: " + fullFilename);
 			}
 			return (_data);
+		}
+
+		#endregion
+
+
+		#region PrivateFunctions
+
+		private void OnGatherFilesForDeletion (List<SaveFile> saveFiles)
+		{
+			foreach (SaveFile saveFile in saveFiles)
+			{
+				Delete (saveFile);
+			}
 		}
 
 		#endregion

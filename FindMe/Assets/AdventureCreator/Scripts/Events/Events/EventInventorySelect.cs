@@ -7,13 +7,32 @@ namespace AC
 	{
 
 		[SerializeField] private SelectDeselect selectDeselect;
-		public enum SelectDeselect { Select, Deselect};
+		public enum SelectDeselect { Select, Deselect, Hover };
 		[SerializeField] private int itemID = -1;
 
 
-		public override string[] EditorNames { get { return new string[] { "Inventory/Select", "Inventory/Deselect" }; } }
-		protected override string EventName { get { return selectDeselect == SelectDeselect.Select ? "OnInventorySelect" : "OnInventoryDeselect"; } }
-		protected override string ConditionHelp { get { return "Whenever " + ((itemID >= 0) ? GetItemName () : "an Inventory item") + " is " + ((selectDeselect == SelectDeselect.Select) ? "selected." : "deselected."); } }
+		public override string[] EditorNames { get { return new string[] { "Inventory/Select", "Inventory/Deselect", "Inventory/Hover" }; } }
+
+		protected override string EventName
+		{
+			get
+			{
+				switch (selectDeselect)
+				{
+					case SelectDeselect.Select:
+						return "OnInventorySelect";
+
+					case SelectDeselect.Deselect:
+						return "OnInventoryDeselect";
+
+					case SelectDeselect.Hover:
+						return "OnInventoryHover";
+				}
+				return string.Empty;
+			}
+		}
+
+		protected override string ConditionHelp { get { return "Whenever " + ((itemID >= 0) ? GetItemName () : "an Inventory item") + " is " + selectDeselect.ToString ().ToLower () + "ed."; } }
 
 
 		public EventInventorySelect (int _id, string _label, ActionListAsset _actionListAsset, int[] _parameterIDs, SelectDeselect _selectDeselect, int _itemID)
@@ -34,6 +53,7 @@ namespace AC
 		{
 			EventManager.OnInventorySelect_Alt += OnInventorySelect;
 			EventManager.OnInventoryDeselect_Alt += OnInventoryDeselect;
+			EventManager.OnInventoryHover += OnInventoryHover;
 		}
 
 
@@ -41,6 +61,7 @@ namespace AC
 		{
 			EventManager.OnInventorySelect_Alt -= OnInventorySelect;
 			EventManager.OnInventoryDeselect_Alt -= OnInventoryDeselect;
+			EventManager.OnInventoryHover -= OnInventoryHover;
 		}
 
 
@@ -56,6 +77,15 @@ namespace AC
 		private void OnInventoryDeselect (InvCollection invCollection, InvInstance invInstance)
 		{
 			if (selectDeselect == SelectDeselect.Deselect && (itemID < 0 || itemID == invInstance.ItemID))
+			{
+				Run (new object[] { invInstance.ItemID });
+			}
+		}
+
+
+		private void OnInventoryHover (InvCollection invCollection, InvInstance invInstance)
+		{
+			if (InvInstance.IsValid (invInstance) && selectDeselect == SelectDeselect.Hover && (itemID < 0 || itemID == invInstance.ItemID))
 			{
 				Run (new object[] { invInstance.ItemID });
 			}

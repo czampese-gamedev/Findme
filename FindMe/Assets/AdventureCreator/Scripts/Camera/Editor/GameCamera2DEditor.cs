@@ -110,7 +110,10 @@ namespace AC
 					_target.unitSnap = CustomGUILayout.FloatField ("Snap unit size:", _target.unitSnap, "", "The step size when snapping");
 				}
 
-				_target.updateWhilePaused = CustomGUILayout.Toggle ("Update while paused?", _target.updateWhilePaused, "", "If True, the camera will not be frozen while the game is paused");
+				if (!_target.followCursor)
+				{
+					_target.updateWhilePaused = CustomGUILayout.Toggle ("Update while paused?", _target.updateWhilePaused, "", "If True, the camera will not be frozen while the game is paused");
+				}
 
 				CustomGUILayout.EndVertical ();
 			}

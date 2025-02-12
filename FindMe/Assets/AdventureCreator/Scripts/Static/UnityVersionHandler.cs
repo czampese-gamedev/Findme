@@ -624,7 +624,9 @@ namespace AC
 					}
 				}
 			}
-			return string.Empty;
+
+			var activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene ();
+			return activeScene.path;
 		}
 
 
@@ -733,6 +735,97 @@ namespace AC
 
 			return null;
 		}
+
+
+		public static void SetRigidbodyVelocity (Rigidbody rigidbody, Vector3 velocity)
+		{
+#if UNITY_6000_0_OR_NEWER
+			rigidbody.linearVelocity = velocity;
+#else
+			rigidbody.velocity = velocity;
+#endif
+		}
+
+
+		public static Vector3 GetRigidbodyVelocity (Rigidbody rigidbody)
+		{
+#if UNITY_6000_0_OR_NEWER
+			return rigidbody.linearVelocity;
+#else
+			return rigidbody.velocity;
+#endif
+		}
+
+		
+		public static void SetRigidbodyDrag (Rigidbody rigidbody, float drag)
+		{
+#if UNITY_6000_0_OR_NEWER
+			rigidbody.linearDamping = drag;
+#else
+			rigidbody.drag = drag;
+#endif
+		}
+
+
+		public static float GetRigidbodyDrag (Rigidbody rigidbody)
+		{
+#if UNITY_6000_0_OR_NEWER
+			return rigidbody.linearDamping;
+#else
+			return rigidbody.drag;
+#endif
+		}
+
+
+		public static void SetRigidbodyAngularDrag (Rigidbody rigidbody, float drag)
+		{
+#if UNITY_6000_0_OR_NEWER
+			rigidbody.angularDamping = drag;
+#else
+			rigidbody.angularDrag = drag;
+#endif
+		}
+
+
+		public static float GetRigidbodyAngularDrag (Rigidbody rigidbody)
+		{
+#if UNITY_6000_0_OR_NEWER
+			return rigidbody.angularDamping;
+#else
+			return rigidbody.angularDrag;
+#endif
+		}
+
+
+		public static void SetRigidbody2DKinematic (Rigidbody2D rigidbody, bool value)
+		{
+#if UNITY_6000_0_OR_NEWER
+			rigidbody.bodyType = value ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
+#else
+			rigidbody.isKinematic = value;
+#endif
+		}
+
+
+		public static bool GetRigidbody2DKinematic (Rigidbody2D rigidbody)
+		{
+#if UNITY_6000_0_OR_NEWER
+			return rigidbody.bodyType == RigidbodyType2D.Kinematic;
+#else
+			return rigidbody.isKinematic;
+#endif
+		}
+
+
+		public static Vector3 GetRigidbody2DVelocity (Rigidbody2D rigidbody)
+		{
+#if UNITY_6000_0_OR_NEWER
+			return rigidbody.linearVelocity;
+#else
+			return rigidbody.velocity;
+#endif
+		}
+
 
 	}
 

@@ -107,7 +107,7 @@ namespace AC
 		}
 
 
-		public bool MatchesPreviousScene (int _playerID)
+		public bool MatchesPreviousScene (int _playerID, bool canAcceptEmpty = false)
 		{
 			if (KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow)
 			{
@@ -141,7 +141,7 @@ namespace AC
 			{
 				case ChooseSceneBy.Name:
 					string _previousSceneName = GetPlayerPreviousSceneName (_playerID);
-					if (chooseSceneBy == ChooseSceneBy.Name && !string.IsNullOrEmpty (previousSceneName))
+					if (chooseSceneBy == ChooseSceneBy.Name && (!string.IsNullOrEmpty (previousSceneName) || canAcceptEmpty))
 					{
 						return (_previousSceneName == previousSceneName);
 					}
@@ -154,7 +154,7 @@ namespace AC
 				case ChooseSceneBy.Number:
 				default:
 					int previousSceneIndex = GetPlayerPreviousSceneIndex (_playerID);
-					if (chooseSceneBy == ChooseSceneBy.Name)
+					if (chooseSceneBy == ChooseSceneBy.Name && (!string.IsNullOrEmpty (previousSceneName) || canAcceptEmpty))
 					{
 						return (KickStarter.sceneChanger.NameToIndex (previousSceneName) == previousSceneIndex);
 					}

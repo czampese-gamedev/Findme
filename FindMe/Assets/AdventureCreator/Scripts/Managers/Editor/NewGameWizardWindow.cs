@@ -324,18 +324,18 @@ namespace AC
 			switch (wizardPath)
 			{
 				case WizardPath.New:
-					DrawHeader ("Templates", "Templates extend your project with additional features and behaviour.  More can also be found on the Downloads page.");
+					DrawHeader ("Templates", "Templates extend your project with additional features and behaviour.  More can also be found on the AC website's Downloads page.");
 					break;
 
 				case WizardPath.Modify:
-					DrawHeader ("Templates", "The following Templates can be applied.  Templates can also be found on the AC website's Downloads page.  It is recommended to back up your project first.");
+					DrawHeader ("Templates", "The following Templates can be applied.  More can also be found on the AC website's Downloads page.  It is recommended to back up your project first.");
 					break;
 			}
 
 			int numTemplates = availableTemplates.Count;
 			int totalScrollViewHeight = 30 * numTemplates;
 
-			GUI.Box (new Rect (Padding, 160, 315, totalScrollViewHeight + 40), "", CustomStyles.Header);
+			GUI.Box (new Rect (Padding, 160, 315, Mathf.Min (totalScrollViewHeight + 40, 320)), "", CustomStyles.Header);
 
 			scrollPosition = GUI.BeginScrollView (new Rect (Padding + 10, 180, 295, 280), scrollPosition, new Rect (0, 0, ScrollBoxWidth - 20, totalScrollViewHeight));
 
@@ -891,10 +891,7 @@ namespace AC
 							break;
 
 						case WizardPath.Modify:
-							if (template)
-							{
-								availableTemplates.Add (template);
-							}
+							availableTemplates.Add (template);
 							break;
 					}
 				}

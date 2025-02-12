@@ -267,10 +267,10 @@ namespace AC
 		{
 			isHeld = true;
 			grabPoint.position = grabPosition;
-			originalDrag = _rigidbody.drag;
-			originalAngularDrag = _rigidbody.angularDrag;
-			_rigidbody.drag = 20f;
-			_rigidbody.angularDrag = 20f;
+			originalDrag = UnityVersionHandler.GetRigidbodyDrag (_rigidbody);
+			originalAngularDrag = UnityVersionHandler.GetRigidbodyAngularDrag (_rigidbody);
+			UnityVersionHandler.SetRigidbodyDrag (_rigidbody, 20f);
+			UnityVersionHandler.SetRigidbodyAngularDrag (_rigidbody, 20f);
 
 			KickStarter.eventManager.Call_OnGrabMoveable (this);
 		}
@@ -464,7 +464,7 @@ namespace AC
 				if ((distanceToCamera < minZoom && zoom < 0f) || (distanceToCamera > maxZoom && zoom > 0f))
 				{
 					_rigidbody.AddForce (-moveVector * zoom * zoomSpeed);
-					_rigidbody.velocity = Vector3.zero;
+					UnityVersionHandler.SetRigidbodyVelocity (_rigidbody, Vector3.zero);
 				}
 				else
 				{
@@ -524,15 +524,6 @@ namespace AC
 					Physics.IgnoreCollision (_collider1, _collider2, true);
 				}
 
-				if (ignorePlayerCollider && KickStarter.player)
-				{
-					Collider[] playerColliders = KickStarter.player.gameObject.GetComponentsInChildren<Collider> ();
-					foreach (Collider playerCollider in playerColliders)
-					{
-						Physics.IgnoreCollision (playerCollider, _collider1, true);
-					}
-				}
-
 				if (ignoreMoveableRigidbodies)
 				{
 					Collider[] allColliders = UnityVersionHandler.FindObjectsOfType<Collider> ();
@@ -548,6 +539,27 @@ namespace AC
 							}
 						}
 					}
+				}
+			}
+
+			LimitPlayerCollisions ();
+		}
+
+
+		protected void LimitPlayerCollisions ()
+		{
+			if (KickStarter.player == null || !ignorePlayerCollider) return;
+
+			Collider[] ownColliders = GetComponentsInChildren<Collider> ();
+
+			foreach (Collider _collider1 in ownColliders)
+			{
+				if (_collider1.isTrigger) continue;
+
+				Collider[] playerColliders = KickStarter.player.gameObject.GetComponentsInChildren<Collider> ();
+				foreach (Collider playerCollider in playerColliders)
+				{
+					Physics.IgnoreCollision (playerCollider, _collider1, true);
 				}
 			}
 		}

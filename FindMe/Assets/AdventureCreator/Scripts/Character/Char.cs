@@ -87,6 +87,7 @@ namespace AC
 		private Expression currentExpression = null;
 
 		public CircleCollider2D CircleCollider { get; private set; }
+		private bool forceSpeech;
 		protected Quaternion newRotation;
 		private Vector3 upDirection = Vector3.up;
 		private float prevHeight;
@@ -224,7 +225,7 @@ namespace AC
 		/** The name of the 'Walk' animation(s), without suffix, used by AnimEngine_SpritesUnity */
 		public string walkAnimSprite = "walk";
 		/** The name of the 'Run' animation(s), without suffix, used by AnimEngine_SpritesUnity */
-		public string runAnimSprite = "run";
+		public string runAnimSprite;
 		/** The name of the 'Talk' animation(s), without suffix, used by AnimEngine_SpritesUnity */
 		public string talkAnimSprite = "talk";
 
@@ -348,16 +349,10 @@ namespace AC
 
 		// Sound variables
 
-		/** The sound to play when walking */
-		public AudioClip walkSound;
-		/** The sound to play when running */
-		public AudioClip runSound;
+		[SerializeField] private AudioClip walkSound;
+		[SerializeField] private AudioClip runSound;
 		/** The sound to play when the character's speech text is scrolling */
 		public AudioClip textScrollClip;
-		/** The Sound child to play all non-speech AudioClips on. Speech AudioClips will be placed on the root GameObject */
-		public Sound soundChild;
-
-		protected AudioSource audioSource;
 		/** The AudioSource from which to play speech audio */
 		public AudioSource speechAudioSource;
 
@@ -547,11 +542,6 @@ namespace AC
 				speechAudioSource = GetComponent<AudioSource> ();
 			}
 
-			if (soundChild && audioSource == null)
-			{
-				audioSource = soundChild.GetComponent<AudioSource> ();
-			}
-
 			if (_rigidbody == null)
 			{
 				_rigidbody = GetComponent<Rigidbody> ();
@@ -571,7 +561,7 @@ namespace AC
 					}
 					else if (antiGlideMode)
 					{
-						_rigidbody2D.isKinematic = true;
+						UnityVersionHandler.SetRigidbody2DKinematic (_rigidbody2D, true);
 						_rigidbody2D = null;
 						ACDebug.LogWarning ("The use of character " + gameObject.name + "'s Rigidbody2D component is disabled as it conflicts with the 'Only move when sprite changes feature.", gameObject);
 					}
@@ -590,7 +580,6 @@ namespace AC
 			capsuleColliders = GetComponentsInChildren<CapsuleCollider> ();
 
 			AdvGame.AssignMixerGroup (speechAudioSource, SoundType.Speech);
-			AdvGame.AssignMixerGroup (audioSource, SoundType.SFX);
 
 			displayLineID = lineID;
 
@@ -922,14 +911,14 @@ namespace AC
 						}
 						else
 						{
-							nodeThreshold = 0.01f;
+							nodeThreshold = 0f;
 							nodeThresholdSqrd = nodeThreshold * nodeThreshold;
 						}
 					}
 
-					if ((SceneSettings.IsUnity2D () && directionSqrMagnitude < nodeThresholdSqrd) ||
-						(activePath.affectY && directionSqrMagnitude < nodeThresholdSqrd) ||
-						(!activePath.affectY && lookDir.sqrMagnitude < nodeThresholdSqrd))
+					if ((SceneSettings.IsUnity2D () && directionSqrMagnitude <= nodeThresholdSqrd) ||
+						(activePath.affectY && directionSqrMagnitude <= nodeThresholdSqrd) ||
+						(!activePath.affectY && lookDir.sqrMagnitude <= nodeThresholdSqrd))
 					{
 						KickStarter.eventManager.Call_OnCharacterReachNode (this, activePath, targetNode);
 						if (activePath.nodeCommands.Count > targetNode)
@@ -1084,7 +1073,6 @@ namespace AC
 			if (isJumping)
 			{
 				animEngine.PlayJump ();
-				StopStandardAudio ();
 			}
 			else
 			{
@@ -1115,7 +1103,6 @@ namespace AC
 							}
 						}
 
-						StopStandardAudio ();
 						break;
 
 					case CharState.Move:
@@ -1128,11 +1115,9 @@ namespace AC
 							animEngine.PlayWalk ();
 						}
 
-						PlayStandardAudio ();
 						break;
 
 					default:
-						StopStandardAudio ();
 						break;
 				}
 			}
@@ -1465,7 +1450,8 @@ namespace AC
 					}
 					else
 					{
-						Vector3 force = CalcForce (newVel, GetUpAmount (_rigidbody.velocity), _rigidbody.mass, _rigidbody.velocity);
+						Vector3 velocity = UnityVersionHandler.GetRigidbodyVelocity (_rigidbody);
+						Vector3 force = CalcForce (newVel, GetUpAmount (velocity), _rigidbody.mass, velocity);
 						_rigidbody.AddForce (force);
 					}
 				}
@@ -1496,13 +1482,13 @@ namespace AC
 			{
 				if (GetRootMotionType () == RootMotionType.None)
 				{
-					if (_rigidbody2D.isKinematic)
+					if (UnityVersionHandler.GetRigidbody2DKinematic (_rigidbody2D))
 					{
 						_rigidbody2D.MovePosition (Transform.position + newVel * Time.deltaTime);
 					}
 					else
 					{
-						Vector3 force = CalcForce (newVel, 0f, _rigidbody2D.mass, _rigidbody2D.velocity);
+						Vector3 force = CalcForce (newVel, 0f, _rigidbody2D.mass, UnityVersionHandler.GetRigidbody2DVelocity (_rigidbody2D));
 						_rigidbody2D.AddForce (force);
 					}
 				}
@@ -2987,60 +2973,6 @@ namespace AC
 		}
 
 
-		private void StopStandardAudio ()
-		{
-			if (audioSource && audioSource.isPlaying)
-			{
-				if ((runSound && audioSource.clip == runSound) || (walkSound && audioSource.clip == walkSound))
-				{
-					audioSource.Stop ();
-				}
-			}
-		}
-
-
-		private void PlayStandardAudio ()
-		{
-			if (audioSource)
-			{
-				if (isRunning && runSound)
-				{
-					if (audioSource.isPlaying && audioSource.clip == runSound)
-					{
-						return;
-					}
-
-					if (!IsGrounded ())
-					{
-						return;
-					}
-
-					audioSource.loop = false;
-					audioSource.clip = runSound;
-					audioSource.Play ();
-					if (KickStarter.eventManager) KickStarter.eventManager.Call_OnPlayFootstepSound (this, null, false, audioSource, runSound);
-				}
-				else if (walkSound)
-				{
-					if (audioSource.isPlaying && audioSource.clip == walkSound)
-					{
-						return;
-					}
-
-					if (!IsGrounded ())
-					{
-						return;
-					}
-
-					audioSource.loop = false;
-					audioSource.clip = walkSound;
-					audioSource.Play ();
-					if (KickStarter.eventManager) KickStarter.eventManager.Call_OnPlayFootstepSound (this, null, true, audioSource, walkSound);
-				}
-			}
-		}
-
-
 		public void ResetAnimationEngine ()
 		{
 			string className = "AnimEngine";
@@ -4146,7 +4078,7 @@ namespace AC
 											 groundCheckLayerMask);
 			}
 
-			if (_rigidbody && GetUpAmount (_rigidbody.velocity) > 0.1f)
+			if (_rigidbody && GetUpAmount (UnityVersionHandler.GetRigidbodyVelocity (_rigidbody)) > 0.1f)
 			{
 				return false;
 			}
@@ -4840,7 +4772,17 @@ namespace AC
 		{
 			get
 			{
-				return (activeSpeech != null && activeSpeech.IsAnimating ());
+				return forceSpeech || (activeSpeech != null && activeSpeech.IsAnimating ());
+			}
+		}
+
+
+		/** Manually marks the character as speaking, even if they have no actual speech. This may be useful when using a separate dialogue system that should still cause the character to animate */
+		public bool ForceTalkingMode
+		{
+			set
+			{
+				forceSpeech = value;
 			}
 		}
 

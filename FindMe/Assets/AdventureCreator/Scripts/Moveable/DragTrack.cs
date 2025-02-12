@@ -26,7 +26,11 @@ namespace AC
 		#region Variables
 
 		/** The Physics Material to give the track's end colliders */
+#if UNITY_6000_0_OR_NEWER
+		public PhysicsMaterial colliderMaterial;
+#else
 		public PhysicMaterial colliderMaterial;
+#endif
 		/** The size of the track's end colliders, as seen in the Scene window */
 		public float discSize = 0.2f;
 		/** The colour of Scene window Handles */

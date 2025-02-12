@@ -70,7 +70,7 @@ namespace AC
 
 			int i = Mathf.Max (0, saveIndex);
 			
-			if (selectSaveType == SelectSaveType.SlotIndexFromVariable)
+			if (selectSaveType == SelectSaveType.SlotIndexFromVariable || selectSaveType == SelectSaveType.SaveIDFromVariable)
 			{
 				GVar gVar = GlobalVariables.GetVariable (slotVarID);
 				if (gVar != null)
@@ -97,7 +97,7 @@ namespace AC
 				}
 			}
 
-			if (selectSaveType != SelectSaveType.Autosave && selectSaveType != SelectSaveType.SetSaveID)
+			if (selectSaveType != SelectSaveType.Autosave && selectSaveType != SelectSaveType.SetSaveID && selectSaveType != SelectSaveType.SaveIDFromVariable)
 			{
 				if (!string.IsNullOrEmpty (menuName) && !string.IsNullOrEmpty (elementName))
 				{
@@ -120,7 +120,7 @@ namespace AC
 			
 			if (manageSaveType == ManageSaveType.DeleteSave)
 			{
-				if (selectSaveType == SelectSaveType.SetSaveID)
+				if (selectSaveType == SelectSaveType.SetSaveID || selectSaveType == SelectSaveType.SaveIDFromVariable)
 				{
 					SaveSystem.DeleteSave (i);
 				}
@@ -131,7 +131,7 @@ namespace AC
 			}
 			else if (manageSaveType == ManageSaveType.RenameSave)
 			{
-				if (selectSaveType == SelectSaveType.SetSaveID)
+				if (selectSaveType == SelectSaveType.SetSaveID || selectSaveType == SelectSaveType.SaveIDFromVariable)
 				{
 					KickStarter.saveSystem.RenameSaveByID (newSaveLabel, i);
 				}
@@ -169,7 +169,7 @@ namespace AC
 			{
 				IntField ("Slot index to " + _action + ":", ref saveIndex, parameters, ref saveIndexParameterID);
 			}
-			else if (selectSaveType == SelectSaveType.SlotIndexFromVariable)
+			else if (selectSaveType == SelectSaveType.SlotIndexFromVariable || selectSaveType == SelectSaveType.SaveIDFromVariable)
 			{
 				slotVarID = AdvGame.GlobalVariableGUI ("Integer variable:", slotVarID, VariableType.Integer);
 			}

@@ -850,8 +850,9 @@ namespace AC
 				{
 					Vector3 trialRelativePosition = rotation * Vector3.forward * maxRaycastDistance;
 
-					float collisionDistance = CalculateCollisionInfluence (-trialRelativePosition);
-					if (actualDistance > collisionDistance)
+					float collisionDistance = 0f;
+					bool hitCollision = CalculateCollisionInfluence (-trialRelativePosition, out collisionDistance);
+					if (hitCollision && actualDistance > collisionDistance)
 					{
 						actualDistance = collisionDistance;
 					}
@@ -1043,14 +1044,14 @@ namespace AC
 		}
 
 
-		private float CalculateCollisionInfluence (Vector3 relativePosition)
+		private bool CalculateCollisionInfluence (Vector3 relativePosition, out float collisionDistance)
 		{
 			if (Physics.SphereCast (FocalPosition, 0.2f, relativePosition, out collisionHit, relativePosition.magnitude, collisionLayerMask, QueryTriggerInteraction.Ignore))
 			{
-				float collisionDistance = collisionHit.distance - wallSeparator;
+				collisionDistance = collisionHit.distance - wallSeparator;
 				collisionDistance = Mathf.Max (collisionDistance, minimumDistance);
 
-				return collisionDistance;
+				return true;
 			}
 
 			if (targetIsPlayer && player != null)
@@ -1058,7 +1059,8 @@ namespace AC
 				player.Show ();
 			}
 
-			return relativePosition.magnitude;
+			collisionDistance = relativePosition.magnitude;
+			return false;
 		}
 
 
@@ -1222,7 +1224,17 @@ namespace AC
 						return new Vector2 (inputX * inputInfluence.x, inputY * inputInfluence.y);
 					}
 				}
+				lastFrameInput = Vector2.zero;
 				return Vector2.zero;
+			}
+		}
+
+
+		public Vector2 LastFrameInput
+		{
+			get
+			{
+				return lastFrameInput;
 			}
 		}
 

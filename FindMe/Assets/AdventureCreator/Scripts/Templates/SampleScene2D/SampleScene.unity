@@ -161,6 +161,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 381104789592800443}
+  groupID: 0
   isPlayer: 0
   playerID: -1
   markerParameterID: -1
@@ -170,6 +171,9 @@ MonoBehaviour:
   doEulerRotation: 0
   clearExisting: 1
   inWorldSpace: 0
+  copyMarkerPosition: 1
+  copyMarkerRotation: 1
+  copyMarkerScale: 1
   timeCurve:
     serializedVersion: 2
     m_Curve:
@@ -292,6 +296,7 @@ MonoBehaviour:
   lipSyncGroupID: 0
   leftHandBone: {fileID: 0}
   rightHandBone: {fileID: 0}
+  attachmentPoints: []
   idleAnim: {fileID: 0}
   walkAnim: {fileID: 0}
   runAnim: {fileID: 0}
@@ -531,6 +536,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 963351388255501100}
+  groupID: 0
   commentText: 'As this is a sample scene, exiting the room simply ends the game. 
     In practice, we''d instead use the "Scene: Switch" Action to change to a different
     scene.
@@ -592,6 +598,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 100197323447070947}
+  groupID: 0
   commentText: 'Triggers, like this one, can be used to run logic when an object
     such as the Player passes through it.
 
@@ -644,6 +651,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   parameterID: -1
   timeToPause: 1
 --- !u!114 &368682455
@@ -686,6 +694,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   switchType: 1
   optionNumber: 0
   optionParameterID: -1
@@ -737,6 +746,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 764130275}
+  groupID: 0
   resultActionTrue: 0
   skipActionTrue: -1
   skipActionTrueActual: {fileID: 0}
@@ -811,6 +821,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 764130275}
+  groupID: 0
   commentText: 'Variables can be used to keep track of the player''s progress and
     choices.  Here, we''re using a Local integer variable to keep track of how many
     times this dialogue option has been chosen.
@@ -865,6 +876,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 5469000196341808549}
+  groupID: 0
   fadeType: 1
   isInstant: 1
   fadeSpeed: 0.5
@@ -1034,6 +1046,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 963351388255501100}
+  groupID: 0
   endGameType: 0
   chooseSceneBy: 0
   sceneNumber: 0
@@ -1082,6 +1095,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   linkedCamera: {fileID: 0}
@@ -1170,6 +1184,7 @@ MonoBehaviour:
     proximity: 1
     faceAfter: 0
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   useButtons:
@@ -1187,6 +1202,7 @@ MonoBehaviour:
     proximity: 1
     faceAfter: 0
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   oneClick: 1
@@ -1206,6 +1222,7 @@ MonoBehaviour:
     proximity: 1
     faceAfter: 0
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   provideInvInteraction: 0
@@ -1227,6 +1244,7 @@ MonoBehaviour:
     proximity: 1
     faceAfter: 0
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   unhandledInvButton:
@@ -1244,6 +1262,7 @@ MonoBehaviour:
     proximity: 1
     faceAfter: 0
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   canBeLowerCase: 0
@@ -1264,7 +1283,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1340,6 +1359,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 764130275}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -1400,6 +1420,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -1460,6 +1481,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -1520,6 +1542,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
+  groupID: 0
   listSource: 0
   actionList: {fileID: 764130275}
   constantID: 0
@@ -1577,6 +1600,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 963351388255501100}
+  groupID: 0
   parameterID: -1
   timeToPause: 0.5
 --- !u!114 &712017083
@@ -1619,6 +1643,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 5469000196341808549}
+  groupID: 0
   commentText: 'Welcome to the 2D Sample Scene!  Comments like this will appear as
     you play - view them in the Console to get insights into how AC works.
 
@@ -1667,6 +1692,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 5469000196341808549}
+  groupID: 0
   fadeType: 0
   isInstant: 0
   fadeSpeed: 1
@@ -1762,6 +1788,7 @@ MonoBehaviour:
   parameters: []
   tagID: 0
   syncParamValues: 1
+  groups: []
   backupData: []
 --- !u!114 &909752968
 MonoBehaviour:
@@ -1803,6 +1830,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 5469000196341808549}
+  groupID: 0
   charToMoveParameterID: -1
   markerParameterID: -1
   charToMoveID: 0
@@ -1949,6 +1977,7 @@ MonoBehaviour:
     proximity: 1
     faceAfter: 0
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   useButtons:
@@ -1966,6 +1995,7 @@ MonoBehaviour:
     proximity: 2
     faceAfter: 1
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   - interaction: {fileID: 3093440722240827036}
@@ -1982,6 +2012,7 @@ MonoBehaviour:
     proximity: 2
     faceAfter: 1
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   oneClick: 0
@@ -2001,6 +2032,7 @@ MonoBehaviour:
     proximity: 2
     faceAfter: 1
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   provideInvInteraction: 0
@@ -2022,6 +2054,7 @@ MonoBehaviour:
     proximity: 1
     faceAfter: 0
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   unhandledInvButton:
@@ -2039,6 +2072,7 @@ MonoBehaviour:
     proximity: 1
     faceAfter: 0
     isBlocking: 0
+    stopPlayer: 1
     parameterID: -1
     invParameterID: -1
   canBeLowerCase: 0
@@ -2137,6 +2171,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   linkedCamera: {fileID: 3727844807011891220}
@@ -2210,6 +2245,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -2270,6 +2306,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3093440722240827036}
+  groupID: 0
   commentText: 'Hotspots can have any number of Interactions associated with them.
 
 
@@ -2317,6 +2354,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -2377,6 +2415,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -2469,6 +2508,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 5469000196341808549}
+  groupID: 0
   obToMoveParameterID: -1
   obToMoveID: 0
   obToMove: {fileID: 0}
@@ -2745,6 +2785,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 764130275}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -2805,6 +2846,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 963351388255501100}
+  groupID: 0
   parameterID: -1
   timeToPause: 0.5
 --- !u!114 &1223476268
@@ -2847,6 +2889,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 381104789592800443}
+  groupID: 0
   isPlayer: 0
   playerID: -1
   markerParameterID: -1
@@ -2856,6 +2899,9 @@ MonoBehaviour:
   doEulerRotation: 0
   clearExisting: 1
   inWorldSpace: 0
+  copyMarkerPosition: 1
+  copyMarkerRotation: 1
+  copyMarkerScale: 1
   timeCurve:
     serializedVersion: 2
     m_Curve:
@@ -2936,6 +2982,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -3011,6 +3058,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   parameterID: -1
   constantID: 0
   conversation: {fileID: 1105353944}
@@ -3062,13 +3110,13 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 764130275}
+  groupID: 0
   setVarMethod: 1
   setVarMethodString: 0
   setVarMethodIntBool: 0
   setVarMethodVector: 0
   parameterID: -1
   variableID: 0
-  variableNumber: 0
   setParameterID: -1
   slotNumber: 0
   slotNumberParameterID: -1
@@ -3133,6 +3181,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -3193,6 +3242,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 764130275}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -3336,6 +3386,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   listSource: 0
   actionList: {fileID: 764130275}
   constantID: 0
@@ -3393,6 +3444,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 5469000196341808549}
+  groupID: 0
   parameterID: -1
   timeToPause: 0.5
 --- !u!114 &1652673175
@@ -3435,6 +3487,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 963351388255501100}
+  groupID: 0
   fadeType: 1
   isInstant: 0
   fadeSpeed: 0.5
@@ -3508,6 +3561,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 963351388255501100}
+  groupID: 0
   charToMoveParameterID: -1
   markerParameterID: -1
   charToMoveID: 0
@@ -3571,6 +3625,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   commentText: 'Interacting with a Hotspot will run its Interaction.  Here, we have
     a "Sphere" NPC that we can talk to.
 
@@ -3625,6 +3680,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -3685,6 +3741,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6359918897341202533}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -3746,6 +3803,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3093440722240827036}
+  groupID: 0
   constantID: 0
   parameterID: -1
   messageParameterID: -1
@@ -3850,6 +3908,7 @@ MonoBehaviour:
   parameters: []
   tagID: 0
   syncParamValues: 1
+  groups: []
   backupData: []
   detects: 0
   obToDetect: {fileID: 0}
@@ -3947,6 +4006,7 @@ MonoBehaviour:
   parameters: []
   tagID: 0
   syncParamValues: 1
+  groups: []
   backupData:
   - className: AC.ActionTransform
     jsonData: '{"id":0,"isDisplayed":true,"showComment":false,"comment":"","willWait":true,"endAction":0,"skipAction":-1,"skipActionActual":{"instanceID":0},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0},"endings":[{"resultAction":2,"skipAction":1,"skipActionActual":{"instanceID":21224},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0}}],"isEnabled":true,"isAssetFile":false,"isBreakPoint":false,"nodeRect":{"serializedVersion":"2","x":14.0,"y":14.0,"width":300.0,"height":312.0},"overrideColor":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"showOutputSockets":true,"parentActionListInEditor":{"instanceID":381104789592800443_0},"isPlayer":false,"playerID":-1,"markerParameterID":-1,"markerID":0,"marker":{"instanceID":0},"scaleDuration":false,"doEulerRotation":false,"clearExisting":true,"inWorldSpace":false,"timeCurve":{"serializedVersion":"2","m_Curve":[{"serializedVersion":"3","time":0.0,"value":0.0,"inSlope":0.0,"outSlope":0.0,"tangentMode":0,"weightedMode":0,"inWeight":0.0,"outWeight":0.0},{"serializedVersion":"3","time":1.0,"value":1.0,"inSlope":0.0,"outSlope":0.0,"tangentMode":0,"weightedMode":0,"inWeight":0.0,"outWeight":0.0}],"m_PreInfinity":2,"m_PostInfinity":2,"m_RotationOrder":4},"parameterID":-1,"constantID":0,"linkedProp":{"instanceID":927096489_0},"setVectorMethod":0,"newVectorParameterID":-1,"newVector":{"x":0.0,"y":-0.30000001192092898,"z":0.0},"vectorVarParameterID":-1,"vectorVarID":0,"variableLocation":0,"transitionTime":2.0,"transitionTimeParameterID":-1,"transformType":0,"moveMethod":1,"toBy":1,"variables":{"instanceID":0},"variablesConstantID":0}'
@@ -4018,6 +4078,7 @@ MonoBehaviour:
   parameters: []
   tagID: 0
   syncParamValues: 1
+  groups: []
   backupData:
   - className: AC.ActionCharPathFind
     jsonData: '{"id":0,"isDisplayed":true,"showComment":false,"comment":"","willWait":false,"endAction":0,"skipAction":-1,"skipActionActual":{"instanceID":0},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0},"endings":[{"resultAction":2,"skipAction":3,"skipActionActual":{"instanceID":21314},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0}}],"isEnabled":true,"isAssetFile":false,"isBreakPoint":false,"nodeRect":{"serializedVersion":"2","x":14.0,"y":14.0,"width":300.0,"height":252.0},"overrideColor":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"showOutputSockets":true,"parentActionListInEditor":{"instanceID":963351388255501100_0},"charToMoveParameterID":-1,"markerParameterID":-1,"charToMoveID":0,"markerID":0,"marker":{"instanceID":3728163302037955786_0},"isPlayer":true,"playerID":-1,"playerParameterID":-1,"charToMove":{"instanceID":0},"speed":0,"pathFind":false,"doFloat":false,"positionOffset":{"x":0.0,"y":0.0,"z":0.0},"positionOffsetParameterID":-1,"doTimeLimit":false,"maxTimeParameterID":-1,"maxTime":10.0,"onReachTimeLimit":0,"minDistance":0.0,"movePathNode":0,"nodeIndex":0,"nodeIndexParameterID":-1,"faceAfter":false}'
@@ -4539,6 +4600,7 @@ GameObject:
   - component: {fileID: 3047069754804610808}
   - component: {fileID: 3047069754804123896}
   - component: {fileID: 3047069754794495800}
+  - component: {fileID: 3047069754804189913}
   m_Layer: 2
   m_Name: NavCam
   m_TagString: Untagged
@@ -4546,6 +4608,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3047069754804189913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047069754804189912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 19992
+  retainInPrefab: 0
+  autoManual: 0
 --- !u!4 &3047069754804610808
 Transform:
   m_ObjectHideFlags: 0
@@ -4618,6 +4695,7 @@ MonoBehaviour:
   parameters: []
   tagID: 0
   syncParamValues: 1
+  groups: []
   backupData:
   - className: AC.ActionSpeech
     jsonData: '{"id":0,"isDisplayed":true,"showComment":false,"comment":"","willWait":false,"endAction":0,"skipAction":-1,"skipActionActual":{"instanceID":0},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0},"endings":[{"resultAction":0,"skipAction":-1,"skipActionActual":{"instanceID":0},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0}}],"isEnabled":true,"isAssetFile":false,"isBreakPoint":false,"nodeRect":{"serializedVersion":"2","x":14.0,"y":14.0,"width":300.0,"height":187.0},"overrideColor":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"showOutputSockets":true,"parentActionListInEditor":{"instanceID":3093440722240827036_0},"constantID":0,"parameterID":-1,"messageParameterID":-1,"isPlayer":true,"playerID":-1,"speaker":{"instanceID":0},"messageText":"It''s
@@ -4935,6 +5013,7 @@ MonoBehaviour:
   characterEvasionYScale: 0.6
   accuracy: 1
   gizmoColour: {r: 1, g: 1, b: 1, a: 1}
+  characterEvasionMethod: 0
 --- !u!114 &5469000196341808549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4966,6 +5045,7 @@ MonoBehaviour:
   parameters: []
   tagID: 0
   syncParamValues: 1
+  groups: []
   backupData:
   - className: AC.ActionFade
     jsonData: '{"id":0,"isDisplayed":true,"showComment":false,"comment":"","willWait":false,"endAction":0,"skipAction":-1,"skipActionActual":{"instanceID":0},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0},"endings":[{"resultAction":2,"skipAction":1,"skipActionActual":{"instanceID":21304},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0}}],"isEnabled":true,"isAssetFile":false,"isBreakPoint":false,"nodeRect":{"serializedVersion":"2","x":14.0,"y":14.0,"width":300.0,"height":172.0},"overrideColor":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"showOutputSockets":true,"parentActionListInEditor":{"instanceID":5469000196341808549_0},"fadeType":1,"isInstant":true,"fadeSpeed":0.5,"fadeSpeedParameterID":-1,"setTexture":false,"tempTexture":{"instanceID":0},"tempTextureParameterID":-1,"forceCompleteTransition":true,"cameraFadePauseBehaviour":0,"fadeCurve":{"serializedVersion":"2","m_Curve":[{"serializedVersion":"3","time":0.0,"value":0.0,"inSlope":1.0,"outSlope":1.0,"tangentMode":0,"weightedMode":0,"inWeight":0.0,"outWeight":0.0},{"serializedVersion":"3","time":1.0,"value":1.0,"inSlope":1.0,"outSlope":1.0,"tangentMode":0,"weightedMode":0,"inWeight":0.0,"outWeight":0.0}],"m_PreInfinity":2,"m_PostInfinity":2,"m_RotationOrder":4}}'
@@ -5125,6 +5205,7 @@ MonoBehaviour:
   parameters: []
   tagID: 0
   syncParamValues: 1
+  groups: []
   backupData:
   - className: AC.ActionSpeech
     jsonData: '{"id":0,"isDisplayed":true,"showComment":false,"comment":"","willWait":false,"endAction":0,"skipAction":-1,"skipActionActual":{"instanceID":0},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0},"endings":[{"resultAction":2,"skipAction":3,"skipActionActual":{"instanceID":21292},"linkedCutscene":{"instanceID":0},"linkedAsset":{"instanceID":0}}],"isEnabled":true,"isAssetFile":false,"isBreakPoint":false,"nodeRect":{"serializedVersion":"2","x":14.0,"y":14.0,"width":300.0,"height":192.0},"overrideColor":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"showOutputSockets":true,"parentActionListInEditor":{"instanceID":6359918897341202533_0},"constantID":0,"parameterID":-1,"messageParameterID":-1,"isPlayer":true,"playerID":-1,"speaker":{"instanceID":0},"messageText":"Hello?","lineID":-1,"multiLineIDs":[],"isBackground":false,"noAnimation":false,"headClip":{"instanceID":0},"mouthClip":{"instanceID":0},"play2DHeadAnim":false,"headClip2D":"","headLayer":0,"play2DMouthAnim":false,"mouthClip2D":"","mouthLayer":0,"waitTimeOffset":0.3199999928474426}'

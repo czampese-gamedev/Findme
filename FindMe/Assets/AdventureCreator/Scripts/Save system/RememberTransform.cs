@@ -56,8 +56,7 @@ namespace AC
 		}
 
 
-		/** Initialises the component.  This needs to be called if the object it is attached to is generated/spawned at runtime manually through code. */
-		public void OnSpawn ()
+		public override void OnSpawn ()
 		{
 			if (linkedPrefabID != 0)
 			{

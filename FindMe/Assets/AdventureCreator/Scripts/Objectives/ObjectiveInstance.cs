@@ -146,6 +146,20 @@ namespace AC
 		}
 
 
+		/** The Objective's current texture */
+		public Texture2D Texture
+		{
+			get
+			{
+				if (CurrentState.texture)
+				{
+					return CurrentState.texture;
+				}
+				return linkedObjective.texture;
+			}
+		}
+
+
 		/** The ID number of the instance's current objective state */
 		public int CurrentStateID
 		{

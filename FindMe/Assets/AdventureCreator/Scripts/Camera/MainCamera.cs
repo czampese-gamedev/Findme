@@ -448,6 +448,10 @@ namespace AC
 			{
 				SetGameCamera (firstPersonCamera);
 			}
+			else
+			{
+				ACDebug.LogWarning ("Cannot set first-person camera because it cannot be found on the Player " + KickStarter.player, KickStarter.player);
+			}
 
 			UpdateLastGameplayCamera ();
 		}
@@ -979,14 +983,14 @@ namespace AC
 		}
 
 
-		/**
-		 * Updates the camera's rect values according to the aspect ratio and split-screen settings.
-		 */
+		/** Updates the camera's rect values according to the aspect ratio and split-screen settings. */
 		public void SetCameraRect ()
 		{
+			#if UNITY_EDITOR
 			if (!Application.isPlaying) return;
+			#endif
 
-			if (SetAspectRatio () && Application.isPlaying)
+			if (SetAspectRatio ())
 			{
 				CreateBorderCamera ();
 			}
@@ -2217,6 +2221,7 @@ namespace AC
 			}
 
 			playableScreenRect = new Rect (trueSafeRect);
+			float playableScreenRectMagnitude = playableScreenRect.size.magnitude;
 			playableScreenRectInverted = new Rect (new Vector2 (trueSafeRect.x,  ACScreen.height - trueSafeRect.y - trueSafeRect.height), trueSafeRect.size);
 
 			playableScreenRectRelative = new Rect (playableScreenRect.x / ACScreen.width, playableScreenRect.y / ACScreen.height, playableScreenRect.width /  ACScreen.width, playableScreenRect.height /  ACScreen.height);

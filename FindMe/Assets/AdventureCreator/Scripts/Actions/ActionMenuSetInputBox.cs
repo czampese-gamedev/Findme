@@ -19,7 +19,7 @@ namespace AC
 {
 	
 	[System.Serializable]
-	public class ActionMenuSetInputBox : Action, IMenuReferencer
+	public class ActionMenuSetInputBox : Action, IMenuReferencer, ITranslatable
 	{
 		
 		public string menuName;

@@ -196,7 +196,7 @@ namespace AC
 	public enum DeleteProfileType { ActiveProfile, SetSlotIndex, SlotIndexFromVariable, SetProfileID };
 	public enum SaveCheck { NumberOfSaveGames, NumberOfProfiles, IsSavingPossible, IsSlotEmpty, DoesProfileExist, DoesProfileNameExist };
 	public enum ManageSaveType { DeleteSave, RenameSave };
-	public enum SelectSaveType { Autosave, SetSlotIndex, SlotIndexFromVariable, SetSaveID };
+	public enum SelectSaveType { Autosave, SetSlotIndex, SlotIndexFromVariable, SetSaveID, SaveIDFromVariable };
 	public enum SaveHandling { LoadGame, ContinueFromLastSave, OverwriteExistingSave, SaveNewGame };
 
 	public enum PlatformType { Desktop, TouchScreen, WebGL, Windows, Mac, Linux, iOS, Android, Editor };
@@ -216,6 +216,7 @@ namespace AC
 	public enum InventoryPropertyType { SelectedItem, LastClickedItem, MouseOverItem, CustomScript };
 	public enum UIHideStyle { DisableObject, ClearContent };
 	public enum UISelectableHideStyle { DisableObject, DisableInteractability };
+	public enum UIComponentHideStyle { DisableObject, DisableComponent };
 	public enum Hand { Left, Right };
 
 	public enum SelectInventoryDisplay { NoChange, ShowSelectedGraphic, ShowHoverGraphic, HideFromMenu };
@@ -294,5 +295,6 @@ namespace AC
 	public enum ObjectiveSorting { ByStartTime, ByUpdateTime, ByID };
 	public enum ShowHierarchyIcons { All, ActionListsOnly, None };
 	public enum CharacterEvasionMethod { Carve, Push };
+	public enum LeftClickDeselect { Never, Always, ExceptOverMenus };
 
 }

@@ -35,6 +35,9 @@ namespace AC
 
 		#region Constructors
 
+		public AttachmentPoint () {}
+
+
 		public AttachmentPoint (int id, string _label, Transform _transform)
 		{
 			ID = id;
@@ -71,6 +74,13 @@ namespace AC
 		public int attachmentPointID;
 		/** The Constant ID number of the held item's RememberSceneItem component, if set */
 		public int heldSceneItemConstantID;
+
+
+		public AttachmentPointData ()
+		{
+			attachmentPointID = -1;
+			heldSceneItemConstantID = 0;
+		}
 
 
 		public AttachmentPointData (AttachmentPoint attachmentPoint)

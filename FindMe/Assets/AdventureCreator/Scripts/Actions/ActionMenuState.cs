@@ -37,6 +37,7 @@ namespace AC
 		
 		public string journalText = "";
 		public bool onlyAddNewJournal = false;
+		public Texture2D pageTexture;
 
 		public bool doFade = false;
 		public int lineID = -1;
@@ -259,7 +260,7 @@ namespace AC
 
 									string processedPageText = preprocessTextTokens ? AdvGame.ConvertTokens (journalText, Options.GetLanguage ()) : journalText;
 
-									JournalPage newPage = new JournalPage (lineID, processedPageText);
+									JournalPage newPage = new JournalPage (lineID, processedPageText, pageTexture);
 									journal.AddPage (newPage, preprocessTextTokens ? false : onlyAddNewJournal, journalPageIndex);
 
 									if (lineID == -1)
@@ -390,6 +391,7 @@ namespace AC
 						journalText = CustomGUILayout.TextArea ("New page text:", journalText);
 						AddSearchTerm (journalText);
 						preprocessTextTokens = EditorGUILayout.Toggle ("Pre-process text tokens?", preprocessTextTokens);
+						pageTexture = (Texture2D) CustomGUILayout.ObjectField<Texture2D> ("New page texture:", pageTexture, false);
 
 						if (!preprocessTextTokens)
 						{

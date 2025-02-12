@@ -92,7 +92,7 @@ namespace AC
 
 			EditorGUILayout.LabelField ("Export", CustomStyles.subHeader);
 
-			exportData.maxXMLRows = EditorGUILayout.IntField ("Sheet row limit (SML only):", exportData.maxXMLRows);
+			exportData.maxXMLRows = EditorGUILayout.IntField ("SML sheet row limit:", exportData.maxXMLRows);
 			if (exportData.exportColumns.Count == 0)
 			{
 				GUI.enabled = false;

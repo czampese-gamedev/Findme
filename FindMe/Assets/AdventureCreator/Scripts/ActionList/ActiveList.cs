@@ -125,9 +125,7 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Clears any data that is causing the class to be deemed necessary.</summary>
-		 */
+		/** Clears any data that is causing the class to be deemed necessary. */
 		public void ClearNecessity ()
 		{
 			resumeIndices = new int[0];
@@ -278,9 +276,7 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Runs the Conversation set to do so when the associated ActionList has finished.</summary>
-		 */
+		/** Runs the Conversation set to do so when the associated ActionList has finished. */
 		public void RunConversation ()
 		{
 			conversationOnEnd.Interact ();
@@ -463,6 +459,26 @@ namespace AC
 			// ActionList
 			if (!string.IsNullOrEmpty (listName))
 			{
+				// Scene component?
+				int ID = 0;
+				if (int.TryParse (listName, out ID))
+				{
+					// Scene
+					ConstantID constantID = (subScene != null)
+						? ConstantID.GetComponent (ID, subScene.gameObject.scene)
+						: ConstantID.GetComponent (ID);
+				
+					if (constantID)
+					{
+						actionList = constantID.GetComponent <ActionList>();
+						if (actionList)
+						{
+							KickStarter.actionListManager.AddToList (this);
+						}
+						return;
+					}
+				}
+
 				// Asset file
 				#if AddressableIsPresent
 				if (KickStarter.settingsManager.saveAssetReferencesWithAddressables)
@@ -482,26 +498,6 @@ namespace AC
 					else
 					{
 						KickStarter.actionListAssetManager.AddToList (this);
-					}
-				}
-			}
-			else
-			{
-				int ID = 0;
-				if (int.TryParse (listName, out ID))
-				{
-					// Scene
-					ConstantID constantID = (subScene != null)
-						? ConstantID.GetComponent (ID, subScene.gameObject.scene)
-						: ConstantID.GetComponent (ID);
-				
-					if (constantID)
-					{
-						actionList = constantID.GetComponent <ActionList>();
-						if (actionList)
-						{
-							KickStarter.actionListManager.AddToList (this);
-						}
 					}
 				}
 			}

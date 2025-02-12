@@ -40,6 +40,8 @@ namespace AC
 		private enum UIImageType { Image, RawImage };
 		/** The name of the MenuJournal element to refer to, if graphicType = GraphicType.PageTexture */
 		public string linkedJournalElementName;
+		/** The change to make to the associated UI object when invisible */
+		public UIComponentHideStyle uiComponentHideStyle = UIComponentHideStyle.DisableObject;
 
 		private Texture localTexture;
 		private AC.Char portraitCharacterOverride;
@@ -63,6 +65,7 @@ namespace AC
 			graphic = new CursorIconBase ();
 			numSlots = 1;
 			linkedJournalElementName = string.Empty;
+			uiComponentHideStyle = UIComponentHideStyle.DisableObject;
 			SetSize (new Vector2 (10f, 5f));
 			
 			base.Declare ();
@@ -83,14 +86,16 @@ namespace AC
 			if (ignoreUnityUI)
 			{
 				uiImage = null;
+				uiRawImage = null;
 			}
 			else
 			{
 				uiImage = _element.uiImage;
+				uiRawImage = _element.uiRawImage;
 			}
-			uiRawImage = _element.uiRawImage;
 			uiImageType = _element.uiImageType;
 			linkedJournalElementName = _element.linkedJournalElementName;
+			uiComponentHideStyle = _element.uiComponentHideStyle;
 
 			graphicType = _element.graphicType;
 			graphic = new CursorIconBase ();
@@ -104,10 +109,12 @@ namespace AC
 			if (uiImageType == UIImageType.Image)
 			{
 				LinkUIElement (canvas, ref uiImage);
+				uiRawImage = null;
 			}
 			else if (uiImageType == UIImageType.RawImage)
 			{
 				LinkUIElement (canvas, ref uiRawImage);
+				uiImage = null;
 			}
 		}
 		
@@ -163,6 +170,11 @@ namespace AC
 			if (graphicType == AC_GraphicType.PageTexture)
 			{
 				linkedJournalElementName = CustomGUILayout.TextField ("Journal element name:", linkedJournalElementName, apiPrefix + ".linkedJournalElementName", "The name of the Journal element (in the same Menu) to refer to");
+			}
+
+			if (menu.menuSource != MenuSource.AdventureCreator)
+			{
+				uiComponentHideStyle = (UIComponentHideStyle) CustomGUILayout.EnumPopup ("When invisible:", uiComponentHideStyle, apiPrefix + ".uiComponentHideStyle", "The method by which this element (or slots within it) are hidden from view when made invisible");
 			}
 
 			CustomGUILayout.EndVertical ();
@@ -300,12 +312,12 @@ namespace AC
 				case AC_GraphicType.ObjectiveTexture:
 					if (Application.isPlaying && KickStarter.runtimeObjectives.SelectedObjective != null)
 					{
-						if (localTexture != KickStarter.runtimeObjectives.SelectedObjective.Objective.texture && KickStarter.runtimeObjectives.SelectedObjective.Objective.texture)
+						if (localTexture != KickStarter.runtimeObjectives.SelectedObjective.Texture && KickStarter.runtimeObjectives.SelectedObjective.Texture)
 						{
-							Texture2D objTex = KickStarter.runtimeObjectives.SelectedObjective.Objective.texture;
+							Texture2D objTex = KickStarter.runtimeObjectives.SelectedObjective.Texture;
 							sprite = Sprite.Create (objTex, new Rect (0f, 0f, objTex.width, objTex.height), new Vector2 (0.5f, 0.5f));
 						}
-						localTexture = KickStarter.runtimeObjectives.SelectedObjective.Objective.texture;
+						localTexture = KickStarter.runtimeObjectives.SelectedObjective.Texture;
 					}
 					break;
 
@@ -452,84 +464,93 @@ namespace AC
 
 			if (uiImageType == UIImageType.Image && uiImage)
 			{
+				Sprite _sprite = null;
 				switch (graphicType)
 				{
 					case AC_GraphicType.Normal:
-						uiImage.sprite = graphic.GetAnimatedSprite (true);
+						_sprite = graphic.GetAnimatedSprite (true);
 						break;
 
 					case AC_GraphicType.DialoguePortrait:
 						if (speech != null && portraitCharacterOverride == null)
 						{
-							uiImage.sprite = speech.GetPortraitSprite ();
+							_sprite = speech.GetPortraitSprite ();
 						}
 						else if (portraitCharacterOverride != null)
 						{
-							uiImage.sprite = portraitCharacterOverride.GetPortraitSprite ();
+							_sprite = portraitCharacterOverride.GetPortraitSprite ();
 						}
-						if (uiImage.sprite == null && graphic != null && graphic.texture)
+						if (_sprite == null && graphic != null && graphic.texture)
 						{
-							uiImage.sprite = graphic.GetAnimatedSprite (true);
+							_sprite = graphic.GetAnimatedSprite (true);
 						}
 						break;
 
 					case AC_GraphicType.DocumentTexture:
 					case AC_GraphicType.ObjectiveTexture:
 					case AC_GraphicType.PageTexture:
-						uiImage.sprite = sprite;
-						if (uiImage.sprite == null && graphic != null && graphic.texture)
+						_sprite = sprite;
+						if (_sprite == null && graphic != null && graphic.texture)
 						{
-							uiImage.sprite = graphic.GetAnimatedSprite (true);
+							_sprite = graphic.GetAnimatedSprite (true);
+						}
+						break;
+
+					default:
+						break;
+
+				}
+				if (_sprite) uiImage.sprite = _sprite;
+				UpdateUIElement (uiImage, uiComponentHideStyle);
+			}
+			if (uiImageType == UIImageType.RawImage && uiRawImage)
+			{
+				Texture texture = null;
+				switch (graphicType)
+				{
+					case AC_GraphicType.Normal:
+						if (graphic.texture && graphic.texture is RenderTexture)
+						{
+							texture = graphic.texture;
+						}
+						else
+						{
+							texture = graphic.GetAnimatedTexture (true);
+						}
+						break;
+
+					case AC_GraphicType.DocumentTexture:
+					case AC_GraphicType.ObjectiveTexture:
+					case AC_GraphicType.DialoguePortrait:
+					case AC_GraphicType.PageTexture:
+						texture = localTexture;
+						if (localTexture == null && graphic.texture)
+						{
+							if (texture && graphic.texture is RenderTexture)
+							{
+								texture = graphic.texture;
+							}
+							else
+							{
+								texture = graphic.GetAnimatedTexture (true);
+							}
 						}
 						break;
 
 					default:
 						break;
 				}
-				UpdateUIElement (uiImage);
-			}
-			if (uiImageType == UIImageType.RawImage && uiRawImage)
-			{
-				switch (graphicType)
-				{
-					case AC_GraphicType.Normal:
-						if (graphic.texture && graphic.texture is RenderTexture)
-						{
-							uiRawImage.texture = graphic.texture;
-						}
-						else
-						{
-							uiRawImage.texture = graphic.GetAnimatedTexture (true);
-						}
-						break;
 
-					case AC_GraphicType.DocumentTexture:
-					case AC_GraphicType.ObjectiveTexture:
-					case AC_GraphicType.DialoguePortrait:
-					case AC_GraphicType.PageTexture:
-						uiRawImage.texture = localTexture;
-						if (localTexture == null && graphic.texture)
-						{
-							if (uiRawImage.texture && graphic.texture is RenderTexture)
-							{
-								uiRawImage.texture = graphic.texture;
-							}
-							else
-							{
-								uiRawImage.texture = graphic.GetAnimatedTexture (true);
-							}
-						}
-						break;
-				}
+				if (texture) uiRawImage.texture = texture;
 
-				UpdateUIElement (uiRawImage);
+				UpdateUIElement (uiRawImage, uiComponentHideStyle);
 			}
 		}
 		
 		
 		protected override void AutoSize ()
 		{
-			if (graphicType == AC_GraphicType.Normal && graphic.texture)
+			if (graphic.texture && (graphicType == AC_GraphicType.Normal || !Application.isPlaying))
 			{
 				GUIContent content = new GUIContent (graphic.texture);
 				AutoSize (content);

@@ -74,7 +74,7 @@ namespace AC
 		 * <param name = "profileID">The ID number of the profile to search save files for, or 0 if profiles are not enabled</param>
 		 * <returns>A List of SaveFile instances, with each instance storing information about each found save file</returns>
 		 */
-		List<SaveFile> GatherSaveFiles (int profileID);
+		void GatherSaveFiles (int profileID, System.Action<List<SaveFile>> callback);
 
 		/**
 		 * <summary>Reads the disk for a save file with a specific ID</summary>
@@ -92,7 +92,7 @@ namespace AC
 		 * <param name = "separateFilePrefix">The 'Save filename' field of the AC project to import files from, as set in the Settings Manager</param>
 		 * <returns>A List of SaveFile instances, with each instance storing information about each found save file</returns>
 		 */
-		List<SaveFile> GatherImportFiles (int profileID, int boolID, string separateProductName, string separateFilePrefix);
+		void GatherImportFiles (int profileID, int boolID, string separateProductName, string separateFilePrefix, System.Action<List<SaveFile>> callback);
 
 		/**
 		 * <summary>Saves a screenshot associated with a save file</summary>

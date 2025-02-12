@@ -13,7 +13,7 @@ namespace AC
 
 		#region PublicFunctions
 
-		public static void Apply (NGWData data, string installPath, CursorManager cursorManager, MenuManager menuManager, SpeechManager speechManager)
+		public static void Apply (NGWData data, string installPath, SettingsManager settingsManager, CursorManager cursorManager, MenuManager menuManager, SpeechManager speechManager)
 		{	
 			AssetDatabase.CreateFolder (installPath, "UI");
 			installPath = installPath + "/UI";
@@ -70,7 +70,7 @@ namespace AC
 			string actionListPath = installPath + "/ActionLists";
 
 			ActionListAsset asset_pauseGame = CreateActionList_PauseGame (actionListPath);
-			ActiveInput activeInput = Template.CreateActiveInput ("Pause game", "Menu", FlagsGameState.Normal | FlagsGameState.Cutscene | FlagsGameState.DialogOptions, asset_pauseGame);
+			ActiveInput activeInput = Template.CreateActiveInput ("Pause game", "Menu", FlagsGameState.Normal | FlagsGameState.Cutscene | FlagsGameState.DialogOptions, asset_pauseGame, settingsManager);
 			
 			ActionListAsset asset_quitButton = CreateActionList_QuitButton (actionListPath);
 			ActionListAsset asset_setupPauseMenu = CreateActionList_SetupPauseMenu (actionListPath);
@@ -161,6 +161,18 @@ namespace AC
 					EditorUtility.SetDirty (takeButton);
 				}
 				EditorUtility.SetDirty (containerMenu);
+			}
+
+			bool positionHotspotLabelsOverHotspots = (data.hotspotDetection == HotspotDetection.PlayerVicinity && data.movementMethod == MovementMethod.Direct);
+			if (positionHotspotLabelsOverHotspots)
+			{
+				Menu hotspotMenu = menuManager.GetMenuWithName ("Hotspot");
+				if (hotspotMenu)
+				{
+					hotspotMenu.positionType = AC_PositionType.OnHotspot;
+					hotspotMenu.uiPositionType = UIPositionType.OnHotspot;
+					EditorUtility.SetDirty (hotspotMenu);
+				}
 			}
 
 			EditorUtility.SetDirty (menuManager);

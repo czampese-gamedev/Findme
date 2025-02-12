@@ -119,8 +119,8 @@ namespace AC
 
 			if (saveHandling == SaveHandling.ContinueFromLastSave)
 			{
-				bool fileFound = SaveSystem.ContinueGame ();
-				if (!fileFound)
+				SaveSystem.ContinueGame (OnFailToContinue);
+				void OnFailToContinue ()
 				{
 					OnComplete ();
 				}
@@ -149,7 +149,7 @@ namespace AC
 						return;
 					}
 				}
-				else if (selectSaveType == SelectSaveType.SlotIndexFromVariable)
+				else if (selectSaveType == SelectSaveType.SlotIndexFromVariable || selectSaveType == SelectSaveType.SaveIDFromVariable)
 				{
 					GVar gVar = GlobalVariables.GetVariable (slotVarID);
 					if (gVar != null)
@@ -210,7 +210,7 @@ namespace AC
 				{
 					if (saveHandling == SaveHandling.OverwriteExistingSave)
 					{
-						if (selectSaveType == SelectSaveType.SetSaveID)
+						if (selectSaveType == SelectSaveType.SetSaveID || selectSaveType == SelectSaveType.SaveIDFromVariable)
 						{
 							SaveSystem.SaveGame (0, i, true, updateLabel, newSaveLabel);
 						}
@@ -291,7 +291,7 @@ namespace AC
 				{
 					IntField ("Slot index to " + _action + ":", ref saveIndex, parameters, ref saveIndexParameterID);
 				}
-				else if (selectSaveType == SelectSaveType.SlotIndexFromVariable)
+				else if (selectSaveType == SelectSaveType.SlotIndexFromVariable || selectSaveType == SelectSaveType.SaveIDFromVariable)
 				{
 					slotVarID = AdvGame.GlobalVariableGUI ("Integer variable:", slotVarID, VariableType.Integer);
 				}
@@ -300,7 +300,7 @@ namespace AC
 					IntField ("Save ID to " + _action + ":", ref saveIndex, parameters, ref saveIndexParameterID);
 				}
 
-				if (selectSaveType != SelectSaveType.Autosave && selectSaveType != SelectSaveType.SetSaveID)
+				if (selectSaveType != SelectSaveType.Autosave && selectSaveType != SelectSaveType.SetSaveID && selectSaveType != SelectSaveType.SaveIDFromVariable)
 				{
 					EditorGUILayout.Space ();
 					menuName = EditorGUILayout.TextField ("Menu with SavesList:", menuName);

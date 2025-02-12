@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 1855538597073870774}
   - component: {fileID: 3815644185501764420}
   - component: {fileID: 3626049266859493771}
+  - component: {fileID: 1463948023928155399}
   m_Layer: 5
   m_Name: TextureQualityDropdown
   m_TagString: Untagged
@@ -260,6 +261,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &1463948023928155399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518127400496384960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 4842
+  retainInPrefab: 1
+  autoManual: 0
 --- !u!1 &546603526776631096
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +288,7 @@ GameObject:
   - component: {fileID: 2542716123539863401}
   - component: {fileID: 5382412430684665816}
   - component: {fileID: 5362395788209013653}
+  - component: {fileID: 3759103525414715110}
   m_Layer: 5
   m_Name: AntiAliasingDropdown
   m_TagString: Untagged
@@ -398,6 +415,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &3759103525414715110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546603526776631096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 4610
+  retainInPrefab: 1
+  autoManual: 0
 --- !u!1 &572897457533623931
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,6 +4907,7 @@ GameObject:
   - component: {fileID: 8241350513955043522}
   - component: {fileID: 6398412358564130748}
   - component: {fileID: 4989430805205870444}
+  - component: {fileID: 7006798013696860139}
   m_Layer: 5
   m_Name: QualityPresetDropdown
   m_TagString: Untagged
@@ -4999,6 +5032,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &7006798013696860139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982984330086488994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 6762
+  retainInPrefab: 1
+  autoManual: 0
 --- !u!1 &6353589789768162202
 GameObject:
   m_ObjectHideFlags: 0
@@ -7260,6 +7308,7 @@ GameObject:
   - component: {fileID: 5494735876141161162}
   - component: {fileID: 535490876381431918}
   - component: {fileID: 3377809982968561684}
+  - component: {fileID: 4845198842895935522}
   m_Layer: 5
   m_Name: VSyncDropdown
   m_TagString: Untagged
@@ -7384,6 +7433,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &4845198842895935522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146350000901917965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 5372
+  retainInPrefab: 1
+  autoManual: 0
 --- !u!1 &9212032073608885641
 GameObject:
   m_ObjectHideFlags: 0

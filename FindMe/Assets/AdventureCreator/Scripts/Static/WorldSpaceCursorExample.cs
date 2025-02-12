@@ -54,7 +54,21 @@ namespace AC
 			 */
 
 			ownCollider = GetComponent <Collider>();
-			KickStarter.playerInput.InputMousePositionDelegate = CustomMousePosition;
+
+			if (!useACCursor)
+			{
+				KickStarter.playerInput.InputMousePositionDelegate = CustomMousePosition;
+			}
+		}
+
+
+		private void Update ()
+		{
+			if (useACCursor)
+			{
+				Vector2 newPosition = CustomMousePosition (KickStarter.playerInput.IsCursorLocked ());
+				KickStarter.playerInput.SetSimulatedCursorPosition (newPosition);
+			}
 		}
 		
 		

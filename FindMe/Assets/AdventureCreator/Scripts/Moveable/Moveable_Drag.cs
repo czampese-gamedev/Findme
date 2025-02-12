@@ -14,6 +14,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace AC
 {
@@ -227,7 +228,7 @@ namespace AC
 
 			if (_rigidbody)
 			{
-				_rigidbody.velocity = Vector3.zero;
+				UnityVersionHandler.SetRigidbodyVelocity (_rigidbody, Vector3.zero);
 				_rigidbody.angularVelocity = Vector3.zero;
 			}
 		}
@@ -268,7 +269,7 @@ namespace AC
 			{
 				track.UpdateDraggable (this);
 				
-				if (UsesRigidbody && (_rigidbody.angularVelocity != Vector3.zero || _rigidbody.velocity != Vector3.zero))
+				if (UsesRigidbody && (_rigidbody.angularVelocity != Vector3.zero || UnityVersionHandler.GetRigidbodyVelocity (_rigidbody) != Vector3.zero))
 				{
 					RunInteraction (true);
 				}
@@ -341,7 +342,7 @@ namespace AC
 				}
 				else if (_rigidbody)
 				{
-					PlayMoveSound (_rigidbody.velocity.magnitude);
+					PlayMoveSound (UnityVersionHandler.GetRigidbodyVelocity (_rigidbody).magnitude);
 				}
 			}
 
@@ -517,7 +518,7 @@ namespace AC
 
 			if (dragMode == DragMode.RotateOnly && UsesRigidbody)
 			{
-				_rigidbody.velocity = Vector3.zero;
+				UnityVersionHandler.SetRigidbodyVelocity (_rigidbody, Vector3.zero);
 			}
 
 			if (!ignoreInteractions)
@@ -588,7 +589,7 @@ namespace AC
 
 			if (dragMode == DragMode.RotateOnly && UsesRigidbody)
 			{
-				_rigidbody.velocity = Vector3.zero;
+				UnityVersionHandler.SetRigidbodyVelocity (_rigidbody, Vector3.zero);
 			}
 
 			KickStarter.eventManager.Call_OnGrabMoveable (this);
@@ -620,7 +621,7 @@ namespace AC
 
 				if (UsesRigidbody)
 				{
-					_rigidbody.velocity = Vector3.zero;
+					UnityVersionHandler.SetRigidbodyVelocity (_rigidbody, Vector3.zero);
 					_rigidbody.angularVelocity = Vector3.zero;
 				}
 			}
@@ -691,6 +692,8 @@ namespace AC
 					activeAutoMove = null;
 					track.SetPositionAlong (_targetTrackValue, this);
 					lastFrameTrackValue = trackValue;
+					var autoMove = new AutoMoveTrackData (_targetTrackValue, _targetTrackSpeed / 6000f, layerMask, snapID);
+					autoMove.CheckForEnd (this);
 					return;
 				}
 
@@ -874,7 +877,11 @@ namespace AC
 
 		private void OnSetPlayer (Player player)
 		{
-			if (dragMode == DragMode.LockToTrack && track && player)
+			if (dragMode != DragMode.LockToTrack)
+			{
+				LimitPlayerCollisions ();
+			}
+			else if (track && player)
 			{
 				Collider[] dragColliders = GetComponentsInChildren<Collider> ();
 				Collider[] playerColliders = player.gameObject.GetComponentsInChildren<Collider> ();

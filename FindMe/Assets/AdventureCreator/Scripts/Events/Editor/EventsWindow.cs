@@ -35,7 +35,7 @@ namespace AC
 			EditorGUILayout.LabelField ("Global events", CustomStyles.managerHeader);
 
 			if (data == null) data = new EventsEditorData ();
-			data.ShowGUI (KickStarter.settingsManager.events, KickStarter.settingsManager);
+			data.ShowGUI (KickStarter.settingsManager.events, ActionListSource.AssetFile, KickStarter.settingsManager);
 		}
 
 	}

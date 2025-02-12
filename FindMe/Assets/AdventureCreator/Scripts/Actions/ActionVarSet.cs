@@ -800,7 +800,11 @@ namespace AC
 					break;
 
 				case VariableType.GameObject:
-					GameObjectField (label, ref gameObjectValue, location != VariableLocation.Global, parameters, ref setParameterID);
+					GameObjectField (label, ref gameObjectValue, true, parameters, ref setParameterID);
+					if (location == VariableLocation.Global && gameObjectValue && setParameterID < 0 && gameObjectValue.activeInHierarchy)
+					{
+						EditorGUILayout.HelpBox ("The Variable's value will not be stored in save-game data, as it references a scene object", MessageType.Warning);
+					}
 					break;
 
 				case VariableType.UnityObject:

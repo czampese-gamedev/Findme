@@ -78,53 +78,53 @@ namespace AC
 		 * <param name = "_name">A unique identifier for the asset file</param>
 		 * <returns>The asset file, or the current asset if it wasn't found</returns>
 		 */
-		public static T RetrieveAsset <T> (T originalFile, string _name) where T : Object
+		public static T RetrieveAsset <T> (T originalFile, string _name, bool ignoreIfOriginalFileIsNull = true) where T : Object
 		{
 			if (string.IsNullOrEmpty (_name))
 			{
 				return originalFile;
 			}
 
-			if (originalFile == null)
+			if (originalFile == null && ignoreIfOriginalFileIsNull)
 			{
 				return null;
 			}
 
 			Object newFile = null;
 
-			if (originalFile is Texture)
+			if (typeof (T) == typeof (Texture))
 			{
 				newFile = RetrieveTextures (_name);
 			}
-			else if (originalFile is AudioClip)
+			else if (typeof (T) == typeof (AudioClip))
 			{
 				newFile = RetrieveAudioClip (_name);
 			}
-			else if (originalFile is AnimationClip)
+			else if (typeof (T) == typeof (AnimationClip))
 			{
 				newFile = RetrieveAnimClips (_name);
 			}
-			else if (originalFile is Material)
+			else if (typeof (T) == typeof (Material))
 			{
 				newFile = RetrieveMaterials (_name);
 			}
-			else if (originalFile is ActionListAsset)
+			else if (typeof (T) == typeof (ActionListAsset))
 			{
 				newFile = RetrieveActionListAssets (_name);
 			}
 			#if TimelineIsPresent
-			else if (originalFile is TimelineAsset)
+			else if (typeof (T) == typeof (TimelineAsset))
 			{
 				newFile = RetrieveTimelines (_name);
 			}
 			#endif
 			#if ALLOW_VIDEO
-			else if (originalFile is VideoClip)
+			else if (typeof (T) == typeof (VideoClip))
 			{
 				newFile = RetrieveVideoClips (_name);
 			}
 			#endif
-			else if (originalFile is RuntimeAnimatorController)
+			else if (typeof (T) == typeof (RuntimeAnimatorController))
 			{
 				newFile = RetrieveRuntimeAnimatorControllerAssets (_name);
 			}

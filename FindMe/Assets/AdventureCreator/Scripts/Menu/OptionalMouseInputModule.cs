@@ -34,7 +34,7 @@ namespace AC
 			{
 				return allowMouseInput;
 			}
-			set
+			private set
 			{
 				allowMouseInput = value;
 			}
@@ -188,7 +188,7 @@ namespace AC
 				}
 			}
 
-			if (allowMouseInput)
+			if (AllowMouseInput)
 			{
 				ProcessMouseEvent ();
 			}

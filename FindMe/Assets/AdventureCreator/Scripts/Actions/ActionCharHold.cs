@@ -128,13 +128,13 @@ namespace AC
 				{
 					if (GetObjectToHold () == null && ikHoldMethod == IKHoldMethod.SetTarget) return 0f;
 
-					switch (hand)
+					switch (attachmentPointID)
 					{
-						case Hand.Left:
+						case 0:
 							ApplyIK (runtimeChar.LeftHandIKController, isSkipping);
 							break;
 
-						case Hand.Right:
+						case 1:
 							ApplyIK (runtimeChar.RightHandIKController, isSkipping);
 							break;
 
@@ -387,7 +387,7 @@ namespace AC
 			newAction.TryAssignConstantID (newAction._char, ref newAction._charID);
 			newAction.objectToHold = objectToHold;
 			newAction.TryAssignConstantID (newAction.objectToHold, ref newAction.objectToHoldID);
-			newAction.hand = handToUse;
+			newAction.attachmentPointID = handToUse == Hand.Left ? 0 : 1;
 			newAction.localEulerAngles = localEulerAngles;
 			return newAction;
 		}

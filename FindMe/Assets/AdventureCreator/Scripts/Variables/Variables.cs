@@ -27,8 +27,8 @@ namespace AC
 		public List<GVar> vars = new List<GVar>();
 
 		#if UNITY_EDITOR
-		public string filter;
-		public Vector2 scrollPos;
+		public string filter { get; set; }
+		public Vector2 scrollPos { get; set; }
 		#endif
 
 		#endregion

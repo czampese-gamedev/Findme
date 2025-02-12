@@ -166,7 +166,7 @@ namespace AC
 						{
 							runtimeVideoPlayer.Stop ();
 						}
-
+						isRunning = false;
 						return 0f;
 					}
 					else

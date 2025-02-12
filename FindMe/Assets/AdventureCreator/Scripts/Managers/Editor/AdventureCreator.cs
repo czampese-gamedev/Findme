@@ -11,7 +11,7 @@ namespace AC
 	public class AdventureCreator : EditorWindow
 	{
 		
-		public const string version = "1.81.0";
+		public const string version = "1.82.5";
 	 
 		private bool showScene = true;
 		private bool showSettings = false;
@@ -578,7 +578,7 @@ namespace AC
 			EditorGUILayout.Space ();
 
 			EditorGUILayout.BeginHorizontal ();
-			if (GUILayout.Button ("Run the New Game Wizard", GUILayout.Height (30)))
+			if (GUILayout.Button ("New Game Wizard", GUILayout.Height (30)))
 			{
 				NewGameWizardWindow.Init ();
 			}

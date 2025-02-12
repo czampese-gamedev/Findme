@@ -82,7 +82,7 @@ namespace AC
 				}
 				if (!string.IsNullOrEmpty (inventoryIDIntParameter)) _animator.SetInteger (inventoryIDIntParameter, (KickStarter.runtimeInventory.SelectedItem != null) ? KickStarter.runtimeInventory.SelectedItem.id : -1);
 
-				if (Input.GetMouseButtonDown (0))
+				if (KickStarter.playerInput.GetMouseState () == MouseState.SingleClick)
 				{
 					if (!string.IsNullOrEmpty (clickTriggerParameter)) _animator.SetTrigger (clickTriggerParameter);
 				}
@@ -142,7 +142,7 @@ namespace AC
 		{
 			if (rawImageForInventory)
 			{
-				rawImageForInventory.texture = invInstance.Tex;
+				rawImageForInventory.texture = invInstance.CursorIcon.texture ? invInstance.CursorIcon.texture : invInstance.Tex;
 
 				if (updateImageNativeSize)
 				{
@@ -160,6 +160,18 @@ namespace AC
 				{
 					OnSetHardwareCursor (null, Vector2.zero);
 				}
+			}
+
+			#if TextMeshProIsPresent
+			if (itemCountTextTMP && useTextMeshPro)
+			{
+				itemCountTextTMP.text = string.Empty;
+			}
+			else
+			#endif
+			if (itemCountText)
+			{
+				itemCountText.text = string.Empty;
 			}
 		}
 
@@ -222,11 +234,11 @@ namespace AC
 			useTextMeshPro = CustomGUILayout.Toggle ("Use TextMeshPro?", useTextMeshPro, string.Empty, "If True, a TextMeshPro Text field is referenced instead");
 			if (useTextMeshPro)
 			{
-				itemCountTextTMP = (TMPro.TextMeshProUGUI) CustomGUILayout.ObjectField<TMPro.TextMeshProUGUI> ("Item count Text:", itemCountTextTMP, false, string.Empty, "A Text component to display the selected inventory item's Count text");
+				itemCountTextTMP = (TMPro.TextMeshProUGUI) CustomGUILayout.ObjectField<TMPro.TextMeshProUGUI> ("Item count Text:", itemCountTextTMP, true, string.Empty, "A Text component to display the selected inventory item's Count text");
 			}
 			else
 			#endif
-				itemCountText = (Text) CustomGUILayout.ObjectField<Text> ("Item count Text:", itemCountText, false, string.Empty, "A Text component to display the selected inventory item's Count text");
+				itemCountText = (Text) CustomGUILayout.ObjectField<Text> ("Item count Text:", itemCountText, true, string.Empty, "A Text component to display the selected inventory item's Count text");
 
 			CustomGUILayout.EndVertical ();
 
@@ -249,6 +261,19 @@ namespace AC
 		}
 
 		#endif
+
+
+		#region GetSet
+
+		public bool SetsCursorAutomatically
+		{
+			get
+			{
+				return rawImageToControl != null;
+			}
+		}
+
+		#endregion
 
 	}
 

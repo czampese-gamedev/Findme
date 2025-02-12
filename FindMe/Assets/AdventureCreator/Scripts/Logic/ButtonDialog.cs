@@ -26,8 +26,7 @@ namespace AC
 		public string label = "(Not set)";
 		/** The translation ID number of the display label, as set by SpeechManager */
 		public int lineID = -1;
-		/** Deprecated */
-		public Texture2D icon;
+		[SerializeField] private Texture2D icon;
 		/** The option's display icon */
 		public CursorIconBase cursorIcon;
 		/** If True, the option is enabled, and will be displayed in a MenuDialogList element */

@@ -137,6 +137,8 @@ namespace AC
 					limitCursorInfluenceY[1] = CustomGUILayout.Slider ("Maximum Y constraint:", limitCursorInfluenceY[1], 0f, 1.4f, string.Empty, "The cursor influence's upper limit in the Y-direction");
 				}
 
+				updateWhilePaused = CustomGUILayout.Toggle ("Update while paused?", updateWhilePaused, "", "If True, the camera will not be frozen while the game is paused");
+
 				if (Application.isPlaying && KickStarter.mainCamera && KickStarter.mainCamera.attachedCamera == this)
 				{
 					EditorGUILayout.HelpBox ("Changes made to this panel will not be felt until the MainCamera switches to this camera again.", MessageType.Info);

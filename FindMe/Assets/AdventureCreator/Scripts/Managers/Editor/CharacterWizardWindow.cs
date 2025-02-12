@@ -1,7 +1,9 @@
 ﻿#if UNITY_EDITOR
 
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEditor;
+using UnityEditor.Animations;
 
 namespace AC
 {
@@ -10,127 +12,156 @@ namespace AC
 	{
 
 		private GameObject baseObject;
-		private AnimationEngine animationEngine = AnimationEngine.SpritesUnity;
-		private string charName = "";
 		private CharType charType;
-		private string customAnimationClass;
-		
-		private int pageNumber = 0;
-		private int numPages = 4;
-
-		private bool enforce3D = false;
-
 		private enum CharType { Player, NPC };
+
+		private bool isSpriteBased;
+
+		private enum AnimationEngine2D { SpritesUnity, SpritesUnityComplex };
+
+		private string characterName;
+		private bool add2DCollision = true;
+		private bool autoAddAnimatorStates = false;
+		private bool canChooseCharType;
+
+		private enum MotionControl3D { CharacterController, Rigidbody, NavMeshAgent, CustomScript };
+
+		private NGWData.Option<AnimationEngine2D> animationEngine2DOption = new NGWData.Option<AnimationEngine2D> ();
+		private NGWData.Option<MotionControl3D> motionControl3DOption = new NGWData.Option<MotionControl3D> ();
+		
+		private enum PageType { CharType, BaseGraphic, Configuration, Complete };
+		private PageType currentPage;
+
+		private int assignPlayerPrefabID = -1;
+
 		private Rect pageRect = new Rect (350, 335, 150, 25);
+
+		private const int Padding = 80;
+		private Vector2 scrollPosition;
+
+		private const int BottomButtonWidth = 140;
+		private const int BottomButtonHeight = 40;
 
 
 		[MenuItem ("Adventure Creator/Editors/Character wizard", false, 4)]
 		public static void Init ()
 		{
-			CharacterWizardWindow window = EditorWindow.GetWindowWithRect <CharacterWizardWindow> (new Rect (0, 0, 420, 360), true, "Character Wizard", true);
+			CharacterWizardWindow window = EditorWindow.GetWindowWithRect <CharacterWizardWindow> (DefaultWindowRect, true, "Character Wizard", true);
 			window.titleContent.text = "Character wizard";
-			window.position = new Rect (300, 200, 420, 360);
-		}
-		
+			window.position = DefaultWindowRect;
 
-		public void OnInspectorUpdate ()
-		{
-			Repaint ();
+			window.RebuildOptions ();
+			window.canChooseCharType = true;
+			window.SetPage (PageType.CharType);
 		}
 
 
-		private bool IsFirstPerson ()
+		public static void InitForNPC (GameObject defaultObject = null)
 		{
-			if (charType == CharType.Player && KickStarter.settingsManager && KickStarter.settingsManager.movementMethod == MovementMethod.FirstPerson)
-			{
-				return true;
-			}
-			return false;
+			CharacterWizardWindow window = EditorWindow.GetWindowWithRect <CharacterWizardWindow> (DefaultWindowRect, true, "NPC Wizard", true);
+			window.titleContent.text = "NPC wizard";
+			window.position = DefaultWindowRect;
+			window.charType = CharType.NPC;
+			window.baseObject = defaultObject;
+
+			window.RebuildOptions ();
+			window.SetPage (PageType.BaseGraphic);
 		}
 
-		
-		private void OnGUI ()
-		{
-			GUILayout.BeginVertical (CustomStyles.thinBox, GUILayout.ExpandWidth (true), GUILayout.ExpandHeight (true));
 
-			GUILayout.Label (GetTitle (), CustomStyles.managerHeader);
-			if (GetTitle () != "")
+		public static void InitForPlayer (GameObject defaultObject = null, int _assignPlayerPrefabID = -1)
+		{
+			CharacterWizardWindow window = EditorWindow.GetWindowWithRect <CharacterWizardWindow> (DefaultWindowRect, true, "Player Wizard", true);
+			window.titleContent.text = "Player wizard";
+			window.position = DefaultWindowRect;
+			window.charType = CharType.Player;
+			window.assignPlayerPrefabID = _assignPlayerPrefabID;
+			window.baseObject = defaultObject;
+
+			window.RebuildOptions ();
+
+			if (window.IsFirstPerson && window.baseObject == null)
 			{
-				EditorGUILayout.Separator ();
-				GUILayout.Space (10f);
-			}
-			
-			ShowPage ();
-			
-			GUILayout.Space (15f);
-			GUILayout.BeginHorizontal ();
-			if (pageNumber < 1)
-			{
-				if (pageNumber < 0)
-				{
-					pageNumber = 0;
-				}
-				GUI.enabled = false;
-			}
-			if (pageNumber < numPages)
-			{
-				if (GUILayout.Button ("Previous", EditorStyles.miniButtonLeft))
-				{
-					pageNumber --;
-				}
+				window.SetPage (PageType.Configuration);
 			}
 			else
 			{
-				if (GUILayout.Button ("Restart", EditorStyles.miniButtonLeft))
+				window.SetPage (PageType.BaseGraphic);
+			}
+		}
+
+
+		private void RebuildOptions ()
+		{
+			animationEngine2DOption.RebuildOptionData
+			(
+				new NGWData.OptionData<AnimationEngine2D>[]
 				{
-					pageNumber = 0;
+					new NGWData.OptionData<AnimationEngine2D> () { label = "Sprites Unity", description = "Animations are played by naming convention, without the need for parameters or transitions. Simple to set up, but flexibility is limited.", icon = null, value = AnimationEngine2D.SpritesUnity},
+					new NGWData.OptionData<AnimationEngine2D> () { label = "Sprites Unity Complex", description = "Animations are played using parameters and transitions. More complex to set up, but offers a lot of flexibility.", icon = null, value = AnimationEngine2D.SpritesUnityComplex},
+				}
+			);
+			
+			motionControl3DOption.RebuildOptionData
+			(
+				new NGWData.OptionData<MotionControl3D>[]
+				{
+					new NGWData.OptionData<MotionControl3D> () { label = "Character Controller", description = "The character moves with a Character Controller.", icon = null, value = MotionControl3D.CharacterController},
+					new NGWData.OptionData<MotionControl3D> () { label = "Rigidbody", description = "The character moves with a Rigidbody and Capsule Collider pairing.", icon = null, value = MotionControl3D.Rigidbody},
+					new NGWData.OptionData<MotionControl3D> () { label = "NavMesh Agent", description = "The character moves using a NavMesh Agent.", icon = null, value = MotionControl3D.NavMeshAgent},
+					new NGWData.OptionData<MotionControl3D> () { label = "Custom script", description = "The character has no built-in motion, and instead is reliant on a custom script.", icon = null, value = MotionControl3D.CustomScript},
+				}
+			);
+		}
+		
+		
+		private void OnGUI ()
+		{
+			EditorGUILayout.Separator ();
+			GUILayout.Space (10f);
+
+			GUI.Label (new Rect (0, 30, position.width, 60), GetTitle (), CustomStyles.managerHeader);
+			GUI.Box (new Rect (Padding, 80, position.width - Padding - Padding, 0), "", CustomStyles.Header);
+
+			ShowPage ();
+			
+			if ((canChooseCharType && currentPage != PageType.CharType) || (!canChooseCharType && currentPage != PageType.BaseGraphic) && currentPage != PageType.Complete && !IsFirstPerson)
+			{
+				if (ClickedBottomButton ((position.width - BottomButtonWidth) * 0.5f - 150, "Back"))
+				{
+					SetPage ((PageType) ((int) currentPage - 1));
 				}
 			}
 
-			GUI.enabled = true;
-			if (pageNumber < numPages - 1)
+			if (currentPage != PageType.Complete)
 			{
-				if (pageNumber == 1)
+				if (currentPage == PageType.CharType) return;
+
+				if (currentPage == PageType.BaseGraphic)
 				{
-					if (!IsFirstPerson ())
+					if (!IsFirstPerson)
 					{
-						if (baseObject == null || UnityVersionHandler.IsPrefabFile (baseObject) || baseObject.GetComponent <AC.Char>() || !baseObject.activeInHierarchy)
+						if (baseObject == null || baseObject.GetComponent <AC.Char>())
 						{
 							GUI.enabled = false;
 						}
 					}
 				}
 
-				if (GUILayout.Button ("Next", EditorStyles.miniButtonRight))
+				if (currentPage == PageType.Configuration)
 				{
-					pageNumber ++;
-					if (pageNumber == 2 && IsFirstPerson ())
+					if (ClickedBottomButton ((position.width - BottomButtonWidth) * 0.5f + 150, "Create"))
 					{
-						animationEngine = AnimationEngine.Mecanim;
-						pageNumber = 3;
+						Finish ();
+						Close ();
+						//SetPage ((PageType) ((int) currentPage + 1));
 					}
-					if (pageNumber == 2)
+				}
+				else
+				{
+					if (ClickedBottomButton ((position.width - BottomButtonWidth) * 0.5f + 150, "Configure"))
 					{
-						if (baseObject != null && baseObject.GetComponentInChildren <Animation>())
-						{
-							animationEngine = AnimationEngine.Legacy;
-						}
-						else if (baseObject != null && (baseObject.GetComponentInChildren <SkinnedMeshRenderer>() || baseObject.GetComponentInChildren <MeshRenderer>()))
-						{
-							animationEngine = AnimationEngine.Mecanim;
-						}
-						else if (baseObject != null && baseObject.GetComponentInChildren <SpriteRenderer>())
-						{
-							animationEngine = AnimationEngine.SpritesUnity;
-						}
-						else if (SceneSettings.CameraPerspective == CameraPerspective.TwoD)
-						{
-							animationEngine = AnimationEngine.SpritesUnity;
-						}
-						else
-						{
-							animationEngine = AnimationEngine.Mecanim;
-						}
+						SetPage ((PageType) ((int) currentPage + 1));
 					}
 				}
 
@@ -138,66 +169,176 @@ namespace AC
 			}
 			else
 			{
-				if (pageNumber == numPages)
+				if (GUILayout.Button ("Close", EditorStyles.miniButtonRight))
 				{
-					GUI.enabled = false;
-				}
-				if (GUILayout.Button ("Finish", EditorStyles.miniButtonRight))
-				{
-					pageNumber ++;
-					Finish ();
+					Close ();
 				}
 				GUI.enabled = true;
 			}
-			GUILayout.EndHorizontal ();
-			
-			GUI.Label (pageRect, "Page " + (pageNumber + 1) + " of " + (numPages + 1));
+		}
 
-			GUILayout.FlexibleSpace ();
-			CustomGUILayout.EndVertical ();
+
+		private void SetPage (PageType pageType)
+		{
+			if (currentPage == PageType.BaseGraphic && pageType == PageType.Configuration)
+			{
+				if (string.IsNullOrEmpty (characterName))
+				{
+					characterName = baseObject ? baseObject.name : charType.ToString ();
+				}
+
+				if (IsFirstPerson)
+				{
+					isSpriteBased = false;
+				}
+				else if (baseObject.GetComponentInChildren <SpriteRenderer> () || SceneSettings.CameraPerspective == CameraPerspective.TwoD)
+				{
+					isSpriteBased = true;
+				}
+				else
+				{
+					isSpriteBased = false;
+				}
+			}
+
+			currentPage = pageType;
+
 		}
 		
 		
 		private string GetTitle ()
 		{
-			if (pageNumber == 1)
+			switch (currentPage)
 			{
-				return "Base graphic";
+				case PageType.CharType:
+					return "Character type";
+
+				case PageType.BaseGraphic:
+					return "Base graphic";
+
+				default:
+					return currentPage.ToString ();
 			}
-			else if (pageNumber == 2)
+		}
+
+
+		private void ConfigMotion3D (AC.Char character)
+		{
+			character.animationEngine = AnimationEngine.Mecanim;
+			character.turn2DCharactersIn3DSpace = true;
+
+			switch (motionControl3DOption.Value)
 			{
-				return "Animation engine";
+				case MotionControl3D.CharacterController:
+					if (character.GetComponent<CharacterController> () == null)
+					{
+						CharacterController characterController = character.gameObject.AddComponent <CharacterController>();
+						characterController.center = new Vector3 (0f, 1f, 0f);
+						characterController.height = 2f;
+					}
+					break;
+					
+				case MotionControl3D.Rigidbody:
+					if (character.GetComponent<Rigidbody> () == null)
+					{
+						Rigidbody rigidbody = character.gameObject.AddComponent<Rigidbody> ();
+					}
+					if (character.GetComponent<CapsuleCollider> () == null)
+					{
+						CapsuleCollider capsuleCollider = character.gameObject.AddComponent <CapsuleCollider>();
+						capsuleCollider.center = new Vector3 (0f, 1f, 0f);
+						capsuleCollider.height = 2f;
+					}
+					break;
+					
+				case MotionControl3D.NavMeshAgent:
+					if (character.GetComponent<CharacterController> () == null)
+					{
+						CharacterController characterController = character.gameObject.AddComponent <CharacterController>();
+						characterController.center = new Vector3 (0f, 1f, 0f);
+						characterController.height = 2f;
+					}
+					if (character.GetComponent<NavMeshAgent> () == null)
+					{
+						NavMeshAgent navMeshAgent = character.gameObject.AddComponent <NavMeshAgent>();
+						navMeshAgent.height = 2f;
+					}
+					break;
+					
+				case MotionControl3D.CustomScript:
+					character.motionControl = MotionControl.Manual;
+					break;
 			}
-			else if (pageNumber == 3)
+		}
+
+
+		private void ConfigMotion2D (AC.Char character)
+		{
+			if (add2DCollision)
 			{
-				return "Additional settings";
+				if (character.GetComponent<Collider2D> () == null)
+				{
+					character.gameObject.AddComponent <CircleCollider2D>();
+				}
+				if (character.GetComponent<Rigidbody2D> () == null)
+				{
+					Rigidbody2D rigidbody = character.gameObject.AddComponent<Rigidbody2D> ();
+					rigidbody.gravityScale = 0f;
+				}
 			}
-			else if (pageNumber == 4)
-			{
-				return "Complete";
-			}
-			
-			return "";
+
+			character.turn2DCharactersIn3DSpace = false;
+			character.ignoreGravity = true;
+			FollowSortingMap followSortingMap = character.gameObject.AddComponent <FollowSortingMap>();
+			followSortingMap.followSortingMap = true;
 		}
 		
 		
 		private void Finish ()
 		{
-			bool is2D = false;
+			if (baseObject == null) baseObject = new GameObject ("New " + charType);
+			
+			if (baseObject)
+			{
+				if (UnityVersionHandler.IsPrefabFile (baseObject))
+				{
+					string originalName = baseObject.name;
+					baseObject = Instantiate (baseObject);
+					baseObject.name = originalName;
+				}
+				baseObject.SetActive (true);
+			}
+
+			if (string.IsNullOrEmpty (characterName))
+			{
+				characterName = baseObject.name;
+			}
 
 			GameObject newCharacterOb = baseObject;
-			GameObject newBaseObject = baseObject;
+			GameObject newBaseObject = isSpriteBased ? new GameObject (characterName) : baseObject;
 
-			if (IsFirstPerson ())
+			newBaseObject.transform.position = Vector3.zero;
+			newBaseObject.transform.eulerAngles = Vector3.zero;
+			newBaseObject.layer = LayerMask.NameToLayer ("Ignore Raycast");
+
+			AC.Char character;
+			switch (charType)
 			{
-				newBaseObject = new GameObject ("Player");
-				newBaseObject.AddComponent <Paths>();
-				newBaseObject.AddComponent <Rigidbody>();
-				Player playerScript = newBaseObject.AddComponent <Player>();
-				playerScript.animationEngine = animationEngine;
-				CapsuleCollider capsuleCollider = newBaseObject.AddComponent <CapsuleCollider>();
-				capsuleCollider.center = new Vector3 (0f, 1f, 0f);
-				capsuleCollider.height = 2f;
+				case CharType.Player:
+				default:
+					character = newBaseObject.AddComponent<Player> ();
+					break;
+				
+				case CharType.NPC:
+					character = newBaseObject.AddComponent<NPC> ();
+					break;
+			}
+
+			character.speechLabel = characterName;
+
+			if (IsFirstPerson)
+			{
+				ConfigMotion3D (character);
 
 				GameObject cameraObject = new GameObject ("First person camera");
 				cameraObject.transform.parent = newBaseObject.transform;
@@ -206,43 +347,42 @@ namespace AC
 				cam.enabled = false;
 				cameraObject.AddComponent <FirstPersonCamera>();
 
-				newBaseObject.layer = LayerMask.NameToLayer ("Ignore Raycast");
 				return;
 			}
 
-			if (animationEngine == AnimationEngine.SpritesUnity || animationEngine == AnimationEngine.SpritesUnityComplex)
+			if (Is2D)
 			{
-				string _name = charName;
-				if (charName == null || charName.Length == 0) _name = ("My new " + charType.ToString ());
+				ConfigMotion2D (character);
+			}
+			else
+			{
+				ConfigMotion3D (character);
+			}
 
-				if (!enforce3D)
-				{
-					is2D = true;
-
-					FollowSortingMap followSortingMap = newCharacterOb.AddComponent <FollowSortingMap>();
-					followSortingMap.followSortingMap = true;
-				}
-
-				newBaseObject = new GameObject (_name);
+			if (isSpriteBased)
+			{
 				newCharacterOb.transform.parent = newBaseObject.transform;
 				newCharacterOb.transform.position = Vector3.zero;
 				newCharacterOb.transform.eulerAngles = Vector3.zero;
 
-				newBaseObject.layer = LayerMask.NameToLayer ("Ignore Raycast");
-			}
+				character.animationEngine = (animationEngine2DOption.Value == AnimationEngine2D.SpritesUnity) ? AnimationEngine.SpritesUnity : AnimationEngine.SpritesUnityComplex;
+				character._spriteDirectionData = new SpriteDirectionData (true, false);
 
-			if (animationEngine == AnimationEngine.Mecanim || animationEngine == AnimationEngine.SpritesUnity || animationEngine == AnimationEngine.SpritesUnityComplex)
-			{
-				if (newCharacterOb.GetComponent <Animator>() == null)
+				if (newCharacterOb.GetComponent<Animator> () == null)
 				{
-					newCharacterOb.AddComponent <Animator>();
+					newCharacterOb.AddComponent<Animator> ();
+				}
+
+				if (autoAddAnimatorStates)
+				{
+					AutoAddAnimatorStates (newCharacterOb.GetComponent<Animator> ());
 				}
 			}
-			else if (animationEngine == AnimationEngine.Legacy)
+			else
 			{
-				if (newCharacterOb.GetComponent <Animation>() == null)
+				if (newBaseObject.GetComponent<Animator> () == null)
 				{
-					newCharacterOb.AddComponent <Animation>();
+					newBaseObject.AddComponent<Animator> ();
 				}
 			}
 
@@ -257,69 +397,48 @@ namespace AC
 				newBaseObject.AddComponent <Paths>();
 			}
 
-			AC.Char charScript = null;
-			if (charType == CharType.Player)
+			if (charType == CharType.NPC)
 			{
-				charScript = newBaseObject.AddComponent <Player>();
-			}
-			else if (charType == CharType.NPC)
-			{
-				charScript = newBaseObject.AddComponent <NPC>();
-
-				if (is2D)
+				if (Is2D)
 				{
-					BoxCollider2D boxCollider = newCharacterOb.AddComponent <BoxCollider2D>();
-					boxCollider.offset = new Vector2 (0f, 1f);
-					boxCollider.size = new Vector2 (1f, 2f);
-					boxCollider.isTrigger = true;
+					if (newCharacterOb.GetComponent<BoxCollider2D> () == null)
+					{
+						BoxCollider2D boxCollider = newCharacterOb.AddComponent <BoxCollider2D>();
+						boxCollider.offset = new Vector2 (0f, 1f);
+						boxCollider.size = new Vector2 (1f, 2f);
+						boxCollider.isTrigger = true;
+					}
 				}
 				else
 				{
-					CapsuleCollider capsuleCollider = newCharacterOb.AddComponent <CapsuleCollider>();
-					capsuleCollider.center = new Vector3 (0f, 1f, 0f);
-					capsuleCollider.height = 2f;
+					if (newCharacterOb.GetComponent<Collider> () == null)
+					{
+						CapsuleCollider capsuleCollider = newCharacterOb.AddComponent <CapsuleCollider>();
+						capsuleCollider.center = new Vector3 (0f, 1f, 0f);
+						capsuleCollider.height = 2f;
+					}
 				}
 
 				Hotspot hotspot = newCharacterOb.AddComponent <Hotspot>();
-				if (is2D)
-				{
-					hotspot.drawGizmos = false;
-				}
-				hotspot.hotspotName = charName;
+				hotspot.hotspotName = characterName;
 			}
 
-			if (is2D)
+			if (Is2D)
 			{
-				newBaseObject.AddComponent <CircleCollider2D>();
+				character.spriteChild = newCharacterOb.transform;
 
-				if (charType == CharType.Player)
+				if (animationEngine2DOption.Value == AnimationEngine2D.SpritesUnity)
 				{
-					if (newBaseObject.GetComponent <Rigidbody2D>() == null)
-					{
-						newBaseObject.AddComponent <Rigidbody2D>();
-					}
-					charScript.ignoreGravity = true;
+					character.animationEngine = AnimationEngine.SpritesUnity;
 				}
-				charScript.turn2DCharactersIn3DSpace = enforce3D;
+				else if (animationEngine2DOption.Value == AnimationEngine2D.SpritesUnityComplex)
+				{
+					character.animationEngine = AnimationEngine.SpritesUnityComplex;
+				}
 			}
 			else
 			{
-				if (newBaseObject.GetComponent <Rigidbody>() == null)
-				{
-					newBaseObject.AddComponent <Rigidbody>();
-				}
-				if (charType == CharType.Player)
-				{
-					CapsuleCollider capsuleCollider = newBaseObject.AddComponent <CapsuleCollider>();
-					capsuleCollider.center = new Vector3 (0f, 1f, 0f);
-					capsuleCollider.height = 2f;
-					newBaseObject.layer = LayerMask.NameToLayer ("Ignore Raycast");
-				}
-			}
-
-			if (animationEngine == AnimationEngine.SpritesUnity || animationEngine == AnimationEngine.SpritesUnityComplex)
-			{
-				charScript.spriteChild = newCharacterOb.transform;
+				character.animationEngine = AnimationEngine.Mecanim;
 			}
 
 			if (charType == CharType.Player && KickStarter.settingsManager && KickStarter.settingsManager.hotspotDetection == HotspotDetection.PlayerVicinity)
@@ -329,7 +448,7 @@ namespace AC
 				detectorOb.transform.position = Vector3.zero;
 				detectorOb.AddComponent <DetectHotspots>();
 
-				if (is2D)
+				if (Is2D)
 				{
 					CircleCollider2D circleCollider = detectorOb.AddComponent <CircleCollider2D>();
 					circleCollider.isTrigger = true;
@@ -341,23 +460,47 @@ namespace AC
 				}
 			}
 
-			charScript.animationEngine = animationEngine;
-			if (animationEngine == AC.AnimationEngine.Custom)
-			{
-				charScript.customAnimationClass = customAnimationClass;
-			}
-			charScript.speechLabel = charName;
 
-			GameObject soundChild = new GameObject ("Sound child");
+			GameObject soundChild = new GameObject ("Footsteps");
 			soundChild.transform.parent = newBaseObject.transform;
 			soundChild.transform.localPosition = Vector3.zero;
 			AudioSource childAudioSource = soundChild.AddComponent <AudioSource>();
 			childAudioSource.playOnAwake = false;
 			Sound sound = soundChild.AddComponent <Sound>();
-			charScript.soundChild = sound;
+
+			FootstepSounds footstepSounds = character.gameObject.AddComponent<FootstepSounds> ();
+			footstepSounds.soundToPlayFrom = sound;
+			footstepSounds.character = character;
+
+			if (charType == CharType.Player && assignPlayerPrefabID >= 0)
+			{
+				// Make a prefab and assign in Settings Manager
+				string localPath = AssetInstallPath + newBaseObject.name + ".prefab";
+
+				// Make sure the file name is unique, in case an existing Prefab has the same name.
+				localPath = AssetDatabase.GenerateUniqueAssetPath (localPath);
+
+				// Create the new Prefab and log whether Prefab was saved successfully.
+				bool prefabSuccess;
+				GameObject newPrefab = PrefabUtility.SaveAsPrefabAssetAndConnect (newBaseObject, localPath, InteractionMode.UserAction, out prefabSuccess);
+				if (newPrefab)
+				{
+
+					var playerPrefab = KickStarter.settingsManager.playerSwitching == PlayerSwitching.DoNotAllow
+									 ? KickStarter.settingsManager.PlayerPrefab
+									 : KickStarter.settingsManager.GetPlayerPrefab (assignPlayerPrefabID);
+
+					if (playerPrefab != null)
+					{
+						playerPrefab.playerOb = newPrefab.GetComponent<Player> ();
+						baseObject = null;
+						EditorGUIUtility.PingObject (newPrefab);
+						return;
+					}
+				}
+			}
 
 			baseObject = null;
-			charName = string.Empty;
 			EditorGUIUtility.PingObject (newBaseObject);
 		}
 
@@ -366,120 +509,275 @@ namespace AC
 		{
 			GUI.skin.label.wordWrap = true;
 			
-			if (pageNumber == 0)
+			switch (currentPage)
 			{
-				if (Resource.ACLogo != null)
+				case PageType.CharType:
 				{
-					GUI.DrawTexture (new Rect (82, 25, 256, 128), Resource.ACLogo);
-				}
-				GUILayout.Space (140f);
-				GUILayout.Label ("This window can assist with the creation of a Player or NPC.");
-				GUILayout.Label ("To begin, click 'Next'.");
-			}
-			
-			else if (pageNumber == 1)
-			{
-				GUILayout.Label ("Is this a Player or an NPC?");
-				charType = (CharType) EditorGUILayout.EnumPopup (charType);
-
-				if (charType == CharType.Player && KickStarter.settingsManager && KickStarter.settingsManager.movementMethod == MovementMethod.FirstPerson)
-				{
-					EditorGUILayout.HelpBox ("First-person Player prefabs require no base graphic, though one can be added after creation if desired.", MessageType.Info);
-					return;
-				}
-
-				EditorGUILayout.Space ();
-				charName = EditorGUILayout.TextField ("The " + charType.ToString () + "'s name:", charName);
-
-				EditorGUILayout.Space ();
-				GUILayout.Label ("Assign your character's base GameObject (such as a Skinned Mesh Renderer or 'idle' sprite):");
-				baseObject = (GameObject) EditorGUILayout.ObjectField (baseObject, typeof (GameObject), true);
-
-				if (baseObject != null && !IsFirstPerson ())
-				{
-					if (baseObject.GetComponent <AC.Char>())
+					GUI.Label (new Rect (Padding + 20, 100, position.width - Padding - Padding - 40, 40), "Select the type of character to generate.");
+					
+					if (GUI.Button (new Rect (100, 200, BottomButtonWidth, BottomButtonHeight), "Player", ButtonStyle))
 					{
-						EditorGUILayout.HelpBox ("The wizard cannot modify an existing character!", MessageType.Warning);
+						charType = CharType.Player;
+						SetPage ((PageType) ((int) currentPage + 1));
 					}
-					else if (UnityVersionHandler.IsPrefabFile (baseObject) || !baseObject.activeInHierarchy)
-					{
-						EditorGUILayout.HelpBox ("The object must be in the scene and enabled for the wizard to work.", MessageType.Warning);
-					}
-				}
-			}
-			
-			else if (pageNumber == 2)
-			{
-				GUILayout.Label ("How should '" + charType.ToString () + "' should be animated?");
-				animationEngine = (AnimationEngine) EditorGUILayout.EnumPopup (animationEngine);
 
-				if (animationEngine == AnimationEngine.Custom)
-				{
-					EditorGUILayout.HelpBox ("This option is intended for characters that make use of a custom/third-party animation system that will require additional coding.", MessageType.Info);
-				}
-				else if (animationEngine == AnimationEngine.Legacy)
-				{
-					EditorGUILayout.HelpBox ("Legacy animation is for 3D characters that do not require complex animation trees or multiple layers. Its easier to use than Mecanim, but not as powerful.", MessageType.Info);
-				}
-				else if (animationEngine == AnimationEngine.Mecanim)
-				{
-					EditorGUILayout.HelpBox ("Mecanim animation is the standard option for 3D characters. You will need to define Mecanim parameters and transitions, but will have full control over how the character is animated.", MessageType.Info);
-				}
-				else if (animationEngine == AnimationEngine.SpritesUnity)
-				{
-					EditorGUILayout.HelpBox ("This option is the standard option for 2D characters. Animation clips are played automatically, without the need to define Mecanim parameters, but you will not be able to make e.g. smooth transitions between the different movement animations.", MessageType.Info);
-				}
-				else if (animationEngine == AnimationEngine.SpritesUnityComplex)
-				{
-					EditorGUILayout.HelpBox ("This option is harder to use than 'Sprites Unity', but gives you more control over how your character animates - allowing you to control animations using Mecanim parameters and transitions.", MessageType.Info);
-				}
-			}
-			
-			else if (pageNumber == 3)
-			{
-				EditorGUILayout.LabelField ("Chosen animation engine: " + animationEngine.ToString (), EditorStyles.boldLabel);
-
-				if (!IsFirstPerson ())
-				{
-					if (animationEngine == AnimationEngine.Custom)
+					if (GUI.Button (new Rect (position.width - BottomButtonWidth - 100, 200, BottomButtonWidth, BottomButtonHeight), "NPC", ButtonStyle))
 					{
-						EditorGUILayout.HelpBox ("A subclass of 'AnimEngine' will be used to bridge AC with an external animation engine. The subclass script defined above must exist for the character to animate. Once created, enter its name in the box below:", MessageType.Info);
-						customAnimationClass = EditorGUILayout.TextField ("Subclass script name:", customAnimationClass);
+						charType = CharType.NPC;
+						SetPage ((PageType) ((int) currentPage + 1));
 					}
-					else if (animationEngine == AnimationEngine.Mecanim || animationEngine == AnimationEngine.SpritesUnityComplex || animationEngine == AnimationEngine.SpritesUnity)
+					break;
+				}
+
+				case PageType.BaseGraphic:
+				{
+					GameObject oldBaseObject = baseObject;
+					GUI.Box (new Rect (Padding, 100, position.width - Padding - Padding, 120), "", CustomStyles.Header);
+					GUI.Label (new Rect (Padding + 40, 100, 120, 20), "Base GameObject:", LabelStyle);
+					baseObject = (GameObject) EditorGUI.ObjectField (new Rect (Padding + 20, 130, position.width - (Padding * 2f) - 40, 40), baseObject, typeof (GameObject), true);
+					GUI.Label (new Rect (Padding + 20, 170, position.width - Padding - Padding - 40, 40), (IsFirstPerson ? "Optional) " : "") + "Assign a Renderer GameObject to use as the basis for the character.");
+					
+					GUI.Box (new Rect (Padding, 240, position.width - Padding - Padding, 90), "", CustomStyles.Header);
+					GUI.Label (new Rect (Padding + 40, 240, 120, 20), "Character's name:", LabelStyle);
+					characterName = GUI.TextField (new Rect (Padding + 20, 270, position.width - (Padding * 2f) - 40, 40), characterName, InputStyle);
+
+					if (baseObject != null)
 					{
-						if (baseObject.GetComponent <Animator>() == null)
+						if (oldBaseObject == null && string.IsNullOrEmpty (characterName))
 						{
-							EditorGUILayout.HelpBox ("This chosen method will make use of an Animator Controller asset.\nOnce the wizard has finished, you will need to create such an asset and assign it in your character's 'Animator' component.", MessageType.Info);
+							characterName = baseObject.name;
+						}
+					}
+					break;
+				}
+
+				case PageType.Configuration:
+					if (isSpriteBased)
+					{
+						GUI.Box (new Rect (Padding, 100, position.width - Padding - Padding, 80), "", CustomStyles.Header);
+						animationEngine2DOption.SelectedIndex = EditorGUI.Popup (new Rect (Padding + 20, 105, 400, 20), "Animation engine:", animationEngine2DOption.SelectedIndex, animationEngine2DOption.Labels);
+						GUI.Label (new Rect (Padding + 20, 130, position.width - Padding - Padding - 40, 40), animationEngine2DOption.Description);
+
+						GUI.Box (new Rect (Padding, 200, position.width - Padding - Padding, 40), "", CustomStyles.Header);
+						autoAddAnimatorStates = GUI.Toggle (new Rect (Padding + 20, 205, 200, 20), autoAddAnimatorStates, new GUIContent ("Auto-add animator states?", "If True, then the character's Animator will be populated with empty states for their standard animations, that can be replaced with proper animations later."));
+
+						GUI.Box (new Rect (Padding, 260, position.width - Padding - Padding, 40), "", CustomStyles.Header);
+						if (Is2D)
+						{
+							add2DCollision = GUI.Toggle (new Rect (Padding + 20, 265, 200, 20), add2DCollision, new GUIContent ("Add collision?", "If True, Collision components will be added to the character's root."));
 						}
 						else
 						{
-							EditorGUILayout.HelpBox ("This chosen method will make use of an Animator component, and one has already been detected on the base object.\nThis will be assumed to be the Animator to animate the character with.", MessageType.Info);
+							GUI.Box (new Rect (Padding, 260, position.width - Padding - Padding, 80), "", CustomStyles.Header);
+							motionControl3DOption.SelectedIndex = EditorGUI.Popup (new Rect (Padding + 20, 265, 400, 20), "Motion control:", motionControl3DOption.SelectedIndex, motionControl3DOption.Labels);
+							GUI.Label (new Rect (Padding + 20, 290, position.width - Padding - Padding - 40, 40), motionControl3DOption.Description);
 						}
 					}
-
-					if (animationEngine == AnimationEngine.SpritesUnityComplex || animationEngine == AnimationEngine.SpritesUnity)
+					else if (Is2D)
 					{
-						if (SceneSettings.CameraPerspective != CameraPerspective.TwoD)
-						{
-							EditorGUILayout.LabelField ("It has been detected that you are attempting\nto create a 2D character in a 3D game.\nIs this correct?", GUILayout.Height (40f));
-							enforce3D = EditorGUILayout.Toggle ("Yes!", enforce3D);
-						}
+						GUI.Box (new Rect (Padding, 100, position.width - Padding - Padding, 40), "", CustomStyles.Header);
+						add2DCollision = GUI.Toggle (new Rect (Padding + 20, 105, position.width - (Padding * 2f) - 40, 20), add2DCollision, new GUIContent ("Add collision?", "If True, Collision components will be added to the character's root."));
 					}
-				}
-				EditorGUILayout.HelpBox ("Click 'Finish' below to create the character and complete the wizard.", MessageType.Info);
-			}
-			
-			else if (pageNumber == 4)
-			{
-				GUILayout.Label ("Congratulations, your " + charType.ToString () + " has been created! Check the '" + charType.ToString () + "' Inspector to set up animation and other properties, as well as modify any generated Colliders / Rigidbody components.");
-				if (charType == CharType.Player)
-				{
-					GUILayout.Space (5f);
-					GUILayout.Label ("To register this is as the main player character, turn it into a prefab and assign it in your Settings Manager, underneath 'Player settings'.");
-				}
+					else if (!Is2D)
+					{
+						GUI.Box (new Rect (Padding, 100, position.width - Padding - Padding, 80), "", CustomStyles.Header);
+						motionControl3DOption.SelectedIndex = EditorGUI.Popup (new Rect (Padding + 20, 105, 400, 20), "Motion control:", motionControl3DOption.SelectedIndex, motionControl3DOption.Labels);
+						GUI.Label (new Rect (Padding + 20, 130, position.width - Padding - Padding - 40, 40), motionControl3DOption.Description);
+					}
+					break;
+
+				case PageType.Complete:
+					GUILayout.Label ("Congratulations, your " + charType.ToString () + " has been created! Check the '" + charType.ToString () + "' Inspector to set up animation and other properties, as well as modify any generated Colliders / Rigidbody components.");
+					if (charType == CharType.Player && assignPlayerPrefabID < 0)
+					{
+						GUILayout.Space (5f);
+						GUILayout.Label ("To register this is as the main Player character, turn it into a prefab and assign it in the Settings Manager's 'Character' panel.");
+					}
+					break;
+
+				default:
+					break;
 			}
 		}
+
+
+		private void ShowOptionGUI<T> (NGWData.Option<T> option, Rect position) where T : System.Enum
+		{
+			int numOptions = option.Labels.Length;
+			int totalScrollViewHeight = 30 * numOptions;
+
+			GUI.Box (new Rect (NewGameWizardWindow.Padding, 100, 315, totalScrollViewHeight + 40), "", CustomStyles.Header);
+
+			scrollPosition = GUI.BeginScrollView (new Rect (NewGameWizardWindow.Padding + 20, 120, 285, 280), scrollPosition, new Rect (0, 0, NewGameWizardWindow.ScrollBoxWidth - 20, totalScrollViewHeight));
+
+			string[] optionLabels = new string[numOptions];
+			for (int i = 0; i < optionLabels.Length; i++)
+			{
+				optionLabels[i] = option.Labels[i];
+			}
+
+			option.SelectedIndex = GUI.SelectionGrid (new Rect (0, 0, 275, totalScrollViewHeight), option.SelectedIndex, optionLabels, 1, NewGameWizardWindow.ButtonStyle);
+
+			GUI.EndScrollView ();
+
+			// Details box
+			var optionData = option.optionDatas[option.SelectedIndex];
+			GUI.Box (new Rect (position.width - NewGameWizardWindow.PreviewImageWidth - 35 - NewGameWizardWindow.Padding, 100, NewGameWizardWindow.PreviewImageWidth + 40, 320), "", CustomStyles.Header);
+
+			GUI.DrawTexture (new Rect (position.width - NewGameWizardWindow.PreviewImageWidth - NewGameWizardWindow.Padding - 15, 120, NewGameWizardWindow.PreviewImageWidth, NewGameWizardWindow.PreviewImageHeight), optionData.icon, ScaleMode.StretchToFill);
+			GUI.Label (new Rect (position.width - NewGameWizardWindow.PreviewImageWidth - NewGameWizardWindow.Padding - 15, 320, NewGameWizardWindow.PreviewImageWidth, 40), optionData.label, CustomStyles.managerHeader);
+			bool wordWrapBackup = GUI.skin.label.wordWrap;
+			GUI.skin.label.wordWrap = true;
+			GUI.Label (new Rect (position.width - NewGameWizardWindow.PreviewImageWidth - NewGameWizardWindow.Padding - 15, 340, NewGameWizardWindow.PreviewImageWidth, 80), optionData.description, NewGameWizardWindow.LabelStyle);
+			GUI.skin.label.wordWrap = wordWrapBackup;
+		}
+
+
+		private void AutoAddAnimatorStates (Animator animator)
+		{
+			var controller = AnimatorController.CreateAnimatorControllerAtPath (AssetInstallPath + charType + "_" + characterName + ".controller");
+			var rootStateMachine = controller.layers[0].stateMachine;
+
+			switch (animationEngine2DOption.Value)
+			{
+				case AnimationEngine2D.SpritesUnity:
+				{
+					Vector3 startPosition = new Vector3 (50, 200);
+					float verticalSeparation = -60;
+					float horizontalSeparation = 220;
+					rootStateMachine.AddState ("idle_D", startPosition);
+					rootStateMachine.AddState ("idle_U", startPosition + (Vector3.down * verticalSeparation));
+					rootStateMachine.AddState ("idle_L", startPosition + (Vector3.down * verticalSeparation * 2));
+					rootStateMachine.AddState ("idle_R", startPosition + (Vector3.down * verticalSeparation * 3));
+
+					rootStateMachine.AddState ("walk_D", startPosition + (Vector3.right * horizontalSeparation));
+					rootStateMachine.AddState ("walk_U", startPosition + (Vector3.right * horizontalSeparation) + (Vector3.down * verticalSeparation));
+					rootStateMachine.AddState ("walk_L", startPosition + (Vector3.right * horizontalSeparation) + (Vector3.down * verticalSeparation) * 2);
+					rootStateMachine.AddState ("walk_R", startPosition + (Vector3.right * horizontalSeparation) + (Vector3.down * verticalSeparation) * 3);
+
+					rootStateMachine.AddState ("talk_D", startPosition + (Vector3.right * horizontalSeparation * 2));
+					rootStateMachine.AddState ("talk_U", startPosition + (Vector3.right * horizontalSeparation * 2) + (Vector3.down * verticalSeparation));
+					rootStateMachine.AddState ("talk_L", startPosition + (Vector3.right * horizontalSeparation * 2) + (Vector3.down * verticalSeparation) * 2);
+					rootStateMachine.AddState ("talk_R", startPosition + (Vector3.right * horizontalSeparation * 2) + (Vector3.down * verticalSeparation) * 3);
+					break;
+				}
+
+				case AnimationEngine2D.SpritesUnityComplex:
+				{
+					controller.AddParameter ("Speed", AnimatorControllerParameterType.Float);
+					controller.AddParameter ("Direction", AnimatorControllerParameterType.Int);
+					controller.AddParameter ("Angle", AnimatorControllerParameterType.Float);
+					controller.AddParameter ("IsTalking", AnimatorControllerParameterType.Bool);
+
+					BlendTree idleBlendTree;
+					var idleState = controller.CreateBlendTreeInController ("Idle", out idleBlendTree);
+					idleBlendTree.blendType = BlendTreeType.Simple1D;
+					idleBlendTree.blendParameter = "Angle";
+					idleBlendTree.useAutomaticThresholds = false;
+					idleBlendTree.AddChild (null, 0f);
+					idleBlendTree.AddChild (null, 90f);
+					idleBlendTree.AddChild (null, 180f);
+					idleBlendTree.AddChild (null, 270f);
+					idleBlendTree.AddChild (null, 360f);
+
+					BlendTree walkBlendTree;
+					var walkState = controller.CreateBlendTreeInController ("Walk", out walkBlendTree);
+					walkBlendTree.blendType = BlendTreeType.Simple1D;
+					walkBlendTree.blendParameter = "Angle";
+					walkBlendTree.useAutomaticThresholds = false;
+					walkBlendTree.AddChild (null, 0f);
+					walkBlendTree.AddChild (null, 90f);
+					walkBlendTree.AddChild (null, 180f);
+					walkBlendTree.AddChild (null, 270f);
+					walkBlendTree.AddChild (null, 360f);
+
+					BlendTree talkBlendTree;
+					var talkState = controller.CreateBlendTreeInController ("Talk", out talkBlendTree);
+					talkBlendTree.blendType = BlendTreeType.Simple1D;
+					talkBlendTree.blendParameter = "Angle";
+					talkBlendTree.useAutomaticThresholds = false;
+					talkBlendTree.AddChild (null, 0f);
+					talkBlendTree.AddChild (null, 90f);
+					talkBlendTree.AddChild (null, 180f);
+					talkBlendTree.AddChild (null, 270f);
+					talkBlendTree.AddChild (null, 360f);
+
+					var idleTalkTransition = idleState.AddTransition (talkState, false);
+					idleTalkTransition.AddCondition (UnityEditor.Animations.AnimatorConditionMode.If, 0, "IsTalking");
+					idleTalkTransition.duration = 0;
+					idleTalkTransition.hasExitTime = false;
+
+					var talkIdleTransition = talkState.AddTransition (idleState, false);
+					talkIdleTransition.AddCondition (UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, "IsTalking");
+					talkIdleTransition.duration = 0;
+					talkIdleTransition.hasExitTime = false;
+
+					var idleWalkTransition = idleState.AddTransition (walkState, false);
+					idleWalkTransition.AddCondition (UnityEditor.Animations.AnimatorConditionMode.Greater, 0.1f, "Speed");
+					idleWalkTransition.duration = 0;
+					idleWalkTransition.hasExitTime = false;
+
+					var walkIdleTransition = walkState.AddTransition (idleState, false);
+					walkIdleTransition.AddCondition (UnityEditor.Animations.AnimatorConditionMode.Less, 0.1f, "Speed");
+					walkIdleTransition.duration = 0;
+					walkIdleTransition.hasExitTime = false;
+					break;
+				}
+
+				default:
+					break;
+			}
+
+			//AssetDatabase.SaveAssets ();
+			animator.runtimeAnimatorController = controller;
+		}
+
+
+		private bool ClickedBottomButton (float posX, string label)
+		{
+			return GUI.Button (new Rect (posX, position.height - BottomButtonHeight - 50, BottomButtonWidth, BottomButtonHeight), label, ButtonStyle);
+		}
+
+
+		private bool Is2D
+		{
+			get
+			{
+				return SceneSettings.IsUnity2D ();
+			}
+		}
+
+		
+		private bool IsFirstPerson 
+		{
+			get
+			{
+				return !Is2D && charType == CharType.Player && KickStarter.settingsManager && KickStarter.settingsManager.movementMethod == MovementMethod.FirstPerson;
+			}
+		}
+
+
+		private string AssetInstallPath
+		{
+			get
+			{
+				string installPath = "Assets/";
+				if (KickStarter.settingsManager)
+				{
+					installPath = AssetDatabase.GetAssetPath (KickStarter.settingsManager);
+					installPath = installPath.Substring (0, installPath.LastIndexOf ("/"));
+					installPath = installPath.Substring (0, installPath.LastIndexOf ("/") + 1);
+				}
+				return installPath;
+			}
+		}
+
+
+		private static Rect DefaultWindowRect { get { return new Rect (300, 200, 600, 440); }}
+
+		private GUIStyle InputStyle { get { return Resource.NodeSkin.customStyles[37]; }}
+		public static GUIStyle LabelStyle { get { return Resource.NodeSkin.customStyles[EditorGUIUtility.isProSkin ? 38 : 39]; }}
+		public static GUIStyle ButtonStyle { get { return Resource.NodeSkin.customStyles[40]; }}
 
 	}
 

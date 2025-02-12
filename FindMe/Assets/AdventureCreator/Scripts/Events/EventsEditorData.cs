@@ -23,18 +23,18 @@ namespace AC
 		private bool showSelectedEvent = true;
 
 
-		public void ShowGUI (List<EventBase> events, UnityEngine.Object source)
+		public void ShowGUI (List<EventBase> events, ActionListSource source, UnityEngine.Object sourceObject)
 		{
-			ShowEventsGUI (events, source);
+			ShowEventsGUI (events, source, sourceObject);
 
 			if (GUI.changed)
 			{
-				UnityVersionHandler.CustomSetDirty (source);
+				UnityVersionHandler.CustomSetDirty (sourceObject);
 			}
 		}
 
 
-		private void ShowEventsGUI (List<EventBase> events, UnityEngine.Object source)
+		private void ShowEventsGUI (List<EventBase> events, ActionListSource source, UnityEngine.Object sourceObject)
 		{
 			if (eventTypeReferences == null || eventTypeReferences.Length == 0)
 			{
@@ -63,7 +63,7 @@ namespace AC
 
 					if (GUILayout.Button (string.Empty, CustomStyles.IconCog))
 					{
-						SideMenu (i, events, source);
+						SideMenu (i, events, sourceObject);
 					}
 
 					EditorGUILayout.EndHorizontal ();
@@ -80,7 +80,7 @@ namespace AC
 				selectedReference = EditorGUILayout.Popup ("New event:", selectedReference, typeLabels);
 				if (CustomGUILayout.ClickedCreateButton ())
 				{
-					Undo.RecordObject (source, "Create new event");
+					Undo.RecordObject (sourceObject, "Create new event");
 
 					EventBase newEvent = (EventBase) Activator.CreateInstance (eventTypeReferences[selectedReference].Type);
 					newEvent.AssignID (GetUniqueID (events));
@@ -98,7 +98,7 @@ namespace AC
 				{
 					if (GUILayout.Button (string.Empty, CustomStyles.IconCog))
 					{
-						GlobalSideMenu (events, source);
+						GlobalSideMenu (events, sourceObject);
 					}
 				}
 				EditorGUILayout.EndHorizontal ();
@@ -115,22 +115,22 @@ namespace AC
 				if (showSelectedEvent)
 				{
 					CustomGUILayout.BeginVertical ();
-					bool isAssetFile = source is ScriptableObject;
-					events[selectedIndex].ShowGUI (isAssetFile);
+					bool isAssetFile = sourceObject is ScriptableObject;
+					events[selectedIndex].ShowGUI (isAssetFile, isAssetFile ? ActionListSource.AssetFile : source);
 					CustomGUILayout.EndVertical ();
 				}
 			}
 		}
 
 
-		private void SideMenu (int index, List<EventBase> events, UnityEngine.Object source)
+		private void SideMenu (int index, List<EventBase> events, UnityEngine.Object sourceObject)
 		{
 			GenericMenu menu = new GenericMenu ();
 			sideEvent = index;
 
 			if (events.Count > 0)
 			{
-				menu.AddItem (new GUIContent ("Delete"), false, Callback, new GenericMenuData ("Delete", events, source));
+				menu.AddItem (new GUIContent ("Delete"), false, Callback, new GenericMenuData ("Delete", events, sourceObject));
 			}
 			if (sideEvent > 0 || sideEvent < events.Count - 1)
 			{
@@ -138,13 +138,13 @@ namespace AC
 			}
 			if (sideEvent > 0)
 			{
-				menu.AddItem (new GUIContent ("Re-arrange/Move to top"), false, Callback, new GenericMenuData ("Move to top", events, source));
-				menu.AddItem (new GUIContent ("Re-arrange/Move up"), false, Callback, new GenericMenuData ("Move up", events, source));
+				menu.AddItem (new GUIContent ("Re-arrange/Move to top"), false, Callback, new GenericMenuData ("Move to top", events, sourceObject));
+				menu.AddItem (new GUIContent ("Re-arrange/Move up"), false, Callback, new GenericMenuData ("Move up", events, sourceObject));
 			}
 			if (sideEvent < events.Count - 1)
 			{
-				menu.AddItem (new GUIContent ("Re-arrange/Move down"), false, Callback, new GenericMenuData ("Move down", events, source));
-				menu.AddItem (new GUIContent ("Re-arrange/Move to bottom"), false, Callback, new GenericMenuData ("Move to bottom", events, source));
+				menu.AddItem (new GUIContent ("Re-arrange/Move down"), false, Callback, new GenericMenuData ("Move down", events, sourceObject));
+				menu.AddItem (new GUIContent ("Re-arrange/Move to bottom"), false, Callback, new GenericMenuData ("Move to bottom", events, sourceObject));
 			}
 
 			menu.ShowAsContext ();
@@ -156,14 +156,14 @@ namespace AC
 
 			public readonly string command;
 			public readonly List<EventBase> events;
-			public readonly UnityEngine.Object source;
+			public readonly UnityEngine.Object sourceObject;
 
 
-			public GenericMenuData (string _command, List<EventBase> _events, UnityEngine.Object _source)
+			public GenericMenuData (string _command, List<EventBase> _events, UnityEngine.Object _sourceObject)
 			{
 				command = _command;
 				events = _events;
-				source = _source;
+				sourceObject = _sourceObject;
 			}
 		}
 
@@ -178,7 +178,7 @@ namespace AC
 				switch (data.command)
 				{
 					case "Delete":
-						Undo.RecordObject (data.source, "Delete Event");
+						Undo.RecordObject (data.sourceObject, "Delete Event");
 						if (sideEvent == selectedIndex)
 						{
 							DeactivateAllEvents ();
@@ -187,31 +187,31 @@ namespace AC
 						break;
 
 					case "Move up":
-						Undo.RecordObject (data.source, "Move Event up");
+						Undo.RecordObject (data.sourceObject, "Move Event up");
 						data.events.RemoveAt (sideEvent);
 						data.events.Insert (sideEvent - 1, tempEvent);
 						break;
 
 					case "Move down":
-						Undo.RecordObject (data.source, "Move Event down");
+						Undo.RecordObject (data.sourceObject, "Move Event down");
 						data.events.RemoveAt (sideEvent);
 						data.events.Insert (sideEvent + 1, tempEvent);
 						break;
 
 					case "Move to top":
-						Undo.RecordObject (data.source, "Move Event to top");
+						Undo.RecordObject (data.sourceObject, "Move Event to top");
 						data.events.RemoveAt (sideEvent);
 						data.events.Insert (0, tempEvent);
 						break;
 
 					case "Move to bottom":
-						Undo.RecordObject (data.source, "Move Event to bottom");
+						Undo.RecordObject (data.sourceObject, "Move Event to bottom");
 						data.events.Add (tempEvent);
 						data.events.RemoveAt (sideEvent);
 						break;
 				}
 
-				UnityVersionHandler.CustomSetDirty (data.source);
+				UnityVersionHandler.CustomSetDirty (data.sourceObject);
 				AssetDatabase.SaveAssets ();
 			}
 
@@ -219,10 +219,10 @@ namespace AC
 		}
 
 
-		private void GlobalSideMenu (List<EventBase> events, UnityEngine.Object source)
+		private void GlobalSideMenu (List<EventBase> events, UnityEngine.Object sourceObject)
 		{
 			GenericMenu menu = new GenericMenu ();
-			menu.AddItem (new GUIContent ("Delete all"), false, GlobalCallback, new GenericMenuData ("Delete all", events, source));
+			menu.AddItem (new GUIContent ("Delete all"), false, GlobalCallback, new GenericMenuData ("Delete all", events, sourceObject));
 			menu.ShowAsContext ();
 		}
 
@@ -234,7 +234,7 @@ namespace AC
 			switch (data.command)
 			{
 				case "Delete all":
-					Undo.RecordObject (data.source, "Delete all Events");
+					Undo.RecordObject (data.sourceObject, "Delete all Events");
 					DeactivateAllEvents ();
 					data.events.Clear ();
 					break;
@@ -243,7 +243,7 @@ namespace AC
 					break;
 			}
 
-			UnityVersionHandler.CustomSetDirty (data.source);
+			UnityVersionHandler.CustomSetDirty (data.sourceObject);
 			AssetDatabase.SaveAssets ();
 		}
 

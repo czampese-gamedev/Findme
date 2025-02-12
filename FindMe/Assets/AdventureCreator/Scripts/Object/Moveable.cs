@@ -47,6 +47,8 @@ namespace AC
 		protected Quaternion startRotation;
 		protected Quaternion endRotation;
 
+		protected bool copyMarkerPosition, copyMarkerRotation, copyMarkerScale;
+
 		protected float scaleChangeTime;
 		protected float scaleStartTime;
 		protected AnimationCurve scaleTimeCurve;
@@ -299,6 +301,10 @@ namespace AC
 		 */
 		public void Move (Vector3 _newVector, MoveMethod _moveMethod, bool _inWorldSpace, float _transitionTime, TransformType _transformType, bool _doEulerRotation, AnimationCurve _timeCurve, bool clearExisting)
 		{
+			copyMarkerPosition = true;
+			copyMarkerRotation = true;
+			copyMarkerScale = true;
+
 			if (_transformType == TransformType.Translate && predictCollisions)
 			{
 				Vector3 _endPosition = inWorldSpace ? _newVector : Transform.TransformVector (_newVector);
@@ -334,7 +340,7 @@ namespace AC
 
 			if (_rigidbody && !_rigidbody.isKinematic)
 			{
-				_rigidbody.velocity = _rigidbody.angularVelocity = Vector3.zero;
+				UnityVersionHandler.SetRigidbodyVelocity (_rigidbody, _rigidbody.angularVelocity = Vector3.zero);
 			}
 
 			inWorldSpace = _inWorldSpace;
@@ -503,8 +509,12 @@ namespace AC
 		 * <param name = "_transitionTime">The time, in seconds, that the movement should take place over</param>
 		 * <param name = "_timeCurve">If _moveMethod = MoveMethod.CustomCurve, then the movement speed will follow the shape of the supplied AnimationCurve. This curve can exceed "1" in the Y-scale, allowing for overshoot effects.</param>
 		 */
-		public void Move (Marker _marker, MoveMethod _moveMethod, bool _inWorldSpace, float _transitionTime, AnimationCurve _timeCurve)
+		public void Move (Marker _marker, MoveMethod _moveMethod, bool _inWorldSpace, float _transitionTime, AnimationCurve _timeCurve, bool _copyMarkerPosition = true, bool _copyMarkerRotation = true, bool _copyMarkerScale = true)
 		{
+			copyMarkerPosition = _copyMarkerPosition;
+			copyMarkerRotation = _copyMarkerRotation;
+			copyMarkerScale = _copyMarkerScale;
+
 			if (predictCollisions)
 			{
 				Vector3 _endPosition = inWorldSpace ? _marker.Position : Transform.TransformVector (_marker.Transform.localPosition);
@@ -541,7 +551,7 @@ namespace AC
 
 			if (_rigidbody && !_rigidbody.isKinematic)
 			{
-				_rigidbody.velocity = _rigidbody.angularVelocity = Vector3.zero;
+				UnityVersionHandler.SetRigidbodyVelocity (_rigidbody, _rigidbody.angularVelocity = Vector3.zero);
 			}
 
 			inWorldSpace = _inWorldSpace;
@@ -554,16 +564,16 @@ namespace AC
 				{
 					Transform oldParent = Transform.parent;
 					Transform.SetParent (null, true);
-					Transform.localScale = _marker.Transform.lossyScale;
-					SetPosition (_marker.Position);
-					SetRotation (_marker.Rotation);
+					if (copyMarkerScale) Transform.localScale = _marker.Transform.lossyScale;
+					if (copyMarkerPosition) SetPosition (_marker.Position);
+					if (copyMarkerRotation) SetRotation (_marker.Rotation);
 					if (oldParent) Transform.SetParent (oldParent, true);
 				}
 				else
 				{
-					SetLocalPosition (_marker.Transform.localPosition);
-					Transform.localEulerAngles = _marker.Transform.localEulerAngles;
-					Transform.localScale = _marker.Transform.localScale;
+					if (copyMarkerPosition) SetLocalPosition (_marker.Transform.localPosition);
+					if (copyMarkerRotation) Transform.localEulerAngles = _marker.Transform.localEulerAngles;
+					if (copyMarkerScale) Transform.localScale = _marker.Transform.localScale;
 				}
 			}
 			else
@@ -592,14 +602,29 @@ namespace AC
 					endScale = _marker.Transform.localScale;
 				}
 
-				if (startPosition == endPosition && startRotation == endRotation && startScale == endScale)
+				if ((!copyMarkerPosition || startPosition == endPosition) && (!copyMarkerRotation || startRotation == endRotation) && (!copyMarkerScale || startScale == endScale))
 				{
 					Move (_marker, _moveMethod, _inWorldSpace, 0f, _timeCurve);
 					return;
 				}
 
-				positionChangeTime = rotateChangeTime = scaleChangeTime = _transitionTime;
-				positionStartTime = rotateStartTime = scaleStartTime = Time.time;
+				if (copyMarkerPosition)
+				{
+					positionChangeTime = _transitionTime;
+					positionStartTime = Time.time;
+				}
+
+				if (copyMarkerRotation)
+				{
+					rotateChangeTime = _transitionTime;
+					rotateStartTime = Time.time;
+				}
+
+				if (copyMarkerScale)
+				{
+					scaleChangeTime = _transitionTime;
+					scaleStartTime = Time.time;
+				}
 
 				if (_moveMethod == MoveMethod.CustomCurve)
 				{

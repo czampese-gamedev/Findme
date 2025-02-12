@@ -407,6 +407,8 @@ namespace AC
 		public static Delegate_OnHotspotSetInteractionState OnHotspotSetInteractionState;
 		/** An event triggered whenever the FlashHotspots input is invoked to flash all Hotspots in the scene*/
 		public static Delegate_Generic OnHotspotsFlash;
+		/** An event triggered when Highlight components are to be updated */
+		public static Delegate_Generic OnUpdateHighlights;
 
 
 		/**
@@ -611,6 +613,16 @@ namespace AC
 			}
 		}
 
+
+		/** Triggers the OnUpdateHighlights event */
+		public void Call_OnUpdateHighlights ()
+		{
+			if (OnUpdateHighlights != null)
+			{
+				OnUpdateHighlights ();
+			}
+		}
+		
 		#endregion
 
 
@@ -620,6 +632,7 @@ namespace AC
 		public delegate void Delegate_OnTeleport (GameObject gameObject);
 		/** An event triggered when an object is teleported using the 'Object: Teleport' Action */
 		public static Delegate_OnTeleport OnTeleport;
+
 
 		/**
 		 * <summary>Triggers the OnTeleport event</summary>
@@ -634,6 +647,7 @@ namespace AC
 				OnTeleport (_object);
 			}
 		}
+
 
 		#endregion
 
@@ -1079,6 +1093,8 @@ namespace AC
 		public delegate void Delegate_SaveID (int saveID);
 		/** A delegate for the OnSwitchProfile event */
 		public delegate void Delegate_OnSwitchProfile (int profileID);
+		/** A delegate for the OnGatherSaves event */
+		public delegate void Delegate_OnGatherSaves (ref List<SaveFile> foundSaveFiles);
 		/** An event triggered before a save game file is created */
 		public static Delegate_SaveID OnBeforeSaving;
 		/** An event triggered after a save game file is created */
@@ -1103,6 +1119,8 @@ namespace AC
 		public static Delegate_Generic OnRestartGame;
 		/** An event triggered as a separate thread is about to be used to save the game */
 		public static Delegate_SaveFile OnPrepareSaveThread;
+		/** An event triggered when save files are gathered */
+		public static Delegate_OnGatherSaves OnGatherSaves;
 
 
 		/**
@@ -1200,6 +1218,19 @@ namespace AC
 			if (OnPrepareSaveThread != null)
 			{
 				OnPrepareSaveThread (saveFile);
+			}
+		}
+
+
+		/** 
+		 * <summary>Triggers the OnGatherSaves event</summary>
+		 * <param name = "foundSaveFiles">The SaveFiles that have been gathered</param>
+		 */
+		public void Call_OnGatherSaves (ref List<SaveFile> foundSaveFiles)
+		{
+			if (OnGatherSaves != null)
+			{
+				OnGatherSaves (ref foundSaveFiles);
 			}
 		}
 

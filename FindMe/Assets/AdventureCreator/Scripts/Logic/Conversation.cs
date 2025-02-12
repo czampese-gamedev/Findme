@@ -36,7 +36,7 @@ namespace AC
 		public ButtonDialog selectedOption;
 
 		/** The index number of the last-chosen Conversation dialogue option */
-		public int lastOption = -1;
+		[System.NonSerialized] public int lastOption = -1;
 
 		/** If True, and only one option is available, then the option will be chosen automatically */
 		public bool autoPlay = false;
@@ -195,6 +195,7 @@ namespace AC
 			else
 			{
 				KickStarter.playerInput.EndConversation ();
+				OnEndConversation (this);
 				return;
 			}
 			
@@ -742,17 +743,17 @@ namespace AC
 				if (overrideActiveList != null)
 				{
 					KickStarter.eventManager.Call_OnClickConversation (this, _option.ID);
-					
-					if (overrideActiveList.actionListAsset)
+					ActiveList _activeList = overrideActiveList;
+					overrideActiveList = null;
+					if (_activeList.actionListAsset)
 					{
-						overrideActiveList.actionList = AdvGame.RunActionListAsset (overrideActiveList.actionListAsset, overrideActiveList.startIndex, true);
+						_activeList.actionList = AdvGame.RunActionListAsset (_activeList.actionListAsset, _activeList.startIndex, true);
 					}
-					else if (overrideActiveList.actionList)
+					else if (_activeList.actionList)
 					{
-						overrideActiveList.actionList.Interact (overrideActiveList.startIndex, true);
+						_activeList.actionList.Interact (_activeList.startIndex, true);
 					}
 
-					overrideActiveList = null;
 					return;
 				}
 				lastOption = -1;

@@ -14,8 +14,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-#if LocalizationIsPresent
+
+#if LocalizationIsPresent && AddressableIsPresent
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Metadata;
+using UnityEngine.Localization.Tables;
 #endif
 
 namespace AC
@@ -275,6 +280,66 @@ namespace AC
 			}
 			return string.Empty;
 		}
+
+
+#if LocalizationIsPresent && AddressableIsPresent
+
+		public void ExtractSpeechMetadata (LocalizedString localizedString, System.Action<SpeechMetadata, AudioClip, TextAsset> callback)
+		{
+			StartCoroutine (ExtractSpeechMetadataCo (localizedString, callback));
+		}
+		
+
+		private IEnumerator ExtractSpeechMetadataCo (LocalizedString localizedString, System.Action<SpeechMetadata, AudioClip, TextAsset> callback)
+		{
+			var entry = LocalizationSettings.StringDatabase.GetTableEntryAsync (localizedString.TableReference, localizedString.TableEntryReference);
+			while (!entry.IsDone)
+			{
+				yield return null;
+			}
+			var result = entry.Result;
+
+			var stringTableEntry = result.Entry;
+			
+			if (stringTableEntry == null)
+			{
+				callback?.Invoke (null, null, null);
+				yield break;
+			}
+
+			var metadata = stringTableEntry.GetMetadata<SpeechMetadata> ();
+			if (metadata == null)
+			{
+				metadata = stringTableEntry.SharedEntry.Metadata.GetMetadata<SpeechMetadata> ();
+			}
+
+			AudioClip audioClip = null;
+			TextAsset lipsyncData = null;
+
+			if (metadata != null && metadata.AudioClipReference != null && metadata.AudioClipReference.RuntimeKeyIsValid ())
+			{
+				var audioHandle = metadata.AudioClipReference.LoadAssetAsync<AudioClip>();
+				yield return audioHandle;
+				if (audioHandle.Status == AsyncOperationStatus.Succeeded && audioHandle.Result != null)
+				{
+					audioClip = audioHandle.Result;
+				}
+			}
+
+			if (metadata != null && metadata.LipSyncDataReference != null && metadata.LipSyncDataReference.RuntimeKeyIsValid ())
+			{
+				var lipSyncHandle = metadata.LipSyncDataReference.LoadAssetAsync<TextAsset>();
+				yield return lipSyncHandle;
+				if (lipSyncHandle.Status == AsyncOperationStatus.Succeeded && lipSyncHandle.Result != null)
+				{
+					lipsyncData = lipSyncHandle.Result;
+				}
+			}
+
+			callback?.Invoke (metadata, audioClip, lipsyncData);
+		}
+
+#endif
 
 
 		/**

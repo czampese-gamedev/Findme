@@ -234,7 +234,7 @@ namespace AC
 		 * <param name = "doOverlay">If True, an overlay texture will be displayed fullscreen during the transition</param>
 		 * <returns>True if the new scene will be loaded in</returns>
 		 */
-		public bool ChangeScene (int nextSceneIndex, bool saveRoomData, bool forceReload = false, bool doOverlay = false)
+		public bool ChangeScene (int nextSceneIndex, bool saveRoomData, bool forceReload = false, bool doOverlay = false, bool bypassLoadingScreen = false)
 		{
 			if (nextSceneIndex < 0)
 			{
@@ -254,7 +254,7 @@ namespace AC
 
 					KickStarter.eventManager.Call_OnBeforeChangeScene (IndexToName (nextSceneIndex));
 					PrepareSceneForExit (!KickStarter.settingsManager.useAsyncLoading, saveRoomData, doOverlay);
-					return LoadLevel (nextSceneIndex, KickStarter.settingsManager.useLoadingScreen, KickStarter.settingsManager.useAsyncLoading, forceReload, doOverlay);
+					return LoadLevel (nextSceneIndex, KickStarter.settingsManager.useLoadingScreen && !bypassLoadingScreen, KickStarter.settingsManager.useAsyncLoading, forceReload, doOverlay);
 				}
 			}
 			else
@@ -273,7 +273,7 @@ namespace AC
 		 * <param name = "doOverlay">If True, an overlay texture will be displayed fullscreen during the transition</param>
 		 * <returns>True if the new scene will be loaded in</returns>
 		 */
-		public bool ChangeScene (string nextSceneName, bool saveRoomData, bool forceReload = false, bool doOverlay = false)
+		public bool ChangeScene (string nextSceneName, bool saveRoomData, bool forceReload = false, bool doOverlay = false, bool bypassLoadingScreen = false)
 		{
 			if (string.IsNullOrEmpty (nextSceneName))
 			{
@@ -301,7 +301,7 @@ namespace AC
 
 					KickStarter.eventManager.Call_OnBeforeChangeScene (nextSceneName);
 					PrepareSceneForExit (!KickStarter.settingsManager.useAsyncLoading, saveRoomData, doOverlay);
-					return LoadLevel (nextSceneName, KickStarter.settingsManager.useLoadingScreen, KickStarter.settingsManager.useAsyncLoading, forceReload, doOverlay);
+					return LoadLevel (nextSceneName, KickStarter.settingsManager.useLoadingScreen && !bypassLoadingScreen, KickStarter.settingsManager.useAsyncLoading, forceReload, doOverlay);
 				}
 			}
 			else
@@ -1198,10 +1198,29 @@ namespace AC
 
 			foreach (var subScene in subScenes)
 			{
-				if (string.IsNullOrEmpty (subScene.SceneName)) continue;
-				SceneInfo subSceneInfo = GetSceneInfo (subScene.SceneName);
-				if (subSceneInfo != null)
-					subSceneInfo.Close ();
+				switch (KickStarter.settingsManager.referenceScenesInSave)
+				{
+					case ChooseSceneBy.Name:
+					{
+						if (string.IsNullOrEmpty (subScene.SceneName)) continue;
+						SceneInfo subSceneInfo = GetSceneInfo (subScene.SceneName);
+						if (subSceneInfo != null)
+							subSceneInfo.Close ();
+						break;
+					}
+
+					case ChooseSceneBy.Number:
+					{
+						if (subScene.SceneIndex < 0) continue;
+						SceneInfo subSceneInfo = GetSceneInfo (subScene.SceneIndex);
+						if (subSceneInfo != null)
+							subSceneInfo.Close ();
+						break;
+					}
+
+					default:
+						break;
+				}
 			}
 			subScenes.Clear ();
 

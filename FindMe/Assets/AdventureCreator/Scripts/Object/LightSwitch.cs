@@ -11,6 +11,9 @@
  */
 
 using UnityEngine;
+#if URPIsPresent
+using UnityEngine.Rendering.Universal;
+#endif
 
 namespace AC
 {
@@ -19,7 +22,9 @@ namespace AC
 	 * This script provides functions to enable and disable the Light component on the GameObject it is attached to.
 	 * These functions can be called either through script, or with the "Object: Send message" Action.
 	 */
+	#if !URPIsPresent
 	[RequireComponent (typeof (Light))]
+	#endif
 	[AddComponentMenu("Adventure Creator/Misc/Light switch")]
 	[HelpURL("https://www.adventurecreator.org/scripting-guide/class_a_c_1_1_light_switch.html")]
 	public class LightSwitch : MonoBehaviour
@@ -31,6 +36,9 @@ namespace AC
 		public bool enableOnStart = false;
 
 		protected Light _light;
+		#if URPIsPresent
+		protected Light2D light2D;
+		#endif
 
 		#endregion
 
@@ -47,18 +55,14 @@ namespace AC
 
 		#region PublicFunctions		
 
-		/**
-		 * Enables the Light component on the GameObject this script is attached to.
-		 */
+		/** Enables the Light component on the GameObject this script is attached to. */
 		public void TurnOn ()
 		{
 			Switch (true);
 		}
 		
 
-		/**
-		 * Disables the Light component on the GameObject this script is attached to.
-		 */
+		/** Disables the Light component on the GameObject this script is attached to. */
 		public void TurnOff ()
 		{
 			Switch (false);
@@ -75,7 +79,20 @@ namespace AC
 			{
 				_light = GetComponent <Light>();
 			}
-			_light.enabled = turnOn;
+			if (_light)
+			{
+				_light.enabled = turnOn;
+			}
+			#if URPIsPresent
+			if (light2D == null)
+			{
+				light2D = GetComponent <Light2D>();
+			}
+			if (light2D)
+			{
+				light2D.enabled = turnOn;
+			}
+			#endif
 		}
 
 		#endregion

@@ -62,6 +62,16 @@ namespace AC
 
 		#region PublicFunctions
 
+		/** Displays QTE-related information for the AC Status window */
+		public void DrawStatus ()
+		{
+			if (qteState != QTEState.None)
+			{
+				GUILayout.Label ("QTE: " + qteType);
+			}
+		}
+
+
 		/**
 		 * <summary>Gets the current QTE state (None, Win, Lose, Running)</summary>
 		 * <returns>The current QTE state (None, Win, Lose, Running)</returns>
@@ -136,7 +146,7 @@ namespace AC
 		 * <param name = "_duration">The duration, in seconds, that the QTE lasts</param>
 		 * <param name = "_holdDuration">The duration, in seconds, that the key must be held down for</param>
 		 * <param name = "_qteHoldReleaseBehaviour">What happens if the key is released</param>
-		 * <param name = "_animator">An Animator that will be manipulated if it has "Win" and "Lose" states, and a "Held" trigger</param>
+		 * <param name = "_animator">An Animator that will be manipulated if it has "Win" and "Lose" states, and a "Held" bool</param>
 		 * <param name = "_wrongKeyFails">If True, then pressing any key other than _inputName will instantly fail the QTE</param>
 		 */
 		public void StartHoldKeyQTE (string _inputName, float _duration, float _holdDuration, QTEHoldReleaseBehaviour _qteHoldReleaseBehaviour = QTEHoldReleaseBehaviour.Reset, Animator _animator = null, bool _wrongKeyFails = false)

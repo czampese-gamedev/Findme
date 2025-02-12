@@ -54,6 +54,10 @@ namespace AC
 		{
 			_audio = GetComponent <AudioSource>();
 			_character = GetComponent <Char>();
+			if (_character && _character.speechAudioSource)
+			{
+				_audio = _character.speechAudioSource;
+			}
 			array = new float[width];	
 
 			originalRotation = jawBone.localRotation;

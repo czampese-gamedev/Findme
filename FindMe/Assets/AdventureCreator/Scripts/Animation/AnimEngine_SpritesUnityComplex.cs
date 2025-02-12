@@ -225,27 +225,10 @@ namespace AC
 
 				if (action.mecanimCharParameter == MecanimCharParameter.MoveSpeedFloat)
 				{
-					action.changeSound = EditorGUILayout.Toggle ("Change sound?", action.changeSound);
-					if (action.changeSound)
-					{
-						action.standard = (AnimStandard) EditorGUILayout.EnumPopup ("Change:", action.standard);
-
-						if (action.standard == AnimStandard.Walk || action.standard == AnimStandard.Run)
-						{
-							action.newSound = (AudioClip) EditorGUILayout.ObjectField ("New " + action.standard.ToString () + " sound:", action.newSound, typeof (AudioClip), false);
-						}
-						else
-						{
-							EditorGUILayout.HelpBox ("Only Walk and Run have a standard sounds.", MessageType.Info);
-						}
-					}
 					action.changeSpeed = EditorGUILayout.Toggle ("Change speed?", action.changeSpeed);
 					if (action.changeSpeed)
 					{
-						if (!action.changeSound)
-						{
-							action.standard = (AnimStandard) EditorGUILayout.EnumPopup ("Change:", action.standard);
-						}
+						action.standard = (AnimStandard) EditorGUILayout.EnumPopup ("Change:", action.standard);
 
 						if (action.standard == AnimStandard.Walk || action.standard == AnimStandard.Run)
 						{
@@ -264,7 +247,7 @@ namespace AC
 				action.TextField ("Clip:", ref action.clip2D, parameters, ref action.clip2DParameterID);
 
 				action.includeDirection = EditorGUILayout.Toggle ("Add directional suffix?", action.includeDirection);
-				action.layerInt = EditorGUILayout.IntField ("Mecanim layer:", action.layerInt);
+				action.layerInt = EditorGUILayout.IntField ("Layer index:", action.layerInt);
 				action.fadeTime = EditorGUILayout.Slider ("Transition time:", action.fadeTime, 0f, 1f);
 				action.willWait = EditorGUILayout.Toggle ("Wait until finish?", action.willWait);
 			}
@@ -337,18 +320,6 @@ namespace AC
 						else if (action.standard == AnimStandard.Run)
 						{
 							character.runSpeedScale = action.newSpeed;
-						}
-					}
-
-					if (action.changeSound)
-					{
-						if (action.standard == AnimStandard.Walk)
-						{
-							character.walkSound = action.newSound;
-						}
-						else if (action.standard == AnimStandard.Run)
-						{
-							character.runSound = action.newSound;
 						}
 					}
 				}
@@ -487,7 +458,7 @@ namespace AC
 			{
 				action.TextField ("Clip:", ref action.clip2D, parameters, ref action.clip2DParameterID);
 
-				action.layerInt = EditorGUILayout.IntField ("Mecanim layer:", action.layerInt);
+				action.layerInt = EditorGUILayout.IntField ("Layer index:", action.layerInt);
 				action.fadeTime = EditorGUILayout.Slider ("Transition time:", action.fadeTime, 0f, 2f);
 				action.willWait = EditorGUILayout.Toggle ("Wait until finish?", action.willWait);
 			}

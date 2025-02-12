@@ -130,7 +130,7 @@ namespace AC
 
 					case SimulateInputType.Axis:
 						float axisValue = KickStarter.playerInput.InputGetAxis (inputName);
-						if ((axisThreshold >= 0f && axisValue > axisThreshold) || (axisThreshold < 0f && axisValue < axisThreshold))
+						if ((axisThreshold > 0f && axisValue >= axisThreshold) || (axisThreshold < 0f && axisValue <= axisThreshold))
 						{
 							return TriggerIfStateMatches ();
 						}

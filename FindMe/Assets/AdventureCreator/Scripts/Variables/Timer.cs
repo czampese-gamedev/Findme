@@ -38,6 +38,7 @@ namespace AC
 		[SerializeField] private ActionListAsset actionListAssetOnUpdate = null;
 		[SerializeField] private ActionListAsset actionListAssetOnComplete = null;
 		[SerializeField] private bool onlyRunDuringGameplay;
+		[SerializeField] string tokenFormat = "{h}:{m:D2}:{s:D2}";
 
 		private float ticker;
 		private float unlinkedValue;
@@ -64,6 +65,7 @@ namespace AC
 			actionListAssetOnComplete = null;
 			onlyRunDuringGameplay = false;
 			loops = false;
+			tokenFormat = "{h}:{m:D2}:{s:D2}";
 		}
 
 
@@ -81,6 +83,7 @@ namespace AC
 			actionListAssetOnComplete = null;
 			onlyRunDuringGameplay = false;
 			loops = false;
+			tokenFormat = "{h}:{m:D2}:{s:D2}";
 
 			// Update id based on array
 			foreach (int _id in idArray)
@@ -101,6 +104,33 @@ namespace AC
 			isOn = false;
 			variable = null;
 			unlinkedValue = updateIncreaseAmount > 0f ? minValue : maxValue;
+		}
+
+
+		/** Returns the value, formatted into a readable format */
+		public string GetFormattedValue ()
+		{
+			if (string.IsNullOrEmpty (tokenFormat))
+			{
+				return Value.ToString ();
+			}
+
+			int totalSeconds = Mathf.FloorToInt (Value);
+
+			int hours = totalSeconds / 3600;
+			int minutes = (totalSeconds % 3600) / 60;
+			int seconds = totalSeconds % 60;
+
+			string result;
+
+			result = tokenFormat
+				.Replace("{h}", hours.ToString ())
+				.Replace("{m:D2}", minutes.ToString ("D2"))
+				.Replace("{m}", minutes.ToString ())
+				.Replace("{s:D2}", seconds.ToString ("D2"))
+				.Replace("{s}", seconds.ToString ());
+
+			return result;
 		}
 
 
@@ -344,7 +374,7 @@ namespace AC
 
 		public void ShowGUI ()
 		{
-			string apiPrefix = "AC.KickStarter.variablesManger.GetTimer (" + id + ")";
+			string apiPrefix = "AC.KickStarter.variablesManager.GetTimer (" + id + ")";
 
 			CustomGUILayout.Header ("Settings");
 			CustomGUILayout.BeginVertical ();
@@ -377,6 +407,7 @@ namespace AC
 
 			loops = CustomGUILayout.Toggle ("Run on a loop?", loops, apiPrefix);
 			onlyRunDuringGameplay = CustomGUILayout.Toggle ("Only run during gameplay?", onlyRunDuringGameplay, apiPrefix);
+			tokenFormat = CustomGUILayout.TextField ("Token format:", tokenFormat);
 
 			CustomGUILayout.EndVertical ();
 			EditorGUILayout.Space ();

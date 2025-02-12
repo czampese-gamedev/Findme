@@ -93,7 +93,8 @@ namespace AC
 				}
 
 				hotspots.Add (otherHotspot);
-				hotspots = KickStarter.eventManager.Call_OnModifyHotspotDetectorCollection (this, hotspots);
+
+				if (KickStarter.eventManager) hotspots = KickStarter.eventManager.Call_OnModifyHotspotDetectorCollection (this, hotspots);
 			}
 		}
 
@@ -119,7 +120,8 @@ namespace AC
 					}
 				}
 				hotspots.Add (otherHotspot);
-				hotspots = KickStarter.eventManager.Call_OnModifyHotspotDetectorCollection (this, hotspots);
+				
+				if (KickStarter.eventManager) hotspots = KickStarter.eventManager.Call_OnModifyHotspotDetectorCollection (this, hotspots);
 			}
 		}
 
@@ -264,6 +266,25 @@ namespace AC
 			}
 
 			return null;
+		}
+
+
+		/**
+		 * <summary>Sets the currently-active Hotspot. The Hotspot must already be included in the component's internal record of detected Hotspot</summary>
+		 * <param name = "_hotspot">The Hotspot to make active</param>
+		 */
+		public void SetSelected (Hotspot _hotspot)
+		{
+			if (_hotspot == null || hotspots == null) return;
+
+			for (int i = 0; i < hotspots.Count; i++)
+			{
+				if (hotspots[i] == _hotspot)
+				{
+					selected = i;
+					break;
+				}
+			}
 		}
 
 

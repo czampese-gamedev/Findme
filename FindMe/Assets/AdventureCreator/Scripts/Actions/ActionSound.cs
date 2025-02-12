@@ -277,6 +277,7 @@ namespace AC
 			newAction.soundObject = sound;
 			newAction.TryAssignConstantID (newAction.soundObject, ref newAction.constantID);
 			newAction.soundAction = (fadeDuration > 0f) ? SoundAction.FadeIn : SoundAction.Play;
+			newAction.fadeTime = fadeDuration;
 			newAction.audioClip = newClip;
 			newAction.loop = doLoop;
 			newAction.ignoreIfPlaying = ignoreIfAlreadyPlaying;
@@ -298,6 +299,7 @@ namespace AC
 			newAction.soundObject = sound;
 			newAction.TryAssignConstantID (newAction.soundObject, ref newAction.constantID);
 			newAction.soundAction = (fadeDuration > 0f) ? SoundAction.FadeOut : SoundAction.Stop;
+			newAction.fadeTime = fadeDuration;
 			newAction.willWait = waitUntilFinish;
 			return newAction;
 		}

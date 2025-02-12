@@ -267,11 +267,6 @@ namespace AC
 
 				if (action.standard == AnimStandard.Walk || action.standard == AnimStandard.Run)
 				{
-					action.changeSound = EditorGUILayout.Toggle ("Change sound?", action.changeSound);
-					if (action.changeSound)
-					{
-						action.AssetField ("New sound:", ref action.newSound, parameters, ref action.newSoundParameterID);
-					}
 					action.changeSpeed = EditorGUILayout.Toggle ("Change speed?", action.changeSpeed);
 					if (action.changeSpeed)
 					{
@@ -404,18 +399,6 @@ namespace AC
 							else if (action.standard == AnimStandard.Run)
 							{
 								character.runSpeedScale = action.newSpeed;
-							}
-						}
-
-						if (action.changeSound)
-						{
-							if (action.standard == AnimStandard.Walk)
-							{
-								character.walkSound = action.newSound;
-							}
-							else if (action.standard == AnimStandard.Run)
-							{
-								character.runSound = action.newSound;
 							}
 						}
 						break;
@@ -579,18 +562,6 @@ namespace AC
 						else if (action.standard == AnimStandard.Run)
 						{
 							character.runSpeedScale = action.newSpeed;
-						}
-					}
-
-					if (action.changeSound)
-					{
-						if (action.standard == AnimStandard.Walk)
-						{
-							character.walkSound = action.newSound;
-						}
-						else if (action.standard == AnimStandard.Run)
-						{
-							character.runSound = action.newSound;
 						}
 					}
 					break;

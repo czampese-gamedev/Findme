@@ -232,9 +232,19 @@ namespace AC
 			settingsManager.interactionMethod = interactionMethod;
 			settingsManager.hotspotDetection = hotspotDetection;
 
+			if (cameraPerspective == CameraPerspective.TwoD && movementMethod == MovementMethod.Direct)
+			{
+				settingsManager.directTurnMode = DirectTurnMode.Snap;
+			}
+
+			if (cameraPerspective == CameraPerspective.ThreeD && movementMethod == MovementMethod.FirstPerson)
+			{
+				settingsManager.hotspotRaycastLength = 3f;
+			}
+
 			if (interfaceOption != InterfaceOption.None)
 			{
-				DefaultInterface.Apply (this, installPath, cursorManager, menuManager, speechManager);
+				DefaultInterface.Apply (this, installPath, settingsManager, cursorManager, menuManager, speechManager);
 			}
 		}
 
@@ -292,9 +302,9 @@ namespace AC
 		#endregion
 
 
-		#region PrivateClasses
+		#region PublicClasses
 
-		private class Option<T> where T : System.Enum
+		public class Option<T> where T : System.Enum
 		{
 
 			public OptionData<T>[] optionDatas;
@@ -312,7 +322,7 @@ namespace AC
 			{
 				get
 				{
-					string[] labels = new string[optionDatas.Length];
+					string[] labels = new string[NumOptions];
 					for (int i = 0; i < labels.Length; i++)
 					{
 						labels[i] = optionDatas[i].label;
@@ -326,7 +336,7 @@ namespace AC
 			{
 				get
 				{
-					if (selectedIndex >= 0 && selectedIndex < optionDatas.Length)
+					if (selectedIndex >= 0 && selectedIndex < NumOptions)
 					{
 						return selectedIndex;
 					}
@@ -334,18 +344,19 @@ namespace AC
 				}
 				set
 				{
-					selectedIndex = Mathf.Clamp (value, 0, optionDatas.Length);
+					selectedIndex = Mathf.Clamp (value, 0, NumOptions);
 				}
 			}
 
 
 			public int NumOptions { get { return optionDatas.Length; }}
 			public T Value { get { return optionDatas[selectedIndex].value; }}
+			public string Description { get { return optionDatas[selectedIndex].description; }}
 
 		}
 
 
-		private class OptionData<T> where T : System.Enum
+		public class OptionData<T> where T : System.Enum
 		{
 
 			public string label;

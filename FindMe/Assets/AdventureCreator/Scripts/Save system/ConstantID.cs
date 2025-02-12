@@ -72,6 +72,13 @@ namespace AC
 
 		#region PublicFunctions
 
+		/** Initialises the component.  This needs to be called if the object it is attached to is generated/spawned at runtime manually through code. */
+		public virtual void OnSpawn ()
+		{
+			OnInitialiseScene ();
+		}
+
+
 		/**
 		 * <summary>Serialises appropriate GameObject values into a string.  Overriden by subclasses.</summary>
 		 * <returns>The data, serialised as a string (empty in the base class)</returns>

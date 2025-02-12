@@ -34,6 +34,8 @@ namespace AC
 		public bool hasAudio;
 		/** If not None, then the Action that ran this speech will end, but the speech line is still active */
 		public ContinueState continueState = ContinueState.None;
+		/** If True, the line will update using Time.unscaledTime */
+		public bool useUnscaledTime;
 
 		/** If True, the assocaited character will not play speaking animation */
 		public bool noAnimation = false;
@@ -255,17 +257,17 @@ namespace AC
 		{
 			if (minSkipTime > 0f)
 			{
-				minSkipTime -= Time.deltaTime;
+				minSkipTime -= DeltaTime;
 			}
 
 			if (minDisplayTime > 0f)
 			{
-				minDisplayTime -= Time.deltaTime;
+				minDisplayTime -= DeltaTime;
 			}
 
 			if (pauseEndTime > 0f)
 			{
-				pauseEndTime -= Time.deltaTime;
+				pauseEndTime -= DeltaTime;
 			}
 
 			if (pauseGap)
@@ -285,7 +287,7 @@ namespace AC
 				{
 					if (endTime > 0f)
 					{
-						endTime -= Time.deltaTime;
+						endTime -= DeltaTime;
 					}
 
 					if (audioSource == null)
@@ -299,7 +301,7 @@ namespace AC
 					{
 						if (endTime > 0f)
 						{
-							endTime -= Time.deltaTime;
+							endTime -= DeltaTime;
 						}
 					}
 				}
@@ -320,7 +322,7 @@ namespace AC
 				{
 					if (!pauseGap)
 					{
-						scrollAmount += KickStarter.speechManager.textScrollSpeed * Time.deltaTime / 2f / log.fullText.Length;
+						scrollAmount += KickStarter.speechManager.textScrollSpeed * DeltaTime / 2f / log.fullText.Length;
 
 						if (scrollAmount >= 1f)
 						{
@@ -430,7 +432,7 @@ namespace AC
 				{
 					if (continueTime > 0f)
 					{
-						continueTime -= Time.deltaTime;
+						continueTime -= DeltaTime;
 						if (continueTime <= 0f && continueState == ContinueState.None)
 						{
 							continueState = ContinueState.Pending;
@@ -926,7 +928,7 @@ namespace AC
 					return false;
 				}
 
-				return HasConditions (menu.speechMenuLimit, menu.speechMenuType, menu.limitToCharacters, menu.speechProximityLimit, menu.speechProximityDistance);
+				return HasConditions (menu.speechMenuLimit, menu.speechMenuType, menu.limitToCharacters, menu.speechProximityLimit, menu.GetsDuplicated () ? menu.speechProximityDistance : 0f);
 			}
 			return false;
 		}
@@ -1679,63 +1681,24 @@ namespace AC
 
 
 		/** The display name of the speaking character */
-		public string SpeakerName
-		{
-			get
-			{
-				return log.speakerName;
-			}
-		}
-
+		public string SpeakerName => log.speakerName;
 
 		/** The ID number of the line, as set by the Speech Manager */
-		public int LineID
-		{
-			get
-			{
-				return log.lineID;
-			}
-		}
-
+		public int LineID => log.lineID;
 
 		/** The full display text of the line */
-		public string FullText
-		{
-			get
-			{
-				return log.fullText;
-			}
-		}
-
+		public string FullText => log.fullText;
 
 		/** The line's associated SpeechLine class, provided it's been gathered by the Speech Manager */
-		public SpeechLine SpeechLine
-		{
-			get
-			{
-				return KickStarter.speechManager.GetLine (LineID);
-			}
-		}
-
+		public SpeechLine SpeechLine => KickStarter.speechManager.GetLine (LineID);
 
 		/** The index of the current end of the line, if speech-scrolling is enabled in the Speech Manager */
-		public int CurrentCharIndex
-		{
-			get
-			{
-				return currentCharIndex;
-			}
-		}
-
+		public int CurrentCharIndex => currentCharIndex;
 
 		/** The original text, without stripping of tokens or tags */
-		public string OriginalText
-		{
-			get
-			{
-				return originalText;
-			}
-		}
+		public string OriginalText => originalText;
+
+		private float DeltaTime => useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
 
 		#endregion
 

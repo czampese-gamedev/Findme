@@ -513,6 +513,11 @@ namespace AC
 					UpdateUISelectable (uiButton, uiSelectableHideStyle);
 				}
 
+				if (string.IsNullOrEmpty (fullText))
+				{
+					return;
+				}
+
 				#if TextMeshProIsPresent
 				if (uiTextTMP)
 				{
@@ -559,7 +564,7 @@ namespace AC
 					tempColor.a = 1f;
 					GUI.color = tempColor;
 				}
-				clickAlpha -= (KickStarter.stateHandler.gameState == GameState.Paused) ? 0.02f : Time.deltaTime;
+				clickAlpha -= Time.unscaledDeltaTime;
 				if (clickAlpha < 0f)
 				{
 					clickAlpha = 0f;
@@ -612,9 +617,14 @@ namespace AC
 		public override void RecalculateSize (MenuSource source)
 		{
 			SetEffectiveVisibility (false);
-
-			clickAlpha = 0f;
 			base.RecalculateSize (source);
+		}
+
+
+		public override void OnMenuTurnOn (Menu menu)
+		{
+			clickAlpha = 0f;
+			base.OnMenuTurnOn (menu);
 		}
 
 

@@ -46,11 +46,6 @@ namespace AC
 			{
 				ACDebug.LogWarning ("This script works best when the Settings Manager's 'Interaction method' field is set to 'Custom Script'.", this);
 			}
-
-			if (KickStarter.settingsManager != null && KickStarter.settingsManager.inventoryDisableLeft)
-			{
-				ACDebug.LogWarning ("This script works best when the Settings Manager's 'Left-click deselects active item?' field is unchecked.", this);
-			}
 		}
 
 

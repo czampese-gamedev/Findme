@@ -1402,6 +1402,7 @@ MonoBehaviour:
   maxAnchorPoint: {x: 1, y: 1}
   updatePosition: 1
   updateScale: 1
+  accountForSafeArea: 0
 --- !u!1 &119846
 GameObject:
   m_ObjectHideFlags: 0

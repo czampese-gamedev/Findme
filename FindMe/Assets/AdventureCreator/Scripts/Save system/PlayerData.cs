@@ -297,7 +297,7 @@ namespace AC
 			}
 			else if (teleportPlayerStartMethod == TeleportPlayerStartMethod.BasedOnPrevious)
 			{
-				playerStart = KickStarter.sceneSettings.GetPlayerStart (playerID);
+				playerStart = KickStarter.sceneSettings.GetPlayerStart (playerID, true);
 			}
 
 			UpdatePositionFromPlayerStart (playerStart);
@@ -344,7 +344,7 @@ namespace AC
 					break;
 
 				case TeleportPlayerStartMethod.BasedOnPrevious:
-					playerStart = KickStarter.sceneSettings.GetPlayerStart (playerID);
+					playerStart = KickStarter.sceneSettings.GetPlayerStart (playerID, true);
 					break;
 
 				case TeleportPlayerStartMethod.EnteredHere:
@@ -412,7 +412,7 @@ namespace AC
 				switch (teleportPlayerStartMethod)
 				{
 					case TeleportPlayerStartMethod.BasedOnPrevious:
-						playerStart = KickStarter.sceneSettings.GetPlayerStart (playerID);
+						playerStart = KickStarter.sceneSettings.GetPlayerStart (playerID, true);
 						break;
 
 					case TeleportPlayerStartMethod.EnteredHere:

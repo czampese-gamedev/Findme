@@ -213,6 +213,16 @@ namespace AC
 		}
 
 
+		public bool IsNestedAwaiting (ActiveList activeList)
+		{
+			foreach (var nestedAwaitingActiveList in nestedAwaitingActiveLists)
+			{
+				if (nestedAwaitingActiveList.ActiveList == activeList) return true;
+			}
+			return false;
+		}
+
+
 		/**
 		 * <summary>Checks if any currently-running ActionLists pause gameplay.</summary>
 		 * <param name = "_actionToIgnore">Any ActionList that contains this Action will be excluded from the check</param>
@@ -228,7 +238,7 @@ namespace AC
 					bool foundPending = false;
 					foreach (var pendingList in nestedAwaitingActiveLists)
 					{
-						if (pendingList.ActiveList == activeList && pendingList.Conversation.IsOverridingActionList (pendingList.ActionList))
+						if (pendingList.ActiveList == activeList && (pendingList.Conversation == null || pendingList.Conversation.IsOverridingActionList (pendingList.ActionList)))
 						{
 							foundPending = true;
 							break;
@@ -618,12 +628,9 @@ namespace AC
 			}
 		}
 
-		#endregion
 
-
-		#region ProtectedFunctions
-
-		protected bool AreAnyListsSkipping ()
+		/** Checks if any ActionLists, both scene-based and assets, are currently being skipped */
+		public bool AreAnyListsSkipping ()
 		{
 			foreach (ActiveList activeList in activeLists)
 			{
@@ -644,6 +651,10 @@ namespace AC
 			return false;
 		}
 
+		#endregion
+
+
+		#region ProtectedFunctions
 
 		protected void OnEndActionList (ActionList actionList, ActionListAsset actionListAsset, bool isSkipping)
 		{

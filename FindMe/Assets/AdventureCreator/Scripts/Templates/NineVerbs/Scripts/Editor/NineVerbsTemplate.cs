@@ -35,7 +35,7 @@ namespace AC.Templates.NineVerbs
 				return false;
 			}
 
-			if (Resource.References.menuManager == defaultCursorManager)
+			if (Resource.References.menuManager == defaultMenuManager)
 			{
 				errorText = "Wrong Menu Manager assigned";
 				return false;
@@ -85,7 +85,7 @@ namespace AC.Templates.NineVerbs
 			Resource.References.settingsManager.reverseInventoryCombinations = true;
 			Resource.References.settingsManager.inventoryDisableDefined = true;
 			Resource.References.settingsManager.inventoryDisableUnhandled = true;
-			Resource.References.settingsManager.inventoryDisableLeft = true;
+			Resource.References.settingsManager.leftClickDeselect = LeftClickDeselect.ExceptOverMenus;
 			Resource.References.settingsManager.inventoryActiveEffect = InventoryActiveEffect.Pulse;
 			Resource.References.settingsManager.hotspotDetection = HotspotDetection.MouseOver;
 			EditorUtility.SetDirty (Resource.References.settingsManager);

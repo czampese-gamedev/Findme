@@ -180,9 +180,11 @@ namespace AC
 		{
 			if (autoDetectSurface)
 			{
+				Vector3 origin = character ? character.transform.position : transform.position;
+
 				if (SceneSettings.IsUnity2D ())
 				{
-					RaycastHit2D hit = UnityVersionHandler.Perform2DRaycast (transform.position + (raycastLength * 0.5f * Vector3.up), Vector3.down, raycastLength, layerMask);
+					RaycastHit2D hit = UnityVersionHandler.Perform2DRaycast (origin + (raycastLength * 0.5f * Vector3.up), Vector3.down, raycastLength * 1.5f, layerMask);
 					if (hit.collider)
 					{
 						ProcessCollider (hit.collider);
@@ -192,7 +194,7 @@ namespace AC
 				{
 					Vector3 up = character ? character.UpDirection : Vector3.up;
 					RaycastHit hit;
-					if (Physics.Raycast (transform.position + (raycastLength * 0.5f * up), -up, out hit, raycastLength, layerMask))
+					if (Physics.Raycast (origin + (raycastLength * 0.5f * up), -up, out hit, raycastLength * 1.5f, layerMask))
 					{
 						ProcessCollider (hit.collider);
 					}

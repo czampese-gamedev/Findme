@@ -43,7 +43,11 @@ namespace AC
 
 			if (_target.generateColliders)
 			{
+#if UNITY_6000_0_OR_NEWER
+				_target.colliderMaterial = (PhysicsMaterial) CustomGUILayout.ObjectField <PhysicsMaterial> ("Material:", _target.colliderMaterial, false, "", "Physics Material to give the track's end colliders");
+#else
 				_target.colliderMaterial = (PhysicMaterial) CustomGUILayout.ObjectField <PhysicMaterial> ("Material:", _target.colliderMaterial, false, "", "Physics Material to give the track's end colliders");
+#endif
 			}
 			
 			CustomGUILayout.EndVertical ();

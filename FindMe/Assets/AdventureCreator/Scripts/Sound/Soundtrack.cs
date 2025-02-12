@@ -174,6 +174,16 @@ namespace AC
 
 
 		#region PublicFunctions
+		
+		/** Clears all runtime data related to the soundtrack */
+		public void ClearData ()
+		{
+			queuedSoundtrack.Clear ();
+			lastQueuedSoundtrack.Clear ();
+			oldSoundtrackSamples.Clear ();
+			crossfades.Clear ();
+		}
+
 
 		/**
 		 * <summary>Plays a new soundtrack</summary>
@@ -863,10 +873,7 @@ namespace AC
 
 		private void OnRestartGame ()
 		{
-			queuedSoundtrack.Clear ();
-			lastQueuedSoundtrack.Clear ();
-			oldSoundtrackSamples.Clear ();
-			crossfades.Clear ();
+			ClearData ();
 		}
 
 		#endregion

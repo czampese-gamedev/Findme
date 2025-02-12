@@ -45,7 +45,7 @@ namespace AC
 
 		protected override void Start ()
 		{
-#if UNITY_2023_2_OR_NEWER
+#if UNITY_2022_3_OR_NEWER
 			if (Animator) animatorToSave.keepAnimatorStateOnDisable = retainParametersWhenDisabled;
 #else
 			if (Animator) animatorToSave.keepAnimatorControllerStateOnDisable = retainParametersWhenDisabled;

@@ -54,6 +54,7 @@ namespace AC
 
 		public int gameObjectParameterID = -1;
 
+		private bool _isEnabled;
 		protected Collider2D _collider2D;
 		protected Collider _collider;
 		protected List<PositionDetectObject> positionDetectObjects = new List<PositionDetectObject>();
@@ -65,6 +66,7 @@ namespace AC
 
 		protected void OnEnable ()
 		{
+			_isEnabled = true;
 			InitTrigger ();
 
 			EventManager.OnPlayerSpawn += OnPlayerSpawn;
@@ -80,6 +82,7 @@ namespace AC
 
 		protected void OnDisable ()
 		{
+			_isEnabled = false;
 			if (KickStarter.stateHandler) KickStarter.stateHandler.Unregister (this);
 
 			EventManager.OnPlayerSpawn -= OnPlayerSpawn;
@@ -101,6 +104,7 @@ namespace AC
 
 		protected void OnTriggerEnter (Collider other)
 		{
+			if (!_isEnabled) return;
 			if (detectionMethod == TriggerDetectionMethod.RigidbodyCollision && triggerType == 0 && IsObjectCorrect (other.gameObject))
 			{
 				Interact (other.gameObject);
@@ -110,6 +114,7 @@ namespace AC
 		
 		protected void OnTriggerEnter2D (Collider2D other)
 		{
+			if (!_isEnabled) return;
 			if (detectionMethod == TriggerDetectionMethod.RigidbodyCollision && triggerType == 0 && IsObjectCorrect (other.gameObject))
 			{
 				Interact (other.gameObject);
@@ -119,6 +124,7 @@ namespace AC
 		
 		protected void OnTriggerStay (Collider other)
 		{
+			if (!_isEnabled) return;
 			if (detectionMethod == TriggerDetectionMethod.RigidbodyCollision && triggerType == 1 && IsObjectCorrect (other.gameObject))
 			{
 				Interact (other.gameObject);
@@ -128,6 +134,7 @@ namespace AC
 		
 		protected void OnTriggerStay2D (Collider2D other)
 		{
+			if (!_isEnabled) return;
 			if (detectionMethod == TriggerDetectionMethod.RigidbodyCollision && triggerType == 1 && IsObjectCorrect (other.gameObject))
 			{
 				Interact (other.gameObject);
@@ -137,6 +144,7 @@ namespace AC
 		
 		protected void OnTriggerExit (Collider other)
 		{
+			if (!_isEnabled) return;
 			if (detectionMethod == TriggerDetectionMethod.RigidbodyCollision && triggerType == 2 && IsObjectCorrect (other.gameObject))
 			{
 				Interact (other.gameObject);
@@ -146,6 +154,7 @@ namespace AC
 		
 		protected void OnTriggerExit2D (Collider2D other)
 		{
+			if (!_isEnabled) return;
 			if (detectionMethod == TriggerDetectionMethod.RigidbodyCollision && triggerType == 2 && IsObjectCorrect (other.gameObject))
 			{
 				Interact (other.gameObject);

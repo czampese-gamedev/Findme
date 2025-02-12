@@ -1013,6 +1013,26 @@ namespace AC
 		}
 
 
+		public static GUIStyle PrefabHeader
+		{
+			get
+			{
+				int index = EditorGUIUtility.isProSkin ? 45 : 46;
+				return GetCustomGUIStyle (index);
+			}
+		}
+
+
+		public static GUIStyle PrefabButton
+		{
+			get
+			{
+				int index = EditorGUIUtility.isProSkin ? 47 : 48;
+				return GetCustomGUIStyle (index);
+			}
+		}
+
+
 		private static GUIStyle GetCustomGUIStyle (int index)
 		{
 			return GetCustomGUIStyle (index, index);

@@ -47,6 +47,7 @@ namespace AC
 		protected bool isDrawingHiddenCursor = false;
 
 		protected bool forceOffCursor;
+		protected static GameObject uiCursor;
 
 
 		public void OnInitialiseScene ()
@@ -58,12 +59,12 @@ namespace AC
 					ACDebug.LogWarning ("Main cursor has no texture - please assign one in the Cursor Manager.");
 				}
 
-				if (KickStarter.cursorManager.cursorRendering == CursorRendering.UnityUI)
+				if (KickStarter.cursorManager.cursorRendering == CursorRendering.UnityUI && uiCursor == null)
 				{
 					if (KickStarter.cursorManager.uiCursorPrefab)
 					{
-						GameObject newInstance = Instantiate (KickStarter.cursorManager.uiCursorPrefab);
-						newInstance.name = KickStarter.cursorManager.uiCursorPrefab.name;
+						uiCursor = Instantiate (KickStarter.cursorManager.uiCursorPrefab);
+						uiCursor.name = KickStarter.cursorManager.uiCursorPrefab.name;
 					}
 					else
 					{
@@ -926,11 +927,11 @@ namespace AC
 				Color backupColor = GUI.color;
 				Color tempColor = GUI.color;
 				
+				DrawIcon (AdvGame.GUIBox (KickStarter.playerInput.GetMousePosition () + KickStarter.cursorManager.inventoryCursorOffset, KickStarter.cursorManager.inventoryCursorSize), invInstance.Tex);
 				tempColor.a = pulse;
 				GUI.color = tempColor;
 				DrawIcon (AdvGame.GUIBox (KickStarter.playerInput.GetMousePosition () + KickStarter.cursorManager.inventoryCursorOffset, KickStarter.cursorManager.inventoryCursorSize), invInstance.ActiveTex);
 				GUI.color = backupColor;
-				DrawIcon (AdvGame.GUIBox (KickStarter.playerInput.GetMousePosition () + KickStarter.cursorManager.inventoryCursorOffset, KickStarter.cursorManager.inventoryCursorSize), invInstance.Tex);
 			}
 		}
 		
@@ -1358,6 +1359,10 @@ namespace AC
 				limitCursorToMenu = value;
 			}
 		}
+
+
+		/** The Unity UI-based cursor object, if rendering is set to Unity UI */
+		public GameObject UICursor => uiCursor;
 
 
 		/**

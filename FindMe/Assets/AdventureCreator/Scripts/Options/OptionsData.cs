@@ -38,10 +38,6 @@ namespace AC
 		public string linkedVariables = "";
 		/** A condensed string representing the labels of all save game files */
 		public string saveFileNames = "";
-		/** A unique identifier of the last save game to be written */
-		public int lastSaveID = -1;
-		/** An array of save IDs that were written to in order (except the last, which is recorded in lastSaveID) */
-		public string previousSaveIDs = "";
 		/** The name of the profile associated with this instance */
 		public string label;	
 		/** A unique identifier */
@@ -61,8 +57,6 @@ namespace AC
 
 			linkedVariables = string.Empty;
 			saveFileNames = string.Empty;
-			lastSaveID = -1;
-			previousSaveIDs = string.Empty;
 
 			ID = 0;
 			label = "Profile " + (ID + 1).ToString ();
@@ -82,8 +76,6 @@ namespace AC
 
 			linkedVariables = string.Empty;
 			saveFileNames = string.Empty;
-			lastSaveID = -1;
-			previousSaveIDs = string.Empty;
 
 			ID = _ID;
 			label = "Profile " + (ID + 1).ToString ();
@@ -103,8 +95,6 @@ namespace AC
 
 			linkedVariables = string.Empty;
 			saveFileNames = string.Empty;
-			lastSaveID = -1;
-			previousSaveIDs = string.Empty;
 
 			ID = _ID;
 			label = "Profile " + (ID + 1).ToString ();
@@ -124,50 +114,9 @@ namespace AC
 			
 			linkedVariables = _optionsData.linkedVariables;
 			saveFileNames = _optionsData.saveFileNames;
-			lastSaveID = -1;
-			previousSaveIDs = string.Empty;
 
 			ID =_ID;
 			label = "Profile " + (ID + 1).ToString ();
-		}
-
-
-		public void SetPreviousSaveIDs (List<int> saveIDs)
-		{
-			StringBuilder sb = new StringBuilder ();
-			for (int i = 0; i < saveIDs.Count; i++)
-			{
-				sb.Append (saveIDs[i]);
-				if (i < (saveIDs.Count - 1))
-				{
-					sb.Append (";");
-				}
-			}
-			previousSaveIDs = sb.ToString ();
-		}
-
-
-		public List<int> GetPreviousSaveIDs ()
-		{
-			List<int> saveIDs = new List<int>();
-
-			if (!string.IsNullOrEmpty (previousSaveIDs))
-			{
-				string[] splitData = previousSaveIDs.Split (";"[0]);
-				if (splitData != null)
-				{
-					foreach (string s in splitData)
-					{
-						int saveID = 0;
-						if (int.TryParse (s, out saveID))
-						{
-							saveIDs.Add (saveID);
-						}
-					}
-				}
-			}
-
-			return saveIDs;
 		}
 
 	}

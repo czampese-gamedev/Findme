@@ -5,7 +5,7 @@
  *	
  *	"LipSyncTexture.cs"
  * 
- *	Animates a SkinnedMeshRenderer's textures based on lipsync animation
+ *	Animates a MeshRenderer's textures based on lipsync animation
  * 
  */
 
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 namespace AC
 {
 
-	/** Animates a SkinnedMeshRenderer's textures based on lipsync animation */
+	/** Animates a MeshRenderer's textures based on lipsync animation */
 	[AddComponentMenu("Adventure Creator/Characters/Lipsync texture")]
 	[HelpURL("https://www.adventurecreator.org/scripting-guide/class_a_c_1_1_lip_sync_texture.html")]
 	public class LipSyncTexture : MonoBehaviour
@@ -23,8 +23,8 @@ namespace AC
 
 		#region Variables
 
-		/** The SkinnedMeshRenderer to affect */
-		public SkinnedMeshRenderer skinnedMeshRenderer;
+		/** The MeshRenderer to affect */
+		public MeshRenderer skinnedMeshRenderer;
 		/** The index of the material to affect */
 		public int materialIndex;
 		/** The material's property name that will be replaced */

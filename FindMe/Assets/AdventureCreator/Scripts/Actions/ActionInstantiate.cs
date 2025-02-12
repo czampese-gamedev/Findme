@@ -424,10 +424,10 @@ namespace AC
 			GameObject newObject = wasSpawnedByAddressable ? newOb : Object.Instantiate (newOb, position, rotation);
 			if (wasSpawnedByAddressable)
 			{
-				newOb.transform.SetPositionAndRotation (position, rotation);
-				if (newOb.gameObject.name.EndsWith ("(Clone)"))
+				newObject.transform.SetPositionAndRotation (position, rotation);
+				if (newObject.gameObject.name.EndsWith ("(Clone)"))
 				{
-					newOb.gameObject.name = newOb.gameObject.name.Substring (0, newOb.gameObject.name.Length - 7);
+					newObject.gameObject.name = newObject.gameObject.name.Substring (0, newObject.gameObject.name.Length - 7);
 				}
 			}
 			else
@@ -435,9 +435,10 @@ namespace AC
 				newObject.name = newOb.name;
 			}
 
-			if (newObject.GetComponent<RememberTransform> ())
+			ConstantID[] remembers = newObject.GetComponentsInChildren<ConstantID> ();
+			foreach (ConstantID remember in remembers)
 			{
-				newObject.GetComponent<RememberTransform> ().OnSpawn ();
+				remember.OnSpawn ();
 			}
 
 			if (!isInBackground)

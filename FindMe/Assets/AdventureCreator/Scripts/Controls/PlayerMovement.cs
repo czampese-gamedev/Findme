@@ -76,17 +76,26 @@ namespace AC
 					return;
 				}
 				
-				if (KickStarter.playerInput.GetMouseState () == MouseState.SingleClick && !KickStarter.playerMenus.IsInteractionMenuOn () && !KickStarter.playerMenus.IsMouseOverMenu () && !KickStarter.playerInteraction.IsMouseOverHotspot ())
+				if (KickStarter.playerInput.GetMouseState () == MouseState.SingleClick &&
+					!KickStarter.playerMenus.IsInteractionMenuOn () && !KickStarter.playerMenus.IsMouseOverMenu () &&
+					!KickStarter.playerInteraction.IsMouseOverHotspot () &&
+					(KickStarter.settingsManager.movementMethod == MovementMethod.PointAndClick || KickStarter.settingsManager.movementMethod == MovementMethod.StraightToCursor))
 				{
 					if (KickStarter.playerInteraction.GetHotspotMovingTo ())
 					{
 						KickStarter.playerInteraction.StopMovingToHotspot ();
 					}
 
-					KickStarter.playerInteraction.DeselectHotspot (false);
+					if (KickStarter.settingsManager.hotspotDetection == HotspotDetection.MouseOver)
+					{
+						KickStarter.playerInteraction.DeselectHotspot (false);
+					}
 				}
 
-				if (KickStarter.playerInteraction.GetHotspotMovingTo () && KickStarter.settingsManager.movementMethod != MovementMethod.PointAndClick && KickStarter.playerInput.GetMoveKeys ().sqrMagnitude > 0f)
+				if (KickStarter.playerInteraction.GetHotspotMovingTo () &&
+					KickStarter.settingsManager.movementMethod != MovementMethod.PointAndClick &&
+					KickStarter.settingsManager.movementMethod != MovementMethod.StraightToCursor &&
+					KickStarter.playerInput.GetMoveKeys ().sqrMagnitude > 0f)
 				{
 					KickStarter.playerInteraction.StopMovingToHotspot ();
 				}
@@ -952,7 +961,7 @@ namespace AC
 						return;
 					}
 
-					if (InvInstance.IsValid (KickStarter.runtimeInventory.SelectedInstance) && !KickStarter.settingsManager.canMoveWhenActive && KickStarter.settingsManager.movementMethod == MovementMethod.PointAndClick && !KickStarter.settingsManager.inventoryDisableLeft)
+					if (InvInstance.IsValid (KickStarter.runtimeInventory.SelectedInstance) && !KickStarter.settingsManager.canMoveWhenActive && KickStarter.settingsManager.movementMethod == MovementMethod.PointAndClick && KickStarter.settingsManager.leftClickDeselect != LeftClickDeselect.Never)
 					{
 						return;
 					}

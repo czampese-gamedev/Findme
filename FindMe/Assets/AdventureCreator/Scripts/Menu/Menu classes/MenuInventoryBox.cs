@@ -2575,8 +2575,13 @@ namespace AC
 		{
 			if (inventoryBoxType == AC_InventoryBoxType.CollectedDocuments)
 			{
-				int documentID = KickStarter.runtimeDocuments.GetCollectedDocumentIDs ((limitToCategory) ? categoryIDs.ToArray () : null) [slotIndex + offset];
-				return KickStarter.inventoryManager.GetDocument (documentID);
+				var documentIDs = KickStarter.runtimeDocuments.GetCollectedDocumentIDs ((limitToCategory) ? categoryIDs.ToArray () : null);
+				int i = slotIndex + offset;
+				if (i >= 0 && i < documentIDs.Length)
+				{
+					int documentID = documentIDs[i];
+					return KickStarter.inventoryManager.GetDocument (documentID);
+				}
 			}
 			return null;
 		}
@@ -2679,6 +2684,78 @@ namespace AC
 				{
 					return i;
 				}
+			}
+			return -1;
+		}
+
+
+		/**
+		 * <summary>Gets the slot index number that a given Objective appears in.</summary>
+		 * <param name = "objectiveID">The ID number of the Objective to search for</param>
+		 * <returns>The slot index number that the Objective appears in</returns>
+		 */
+		public int GetObjectiveSlot (int objectiveID)
+		{
+			ObjectiveInstance[] objectives = GetObjectives ();
+			for (int i = 0; i < maxSlots; i++)
+			{
+				if ((i + offset) > 0 &&
+					(i + offset) < objectives.Length &&
+					objectives[i + offset].ObjectiveID == objectiveID)
+				{
+					return i;
+				}
+			}
+			return -1;
+		}
+
+
+		/**
+		 * <summary>Gets the slot index number that a given Objective appears in.</summary>
+		 * <param name = "objectiveInstance">The instance of the Objective to search for</param>
+		 * <returns>The slot index number that the Objective appears in</returns>
+		 */
+		public int GetObjectiveSlot (ObjectiveInstance objectiveInstance)
+		{
+			if (objectiveInstance != null)
+			{
+				return GetObjectiveSlot (objectiveInstance.ObjectiveID);
+			}
+			return -1;
+		}
+
+
+		/**
+		 * <summary>Gets the slot index number that a given Document appears in.</summary>
+		 * <param name = "documentID">The ID number of the Document to search for</param>
+		 * <returns>The slot index number that the Document appears in</returns>
+		 */
+		public int GetDocumentSlot (int documentID)
+		{
+			var documentIDs = KickStarter.runtimeDocuments.GetCollectedDocumentIDs ((limitToCategory) ? categoryIDs.ToArray () : null);
+			for (int i = 0; i < maxSlots; i++)
+			{
+				if ((i + offset) > 0 &&
+					(i + offset) < documentIDs.Length &&
+					documentIDs[i + offset] == documentID)
+				{
+					return i;
+				}
+			}
+			return -1;
+		}
+
+
+		/**
+		 * <summary>Gets the slot index number that a given Document appears in.</summary>
+		 * <param name = "document">The Document to search for</param>
+		 * <returns>The slot index number that the Document appears in</returns>
+		 */
+		public int GetDocumentSlot (Document document)
+		{
+			if (document != null)
+			{
+				return GetDocumentSlot (document.ID);
 			}
 			return -1;
 		}

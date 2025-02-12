@@ -49,6 +49,8 @@ namespace AC
 		/** The constrain type on spin rotation, if lockYRotAxis = False (TargetX, TargetZ, TargetAcrossScreen, TargetIntoScreen, LookAtTarget) */
 		public CameraRotConstrainType yRotConstrainType;
 
+		public BoxCollider boxColliderBounds = null;
+
 		/** The influence of the target's position on X-axis movement, if lockXLocAxis = False */
 		public float xGradient = 1f;
 		/** The influence of the target's position on Y-axis movement, if lockYLocAxis = False */
@@ -153,17 +155,38 @@ namespace AC
 			
 			if (!lockXLocAxis && limitX)
 			{
-				desiredPosition.x = ConstrainAxis (desiredPosition.x, constrainX);
+				if (boxColliderBounds)
+				{
+					desiredPosition.x = Mathf.Clamp (desiredPosition.x, boxColliderBounds.bounds.min.x, boxColliderBounds.bounds.max.x);
+				}
+				else
+				{
+					desiredPosition.x = ConstrainAxis (desiredPosition.x, constrainX);
+				}
 			}
 			
 			if (!lockYLocAxis && limitY)
 			{
-				desiredPosition.y = ConstrainAxis (desiredPosition.y, constrainYLoc);
+				if (boxColliderBounds)
+				{
+					desiredPosition.y = Mathf.Clamp (desiredPosition.y, boxColliderBounds.bounds.min.y, boxColliderBounds.bounds.max.y);
+				}
+				else
+				{
+					desiredPosition.y = ConstrainAxis (desiredPosition.y, constrainYLoc);
+				}
 			}
 			
 			if (!lockZLocAxis && limitZ)
 			{
-				desiredPosition.z = ConstrainAxis (desiredPosition.z, constrainZ);
+				if (boxColliderBounds)
+				{
+					desiredPosition.z = Mathf.Clamp (desiredPosition.z, boxColliderBounds.bounds.min.z, boxColliderBounds.bounds.max.z);
+				}
+				else
+				{
+					desiredPosition.z = ConstrainAxis (desiredPosition.z, constrainZ);
+				}
 			}
 
 			if (!lockXRotAxis && limitXRot)
@@ -558,7 +581,14 @@ namespace AC
 				
 				if (limitX)
 				{
-					desiredPosition.x = ConstrainAxis (desiredPosition.x, constrainX);
+					if (boxColliderBounds)
+					{
+						desiredPosition.x = Mathf.Clamp (desiredPosition.x, boxColliderBounds.bounds.min.x, boxColliderBounds.bounds.max.x);
+					}
+					else
+					{
+						desiredPosition.x = ConstrainAxis (desiredPosition.x, constrainX);
+					}
 				}
 			}
 			
@@ -582,7 +612,14 @@ namespace AC
 				
 				if (limitYLoc)
 				{
-					desiredPosition.y = ConstrainAxis (desiredPosition.y, constrainYLoc);
+					if (boxColliderBounds)
+					{
+						desiredPosition.y = Mathf.Clamp (desiredPosition.y, boxColliderBounds.bounds.min.y, boxColliderBounds.bounds.max.y);
+					}
+					else
+					{
+						desiredPosition.y = ConstrainAxis (desiredPosition.y, constrainYLoc);
+					}
 				}
 			}
 			
@@ -651,7 +688,14 @@ namespace AC
 				
 				if (limitZ)
 				{
-					desiredPosition.z = ConstrainAxis (desiredPosition.z, constrainZ);
+					if (boxColliderBounds)
+					{
+						desiredPosition.z = Mathf.Clamp (desiredPosition.z, boxColliderBounds.bounds.min.z, boxColliderBounds.bounds.max.z);
+					}
+					else
+					{
+						desiredPosition.z = ConstrainAxis (desiredPosition.z, constrainZ);
+					}
 				}
 			}
 			

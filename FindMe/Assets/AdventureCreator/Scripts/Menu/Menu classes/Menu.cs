@@ -93,6 +93,8 @@ namespace AC
 		public bool hideDuringSaveScreenshots = true;
 
 		private Vector2 positionOffset;
+		private int needsOneFrameWakeUp;
+		private bool canShowLockedWarning = true;
 
 		#if TextMeshProIsPresent
 		/** If True, Elements in Unity UI-based Menus will use Text Mesh Pro equivalents to the standard UI components */
@@ -970,8 +972,9 @@ namespace AC
 			}
 			else
 			{
-				UnityVersionHandler.AddConstantIDToGameObject <ConstantID> (field.gameObject, true);
+				fieldID = UnityVersionHandler.AddConstantIDToGameObject <ConstantID> (field.gameObject, true);
 				AssetDatabase.SaveAssets ();
+				_constantID = fieldID.constantID;
 			}
 			
 			return _constantID;
@@ -1604,7 +1607,7 @@ namespace AC
 			bool doRecalc = false;
 			if (!IsOff ())
 			{
-				foreach (MenuElement element in visibleElements)
+				foreach (MenuElement element in elements)
 				{
 					if (element is MenuDialogList)
 					{
@@ -1985,14 +1988,23 @@ namespace AC
 			if (!HasTransition ())
 			{
 				doFade = false;
+				needsOneFrameWakeUp = 2;
 			}
 
 			// Setting selected_slot to -2 will cause PlayerInput's selected_option to reset
 			if (isLocked)
 			{
-				#if UNITY_EDITOR
-				ACDebug.Log ("Cannot turn on menu " + title + " as it is locked.");
-				#endif
+				if (canShowLockedWarning)
+				{
+					#if UNITY_EDITOR
+					ACDebug.Log ("Cannot turn on menu " + title + " as it is locked.");
+					#endif
+
+					if (appearType != AppearType.Manual && appearType != AppearType.OnInputKey)
+					{
+						canShowLockedWarning = false;
+					}
+				}
 			}
 			else if (!isEnabled || (isFading && fadeType == FadeType.fadeOut))
 			{
@@ -2021,6 +2033,7 @@ namespace AC
 							SetCentre (new Vector2 (KickStarter.playerInput.GetInvertedMouse ().x, ACScreen.height + 1f - KickStarter.playerInput.GetInvertedMouse ().y));
 						}
 					}
+					canShowLockedWarning = true;
 				}
 
 				MenuSystem.OnMenuEnable (this);
@@ -2081,6 +2094,9 @@ namespace AC
 		}
 
 
+		public bool NeedsOneFrameWakeUp { get { return needsOneFrameWakeUp > 0; }}
+
+
 		/**
 		 * <summary>Turns the Menu off.</summary>
 		 * <param name = "doFade">If True, the Menu will play its transition animation; otherwise, it will turn off instantly.</param>
@@ -2093,6 +2109,7 @@ namespace AC
 				return false;
 			}
 
+			canShowLockedWarning = true;
 			awaitingAddressable = 0;
 
 			if (KickStarter.sceneChanger.IsLoading ())
@@ -2190,6 +2207,8 @@ namespace AC
 				ClearSpeechText ();
 
 				KickStarter.playerMenus.UpdatePauseMenusRecord ();
+
+				canShowLockedWarning = true;
 			}
 		}
 
@@ -2263,7 +2282,9 @@ namespace AC
 		 */
 		public void HandleTransition ()
 		{
-			if (isFading && isEnabled)
+			if (!isEnabled) return;
+
+			if (isFading)
 			{
 				if (fadeType == FadeType.fadeIn)
 				{
@@ -2296,6 +2317,10 @@ namespace AC
 						UpdateTransition ();
 					}
 				}
+			}
+			else if (needsOneFrameWakeUp > 0)
+			{
+				needsOneFrameWakeUp--;
 			}
 		}
 		

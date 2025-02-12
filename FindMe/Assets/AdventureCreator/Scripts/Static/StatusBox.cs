@@ -19,7 +19,6 @@ namespace AC
 	{
 
 		private static Rect debugWindowRect = new Rect (0, 0, 260, 500);
-		private static GUISkin sceneManagerSkin = null;
 
 
 		/** Draws the debug window in the top-left corner of the Game window */
@@ -42,12 +41,6 @@ namespace AC
 
 		private static void StatusWindow (int windowID)
 		{
-			if (sceneManagerSkin == null)
-			{
-				sceneManagerSkin = (GUISkin) Resources.Load ("SceneManagerSkin");
-			}
-			GUI.skin = sceneManagerSkin;
-
 			GUILayout.Label ("Current game state: " + KickStarter.stateHandler.gameState.ToString ());
 
 			Options.DrawStatus ();
@@ -77,6 +70,7 @@ namespace AC
 			}
 
 			KickStarter.playerInput.DrawStatus ();
+			KickStarter.playerQTE.DrawStatus ();
 			
 			GUILayout.Space (4f);
 

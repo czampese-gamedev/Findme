@@ -17,7 +17,7 @@ namespace AC
 {
 
 	/** This script is used to store a record of all ConstantID components in the Hierarchy, as well as provide functions to retrieve them based on ID number. */
-	public struct ConstantIDManager
+	public class ConstantIDManager
 	{
 
 		#region Variables

@@ -33,6 +33,8 @@ namespace AC
 		public ChangeType changeType = ChangeType.Enable;
 		public int number = 0;
 
+		private enum NumberRepresents { Index, ID };
+		[SerializeField] private NumberRepresents numberRepresents = NumberRepresents.Index;
 		
 		public override ActionCategory Category { get { return ActionCategory.Hotspot; }}
 		public override string Title { get { return "Change interaction"; }}
@@ -52,15 +54,37 @@ namespace AC
 				return 0f;
 			}
 
+			int index = number;
+
 			if (interactionType == InteractionType.Use)
 			{
-				if (runtimeHotspot.useButtons.Count > number)
+				if (parameterID >= 0 && numberRepresents == NumberRepresents.ID)
 				{
-					ChangeButton (runtimeHotspot.useButtons [number]);
+					bool foundValue = false;
+					for (int i = 0; i < runtimeHotspot.useButtons.Count; i++)
+					{
+						if (runtimeHotspot.useButtons[i].iconID == number)
+						{
+							index = i;
+							foundValue = true;
+							break;
+						}
+					}
+
+					if (!foundValue)
+					{
+						LogWarning ("Cannot change Hotspot " + runtimeHotspot + "'s Use interaction ID " + number + " because it doesn't exist!");
+						return 0f;
+					}
+				}
+
+				if (runtimeHotspot.useButtons.Count > index)
+				{
+					ChangeButton (runtimeHotspot.useButtons [index]);
 				}
 				else
 				{
-					LogWarning ("Cannot change Hotspot " + runtimeHotspot.gameObject.name + "'s Use interaction " + number.ToString () + " because it doesn't exist!");
+					LogWarning ("Cannot change Hotspot " + runtimeHotspot + "'s Use interaction " + index + " because it doesn't exist!");
 				}
 			}
 			else if (interactionType == InteractionType.Examine)
@@ -69,13 +93,33 @@ namespace AC
 			}
 			else if (interactionType == InteractionType.Inventory)
 			{
-				if (runtimeHotspot.invButtons.Count > number)
+				if (parameterID >= 0 && numberRepresents == NumberRepresents.ID)
 				{
-					ChangeButton (runtimeHotspot.invButtons [number]);
+					bool foundValue = false;
+					for (int i = 0; i < runtimeHotspot.invButtons.Count; i++)
+					{
+						if (runtimeHotspot.invButtons[i].invID == number)
+						{
+							index = i;
+							foundValue = true;
+							break;
+						}
+					}
+
+					if (!foundValue)
+					{
+						LogWarning ("Cannot change Hotspot " + runtimeHotspot + "'s Use inventory ID " + number + " because it doesn't exist!");
+						return 0f;
+					}
+				}
+
+				if (runtimeHotspot.invButtons.Count > index)
+				{
+					ChangeButton (runtimeHotspot.invButtons [index]);
 				}
 				else
 				{
-					LogWarning ("Cannot change Hotspot " + runtimeHotspot.gameObject.name + "'s Inventory interaction " + number.ToString () + " because it doesn't exist!");
+					LogWarning ("Cannot change Hotspot " + runtimeHotspot + "'s Inventory interaction " + index + " because it doesn't exist!");
 				}
 			}
 			runtimeHotspot.ResetMainIcon ();
@@ -119,9 +163,12 @@ namespace AC
 					switch (interactionType)
 					{
 						case InteractionType.Use:
-							if (hotspot == null)
+							if (hotspot == null || parameterID >= 0)
 							{
 								number = EditorGUILayout.IntField ("Use interaction:", number);
+
+								if (parameterID >= 0)
+									numberRepresents = (NumberRepresents) EditorGUILayout.EnumPopup ("Value represents:", numberRepresents);
 							}
 							else if (KickStarter.cursorManager)
 							{
@@ -157,9 +204,12 @@ namespace AC
 							break;
 
 						case InteractionType.Inventory:
-							if (hotspot == null)
+							if (hotspot == null || parameterID >= 0)
 							{
 								number = EditorGUILayout.IntField ("Inventory interaction:", number);
+
+								if (parameterID >= 0)
+									numberRepresents = (NumberRepresents) EditorGUILayout.EnumPopup ("Value represents:", numberRepresents);
 							}
 							else if (KickStarter.inventoryManager)
 							{

@@ -219,19 +219,22 @@ namespace AC
 				else if (cycleUIBasis == CycleUIBasis.Dropdown)
 				{
 					#if TextMeshProIsPresent
-					LinkUIElement (canvas, ref uiDropdownTMP);
-					if (uiDropdownTMP)
+					if (_menu.useTextMeshProComponents)
 					{
-						uiDropdownTMP.value = selected;
-
-						if (addEventListeners)
+						LinkUIElement (canvas, ref uiDropdownTMP);
+						if (uiDropdownTMP)
 						{
-							uiDropdownTMP.onValueChanged.AddListener (delegate {
-								UIDropdownValueChangedHandler (uiDropdownTMP);
-							});
-						}
+							uiDropdownTMP.value = selected;
 
-						CreateHoverSoundHandler (uiDropdownTMP, _menu, 0);
+							if (addEventListeners)
+							{
+								uiDropdownTMP.onValueChanged.AddListener (delegate {
+									UIDropdownValueChangedHandler (uiDropdownTMP);
+								});
+							}
+
+							CreateHoverSoundHandler (uiDropdownTMP, _menu, 0);
+						}
 					}
 					if (!_menu.useTextMeshProComponents || uiDropdownTMP == null)
 					#endif
@@ -252,6 +255,26 @@ namespace AC
 						}
 					}
 				}
+			}
+		}
+
+
+		public void SetValue (int value)
+		{
+			selected = value;
+
+			#if TextMeshProIsPresent
+			if (uiDropdownTMP)
+			{
+				uiDropdownTMP.SetValueWithoutNotify (value);
+				uiDropdownTMP.RefreshShownValue ();
+				return;
+			}
+			#endif
+			if (uiDropdown)
+			{
+				uiDropdown.SetValueWithoutNotify (value);
+				uiDropdown.RefreshShownValue ();
 			}
 		}
 
@@ -930,7 +953,7 @@ namespace AC
 						{
 							uiDropdownTMP.options.Add (new TMPro.TMP_Dropdown.OptionData ("New option"));
 						}
-						ACDebug.Log ("Cycle element '" + title + " is linked to a UI Dropdown with fewer options - adding them in automatically.");
+						ACDebug.Log ("Cycle element '" + title + "' is linked to a UI Dropdown with fewer options - adding them in automatically.");
 					}
 					else if (uiDropdownTMP.options.Count > numOptions)
 					{

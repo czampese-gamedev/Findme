@@ -81,6 +81,7 @@ namespace AC
 		protected void OnDisable ()
 		{
 			if (KickStarter.stateHandler) KickStarter.stateHandler.Unregister (this);
+			UnregisterUpdateEvent ();
 		}
 
 
@@ -185,6 +186,7 @@ namespace AC
 			}
 
 			highlightState = HighlightState.Normal;
+			RegisterUpdateEvent ();
 			direction = 1;
 
 			if (callEvents && onHighlightOn != null)
@@ -198,6 +200,7 @@ namespace AC
 		public void HighlightOnInstant ()
 		{
 			highlightState = HighlightState.On;
+			RegisterUpdateEvent ();
 			currentTimer = fadeTime;
 
 			UpdateMaterials ();
@@ -219,6 +222,7 @@ namespace AC
 			}
 
 			highlightState = HighlightState.Normal;
+			RegisterUpdateEvent ();
 			
 			if (direction == 1 && currentTimer > 0f)
 			{
@@ -259,6 +263,7 @@ namespace AC
 			if (highlightState != HighlightState.Flash && (highlightState == HighlightState.None || direction == -1))
 			{
 				highlightState = HighlightState.Flash;
+				RegisterUpdateEvent ();
 				direction = 1;
 				currentTimer = 0f;
 
@@ -335,14 +340,90 @@ namespace AC
 		public void Pulse ()
 		{
 			highlightState = HighlightState.Pulse;
+			RegisterUpdateEvent ();
 			//highlight = minHighlight;
 			direction = 1;
 			currentTimer = 0f;
 		}
 
+		#endregion
 
-		/** Re-calculates the intensity value. This is public so that it can be called every frame by the StateHandler component. */
-		public void _Update ()
+
+		#region ProtectedFunctions
+
+		protected void UpdateMaterials ()
+		{
+			if (!brightenMaterials)
+			{
+				return;
+			}
+
+			int i = 0;
+			float alpha;
+
+			if (affectChildren)
+			{
+				foreach (Renderer childRenderer in childRenderers)
+				{
+					if (childRenderer == null) continue;
+					
+					foreach (Material material in childRenderer.materials)
+					{
+						if (material == null) continue;
+
+						if (originalColors.Count <= i)
+						{
+							break;
+						}
+
+						if (material.HasProperty (ColorProperty))
+						{
+							alpha = material.GetColor (ColorProperty).a;
+							Color newColor = originalColors[i] * highlight;
+							newColor.a = alpha;
+							material.SetColor (ColorProperty, newColor);
+							i++;
+						}
+					}
+				}
+			}
+			else if (_renderer)
+			{
+				foreach (Material material in _renderer.materials)
+				{
+					if (material == null) continue;
+					
+					if (material.HasProperty (ColorProperty))
+					{
+						alpha = material.GetColor (ColorProperty).a;
+						Color newColor = originalColors[i] * highlight;
+						newColor.a = alpha;
+						material.SetColor (ColorProperty, newColor);
+						i++;
+					}
+				}
+			}
+		}
+
+
+		private void RegisterUpdateEvent ()
+		{
+			EventManager.OnUpdateHighlights -= OnUpdateHighlights;
+			EventManager.OnUpdateHighlights += OnUpdateHighlights;
+		}
+
+
+		private void UnregisterUpdateEvent ()
+		{
+			EventManager.OnUpdateHighlights -= OnUpdateHighlights;
+		}
+
+		#endregion
+
+
+		#region CustomEvents
+
+		private void OnUpdateHighlights ()
 		{
 			if (highlightState != HighlightState.None)
 			{
@@ -430,63 +511,9 @@ namespace AC
 					highlight = MinHighlight;
 					UpdateMaterials ();
 				}
+
+				UnregisterUpdateEvent ();
 			}
-		}
-
-		#endregion
-
-
-		#region ProtectedFunctions
-
-		protected void UpdateMaterials ()
-		{
-			if (!brightenMaterials)
-			{
-				return;
-			}
-
-			int i = 0;
-			float alpha;
-
-			if (affectChildren)
-			{
-				foreach (Renderer childRenderer in childRenderers)
-				{
-					foreach (Material material in childRenderer.materials)
-					{
-						if (originalColors.Count <= i)
-						{
-							break;
-						}
-
-						if (material.HasProperty (ColorProperty))
-						{
-							alpha = material.GetColor (ColorProperty).a;
-							Color newColor = originalColors[i] * highlight;
-							newColor.a = alpha;
-							material.SetColor (ColorProperty, newColor);
-							i++;
-						}
-					}
-				}
-			}
-			else if (_renderer)
-			{
-				foreach (Material material in _renderer.materials)
-				{
-					if (material.HasProperty (ColorProperty))
-					{
-						alpha = material.GetColor (ColorProperty).a;
-						Color newColor = originalColors[i] * highlight;
-						newColor.a = alpha;
-						material.SetColor (ColorProperty, newColor);
-						i++;
-					}
-				}
-			}
-			return;
-
-
 		}
 
 		#endregion
