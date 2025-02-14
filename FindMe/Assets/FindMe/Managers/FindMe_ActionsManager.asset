@@ -252,9 +252,7 @@ MonoBehaviour:
     category: 4
     title: Play speech
     description: "Makes a Character talk, or \u2013 if no Character is specified
-      \u2013 displays a message.Subtitles only appear if they are enabled from the
-      Options menu.A 'thinking' effect can be produced by opting to not play any
-      animation."
+      \u2013 displays narration."
     isEnabled: 1
     color: {r: 1, g: 1, b: 1, a: 1}
   - fileName: AC.ActionDialogOptionRename
@@ -852,7 +850,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
   - fileName: AC.ActionPlayMaker
     category: 19
-    title: PlayMaker
+    title: Playmaker
     description: Calls a specified Event within a PlayMaker FSM. Note that PlayMaker
       is a separate Unity Asset, and the 'PlayMakerIsPresent' preprocessor must be
       defined for this to work.

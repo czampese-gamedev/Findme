@@ -206,6 +206,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-8542510100376753772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,6 +484,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-8283987523433006036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -546,6 +548,7 @@ MonoBehaviour:
   uiRawImage: {fileID: 0}
   uiImageType: 0
   linkedJournalElementName: 
+  uiComponentHideStyle: 0
 --- !u!114 &-8114544369849792638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -730,6 +733,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-7870440359905360509
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1078,6 +1082,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-7486804037112739446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1284,6 +1289,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-6839120066760759925
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1346,6 +1352,7 @@ MonoBehaviour:
   journalType: 2
   pageOffset: 0
   otherJournalTitle: 
+  uiComponentHideStyle: 0
 --- !u!114 &-6642036035914336153
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2089,7 +2096,7 @@ MonoBehaviour:
     height: 32
   relativePosition: {x: 0, y: 0}
   numSlots: 1
-  uiButton: {fileID: 0}
+  uiButton: {fileID: 11400022, guid: 7fca8609fb2ab414cae59fdd96b15672, type: 3}
   uiSlots: []
   uiPointerState: 0
   fixedIcon: 1
@@ -2168,6 +2175,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-4414443447822327083
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2184,7 +2192,7 @@ MonoBehaviour:
   canvas: {fileID: 22300000, guid: e53082203210ae84a9e7e5b5f838d088, type: 3}
   canvasAssetKey: 
   canvasID: 0
-  rectTransform: {fileID: 0}
+  rectTransform: {fileID: 22400018, guid: e53082203210ae84a9e7e5b5f838d088, type: 3}
   rectTransformID: 14169666
   uiTransitionType: 1
   uiPositionType: 0
@@ -2635,6 +2643,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-3614210823337636501
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3056,6 +3065,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 4
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-3085542522055402789
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4171,6 +4181,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &-1686177447238424764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5419,6 +5430,7 @@ MonoBehaviour:
   uiRawImage: {fileID: 0}
   uiImageType: 0
   linkedJournalElementName: 
+  uiComponentHideStyle: 0
 --- !u!114 &450600993197532932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5547,6 +5559,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &633558348248161600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5611,6 +5624,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &805859618383311862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5674,6 +5688,7 @@ MonoBehaviour:
   uiRawImage: {fileID: 0}
   uiImageType: 0
   linkedJournalElementName: 
+  uiComponentHideStyle: 0
 --- !u!114 &911488180089933298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5809,6 +5824,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &1307339500439795305
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6313,6 +6329,7 @@ MonoBehaviour:
   uiRawImage: {fileID: 0}
   uiImageType: 0
   linkedJournalElementName: 
+  uiComponentHideStyle: 0
 --- !u!114 &2840766982889015701
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6899,6 +6916,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &4070096946869669253
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7034,6 +7052,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &4340270045115953485
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7262,6 +7281,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &4665156048793226110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7326,6 +7346,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &4752539402589056800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7389,6 +7410,7 @@ MonoBehaviour:
   uiRawImage: {fileID: 0}
   uiImageType: 0
   linkedJournalElementName: 
+  uiComponentHideStyle: 0
 --- !u!114 &4779131819791745117
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7941,6 +7963,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &6497275158039968956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8005,6 +8028,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 1
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &6770930763497724626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8417,7 +8441,7 @@ MonoBehaviour:
   clickSound: {fileID: 0}
   changeCursor: 0
   cursorID: 0
-  linkedUiID: 1980064
+  linkedUiID: 2700998
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
@@ -8427,7 +8451,7 @@ MonoBehaviour:
     height: 0
   relativePosition: {x: 0, y: 0}
   numSlots: 1
-  uiTextTMP: {fileID: 6669169574055098044, guid: c323a81b4391f244fbed9f09b9114d85, type: 3}
+  uiTextTMP: {fileID: 96242157578004492, guid: c323a81b4391f244fbed9f09b9114d85, type: 3}
   hideScrollingCharacters: 0
   uiText: {fileID: 0}
   _label: Label
@@ -8444,8 +8468,9 @@ MonoBehaviour:
   itemPropertyID: 0
   multiplyByItemCount: 0
   inventoryPropertyType: 0
-  selectedObjectiveLabelType: 0
+  selectedObjectiveLabelType: 1
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &7740052033683599717
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8581,6 +8606,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &7979917862948747770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8862,6 +8888,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &8803069359794449271
 MonoBehaviour:
   m_ObjectHideFlags: 1

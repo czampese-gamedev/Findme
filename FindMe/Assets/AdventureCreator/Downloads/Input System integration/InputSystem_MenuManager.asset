@@ -45,11 +45,14 @@ MonoBehaviour:
     height: 0
   relativePosition: {x: 0, y: 0}
   numSlots: 1
+  uiTextTMP: {fileID: 0}
+  hideScrollingCharacters: 0
   uiText: {fileID: 0}
   _label: Inputs
   anchor: 4
   textEffects: 0
   outlineSize: 2
+  effectColour: {r: 0, g: 0, b: 0, a: 1}
   labelType: 0
   variableID: 0
   useCharacterColour: 0
@@ -61,6 +64,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +110,7 @@ MonoBehaviour:
   canvas: {fileID: 1291589819398309841, guid: cb4eda8d60c637e4e9b8025bba878024, type: 3}
   canvasAssetKey: 
   canvasID: 0
-  rectTransform: {fileID: 0}
+  rectTransform: {fileID: 1291589819398278793, guid: cb4eda8d60c637e4e9b8025bba878024, type: 3}
   rectTransformID: 22700
   uiTransitionType: 0
   uiPositionType: 0
@@ -128,6 +132,7 @@ MonoBehaviour:
   actionListOnTurnOff: {fileID: 0}
   updateWhenFadeOut: 1
   hideDuringSaveScreenshots: 1
+  useTextMeshProComponents: 0
   fitWithinScreen: 1
   backgroundTexture: {fileID: 0}
   visibleElements:
@@ -193,7 +198,6 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  showInFilter: 1
 --- !u!114 &5529006206425675353
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +251,7 @@ MonoBehaviour:
   anchor: 4
   textEffects: 0
   outlineSize: 2
+  effectColour: {r: 0, g: 0, b: 0, a: 1}
   buttonClickType: 0
   actionList: {fileID: 0}
   parameterID: -1

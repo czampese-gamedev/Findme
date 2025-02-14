@@ -33,8 +33,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 395
-    y: 886
+    x: 32
+    y: 318
     width: 300
     height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -49,83 +49,12 @@ MonoBehaviour:
   elementToChangeParameterID: -1
   journalText: 
   onlyAddNewJournal: 0
+  pageTexture: {fileID: 0}
   doFade: 0
   lineID: -1
   journalPageIndex: -1
   journalPageIndexParameterID: -1
   preprocessTextTokens: 0
---- !u!114 &-8181583314535306679
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2314b8a5519074a1fadc27b4aa968f97, type: 3}
-  m_Name: (Clone)
-  m_EditorClassIdentifier: 
-  id: 0
-  isDisplayed: 1
-  showComment: 0
-  comment: 
-  willWait: 0
-  endAction: 0
-  skipAction: -1
-  skipActionActual: {fileID: 0}
-  linkedCutscene: {fileID: 0}
-  linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 0
-    skipAction: -1
-    skipActionActual: {fileID: 0}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  isEnabled: 1
-  isAssetFile: 1
-  isBreakPoint: 0
-  nodeRect:
-    serializedVersion: 2
-    x: 516
-    y: 450
-    width: 300
-    height: 227
-  overrideColor: {r: 1, g: 1, b: 1, a: 1}
-  showOutputSockets: 1
-  parentActionListInEditor: {fileID: 0}
-  groupID: 0
-  parameterID: -1
-  constantID: 422500
-  _anim: {fileID: 0}
-  runtimeAnim: {fileID: 0}
-  clip: {fileID: 0}
-  fadeTime: 0
-  clipParameterID: -1
-  _anim2D: {fileID: 0}
-  runtimeAnim2D: {fileID: 0}
-  animator: {fileID: 0}
-  runtimeAnimator: {fileID: 0}
-  clip2D: 
-  clip2DParameterID: -1
-  wrapMode2D: 0
-  layerInt: 0
-  shapeObject: {fileID: 0}
-  runtimeShapeObject: {fileID: 0}
-  shapeKey: 0
-  shapeValue: 0
-  isPlayer: 0
-  methodMecanim: 0
-  mecanimParameterType: 3
-  parameterName: InventoryButtonAnimationTrigger
-  parameterNameID: -1
-  parameterValue: 0
-  parameterValueParameterID: -1
-  method: 0
-  blendMode: 0
-  playMode: 0
-  animationEngine: 3
-  customClassName: 
 --- !u!114 &-3807170217664898035
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,9 +78,9 @@ MonoBehaviour:
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
   endings:
-  - resultAction: 0
-    skipAction: -1
-    skipActionActual: {fileID: 0}
+  - resultAction: 2
+    skipAction: 3
+    skipActionActual: {fileID: 4196292842630526347}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -159,10 +88,10 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 50
-    y: 255
+    x: 653
+    y: 34
     width: 300
-    height: 152
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
@@ -175,6 +104,7 @@ MonoBehaviour:
   elementToChangeParameterID: -1
   journalText: 
   onlyAddNewJournal: 0
+  pageTexture: {fileID: 0}
   doFade: 1
   lineID: -1
   journalPageIndex: -1
@@ -197,7 +127,6 @@ MonoBehaviour:
   - {fileID: 3384959677900626926}
   - {fileID: -3807170217664898035}
   - {fileID: 4196292842630526347}
-  - {fileID: -8181583314535306679}
   - {fileID: 7061866352342595759}
   - {fileID: -8318264671831812894}
   isSkippable: 1
@@ -272,8 +201,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 392
-    y: 76
+    x: 327
+    y: 17
     width: 300
     height: 193
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -318,9 +247,9 @@ MonoBehaviour:
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
   endings:
-  - resultAction: 0
-    skipAction: -1
-    skipActionActual: {fileID: 0}
+  - resultAction: 2
+    skipAction: 4
+    skipActionActual: {fileID: 7061866352342595759}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -328,10 +257,10 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 85
-    y: 435
+    x: 667
+    y: 230
     width: 300
-    height: 227
+    height: 247
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
@@ -456,13 +385,13 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 352
-    y: 737
+    x: 351
+    y: 323
     width: 300
-    height: 92
+    height: 93
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
   groupID: 0
   parameterID: -1
-  timeToPause: 1
+  timeToPause: 4

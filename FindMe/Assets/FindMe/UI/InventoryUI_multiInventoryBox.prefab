@@ -1281,6 +1281,7 @@ GameObject:
   - component: {fileID: 11400068}
   - component: {fileID: 22500000}
   - component: {fileID: 11422592}
+  - component: {fileID: 9073082265226720661}
   m_Layer: 5
   m_Name: InventoryUI_multiInventoryBox
   m_TagString: Untagged
@@ -1403,6 +1404,21 @@ MonoBehaviour:
   updatePosition: 1
   updateScale: 1
   accountForSafeArea: 0
+--- !u!114 &9073082265226720661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 584798
+  retainInPrefab: 1
+  autoManual: 0
 --- !u!1 &119846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4130,7 +4146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.449, y: -156.232}
+  m_AnchoredPosition: {x: -10.448975, y: -156.23196}
   m_SizeDelta: {x: 772.947, y: 312.474}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7314438323920201605

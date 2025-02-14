@@ -224,6 +224,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -813,40 +814,31 @@ MonoBehaviour:
   - uiButton: {fileID: 11419726, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 611164
     sprite: {fileID: 0}
-  - uiButton: {fileID: 2866397245100025202, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 2866397245100025202, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 118668
     sprite: {fileID: 0}
-  - uiButton: {fileID: 1764574820126226798, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 1764574820126226798, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 119068
     sprite: {fileID: 0}
-  - uiButton: {fileID: 4250148758398178095, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 4250148758398178095, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 119500
     sprite: {fileID: 0}
-  - uiButton: {fileID: 8174614722556009015, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 8174614722556009015, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 119938
     sprite: {fileID: 0}
-  - uiButton: {fileID: 8205948910819544347, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 8205948910819544347, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 120408
     sprite: {fileID: 0}
-  - uiButton: {fileID: 1597498698311445027, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 1597498698311445027, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 120886
     sprite: {fileID: 0}
-  - uiButton: {fileID: 5770604196703172116, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 5770604196703172116, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 121396
     sprite: {fileID: 0}
-  - uiButton: {fileID: 4275087744885201328, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 4275087744885201328, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 121410
     sprite: {fileID: 0}
-  - uiButton: {fileID: 4195004292245344381, guid: dce792fee7f017b469295f43ad2959b3,
-      type: 3}
+  - uiButton: {fileID: 4195004292245344381, guid: dce792fee7f017b469295f43ad2959b3, type: 3}
     uiButtonID: 122436
     sprite: {fileID: 0}
   uiPointerState: 0
@@ -866,6 +858,7 @@ MonoBehaviour:
   preventSelection: 0
   limitMaxScroll: 1
   highlightEmptySlots: 0
+  canBeLooped: 0
   markAlreadyRead: 0
   alreadyReadFontColour: {r: 1, g: 1, b: 1, a: 1}
   alreadyReadFontHighlightedColour: {r: 1, g: 1, b: 1, a: 1}
@@ -1188,6 +1181,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400040
 MonoBehaviour:
   m_ObjectHideFlags: 1

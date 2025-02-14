@@ -18,7 +18,7 @@ MonoBehaviour:
   customSaveFormat: MMMM dd, yyyy
   takeSaveScreenshots: 0
   screenshotRenderTexture: {fileID: 0}
-  saveScreenshots: 0
+  saveScreenshots: 1
   screenshotResolutionFactor: 1
   useProfiles: 0
   maxSaves: 5
@@ -91,16 +91,17 @@ MonoBehaviour:
   inventoryDropLookNoDrag: 0
   inventoryInteractions: 1
   inventoryDisableLeft: 1
+  leftClickDeselect: 1
   allowDefaultInventoryInteractions: 0
   inventoryDisableUnhandled: 1
   inventoryDisableDefined: 1
   inventoryInteractionsHaltPlayer: 0
-  activeWhenHover: 0
+  activeWhenHover: 1
   inventoryActiveEffect: 1
   inventoryPulseSpeed: 1
-  activeWhenUnhandled: 1
+  activeWhenUnhandled: 0
   canReorderItems: 0
-  selectInventoryDisplay: 0
+  selectInventoryDisplay: 1
   rightClickInventory: 0
   reverseInventoryCombinations: 1
   canMoveWhenActive: 1
@@ -109,6 +110,7 @@ MonoBehaviour:
   giveInvWithUnhandled: 0
   giveInvWithIconID: 0
   autoDisableUnhandledHotspots: 0
+  autoToggleGiveMode: 1
   clickPrefab: {fileID: 0}
   showClickPrefabWithStraightToCursorHeld: 0
   clickMarkerPosition: 0
@@ -178,6 +180,7 @@ MonoBehaviour:
   hotspotDetection: 0
   closeInteractionMenusIfPlayerLeavesVicinity: 0
   placeDistantHotspotsOnSeparateLayer: 1
+  cursorMustBeOverNearestHotspot: 0
   hotspotsInVicinity: 0
   highlightAllHotspotsInVicinity: 1
   hotspotIconDisplay: 3
@@ -264,6 +267,7 @@ MonoBehaviour:
       data:
         label: 
         id: 0
+        cutscene: {fileID: 0}
         actionListAsset: {fileID: 11400000, guid: 236d97c46dc3a7c49be27a4d2baa7da2, type: 2}
         parameterIDs: 0000000001000000
         addRemove: 0

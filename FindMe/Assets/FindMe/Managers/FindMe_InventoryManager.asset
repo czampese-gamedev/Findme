@@ -19,29 +19,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -96,29 +74,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -169,33 +125,11 @@ MonoBehaviour:
     selectSingle: 0
   - label: Item1
     id: 2
-    altLabel: 
+    altLabel: THIS IS A BOOK!!!
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -250,37 +184,15 @@ MonoBehaviour:
     carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
     tex: {fileID: 2800000, guid: 72dd3babc3a2f0e4e907e12dfeb2f915, type: 3}
-    activeTex: {fileID: 0}
-    selectedTex: {fileID: 0}
+    activeTex: {fileID: 2800000, guid: bce43503518074f40aaca9d808ac14a3, type: 3}
+    selectedTex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
     linkedPrefab: {fileID: 0}
     cursorIcon:
       texture: {fileID: 0}
@@ -327,29 +239,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -404,29 +294,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -481,29 +349,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -562,29 +408,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -639,29 +463,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -716,29 +518,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -793,29 +573,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -870,29 +628,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -951,29 +687,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -1028,29 +742,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -1105,29 +797,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -1182,29 +852,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0

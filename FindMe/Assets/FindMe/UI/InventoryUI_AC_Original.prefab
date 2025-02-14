@@ -2251,9 +2251,9 @@ GameObject:
   - component: {fileID: 11400068}
   - component: {fileID: 22500000}
   - component: {fileID: 11422592}
-  - component: {fileID: 6072749006578486023}
+  - component: {fileID: 5247874327576133837}
   m_Layer: 5
-  m_Name: InventoryUI
+  m_Name: InventoryUI_AC_Original
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2371,7 +2371,7 @@ MonoBehaviour:
   updatePosition: 1
   updateScale: 1
   accountForSafeArea: 0
---- !u!114 &6072749006578486023
+--- !u!114 &5247874327576133837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2383,7 +2383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constantID: 612316
+  constantID: 571446
   retainInPrefab: 1
   autoManual: 0
 --- !u!1 &100232

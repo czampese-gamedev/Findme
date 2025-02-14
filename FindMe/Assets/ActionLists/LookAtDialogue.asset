@@ -1,45 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc1f751990d444ef9e1381090933b8b, type: 3}
-  m_Name: LookAtDialogue
-  m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 7676076650805122852}
-  isSkippable: 1
-  actionListType: 0
-  unfreezePauseMenus: 1
-  useParameters: 1
-  canRunMultipleInstances: 0
-  canSurviveSceneChanges: 0
-  revertToDefaultParametersAfterRunning: 0
-  parameters:
-  - label: DailogueToSay
-    description: What the narrator should say when looking at an object
-    ID: 0
-    parameterType: 4
-    intValue: -1
-    constantID: 0
-    popUpID: 0
-    floatValue: 0
-    stringValue: Nothing to see here...
-    gameObject: {fileID: 0}
-    objectValue: {fileID: 0}
-    vector3Value: {x: 0, y: 0, z: 0}
-    gameObjectParameterReferences: 0
-    variables: {fileID: 0}
-  tagID: 0
-  groups: []
-  backupData: []
---- !u!114 &7676076650805122852
+--- !u!114 &-3437307422579557576
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,7 +47,10 @@ MonoBehaviour:
   isPlayer: 0
   playerID: -1
   speaker: {fileID: 0}
-  messageText: Some other chat about dinosaurs
+  messageText: 'A cute little tea trolley
+
+    Looks like it has an empty wine bottle
+    on it, I wonder where that came from?'
   lineID: -1
   multiLineIDs: 
   isBackground: 1
@@ -100,3 +64,42 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc1f751990d444ef9e1381090933b8b, type: 3}
+  m_Name: LookAtDialogue
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: -3437307422579557576}
+  isSkippable: 1
+  actionListType: 0
+  unfreezePauseMenus: 1
+  useParameters: 1
+  canRunMultipleInstances: 0
+  canSurviveSceneChanges: 0
+  revertToDefaultParametersAfterRunning: 0
+  parameters:
+  - label: DailogueToSay
+    description: What the narrator should say when looking at an object
+    ID: 0
+    parameterType: 4
+    intValue: -1
+    constantID: 0
+    popUpID: 0
+    floatValue: 0
+    stringValue: Nothing to see here...
+    gameObject: {fileID: 0}
+    objectValue: {fileID: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    gameObjectParameterReferences: 0
+    variables: {fileID: 0}
+  tagID: 0
+  groups: []
+  backupData: []
