@@ -1,0 +1,121 @@
+﻿ID,Type,Original text,Scene,Description,Original text
+66,MenuElement,Resume, , ,Resume
+67,MenuElement,Options, , ,Options
+68,MenuElement,Save, , ,Save
+69,MenuElement,Load, , ,Load
+70,MenuElement,Quit, , ,Quit
+71,MenuElement,Options, , ,Options
+72,MenuElement,Speech volume, , ,Speech volume
+73,MenuElement,Music volume, , ,Music volume
+74,MenuElement,SFX volume, , ,SFX volume
+75,MenuElement,Language, , ,Language
+76,MenuElement,Subtitles, , ,Subtitles
+77,MenuElement,Back, , ,Back
+78,MenuElement,Save game, , ,Save game
+88,MenuElement,New save, , ,New save
+79,MenuElement,Back, , ,Back
+80,MenuElement,Load game, , ,Load game
+81,MenuElement,Back, , ,Back
+84,MenuElement,Menu, , ,Menu
+89,MenuElement,Container, , ,Container
+90,MenuElement,Close, , ,Close
+91,MenuElement,Take all, , ,Take all
+92,MenuElement,Inventory, , ,Inventory
+99,MenuElement,Create, , ,Create
+100,MenuElement,Close, , ,Close
+101,MenuElement,Ingredients, , ,Ingredients
+102,MenuElement,Inventory, , ,Inventory
+103,MenuElement,Output, , ,Output
+104,MenuElement,Objectives, , ,Objectives
+105,MenuElement,Back, , ,Back
+106,MenuElement,New Game, , ,New Game
+107,MenuElement,Options, , ,Options
+108,MenuElement,Load, , ,Load
+109,MenuElement,Quit, , ,Quit
+110,Speech,A diorama of London,MuseumInterior2024,From: Hotspot_LondonDisplay: Examine,A diorama of London
+111,Speech,By merely obvserving this statue you have unlocked item 4,MuseumInterior2024,From: TESTHOTSPOT: Use,By merely obvserving this statue you have unlocked item 4
+112,Speech,Testing some stuff with item 4.[break]You need to look at a statue first,MuseumInterior2024,From: Item 4: Look at,Testing some stuff with item 4.[break]You need to look at a statue first
+113,Character,Kim,MuseumInterior2024,From: Kim_2,Kim
+114,Hotspot,Item 1,MuseumInterior2024,From: InventoryItemHS1,Item 1
+115,Hotspot,Item 4,MuseumInterior2024,From: InventoryItemHS4,Item 4
+116,Hotspot,Painting Two,MuseumInterior2024,From: Hotspot_Pictures (1),Painting Two
+117,Hotspot,Painting Three,MuseumInterior2024,From: Hotspot_Pictures (2),Painting Three
+118,Hotspot,Item 9,MuseumInterior2024,From: InventoryItemHS4,Item 9
+119,Hotspot,Item 8,MuseumInterior2024,From: InventoryItemHS4,Item 8
+120,Hotspot,Item 10,MuseumInterior2024,From: InventoryItemHS4,Item 10
+121,Hotspot,Painting Four,MuseumInterior2024,From: Hotspot_Pictures (3),Painting Four
+122,Hotspot,Diorama_Building,MuseumInterior2024,From: Diorama_Building,Diorama_Building
+123,Hotspot,A Statue,MuseumInterior2024,From: TESTHOTSPOT,A Statue
+124,Hotspot,Painting One,MuseumInterior2024,From: Hotspot_Pictures,Painting One
+125,Hotspot,Upstairs,MuseumInterior2024,From: Hotspot_Upstairs,Upstairs
+126,Hotspot,Diorama,MuseumInterior2024,From: Hotspot_LondonDisplay,Diorama
+127,Speech,You need a drink before you head out!,TestInterior,From: Exit: Use,You need a drink before you head out!
+128,Hotspot,5,TestInterior,From: Drawer5_HS,5
+129,Hotspot,6,TestInterior,From: Drawer6_HS,6
+130,Hotspot,3,TestInterior,From: Drawer3_HS,3
+131,Hotspot,2,TestInterior,From: Drawer2_HS,2
+132,Hotspot,4,TestInterior,From: Drawer4_HS,4
+133,Hotspot,8,TestInterior,From: Drawer8_HS,8
+134,Hotspot,7,TestInterior,From: Drawer7_HS,7
+135,Hotspot,9,TestInterior,From: Drawer9_HS,9
+136,Hotspot,LookAt_Desk,TestInterior,From: LookAt_Desk,LookAt_Desk
+137,Hotspot,THIS IS A BOOK!!!,TestInterior,From: Hotspot,THIS IS A BOOK!!!
+138,Hotspot,1,TestInterior,From: Drawer1_HS,1
+139,Hotspot,TrolleyHotspot,TestInterior,From: TrolleyHotspot,TrolleyHotspot
+140,Hotspot,DeskLongDrawer_HS,TestInterior,From: DeskLongDrawer_HS,DeskLongDrawer_HS
+141,Hotspot,WIne_HS,TestInterior,From: WIne_HS,WIne_HS
+142,Hotspot,Card Cabinet,TestInterior,From: CubbyHoleLookAt_HS,Card Cabinet
+143,Hotspot,Exit,TestInterior,From: DoorCollider,Exit
+144,Hotspot,Paper_HS,TestInterior,From: Paper_HS,Paper_HS
+145,MenuElement,Save, , ,Save
+146,MenuElement,Import, , ,Import
+147,MenuElement,Autosave, , ,Autosave
+148,Character,Kim, , ,Kim
+149,InventoryItem,Sphere from Museum, , ,Sphere from Museum
+150,InventoryItem,Building, , ,Building
+151,InventoryItem,THIS IS A BOOK!!!, , ,THIS IS A BOOK!!!
+152,InventoryItem,Item2, , ,Item2
+153,InventoryItem,Item3, , ,Item3
+154,InventoryItem,Item4, , ,Item4
+155,InventoryItem,Item5, , ,Item5
+156,InventoryItem,Item6, , ,Item6
+157,InventoryItem,Item7, , ,Item7
+158,InventoryItem,Item8, , ,Item8
+159,InventoryItem,Item9, , ,Item9
+160,InventoryItem,Item10, , ,Item10
+161,InventoryItem,Comb8_10, , ,Comb8_10
+162,InventoryItem,Comb5_6, , ,Comb5_6
+163,InventoryItem,Wine Bottle, , ,Wine Bottle
+164,InventoryItem,Paper, , ,Paper
+165,Document,Test_SympbolsDoc, , ,Test_SympbolsDoc
+166,Document,These symbols might be useful..., , ,These symbols might be useful...
+167,Document,test page 2?, , ,test page 2?
+168,HotspotPrefix,Use, , ,Use
+169,HotspotPrefix,on, , ,on
+170,HotspotPrefix,Give, , ,Give
+171,HotspotPrefix,to, , ,to
+172,HotspotPrefix,Walk to, , ,Walk to
+173,CursorIcon,Use, , ,Use
+174,CursorIcon,Talk to, , ,Talk to
+175,CursorIcon,Look at, , ,Look at
+176,CursorIcon,Up, , ,Up
+177,CursorIcon,UseNoExamine, , ,UseNoExamine
+178,MenuElement,Profiles, , ,Profiles
+179,MenuElement,On, , ,On
+180,MenuElement,Off, , ,Off
+181,MenuElement,Profiles, , ,Profiles
+182,MenuElement,Current:, , ,Current:
+183,MenuElement,Create new profile, , ,Create new profile
+184,MenuElement,Back, , ,Back
+185,MenuElement,2025, , ,2025
+186,MenuElement,1440, , ,1440
+187,MenuElement,CLOSE, , ,CLOSE
+188,MenuElement,Close, , ,Close
+189,MenuElement,Button, , ,Button
+190,MenuElement,Inv, , ,Inv
+191,MenuElement,SKIP, , ,SKIP
+192,MenuElement,Profiles, , ,Profiles
+193,MenuElement,Label, , ,Label
+194,Speech,Hmmm....nope, ,From: UnhandledUseOnHotspot,Hmmm....nope
+195,Speech,All the information you need is in the task, ,From: UnhandledUseOnHotspot,All the information you need is in the task
+196,Speech,I dont think that will work here, ,From: UnhandledUseOnHotspot,I dont think that will work here

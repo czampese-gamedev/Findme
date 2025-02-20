@@ -1354,7 +1354,7 @@ MonoBehaviour:
   talkingAnimation: 0
   separateTalkingLayer: 0
   speechLabel: Kim
-  lineID: -1
+  lineID: 148
   displayLineID: -1
   speechColor: {r: 1, g: 1, b: 1, a: 1}
   portraitIcon:
@@ -1476,7 +1476,6 @@ MonoBehaviour:
   walkSound: {fileID: 8300000, guid: 3d59a977e5d41c14abd08561aabe38a8, type: 3}
   runSound: {fileID: 0}
   textScrollClip: {fileID: 0}
-  soundChild: {fileID: 8010180193221791936}
   speechAudioSource: {fileID: 0}
   headIKTurnFactor: 1
   bodyIKTurnFactor: 0

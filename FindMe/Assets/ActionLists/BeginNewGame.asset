@@ -49,6 +49,7 @@ MonoBehaviour:
   elementToChangeParameterID: -1
   journalText: 
   onlyAddNewJournal: 0
+  pageTexture: {fileID: 0}
   doFade: 0
   lineID: -1
   journalPageIndex: -1
@@ -103,6 +104,7 @@ MonoBehaviour:
   elementToChangeParameterID: -1
   journalText: 
   onlyAddNewJournal: 0
+  pageTexture: {fileID: 0}
   doFade: 0
   lineID: -1
   journalPageIndex: -1
@@ -156,6 +158,7 @@ MonoBehaviour:
   sceneNameParameterID: -1
   assignScreenOverlay: 0
   onlyPreload: 0
+  bypassLoadingScreen: 0
   relativePosition: 0
   relativeMarker: {fileID: 0}
   relativeMarkerID: 0
