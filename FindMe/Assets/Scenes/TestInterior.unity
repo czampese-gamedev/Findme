@@ -929,7 +929,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -943,6 +947,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 182575424}
+  <TransformRightCached>k__BackingField: {x: -0.98257464, y: -0.11192942, z: 0.14838836}
+  <TransformUpCached>k__BackingField: {x: -0.16244173, y: 0.9051211, z: -0.39289755}
+  <TransformForwardCached>k__BackingField: {x: -0.09033265, y: -0.4101556, z: -0.9075311}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -13.148, y: 3.67, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.10471976, y: 0.05233596, z: 0.9986295, w: 0.10510424}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &182575424
 Transform:
   m_ObjectHideFlags: 0
@@ -1194,7 +1214,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -1208,6 +1232,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 199269559}
+  <TransformRightCached>k__BackingField: {x: -0.9511003, y: -0.11192945, z: 0.28788877}
+  <TransformUpCached>k__BackingField: {x: -0.2171554, y: 0.90512115, z: -0.36551228}
+  <TransformForwardCached>k__BackingField: {x: -0.21966262, y: -0.41015545, z: -0.8851671}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -12.944, y: 3.69, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.10471976, y: 0.05233596, z: 0.9986295, w: 0.10510424}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &199269559
 Transform:
   m_ObjectHideFlags: 0
@@ -6881,7 +6921,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -6895,6 +6939,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 284538500}
+  <TransformRightCached>k__BackingField: {x: -0.9825746, y: -0.065050885, z: 0.17411393}
+  <TransformUpCached>k__BackingField: {x: -0.1624417, y: 0.7558048, z: -0.6343278}
+  <TransformForwardCached>k__BackingField: {x: -0.090332545, y: -0.65155774, z: -0.7532016}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -13.148, y: 4.508, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.12217305, y: 0.06104854, z: 0.9981348, w: 0.12278456}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &284538500
 Transform:
   m_ObjectHideFlags: 0
@@ -12671,7 +12731,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -12685,6 +12749,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 833112318}
+  <TransformRightCached>k__BackingField: {x: -0.98257464, y: 0.0000029727817, z: 0.18586895}
+  <TransformUpCached>k__BackingField: {x: -0.16244173, y: 0.485987, z: -0.8587371}
+  <TransformForwardCached>k__BackingField: {x: -0.09033245, y: -0.8739661, z: -0.47751808}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -13.148, y: 5.482, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.17453292, y: 0.08715574, z: 0.9961947, w: 0.17632698}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &833112318
 Transform:
   m_ObjectHideFlags: 0
@@ -13087,7 +13167,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -13101,6 +13185,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 876984157}
+  <TransformRightCached>k__BackingField: {x: -0.9825746, y: -0.065050885, z: 0.17411393}
+  <TransformUpCached>k__BackingField: {x: -0.1624417, y: 0.7558048, z: -0.6343278}
+  <TransformForwardCached>k__BackingField: {x: -0.090332545, y: -0.65155774, z: -0.7532016}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -13.692, y: 4.528, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.12217305, y: 0.06104854, z: 0.9981348, w: 0.12278456}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &876984157
 Transform:
   m_ObjectHideFlags: 0
@@ -15226,7 +15326,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -15240,6 +15344,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 1037598136}
+  <TransformRightCached>k__BackingField: {x: -0.9474079, y: -0.06505084, z: 0.31334805}
+  <TransformUpCached>k__BackingField: {x: -0.25180992, y: 0.7558047, z: -0.6044427}
+  <TransformForwardCached>k__BackingField: {x: -0.19751042, y: -0.6515578, z: -0.7324358}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -12.4, y: 4.508, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.12217305, y: 0.06104854, z: 0.9981348, w: 0.12278456}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &1037598136
 Transform:
   m_ObjectHideFlags: 0
@@ -17226,7 +17346,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -17240,6 +17364,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 1229272142}
+  <TransformRightCached>k__BackingField: {x: -0.9474079, y: -0.06505084, z: 0.31334805}
+  <TransformUpCached>k__BackingField: {x: -0.25180992, y: 0.7558047, z: -0.6044427}
+  <TransformForwardCached>k__BackingField: {x: -0.19751042, y: -0.6515578, z: -0.7324358}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -12.944, y: 4.528, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.12217305, y: 0.06104854, z: 0.9981348, w: 0.12278456}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &1229272142
 Transform:
   m_ObjectHideFlags: 0
@@ -17519,7 +17659,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -17533,6 +17677,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 1288688404}
+  <TransformRightCached>k__BackingField: {x: -0.9511003, y: -0.11192945, z: 0.28788877}
+  <TransformUpCached>k__BackingField: {x: -0.2171554, y: 0.90512115, z: -0.36551228}
+  <TransformForwardCached>k__BackingField: {x: -0.21966262, y: -0.41015545, z: -0.8851671}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -12.4, y: 3.67, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.10471976, y: 0.05233596, z: 0.9986295, w: 0.10510424}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &1288688404
 Transform:
   m_ObjectHideFlags: 0
@@ -17729,7 +17889,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -17743,6 +17907,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 1315341407}
+  <TransformRightCached>k__BackingField: {x: -0.98257464, y: 0.0000029727817, z: 0.18586895}
+  <TransformUpCached>k__BackingField: {x: -0.16244173, y: 0.485987, z: -0.8587371}
+  <TransformForwardCached>k__BackingField: {x: -0.09033245, y: -0.8739661, z: -0.47751808}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -13.692, y: 5.502, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.17453292, y: 0.08715574, z: 0.9961947, w: 0.17632698}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &1315341407
 Transform:
   m_ObjectHideFlags: 0
@@ -21827,7 +22007,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 5
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 0.04
@@ -21841,6 +22025,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 1762504754}
+  <TransformRightCached>k__BackingField: {x: 0.92705464, y: -0.10350616, z: -0.3603556}
+  <TransformUpCached>k__BackingField: {x: -0.17283414, y: 0.7349422, z: -0.65573496}
+  <TransformForwardCached>k__BackingField: {x: 0.33271316, y: 0.67018384, z: 0.6634422}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.023396224
+    g: 0.017455976
+    b: 0.011587752
+    a: 0.04
+  <BoundingOriginCached>k__BackingField: {x: -15.37, y: -0.8499999, z: -7.43}
+  <BoundingRadiusCached>k__BackingField: 9.4586735
+  <PrimaryAngleRadCached>k__BackingField: {x: 1.5707964, y: 0.70710677, z: 0.70710677, w: -22877332}
+  <SecondaryAngleRadCached>k__BackingField: {x: 2.3561945, y: 0.9238795, z: 0.38268343, w: -1}
+  <LightScatteringSqrCached>k__BackingField: 0.0001
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &1762504754
 Transform:
   m_ObjectHideFlags: 0
@@ -22353,7 +22553,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -22367,6 +22571,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 1793479548}
+  <TransformRightCached>k__BackingField: {x: -0.98257464, y: -0.11192942, z: 0.14838836}
+  <TransformUpCached>k__BackingField: {x: -0.16244173, y: 0.9051211, z: -0.39289755}
+  <TransformForwardCached>k__BackingField: {x: -0.09033265, y: -0.4101556, z: -0.9075311}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -13.692, y: 3.69, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.10471976, y: 0.05233596, z: 0.9986295, w: 0.10510424}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &1793479548
 Transform:
   m_ObjectHideFlags: 0
@@ -23847,7 +24067,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -23861,6 +24085,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 1948911554}
+  <TransformRightCached>k__BackingField: {x: -0.9457207, y: 0.00000295043, z: 0.3249813}
+  <TransformUpCached>k__BackingField: {x: -0.28402123, y: 0.48598716, z: -0.826528}
+  <TransformForwardCached>k__BackingField: {x: -0.1579392, y: -0.87396604, z: -0.4596074}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -12.944, y: 5.502, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.17453292, y: 0.08715574, z: 0.9961947, w: 0.17632698}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &1948911554
 Transform:
   m_ObjectHideFlags: 0
@@ -25268,7 +25508,11 @@ MonoBehaviour:
   _baseLightComponent: {fileID: 0}
   _copyLightComponent: 0
   _lightShape: 1
-  _lightColor: {r: 0.5849056, g: 0.4363994, b: 0.2896938, a: 1}
+  _lightColor:
+    r: 0.5849056
+    g: 0.4363994
+    b: 0.2896938
+    a: 1
   _useColorTemperature: 0
   _lightColorTemperature: 6000
   _lightIntensity: 1.5
@@ -25282,6 +25526,22 @@ MonoBehaviour:
   _distanceCullingEnabled: 1
   _softCullingDistance: 150
   _hardCullingDistance: 200
+  <TransformCached>k__BackingField: {fileID: 2074097975}
+  <TransformRightCached>k__BackingField: {x: -0.9457207, y: 0.00000295043, z: 0.3249813}
+  <TransformUpCached>k__BackingField: {x: -0.28402123, y: 0.48598716, z: -0.826528}
+  <TransformForwardCached>k__BackingField: {x: -0.1579392, y: -0.87396604, z: -0.4596074}
+  <LightVisibleColorCached>k__BackingField:
+    r: 0.87735844
+    g: 0.6545991
+    b: 0.4345407
+    a: 1.5
+  <BoundingOriginCached>k__BackingField: {x: -12.4, y: 5.482, z: -6.29}
+  <BoundingRadiusCached>k__BackingField: 9.25
+  <PrimaryAngleRadCached>k__BackingField: {x: 0.17453292, y: 0.08715574, z: 0.9961947, w: 0.17632698}
+  <SecondaryAngleRadCached>k__BackingField: {x: 0, y: 0, z: 1, w: 0}
+  <LightScatteringSqrCached>k__BackingField: 21.7156
+  <LastUpdatedFrame>k__BackingField: -1
+  _transformHasBeenCached: 0
 --- !u!4 &2074097975
 Transform:
   m_ObjectHideFlags: 0
