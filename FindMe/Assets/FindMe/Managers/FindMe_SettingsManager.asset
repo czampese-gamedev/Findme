@@ -41,6 +41,11 @@ MonoBehaviour:
   blackOutWhenSkipping: 0
   events:
   - rid: 448662642274074624
+  - rid: 8110134286589624320
+  - rid: 8110134286589624324
+  - rid: 8110134286589624323
+  - rid: 8110134286589624325
+  - rid: 8110134286589624326
   savePlayerReferencesWithAddressables: 0
   playerSwitching: 1
   legacyPlayer: {fileID: 0}
@@ -184,7 +189,7 @@ MonoBehaviour:
   hotspotsInVicinity: 0
   highlightAllHotspotsInVicinity: 1
   hotspotIconDisplay: 3
-  hotspotIcon: 0
+  hotspotIcon: 1
   hotspotIconTexture: {fileID: 0}
   hotspotIconGraphic:
     texture: {fileID: 2800000, guid: a00e5248fb23e8a409d8ffde474949c5, type: 3}
@@ -200,7 +205,7 @@ MonoBehaviour:
     frameSpeeds: []
     alwaysAnimate: 0
   highlightMaterialPropertyOverride: 
-  hotspotIconSize: 0.001
+  hotspotIconSize: 0.005
   playerFacesHotspots: 0
   onlyFaceHotspotOnSelect: 0
   scaleHighlightWithMouseProximity: 0
@@ -251,7 +256,7 @@ MonoBehaviour:
   speechAttentuationParameter: speechVolume
   defaultLanguage: 0
   defaultVoiceLanguage: 0
-  defaultShowSubtitles: 1
+  defaultShowSubtitles: 0
   defaultSfxVolume: 0.9
   defaultMusicVolume: 0.6
   defaultSpeechVolume: 1
@@ -272,3 +277,51 @@ MonoBehaviour:
         parameterIDs: 0000000001000000
         addRemove: 0
         itemID: -1
+    - rid: 8110134286589624320
+      type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
+      data:
+        label: WhenInventoryMenuTurnedOn
+        id: 1
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
+        parameterIDs: 00000000
+        onOff: 0
+        menuName: Inventory
+    - rid: 8110134286589624323
+      type: {class: EventBeginGame, ns: AC, asm: AC}
+      data:
+        label: CustomPersistentObjectOnStart
+        id: 2
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: bc7a42c901d01aa40a10014f6eedadea, type: 2}
+        parameterIDs: 
+    - rid: 8110134286589624324
+      type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
+      data:
+        label: WhenInventoryMenuTurnedOff
+        id: 3
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
+        parameterIDs: ffffffff
+        onOff: 1
+        menuName: Inventory
+    - rid: 8110134286589624325
+      type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
+      data:
+        label: WhenPauseMenuTurnedOn
+        id: 4
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
+        parameterIDs: ffffffff
+        onOff: 0
+        menuName: Pause
+    - rid: 8110134286589624326
+      type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
+      data:
+        label: WhenPauseMenuTurnedOff
+        id: 5
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
+        parameterIDs: ffffffff
+        onOff: 1
+        menuName: Pause

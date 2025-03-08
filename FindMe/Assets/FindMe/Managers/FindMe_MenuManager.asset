@@ -403,8 +403,8 @@ MonoBehaviour:
   textEffects: 0
   outlineSize: 2
   effectColour: {r: 0, g: 0, b: 0, a: 1}
-  buttonClickType: 1
-  actionList: {fileID: 11400000, guid: 40e89570e6b74484ea3e969d8fd34ea5, type: 2}
+  buttonClickType: 3
+  actionList: {fileID: 11400000, guid: 479e6d02329e19441be759f18f8c34cb, type: 2}
   parameterID: -1
   parameterValue: 0
   doFade: 0
@@ -8934,7 +8934,7 @@ MonoBehaviour:
     height: 36
   relativePosition: {x: 0, y: 0}
   numSlots: 1
-  uiButton: {fileID: 11400004, guid: 5fd9ef763f5f3a54eaa9cac0c5d469d7, type: 3}
+  uiButton: {fileID: 533743895811964000, guid: 5fd9ef763f5f3a54eaa9cac0c5d469d7, type: 3}
   uiPointerState: 0
   _label: Menu
   hotspotLabel: 
