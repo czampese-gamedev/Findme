@@ -15,19 +15,19 @@ MonoBehaviour:
   active: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 0.78
+    m_Value: 0.18
   intensity:
     m_OverrideState: 1
-    m_Value: 1.93
+    m_Value: 1.29
   scatter:
     m_OverrideState: 1
-    m_Value: 0.058
+    m_Value: 0.24
   clamp:
     m_OverrideState: 1
     m_Value: 2.97
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -93,16 +93,16 @@ MonoBehaviour:
     m_Value: 0.25
   contrast:
     m_OverrideState: 1
-    m_Value: -6
+    m_Value: -2
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     m_OverrideState: 1
-    m_Value: -18
+    m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: -22
+    m_Value: 18
 --- !u!114 &-5915899025678989705
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 1

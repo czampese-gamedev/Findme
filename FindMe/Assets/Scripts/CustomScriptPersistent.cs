@@ -29,14 +29,16 @@ public class CustomScriptPersistent : MonoBehaviour
     {
         PP_Volume = FindObjectOfType<Volume>();
         _volumeProfile = PP_Volume.profile;
-        _volumeProfile.TryGet(out PP_DOF);
-        if (PP_DOF.focalLength == 1)
+        if (_volumeProfile.TryGet(out PP_DOF))
         {
-            PP_DOF.focalLength.value = 55;
-        }
-        else
-        {
-            PP_DOF.focalLength.value = 1;
+            if (PP_DOF.focalLength == 1)
+            {
+                PP_DOF.focalLength.value = 55;
+            }
+            else
+            {
+                PP_DOF.focalLength.value = 1;
+            }
         }
 
 

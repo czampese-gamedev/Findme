@@ -1140,9 +1140,9 @@ MonoBehaviour:
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
   endings:
-  - resultAction: 1
-    skipAction: -1
-    skipActionActual: {fileID: 0}
+  - resultAction: 2
+    skipAction: 3
+    skipActionActual: {fileID: 1113203789}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -1153,7 +1153,7 @@ MonoBehaviour:
     x: 474
     y: 446
     width: 300
-    height: 112
+    height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 1169385469867763171}
@@ -7110,23 +7110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d93580656b43c2af135c407f76c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseLightComponent: {fileID: 0}
-  _copyLightComponent: 0
-  _lightShape: 1
-  _lightColor: {r: 0.9811321, g: 0.8728259, b: 0.22677112, a: 1}
-  _useColorTemperature: 0
-  _lightColorTemperature: 6000
-  _lightIntensity: 0.88
-  _lightScattering: 0.91
-  _lightRange: 7.94
-  _lightRect: {x: 1, y: 1}
-  _mainLightAlignment: 0
-  _lightPrimaryAngle: 79.2
-  _lightSecondaryAngle: 56.4
-  _lightMask: {fileID: 0}
-  _distanceCullingEnabled: 1
-  _softCullingDistance: 150
-  _hardCullingDistance: 200
 --- !u!4 &366144181
 Transform:
   m_ObjectHideFlags: 0
@@ -8453,23 +8436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d93580656b43c2af135c407f76c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseLightComponent: {fileID: 0}
-  _copyLightComponent: 0
-  _lightShape: 1
-  _lightColor: {r: 0.9811321, g: 0.8728259, b: 0.22677112, a: 1}
-  _useColorTemperature: 0
-  _lightColorTemperature: 6000
-  _lightIntensity: 0.88
-  _lightScattering: 0.91
-  _lightRange: 7.94
-  _lightRect: {x: 1, y: 1}
-  _mainLightAlignment: 0
-  _lightPrimaryAngle: 79.2
-  _lightSecondaryAngle: 56.4
-  _lightMask: {fileID: 0}
-  _distanceCullingEnabled: 1
-  _softCullingDistance: 150
-  _hardCullingDistance: 200
 --- !u!4 &419834533
 Transform:
   m_ObjectHideFlags: 0
@@ -22745,7 +22711,7 @@ MonoBehaviour:
     skipActionActual: {fileID: 0}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
-  isEnabled: 0
+  isEnabled: 1
   isAssetFile: 0
   isBreakPoint: 0
   nodeRect:
@@ -24677,23 +24643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d93580656b43c2af135c407f76c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseLightComponent: {fileID: 0}
-  _copyLightComponent: 0
-  _lightShape: 1
-  _lightColor: {r: 0.9811321, g: 0.8728259, b: 0.22677112, a: 1}
-  _useColorTemperature: 0
-  _lightColorTemperature: 6000
-  _lightIntensity: 0.88
-  _lightScattering: 0.91
-  _lightRange: 7.94
-  _lightRect: {x: 1, y: 1}
-  _mainLightAlignment: 0
-  _lightPrimaryAngle: 79.2
-  _lightSecondaryAngle: 56.4
-  _lightMask: {fileID: 0}
-  _distanceCullingEnabled: 1
-  _softCullingDistance: 150
-  _hardCullingDistance: 200
 --- !u!4 &1187969394
 Transform:
   m_ObjectHideFlags: 0
@@ -33370,23 +33319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d93580656b43c2af135c407f76c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseLightComponent: {fileID: 0}
-  _copyLightComponent: 0
-  _lightShape: 1
-  _lightColor: {r: 0.9811321, g: 0.8728259, b: 0.22677112, a: 1}
-  _useColorTemperature: 0
-  _lightColorTemperature: 6000
-  _lightIntensity: 0.88
-  _lightScattering: 0.91
-  _lightRange: 7.94
-  _lightRect: {x: 1, y: 1}
-  _mainLightAlignment: 0
-  _lightPrimaryAngle: 79.2
-  _lightSecondaryAngle: 56.4
-  _lightMask: {fileID: 0}
-  _distanceCullingEnabled: 1
-  _softCullingDistance: 150
-  _hardCullingDistance: 200
 --- !u!4 &1577872722
 Transform:
   m_ObjectHideFlags: 0
@@ -34854,23 +34786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d93580656b43c2af135c407f76c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseLightComponent: {fileID: 0}
-  _copyLightComponent: 0
-  _lightShape: 1
-  _lightColor: {r: 0.9811321, g: 0.8728259, b: 0.22677112, a: 1}
-  _useColorTemperature: 0
-  _lightColorTemperature: 6000
-  _lightIntensity: 0.88
-  _lightScattering: 0.91
-  _lightRange: 7.94
-  _lightRect: {x: 1, y: 1}
-  _mainLightAlignment: 0
-  _lightPrimaryAngle: 79.2
-  _lightSecondaryAngle: 56.4
-  _lightMask: {fileID: 0}
-  _distanceCullingEnabled: 1
-  _softCullingDistance: 150
-  _hardCullingDistance: 200
 --- !u!4 &1675709614
 Transform:
   m_ObjectHideFlags: 0
@@ -43727,23 +43642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d93580656b43c2af135c407f76c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseLightComponent: {fileID: 0}
-  _copyLightComponent: 0
-  _lightShape: 1
-  _lightColor: {r: 0.9811321, g: 0.8728259, b: 0.22677112, a: 1}
-  _useColorTemperature: 0
-  _lightColorTemperature: 6000
-  _lightIntensity: 0.88
-  _lightScattering: 0.91
-  _lightRange: 7.94
-  _lightRect: {x: 1, y: 1}
-  _mainLightAlignment: 0
-  _lightPrimaryAngle: 79.2
-  _lightSecondaryAngle: 56.4
-  _lightMask: {fileID: 0}
-  _distanceCullingEnabled: 1
-  _softCullingDistance: 150
-  _hardCullingDistance: 200
 --- !u!4 &2072768224
 Transform:
   m_ObjectHideFlags: 0
