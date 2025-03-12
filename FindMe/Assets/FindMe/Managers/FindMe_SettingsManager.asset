@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b776810ebfa374d7ba8f0fb5ed6e3265, type: 3}
   m_Name: FindMe_SettingsManager
   m_EditorClassIdentifier: 
-  separateEditorSaveFiles: 0
+  separateEditorSaveFiles: 1
   saveFileName: FindMe
   saveTimeDisplay: 0
   customSaveFormat: MMMM dd, yyyy
@@ -59,7 +59,7 @@ MonoBehaviour:
     useSceneDefaultPlayerStart: 0
     startingPlayerStartID: 0
   players: []
-  movementMethod: 4
+  movementMethod: 0
   inputMethod: 0
   simulatedCursorMoveSpeed: 4
   interactionMethod: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   speechAttentuationParameter: speechVolume
   defaultLanguage: 0
   defaultVoiceLanguage: 0
-  defaultShowSubtitles: 0
+  defaultShowSubtitles: 1
   defaultSfxVolume: 0.9
   defaultMusicVolume: 0.6
   defaultSpeechVolume: 1

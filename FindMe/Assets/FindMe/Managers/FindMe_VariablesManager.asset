@@ -53,7 +53,58 @@ MonoBehaviour:
     textValLineID: -1
     popUpsLineID: -1
     description: CHeck to see if player has visited 1440
-  varPresets: []
+  - label: WatchedOpeningCutScene
+    id: 2
+    type: 0
+    val: 0
+    floatVal: 0
+    textVal: 
+    gameObjectVal: {fileID: 0}
+    gameObjectSaveReferences: 1
+    objectVal: {fileID: 0}
+    popUps: []
+    vector3Val: {x: 0, y: 0, z: 0}
+    link: 0
+    pmVar: 
+    updateLinkOnStart: 0
+    canTranslate: 1
+    popUpID: 0
+    ignorePresets: 0
+    textValLineID: -1
+    popUpsLineID: -1
+    description: Player has watched opening cutscene
+  varPresets:
+  - label: New preset
+    ID: 0
+    presetValues:
+    - id: 0
+      val: 1
+      floatVal: 0
+      textVal: 
+      vector3Val: {x: 0, y: 0, z: 0}
+      gameObjectVal: {fileID: 0}
+      objectVal: {fileID: 0}
+    - id: 1
+      val: 0
+      floatVal: 0
+      textVal: 
+      vector3Val: {x: 0, y: 0, z: 0}
+      gameObjectVal: {fileID: 0}
+      objectVal: {fileID: 0}
+    - id: 2
+      val: 0
+      floatVal: 0
+      textVal: 
+      vector3Val: {x: 0, y: 0, z: 0}
+      gameObjectVal: {fileID: 0}
+      objectVal: {fileID: 0}
+    - id: 3
+      val: 0
+      floatVal: 0
+      textVal: 
+      vector3Val: {x: 0, y: 0, z: 0}
+      gameObjectVal: {fileID: 0}
+      objectVal: {fileID: 0}
   updateRuntime: 1
   popUpLabelData:
   - editorLabel: New label set
