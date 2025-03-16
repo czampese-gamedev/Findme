@@ -7,19 +7,26 @@ public class TextureOffset : MonoBehaviour
 
     MeshRenderer rend;
     public float divideby = 8;
-    public float xoffset;
-    public float yoffset; 
+    public float xoffset = 0;
+    public float yoffset = 0; 
     // Start is called before the first frame update
     void Start()
     {
         
-       
+       if (xoffset != 0)
+        {
+            xoffset = xoffset - 1;
+        }
+
+        if (yoffset != 0)
+        {
+            yoffset = yoffset - 1;
+        }
+
         rend = GetComponent<MeshRenderer>();
-        Texture t = rend.material.mainTexture;
-        float offsetvalue = t.width / divideby;
-        xoffset = (xoffset * offsetvalue) / 10f;
-        yoffset = (yoffset * -offsetvalue) / 10f;
-        Debug.Log("Texture width is " + t.width + " offsetvalue is " + offsetvalue + " xoffset is " + xoffset + " yoffset is " + yoffset);
+        float offsetvalue = 1 / divideby;
+        xoffset = (xoffset * offsetvalue);
+        yoffset = (yoffset * -offsetvalue); ;
         rend.material.mainTextureOffset = new Vector2(xoffset, yoffset);
     }
 
