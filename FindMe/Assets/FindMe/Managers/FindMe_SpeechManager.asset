@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSubtitles: 1
   scrollNarration: 0
-  textScrollSpeed: 50
+  textScrollSpeed: 100
   textScrollCLip: {fileID: 0}
   narrationTextScrollCLip: {fileID: 0}
   playScrollAudioEveryCharacter: 1
@@ -50,8 +50,8 @@ MonoBehaviour:
   usePlayerRealName: 0
   separateSharedPlayerAudio: 0
   placeAudioInSubfolders: 0
-  separateLines: 0
-  separateLinePause: 1
+  separateLines: 1
+  separateLinePause: 0.2
   resetExpressionsEachLine: 1
   lines:
   - isPlayer: 0

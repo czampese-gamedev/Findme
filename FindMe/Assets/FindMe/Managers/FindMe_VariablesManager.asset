@@ -73,6 +73,26 @@ MonoBehaviour:
     textValLineID: -1
     popUpsLineID: -1
     description: Player has watched opening cutscene
+  - label: CurrentYear
+    id: 3
+    type: 1
+    val: 2025
+    floatVal: 0
+    textVal: 
+    gameObjectVal: {fileID: 0}
+    gameObjectSaveReferences: 1
+    objectVal: {fileID: 0}
+    popUps: []
+    vector3Val: {x: 0, y: 0, z: 0}
+    link: 0
+    pmVar: 
+    updateLinkOnStart: 0
+    canTranslate: 1
+    popUpID: 0
+    ignorePresets: 0
+    textValLineID: -1
+    popUpsLineID: -1
+    description: 
   varPresets:
   - label: New preset
     ID: 0

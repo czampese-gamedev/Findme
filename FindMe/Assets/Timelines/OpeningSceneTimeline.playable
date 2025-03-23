@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -1211,6 +1211,28 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &-4087225120002431243
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd46e7aa002142118a7c327d06ad678, type: 3}
+  m_Name: SpeechPlayableClip(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  isPlayerLine: 0
+  playerID: -1
+  speaker: {fileID: 8010180193571324482, guid: e5a995d9eb5633d41ad99e2361785ffd, type: 3}
+  speechPlayableData:
+    lineID: -1
+    messageText: "We pick up the threads left by people in the past, and we shape
+      the future even when we\u2019re not in it anymore. "
+    isBackground: 0
+  speechTrackPlaybackMode: 1
+  trackInstanceID: -395448
 --- !u!114 &-3475117899208920973
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1226,7 +1248,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -1874,7 +1896,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -1916,6 +1938,245 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: 09cdd0c1c0422444c8b7b8105b3cf532
     defaultValue: {fileID: 0}
+--- !u!114 &-1714835169324125434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186d5ab52fbee40d88f00be391823b11, type: 3}
+  m_Name: Speech Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0.85
+    m_ClipIn: 0
+    m_Asset: {fileID: 5509391091522167224}
+    m_Duration: 6.033333333333334
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -1714835169324125434}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'History isn''t something that''s dead.[delay:1]
+
+      The past
+      is something we''re part of, and so is the future'
+  - m_Version: 1
+    m_Start: 8.333333333333334
+    m_ClipIn: 0
+    m_Asset: {fileID: -4087225120002431243}
+    m_Duration: 6.049999999999999
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -1714835169324125434}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "We pick up the threads left by people in the past, and we shape
+      the future even when we\u2019re not in it anymore. "
+  - m_Version: 1
+    m_Start: 15.733333333333333
+    m_ClipIn: 0
+    m_Asset: {fileID: 6707678984671314241}
+    m_Duration: 6.3000000000000025
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -1714835169324125434}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: The dance goes on and on[wait:2] <b><i>forever
+  m_Markers:
+    m_Objects: []
+  isPlayerLine: 0
+  playerID: -1
+  speakerObject: {fileID: 4261042117323713733, guid: e5a995d9eb5633d41ad99e2361785ffd, type: 3}
+  speakerConstantID: 405746
+  playbackMode: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1941,6 +2202,7 @@ MonoBehaviour:
   - {fileID: 6922978178789376262}
   - {fileID: -8947139206573324456}
   - {fileID: 3810290193815481880}
+  - {fileID: -1714835169324125434}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -1962,7 +2224,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -2501,7 +2763,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 1.4833333333333307
+    m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -2543,7 +2805,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: IntroStart_Cam3
   - m_Version: 1
-    m_Start: 21.95
+    m_Start: 23.43333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 4117797403061360714}
     m_Duration: 3.2166666666666686
@@ -2551,29 +2813,11 @@ MonoBehaviour:
     m_ParentTrack: {fileID: 3810290193815481880}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 1.4833333333333307
+    m_BlendInDuration: -1
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2663,7 +2907,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 16.6
+        time: 15.466666
         value: {x: 357.9407, y: -37.40322, z: 368.342}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -2689,7 +2933,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 16.6
+        time: 15.466666
         value: {x: 2.3510761, y: 0.27806616, z: 7.997887}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -2699,7 +2943,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 22.416666
-        value: {x: -6.554624, y: 0.5044825, z: 3.5774717}
+        value: {x: -7.939156, y: 1.0510161, z: 6.4367776}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -2760,7 +3004,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 16.6
+        time: 15.466666
         value: 2.3510761
         inSlope: 0
         outSlope: 0
@@ -2770,7 +3014,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 22.416666
-        value: -6.554624
+        value: -7.939156
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2788,7 +3032,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 16.6
+        time: 15.466666
         value: 0.27806616
         inSlope: 0
         outSlope: 0
@@ -2798,7 +3042,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 22.416666
-        value: 0.5044825
+        value: 1.0510161
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2816,7 +3060,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 16.6
+        time: 15.466666
         value: 7.997887
         inSlope: 0
         outSlope: 0
@@ -2826,7 +3070,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 22.416666
-        value: 3.5774717
+        value: 6.4367776
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2844,7 +3088,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 16.6
+        time: 15.466666
         value: 357.9407
         inSlope: 0
         outSlope: 0
@@ -2872,7 +3116,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 16.6
+        time: 15.466666
         value: -37.40322
         inSlope: 0
         outSlope: 0
@@ -2900,7 +3144,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 16.6
+        time: 15.466666
         value: 368.342
         inSlope: 0
         outSlope: 0
@@ -2958,6 +3202,51 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events: []
+--- !u!114 &5509391091522167224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd46e7aa002142118a7c327d06ad678, type: 3}
+  m_Name: SpeechPlayableClip
+  m_EditorClassIdentifier: 
+  isPlayerLine: 0
+  playerID: -1
+  speaker: {fileID: 8010180193571324482, guid: e5a995d9eb5633d41ad99e2361785ffd, type: 3}
+  speechPlayableData:
+    lineID: -1
+    messageText: 'History isn''t something that''s dead.[delay:1]
+
+      The past
+      is something we''re part of, and so is the future'
+    isBackground: 0
+  speechTrackPlaybackMode: 1
+  trackInstanceID: -395448
+--- !u!114 &6707678984671314241
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd46e7aa002142118a7c327d06ad678, type: 3}
+  m_Name: SpeechPlayableClip(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  isPlayerLine: 0
+  playerID: -1
+  speaker: {fileID: 8010180193571324482, guid: e5a995d9eb5633d41ad99e2361785ffd, type: 3}
+  speechPlayableData:
+    lineID: -1
+    messageText: The dance goes on and on[wait:2] <b><i>forever
+    isBackground: 0
+  speechTrackPlaybackMode: 1
+  trackInstanceID: -395448
 --- !u!74 &6812685503088557256
 AnimationClip:
   m_ObjectHideFlags: 0
