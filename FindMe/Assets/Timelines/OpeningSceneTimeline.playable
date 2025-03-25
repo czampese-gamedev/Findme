@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerLine: 0
   playerID: -1
-  speaker: {fileID: 8010180193571324482, guid: e5a995d9eb5633d41ad99e2361785ffd, type: 3}
+  speaker: {fileID: 0}
   speechPlayableData:
     lineID: -1
     messageText: "We pick up the threads left by people in the past, and we shape
@@ -2027,10 +2027,10 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'History isn''t something that''s dead.[delay:1]
+    m_DisplayName: 'History isn''t something that''s dead.
 
-      The past
-      is something we''re part of, and so is the future'
+      The past is something
+      we''re part of, and so is the future'
   - m_Version: 1
     m_Start: 8.333333333333334
     m_ClipIn: 0
@@ -3216,13 +3216,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerLine: 0
   playerID: -1
-  speaker: {fileID: 8010180193571324482, guid: e5a995d9eb5633d41ad99e2361785ffd, type: 3}
+  speaker: {fileID: 0}
   speechPlayableData:
     lineID: -1
-    messageText: 'History isn''t something that''s dead.[delay:1]
+    messageText: 'History isn''t something that''s dead.
 
-      The past
-      is something we''re part of, and so is the future'
+      The past is something
+      we''re part of, and so is the future'
     isBackground: 0
   speechTrackPlaybackMode: 1
   trackInstanceID: -395448
@@ -3240,7 +3240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerLine: 0
   playerID: -1
-  speaker: {fileID: 8010180193571324482, guid: e5a995d9eb5633d41ad99e2361785ffd, type: 3}
+  speaker: {fileID: 0}
   speechPlayableData:
     lineID: -1
     messageText: The dance goes on and on[wait:2] <b><i>forever
