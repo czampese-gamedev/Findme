@@ -56,13 +56,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9748078, z: 0.7592143, w: 0.0624905}
+    m_Value: {x: 1, y: 0.9748078, z: 0.7592143, w: -0.09783015}
   midtones:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.9724878, z: 0.7745838, w: 0.10204081}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.6442187, y: 0.9921635, z: 1, w: -0.19825585}
+    m_Value: {x: 0.9495228, y: 0.9695881, z: 1, w: -0.19825585}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
   m_Name: WhiteBalance
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   temperature:
     m_OverrideState: 1
     m_Value: 30
@@ -167,7 +167,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {x: 0.9322615, y: 0.9721006, z: 1, w: -0.020408155}
   gamma:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.98221767, y: 1, z: 0.9931783, w: 0.01775995}
   gain:
     m_OverrideState: 1
