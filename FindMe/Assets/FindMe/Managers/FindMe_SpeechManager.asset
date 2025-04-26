@@ -2350,9 +2350,13 @@ MonoBehaviour:
   ignoreOriginalText: 0
   sfxDucking: 0
   musicDucking: 0
-  lipSyncMode: 0
-  lipSyncOutput: 0
-  phonemes: []
+  lipSyncMode: 1
+  lipSyncOutput: 1
+  phonemes:
+  - A/E/I
+  - B/M/P
+  - C/D/F/G/H/J/K/L/N/P/Q/R/S/T/V/W/X/Y/Z
+  - O/U
   lipSyncSpeed: 1
   translatableTextTypes: -1
   maxID: 196

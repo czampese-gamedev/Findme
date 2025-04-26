@@ -17,11 +17,11 @@ MonoBehaviour:
   m_Settings:
     Downsample: 0
     AfterOpaque: 1
-    Source: 1
-    NormalSamples: 1
-    Intensity: 0.21
-    DirectLightingStrength: 0.348
-    Radius: 0.09
+    Source: 0
+    NormalSamples: 0
+    Intensity: 0.2
+    DirectLightingStrength: 0.446
+    Radius: 0.2
     SampleCount: 16
 --- !u!114 &11400000
 MonoBehaviour:
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Active: 1
   m_Settings:
     technique: 0
-    maxDrawDistance: 1000
+    maxDrawDistance: 400
     dBufferSettings:
       surfaceData: 2
     screenSpaceSettings:
