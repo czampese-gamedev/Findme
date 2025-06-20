@@ -15,12 +15,12 @@ MonoBehaviour:
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 0849e84e3d62649e8882e9d6f056a017, type: 3}
   m_Settings:
-    Downsample: 0
+    Downsample: 1
     AfterOpaque: 1
-    Source: 0
-    NormalSamples: 0
-    Intensity: 0.2
-    DirectLightingStrength: 0.446
+    Source: 1
+    NormalSamples: 1
+    Intensity: 0.12
+    DirectLightingStrength: 0
     Radius: 0.2
     SampleCount: 16
 --- !u!114 &11400000
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

@@ -99,7 +99,7 @@ MonoBehaviour:
     m_Value: {r: 0.033795543, g: 0.025649952, b: 0.044194173, a: 1}
   hueShift:
     m_OverrideState: 0
-    m_Value: 62
+    m_Value: 80
   saturation:
     m_OverrideState: 0
     m_Value: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
     m_Value: {x: 0.9322615, y: 0.9721006, z: 1, w: -0.020408155}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.98221767, y: 1, z: 0.9931783, w: 0.40551504}
+    m_Value: {x: 0.98221767, y: 1, z: 0.9931783, w: 0.07898443}
   gain:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.80118775, z: 0.9371397, w: 0.3930969}
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 2
