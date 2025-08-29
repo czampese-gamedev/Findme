@@ -79,7 +79,7 @@ namespace AC
 
 			if (!string.IsNullOrEmpty (commentText) && acLogType != ACLogType.No)
 			{
-				if (KickStarter.settingsManager.showDebugLogs == ShowDebugLogs.Never || (KickStarter.settingsManager.showDebugLogs == ShowDebugLogs.OnlyWarningsOrErrors && acLogType == ACLogType.AsInfo))
+				if (KickStarter.settingsManager && (KickStarter.settingsManager.showDebugLogs == ShowDebugLogs.Never || (KickStarter.settingsManager.showDebugLogs == ShowDebugLogs.OnlyWarningsOrErrors && acLogType == ACLogType.AsInfo)))
 				{
 					EditorGUILayout.HelpBox ("To enable comment-logging, configure the Settings Manager's 'Show logs in Console' field.", MessageType.Warning);
 				}

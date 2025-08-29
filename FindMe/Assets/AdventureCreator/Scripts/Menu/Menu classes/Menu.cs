@@ -2074,7 +2074,7 @@ namespace AC
 					fadeType = FadeType.fadeIn;
 					fadeStartTime = Time.realtimeSinceStartup - (transitionProgress * fadeSpeed);
 				}
-				else
+				else if (isEnabled)
 				{
 					transitionProgress = 1f;
 					isEnabled = true;

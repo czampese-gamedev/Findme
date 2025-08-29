@@ -46,9 +46,10 @@ namespace AC
 		[MenuItem ("Adventure Creator/Editors/Character wizard", false, 4)]
 		public static void Init ()
 		{
-			CharacterWizardWindow window = EditorWindow.GetWindowWithRect <CharacterWizardWindow> (DefaultWindowRect, true, "Character Wizard", true);
+			CharacterWizardWindow window = EditorWindow.GetWindow <CharacterWizardWindow> (true, "Character Wizard", true);
 			window.titleContent.text = "Character wizard";
 			window.position = DefaultWindowRect;
+			window.minSize = DefaultWindowRect.size;
 
 			window.RebuildOptions ();
 			window.canChooseCharType = true;
@@ -58,11 +59,12 @@ namespace AC
 
 		public static void InitForNPC (GameObject defaultObject = null)
 		{
-			CharacterWizardWindow window = EditorWindow.GetWindowWithRect <CharacterWizardWindow> (DefaultWindowRect, true, "NPC Wizard", true);
+			CharacterWizardWindow window = EditorWindow.GetWindow <CharacterWizardWindow> (true, "NPC Wizard", true);
 			window.titleContent.text = "NPC wizard";
 			window.position = DefaultWindowRect;
 			window.charType = CharType.NPC;
 			window.baseObject = defaultObject;
+			window.minSize = DefaultWindowRect.size;
 
 			window.RebuildOptions ();
 			window.SetPage (PageType.BaseGraphic);
@@ -71,12 +73,13 @@ namespace AC
 
 		public static void InitForPlayer (GameObject defaultObject = null, int _assignPlayerPrefabID = -1)
 		{
-			CharacterWizardWindow window = EditorWindow.GetWindowWithRect <CharacterWizardWindow> (DefaultWindowRect, true, "Player Wizard", true);
+			CharacterWizardWindow window = EditorWindow.GetWindow <CharacterWizardWindow> (true, "Player Wizard", true);
 			window.titleContent.text = "Player wizard";
 			window.position = DefaultWindowRect;
 			window.charType = CharType.Player;
 			window.assignPlayerPrefabID = _assignPlayerPrefabID;
 			window.baseObject = defaultObject;
+			window.minSize = DefaultWindowRect.size;
 
 			window.RebuildOptions ();
 

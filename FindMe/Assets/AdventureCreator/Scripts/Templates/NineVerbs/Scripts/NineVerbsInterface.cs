@@ -177,7 +177,7 @@ namespace AC.Templates.NineVerbs
 					break;
 			}
 
-			Invoke ("ClearOverrideText", reachClearDelay);
+			Invoke (nameof (ClearOverrideText), reachClearDelay);
 		}
 
 

@@ -80,14 +80,23 @@ namespace AC
 		 * <param name = "layerMask">The LayerMask to act upon</param>
 		 * <returns>The result of the Physics2D.Raycast</returns>
 		 */
-		public static RaycastHit2D Perform2DRaycast (Vector2 origin, Vector2 direction, float length, LayerMask layerMask)
+		public static RaycastHit2D Perform2DRaycast (Vector2 origin, Vector2 direction, float length, LayerMask layerMask, float radius = 0f)
 		{
 			RaycastHit2D[] hits = new RaycastHit2D[1];
 			ContactFilter2D filter = new ContactFilter2D ();
 			filter.useTriggers = true;
 			filter.SetLayerMask (layerMask);
 			filter.ClearDepth ();
-			Physics2D.Raycast (origin, direction, filter, hits, length);
+
+			if (radius > 0f)
+			{
+				Physics2D.CircleCast (origin, radius, direction, filter, hits, length);
+			}
+			else
+			{
+				Physics2D.Raycast (origin, direction, filter, hits, length);
+			}
+
 			return hits[0];
 		}
 
@@ -99,22 +108,37 @@ namespace AC
 		 * <param name = "length">The ray's length</param>
 		 * <returns>The result of the Physics2D.Raycast</returns>
 		 */
-		public static RaycastHit2D Perform2DRaycast (Vector2 origin, Vector2 direction, float length)
+		public static RaycastHit2D Perform2DRaycast (Vector2 origin, Vector2 direction, float length, float radius = 0f)
 		{
 			RaycastHit2D[] hits = new RaycastHit2D[1];
 			ContactFilter2D filter = new ContactFilter2D ();
 			filter.useTriggers = true;
 			filter.ClearDepth ();
-			Physics2D.Raycast (origin, direction, filter, hits, length);
+
+			if (radius > 0f)
+			{
+				Physics2D.CircleCast (origin, radius, direction, filter, hits, length);
+			}
+			else
+			{
+				Physics2D.Raycast (origin, direction, filter, hits, length);
+			}
+
 			return hits[0];
 		}
 
 
-		public static int Perform2DRaycasts (ref RaycastHit2D[] hits, Vector2 origin, Vector2 direction, float length, LayerMask layerMask)
+		public static int Perform2DRaycasts (ref RaycastHit2D[] hits, Vector2 origin, Vector2 direction, float length, LayerMask layerMask, float radius = 0f)
 		{
 			filter2DWithLayer.useTriggers = true;
 			filter2DWithLayer.SetLayerMask (layerMask);
 			filter2DWithLayer.ClearDepth ();
+
+			if (radius > 0f)
+			{
+				return Physics2D.CircleCast (origin, radius, direction, filter2DWithLayer, hits, length);
+			}
+
 			return Physics2D.Raycast (origin, direction, filter2DWithLayer, hits, length);
 		}
 
@@ -304,12 +328,18 @@ namespace AC
 		}
 
 
-		public static bool OpenScene (string sceneName)
+		public static bool OpenScene (string sceneName, bool checkCurrent = false)
 		{
 			if (string.IsNullOrEmpty (sceneName)) return false;
 
 			try
 			{
+				if (checkCurrent)
+				{
+					UnityEngine.SceneManagement.Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene ();
+					if (currentScene != null && currentScene.name == sceneName) return true;
+				}
+				
 				EditorSceneManager.OpenScene (sceneName);
 				return true;
 			}
@@ -820,7 +850,7 @@ namespace AC
 		public static Vector3 GetRigidbody2DVelocity (Rigidbody2D rigidbody)
 		{
 #if UNITY_6000_0_OR_NEWER
-			return rigidbody.linearVelocity;
+			return rigidbody.velocity;
 #else
 			return rigidbody.velocity;
 #endif

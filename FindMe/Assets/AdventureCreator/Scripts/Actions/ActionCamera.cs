@@ -63,7 +63,7 @@ namespace AC
 
 					if (returnToLast)
 					{
-						cam = mainCam.GetLastGameplayCamera ();
+						runtimeLinkedCamera = cam = mainCam.GetLastGameplayCamera ();
 					}
 
 					if (cam)

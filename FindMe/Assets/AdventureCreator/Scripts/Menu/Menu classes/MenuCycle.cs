@@ -129,14 +129,7 @@ namespace AC
 		
 		private void CopyCycle (MenuCycle _element, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiButton = null;
-			}
-			else
-			{
-				uiButton = _element.uiButton;
-			}
+			uiButton = null;
 			uiText = null;
 
 			label = _element.label;

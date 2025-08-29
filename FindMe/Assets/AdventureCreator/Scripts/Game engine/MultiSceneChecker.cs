@@ -11,6 +11,7 @@ namespace AC
 		#region Variables
 		
 		[SerializeField] protected CallStartupProcess callStartupProcess = CallStartupProcess.Start;
+		[SerializeField] protected bool forceAsMain;
 		protected enum CallStartupProcess { Start, FirstFrameUpdate };
 		protected bool runStart = false;
 
@@ -21,12 +22,9 @@ namespace AC
 
 		protected void Awake ()
 		{
-			if (!UnityVersionHandler.ObjectIsInActiveScene (gameObject))
+			if (!IsMain)
 			{
-				// Register self as a "sub-scene"
-				GameObject subSceneOb = new GameObject ();
-				SubScene newSubScene = subSceneOb.AddComponent <SubScene>();
-				newSubScene.Initialise (this);
+				RegisterAsSubScene ();
 				return;
 			}
 
@@ -42,8 +40,7 @@ namespace AC
 			}
 			#endif
 
-			GetComponent <KickStarter>().Initialise ();
-			runStart = true; // This is necessary because switching the active scene will cause Start to be re-run
+			RegisterAsMain ();
 		}
 
 
@@ -67,7 +64,7 @@ namespace AC
 
 		private void OnEnable ()
 		{
-			if (UnityVersionHandler.ObjectIsInActiveScene (gameObject) && KickStarter.stateHandler)
+			if (IsMain && KickStarter.stateHandler)
 			{
 				KickStarter.stateHandler.Register (GetComponent<KickStarter> ());
 			}
@@ -80,6 +77,25 @@ namespace AC
 			{
 				KickStarter.stateHandler.Unregister (GetComponent<KickStarter> ());
 			}
+		}
+
+		#endregion
+
+
+		#region PublicFunctions
+
+		public void RegisterAsMain ()
+		{
+			GetComponent <KickStarter>().Initialise ();
+			runStart = true; // This is necessary because switching the active scene will cause Start to be re-run
+		}
+
+
+		public void RegisterAsSubScene ()
+		{
+			GameObject subSceneOb = new GameObject ();
+			SubScene newSubScene = subSceneOb.AddComponent <SubScene>();
+			newSubScene.Initialise (this);
 		}
 
 		#endregion
@@ -111,7 +127,7 @@ namespace AC
 			if (!runStart) return;
 			runStart = false;
 
-			if (UnityVersionHandler.ObjectIsInActiveScene (gameObject) && KickStarter.settingsManager && KickStarter.saveSystem)
+			if (IsMain && KickStarter.settingsManager && KickStarter.saveSystem)
 			{
 				if (KickStarter.settingsManager.IsInLoadingScene ())
 				{
@@ -285,6 +301,13 @@ namespace AC
 		}
 
 		#endif
+
+
+		#region GetSet
+
+		public bool IsMain => forceAsMain || UnityVersionHandler.ObjectIsInActiveScene (gameObject);
+
+		#endregion
 		
 	}
 

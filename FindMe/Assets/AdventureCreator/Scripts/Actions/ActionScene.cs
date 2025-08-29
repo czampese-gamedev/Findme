@@ -71,6 +71,8 @@ namespace AC
 			{
 				case ChooseSceneBy.Name:
 					string runtimeSceneName = (chooseSceneBy == ChooseSceneBy.Name) ? sceneName : KickStarter.sceneChanger.IndexToName (sceneNumber);
+					runtimeSceneName = AdvGame.ConvertTokens (runtimeSceneName, Options.GetLanguage ());
+
 					if (string.IsNullOrEmpty (runtimeSceneName)) return 0f;
 
 					if (onlyPreload)

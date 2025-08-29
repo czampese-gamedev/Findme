@@ -3611,6 +3611,106 @@ MonoBehaviour:
   overrideTexture: 0
   activeTexture: {fileID: 0}
   linkUIGraphic: 0
+--- !u!114 &-2503388915370166930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f455f0e4a864975bf60bc153fbe20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuSource: 0
+  canvas: {fileID: 0}
+  canvasAssetKey: 
+  canvasID: 0
+  rectTransform: {fileID: 0}
+  rectTransformID: 0
+  uiTransitionType: 0
+  uiPositionType: 0
+  _isLocked: 0
+  id: 23
+  title: Menu 24
+  manualSize: {x: 0.5, y: 0.88967973}
+  positionType: 0
+  manualPosition: {x: 250, y: 140.5}
+  positionSmoothing: 0
+  alignment: 4
+  toggleKey: 
+  ignoreMouseClicks: 0
+  pauseWhenEnabled: 0
+  showWhenPaused: 0
+  canClickInCutscene: 0
+  enabledOnStart: 0
+  actionListOnTurnOn: {fileID: 0}
+  actionListOnTurnOff: {fileID: 0}
+  updateWhenFadeOut: 1
+  hideDuringSaveScreenshots: 1
+  useTextMeshProComponents: 0
+  fitWithinScreen: 1
+  backgroundTexture: {fileID: 0}
+  visibleElements: []
+  transitionProgress: 0
+  appearType: 0
+  speechMenuType: 0
+  speechMenuLimit: 0
+  limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
+  selected_element: {fileID: 0}
+  selected_slot: 0
+  autoSelectFirstVisibleElement: 0
+  firstSelectedElement: 
+  elements: []
+  spacing: 0.5
+  sizeType: 0
+  autoSizeEveryFrame: 0
+  orientation: 1
+  transitionType: 4
+  panDirection: 0
+  panMovement: 0
+  timeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panDistance: 0.5
+  fadeSpeed: 0
+  zoomAnchor: 4
+  zoomElements: 0
+  oneMenuPerSpeech: 0
+  speechProximityLimit: 0
+  speechProximityDistance: 10
+  deleteUIWhenTurnOff: 0
+  biggestElementSize: {x: 0, y: 0}
+  rect:
+    serializedVersion: 2
+    x: 248.75
+    y: 139.25
+    width: 2.5
+    height: 2.5
 --- !u!114 &-2427177715866377092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5318,6 +5418,7 @@ MonoBehaviour:
   - {fileID: -1272699575566656146}
   - {fileID: 3639461144840661330}
   - {fileID: 7286103659630502507}
+  - {fileID: -2503388915370166930}
   globalDepth: 0
   pauseTexture: {fileID: 0}
   scaleTextEffects: 0
@@ -5330,7 +5431,7 @@ MonoBehaviour:
   useAddressables: 0
   hasUpgraded: 1
   doWindowsPreviewFix: 1
-  drawOutlines: 0
+  drawOutlines: 1
   drawInEditor: 1
 --- !u!114 &22687540946692008
 MonoBehaviour:
@@ -5956,6 +6057,24 @@ MonoBehaviour:
   - uiButton: {fileID: 11400028, guid: 30f11f8d753646946be7464e86087367, type: 3}
     uiButtonID: 1846308
     sprite: {fileID: 0}
+  - uiButton: {fileID: 7300829540749651710, guid: 30f11f8d753646946be7464e86087367, type: 3}
+    uiButtonID: 41268
+    sprite: {fileID: 0}
+  - uiButton: {fileID: 8744529393556476974, guid: 30f11f8d753646946be7464e86087367, type: 3}
+    uiButtonID: 44494
+    sprite: {fileID: 0}
+  - uiButton: {fileID: 2992727710790425504, guid: 30f11f8d753646946be7464e86087367, type: 3}
+    uiButtonID: 46904
+    sprite: {fileID: 0}
+  - uiButton: {fileID: 223232229678510873, guid: 30f11f8d753646946be7464e86087367, type: 3}
+    uiButtonID: 49410
+    sprite: {fileID: 0}
+  - uiButton: {fileID: 2391908146654364354, guid: 30f11f8d753646946be7464e86087367, type: 3}
+    uiButtonID: 53448
+    sprite: {fileID: 0}
+  - uiButton: {fileID: 4199968842398837440, guid: 30f11f8d753646946be7464e86087367, type: 3}
+    uiButtonID: 54322
+    sprite: {fileID: 0}
   uiPointerState: 0
   textEffects: 0
   anchor: 4
@@ -5963,7 +6082,7 @@ MonoBehaviour:
   effectColour: {r: 0, g: 0, b: 0, a: 1}
   inventoryBoxType: 0
   actionListOnClick: {fileID: 0}
-  maxSlots: 6
+  maxSlots: 12
   limitToCategory: 1
   limitToDefinedInteractions: 1
   categoryID: -1
@@ -8756,7 +8875,7 @@ MonoBehaviour:
   numSlots: 1
   uiTextTMP: {fileID: 301555664164042314, guid: a0a9a4a75a4b5d1459d37daa7e511570, type: 3}
   hideScrollingCharacters: 0
-  uiText: {fileID: 11400002, guid: a0a9a4a75a4b5d1459d37daa7e511570, type: 3}
+  uiText: {fileID: 0}
   _label: Test
   anchor: 4
   textEffects: 1

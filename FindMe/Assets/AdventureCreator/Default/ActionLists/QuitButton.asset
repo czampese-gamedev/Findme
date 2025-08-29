@@ -15,7 +15,7 @@ MonoBehaviour:
   actions:
   - {fileID: 7652486100006334432}
   isSkippable: 1
-  actionListType: 0
+  actionListType: 1
   unfreezePauseMenus: 1
   useParameters: 0
   canRunMultipleInstances: 0
@@ -23,6 +23,7 @@ MonoBehaviour:
   revertToDefaultParametersAfterRunning: 0
   parameters: []
   tagID: 0
+  groups: []
   backupData: []
 --- !u!114 &7652486100006334432
 MonoBehaviour:
@@ -59,6 +60,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
+  groupID: 0
   endGameType: 0
   chooseSceneBy: 0
   sceneNumber: 0

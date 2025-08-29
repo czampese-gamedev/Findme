@@ -83,16 +83,9 @@ namespace AC
 		
 		private void CopyGraphic (MenuGraphic _element, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiImage = null;
-				uiRawImage = null;
-			}
-			else
-			{
-				uiImage = _element.uiImage;
-				uiRawImage = _element.uiRawImage;
-			}
+			uiImage = null;
+			uiRawImage = null;
+			
 			uiImageType = _element.uiImageType;
 			linkedJournalElementName = _element.linkedJournalElementName;
 			uiComponentHideStyle = _element.uiComponentHideStyle;

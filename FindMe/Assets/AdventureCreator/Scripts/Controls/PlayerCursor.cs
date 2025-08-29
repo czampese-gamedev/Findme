@@ -169,7 +169,7 @@ namespace AC
 					{
 						showCursor = false;
 					}
-					else if (KickStarter.stateHandler.IsInGameplay () || KickStarter.stateHandler.gameState == GameState.DialogOptions)
+					else if ((KickStarter.stateHandler.IsInGameplay () || KickStarter.stateHandler.gameState == GameState.DialogOptions) && KickStarter.cursorManager.cursorDisplay == CursorDisplay.Always)
 					{
 						showCursor = true;
 					}

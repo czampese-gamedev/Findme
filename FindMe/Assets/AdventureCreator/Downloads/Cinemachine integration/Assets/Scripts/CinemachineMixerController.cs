@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 
 namespace AC.Downloads.CinemachineIntegration
 {
@@ -69,7 +69,7 @@ namespace AC.Downloads.CinemachineIntegration
 
 		public float SwitchCamera (int channel, float duration)
 		{
-			int numCameras = cinemachineMixingCamera.ChildCameras.Length;
+			int numCameras = cinemachineMixingCamera.ChildCameras.Count;
 			originalWeights = new float[numCameras];
 			targetWeights = new float[numCameras];
 

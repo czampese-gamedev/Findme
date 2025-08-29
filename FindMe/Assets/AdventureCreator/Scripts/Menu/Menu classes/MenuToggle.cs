@@ -121,15 +121,8 @@ namespace AC
 		
 		private void CopyToggle (MenuToggle _element, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiToggle = null;
-			}
-			else
-			{
-				uiToggle = _element.uiToggle;
-			}
-
+			uiToggle = null;
+			
 			uiText = null;
 			#if TextMeshProIsPresent
 			uiTextTMP = null;

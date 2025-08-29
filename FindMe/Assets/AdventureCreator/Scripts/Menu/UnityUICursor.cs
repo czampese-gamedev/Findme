@@ -82,7 +82,7 @@ namespace AC
 				}
 				if (!string.IsNullOrEmpty (inventoryIDIntParameter)) _animator.SetInteger (inventoryIDIntParameter, (KickStarter.runtimeInventory.SelectedItem != null) ? KickStarter.runtimeInventory.SelectedItem.id : -1);
 
-				if (KickStarter.playerInput.GetMouseState () == MouseState.SingleClick)
+				if (KickStarter.playerInput.DidSingleClickThisFrame)
 				{
 					if (!string.IsNullOrEmpty (clickTriggerParameter)) _animator.SetTrigger (clickTriggerParameter);
 				}

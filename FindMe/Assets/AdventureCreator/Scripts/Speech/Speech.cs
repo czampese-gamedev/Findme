@@ -1631,7 +1631,11 @@ namespace AC
 
 				if (speaker)
 				{
-					if (speaker.speechAudioSource)
+					if (!speaker.gameObject.activeInHierarchy)
+					{
+						ACDebug.LogWarning ("Cannt assign speech audio to " + speaker.name + " because they are not active within the scene.", speaker);
+					}
+					else if (speaker.speechAudioSource)
 					{
 						audioSource = speaker.speechAudioSource;
 						speaker.SetSpeechVolume (Options.optionsData.speechVolume);

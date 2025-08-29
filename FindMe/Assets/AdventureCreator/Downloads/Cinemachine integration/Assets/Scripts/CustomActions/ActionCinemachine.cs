@@ -3,7 +3,7 @@ using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using Cinemachine;
+using Unity.Cinemachine;
 using AC.Downloads.CinemachineIntegration;
 
 namespace AC
@@ -120,7 +120,7 @@ namespace AC
 				if (mixerController && mixerController.GetComponent<CinemachineMixingCamera> ())
 				{
 					CinemachineMixingCamera cinemachineMixingCamera = mixerController.GetComponent<CinemachineMixingCamera> ();
-					string[] cameraNames = new string[cinemachineMixingCamera.ChildCameras.Length];
+					string[] cameraNames = new string[cinemachineMixingCamera.ChildCameras.Count];
 					for (int i = 0; i < cameraNames.Length; i++)
 					{
 						cameraNames[i] = cinemachineMixingCamera.ChildCameras[i].gameObject ? cinemachineMixingCamera.ChildCameras[i].gameObject.name : ("Channel " + i);

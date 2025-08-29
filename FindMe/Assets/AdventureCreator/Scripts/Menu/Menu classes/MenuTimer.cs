@@ -76,15 +76,8 @@ namespace AC
 		
 		private void CopyTimer (MenuTimer _element, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiSlider = null;
-			}
-			else
-			{
-				uiSlider = _element.uiSlider;
-			}
-
+			uiSlider = null;
+			
 			doInvert = _element.doInvert;
 			timerTexture = _element.timerTexture;
 			timerType = _element.timerType;

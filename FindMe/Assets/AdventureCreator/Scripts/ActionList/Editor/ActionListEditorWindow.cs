@@ -65,6 +65,7 @@ namespace AC
 		private const float propertiesBoxWidth = 360f;
 		private const float scrollbarSelectedSizeFactor = 2.5f;
 
+		private bool switchedWindowTarget;
 		private bool viewingAllToggle;
 
 
@@ -150,6 +151,8 @@ namespace AC
 			Repaint ();
 			Show ();
 			UpdateScrollLimits ();
+
+			switchedWindowTarget = true;
 		}
 
 
@@ -188,6 +191,8 @@ namespace AC
 		private bool hasManagerMismatch;
 		private void OnGUI ()
 		{
+			switchedWindowTarget = false;
+
 			if (KickStarter.actionsManager != actionsManager && Event.current.type == EventType.Layout)
 			{
 				actionsManager = KickStarter.actionsManager;
@@ -369,6 +374,7 @@ namespace AC
 				{
 					ScrollPosition -= delta;
 				}
+				isPanning = true;
 				UseEvent (e);
 			}
 			else if (e.type == EventType.MouseDrag && e.button == 2)
@@ -431,7 +437,7 @@ namespace AC
 			if (e.type == EventType.Repaint && isPanning)
 			{
 				UpdateGroupRects ();
-				ChangeCursor (MouseCursor.Pan);
+				//ChangeCursor (MouseCursor.Pan);
 			}
 		}
 
@@ -1570,9 +1576,11 @@ namespace AC
 				GUI.enabled = true;
 			}
 
+			if (switchedWindowTarget) return;
+
 			_action.SkipActionGUI (Actions, true);
 
-			_action.isDisplayed = EditorGUI.Foldout (new Rect (10, 1, 20, 16), _action.isDisplayed, string.Empty);
+			_action.isDisplayed = EditorGUI.Foldout (new Rect (10, 1, _action.NodeRect.width - 60, 16), _action.isDisplayed, string.Empty);
 
 			if (GUI.Button (new Rect (_action.NodeRect.width - 27, 3, 16, 16), " ", CustomStyles.IconCogNode))
 			{
@@ -1592,7 +1600,7 @@ namespace AC
 
 			_action.SkipActionGUI (Actions, false);
 
-			_action.isDisplayed = EditorGUI.Foldout (new Rect (10, 1, 20, 16), _action.isDisplayed, string.Empty);
+			_action.isDisplayed = EditorGUI.Foldout (new Rect (10, 1, _action.NodeRect.width - 60, 16), _action.isDisplayed, string.Empty);
 
 			if (_action.showComment)
 			{
@@ -2491,6 +2499,7 @@ namespace AC
 
 			menu.AddSeparator (string.Empty);
 			menu.AddItem (new GUIContent ("Rename group"), false, GroupCallback, "Rename group");
+			menu.AddItem (new GUIContent ("Auto-arrange"), false, GroupCallback, "Auto-arrange");
 
 			Matrix4x4 originalMatrix = GUI.matrix;
 			GUI.matrix = GetMenuScaleMatrix ();
@@ -2609,6 +2618,14 @@ namespace AC
 				rect.position += new Vector2 (position.x, position.y + 20);
 				PopupWindow.Show (rect, new InputTextPopUp (groupContext.label, rect, OnSetGroupLabel));
 			}
+			else if (objString == "Auto-arrange")
+			{
+				foreach (var action in Actions)
+				{
+					action.isMarked = action.groupID == groupContext.ID;
+				}
+				AutoArrange (true);
+			}
 
 			if (doUndo)
 			{
@@ -2676,6 +2693,9 @@ namespace AC
 				//menu.AddSeparator (string.Empty);
 				menu.AddItem (new GUIContent ("Comment/Comment selected"), false, EmptyCallback, "Comment selected");
 				menu.AddItem (new GUIContent ("Comment/Uncomment selected"), false, EmptyCallback, "Uncomment selected");
+				
+				menu.AddItem (new GUIContent ("Enabled/Enable selected"), false, EmptyCallback, "Enable selected");
+				menu.AddItem (new GUIContent ("Enabled/Disable selected"), false, EmptyCallback, "Disable selected");
 				//menu.AddSeparator (string.Empty);
 				menu.AddItem (new GUIContent ("Group/Group selected"), false, EmptyCallback, "Group selected");
 				menu.AddItem (new GUIContent ("Group/Ungroup selected"), false, EmptyCallback, "Ungroup selected");
@@ -2768,6 +2788,15 @@ namespace AC
 				menu.AddItem (new GUIContent ("Paste after"), false, EmptyCallback, "Paste after");
 			}
 			menu.AddItem (new GUIContent ("Delete"), false, EmptyCallback, "Delete selected");
+
+			if (_action.isEnabled)
+			{
+				menu.AddItem (new GUIContent ("Disable"), false, EmptyCallback, "Disable selected");
+			}
+			else
+			{
+				menu.AddItem (new GUIContent ("Enable"), false, EmptyCallback, "Enable selected");
+			}
 
 			if (i > 0)
 			{
@@ -3085,6 +3114,26 @@ namespace AC
 					if (action != null && action.isMarked)
 					{
 						action.showComment = false;
+					}
+				}
+			}
+			else if (objString == "Enable selected")
+			{
+				foreach (Action action in actionList)
+				{
+					if (action != null && action.isMarked)
+					{
+						action.isEnabled = true;
+					}
+				}
+			}
+			else if (objString == "Disable selected")
+			{
+				foreach (Action action in actionList)
+				{
+					if (action != null && action.isMarked)
+					{
+						action.isEnabled = false;
 					}
 				}
 			}

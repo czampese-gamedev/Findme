@@ -73,8 +73,23 @@ namespace AC
 
 		protected override MouseState GetMousePointerEventData (int id = 0)
 		{
-			if (KickStarter.settingsManager == null || KickStarter.settingsManager.inputMethod == InputMethod.MouseAndKeyboard)
+			if (KickStarter.settingsManager == null)
 			{
+				return base.GetMousePointerEventData (id);
+			}
+			
+			if (KickStarter.settingsManager.inputMethod == InputMethod.MouseAndKeyboard)
+			{
+				if (Cursor.lockState == CursorLockMode.Locked && KickStarter.settingsManager.acceptUIInputFromCursorLocked)
+				{
+					var lockState = Cursor.lockState;
+					Cursor.lockState = CursorLockMode.Confined;
+					var mouseState = base.GetMousePointerEventData (id);
+					RaycastMouse ();
+					Cursor.lockState = lockState;
+					return mouseState;
+				}
+
 				return base.GetMousePointerEventData (id);
 			}
 
@@ -192,6 +207,22 @@ namespace AC
 			{
 				ProcessMouseEvent ();
 			}
+		}
+
+
+		private void RaycastMouse ()
+		{
+			PointerEventData mouseData = new PointerEventData (KickStarter.playerMenus.EventSystem);
+			mouseData.Reset ();
+
+			Vector2 pos = KickStarter.playerInput.GetMousePosition ();
+
+			mouseData.position = pos;
+			eventSystem.RaycastAll (mouseData, m_RaycastResultCache);
+			RaycastResult raycast = FindFirstRaycast (m_RaycastResultCache);
+			mouseData.pointerCurrentRaycast = raycast;
+			m_RaycastResultCache.Clear ();
+			KickStarter.playerMenus.EventSystem.SetSelectedGameObject (raycast.gameObject);
 		}
 
 	}

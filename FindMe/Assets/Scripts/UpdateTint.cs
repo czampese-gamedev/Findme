@@ -45,7 +45,7 @@ public class UpdateTint : MonoBehaviour
 
     IEnumerator RunTintChange (float t)
     {
-
+        Debug.Log("Entering RunTintChange coroutine - " + gameObject.name) ;
         float time = 0;
         while (time < tintduration)
         {
@@ -59,7 +59,7 @@ public class UpdateTint : MonoBehaviour
         }
         gameObject.GetComponent<Renderer>().material.SetFloat("_TintStrength", t);
         RunTint = null;
-
+        Debug.Log("End RunTintChange coroutine - " + gameObject.name);
         //while (gameObject.GetComponent<Renderer>().material.GetFloat("_TintStrength") < t)
         //{
         //    float newstrength = gameObject.GetComponent<Renderer>().material.GetFloat("_TintStrength") +  (tintduration);
@@ -74,7 +74,7 @@ public class UpdateTint : MonoBehaviour
 
     IEnumerator RemoveTintChange()
     {
-
+       // Debug.Log("Entering RemoveTintChange coroutine - " + gameObject.name);
         float time = 0;
         while (time < tintduration)
         {
@@ -93,13 +93,16 @@ public class UpdateTint : MonoBehaviour
         //    yield return null;
 
         //}
-        StopTint = null;
+        
         gameObject.GetComponent<Renderer>().material.SetFloat("_TintStrength", initialstrength);
+        StopTint = null;
+      //  Debug.Log("End RemoveTintChange coroutine - " + gameObject.name);
     }
 
 
     public void RemoveTint()
     {
+        Debug.Log("Got into RemoveTint Function - Runtint is " + RunTint);
         if (RunTint == null)
         {
             // StopCoroutine(RunTint);

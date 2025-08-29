@@ -514,7 +514,8 @@ MonoBehaviour:
   canClickInCutscene: 0
   enabledOnStart: 0
   actionListOnTurnOn: {fileID: 0}
-  actionListOnTurnOff: {fileID: 11400000, guid: 66b6972779ed6784686be776acc6e5e7, type: 2}
+  actionListOnTurnOff: {fileID: 11400000, guid: 66b6972779ed6784686be776acc6e5e7,
+    type: 2}
   updateWhenFadeOut: 1
   hideDuringSaveScreenshots: 1
   useTextMeshProComponents: 0
@@ -3202,10 +3203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f455f0e4a864975bf60bc153fbe20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSource: 2
+  menuSource: 0
   canvas: {fileID: 22300000, guid: c5fdb7049e6604a319cf602ac818f3c0, type: 3}
   canvasAssetKey: 
-  canvasID: 612316
+  canvasID: 0
   rectTransform: {fileID: 22400036, guid: c5fdb7049e6604a319cf602ac818f3c0, type: 3}
   rectTransformID: 1765320
   uiTransitionType: 1
@@ -3215,7 +3216,7 @@ MonoBehaviour:
   title: Inventory
   manualSize: {x: 100, y: 12.60303}
   positionType: 1
-  manualPosition: {x: 251.5, y: 17.833286}
+  manualPosition: {x: 960, y: 62.385}
   positionSmoothing: 0
   alignment: 0
   toggleKey: 
@@ -3294,8 +3295,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 503
-    height: 35.666573
+    width: 1920
+    height: 124.77
 --- !u!114 &11451456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3335,10 +3336,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 487.91003
-    y: 3.2099915
-    width: 12.575001
-    height: 31.13
+    x: 1862.4
+    y: 11.2293
+    width: 48
+    height: 108.899994
   relativePosition: {x: 97, y: 9}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -3406,10 +3407,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 17.605001
-    y: 2.515
-    width: 457.73
-    height: 31.13
+    x: 67.2
+    y: 9.6
+    width: 1747.2001
+    height: 108.899994
   relativePosition: {x: 0, y: 0}
   numSlots: 13
   uiSlots:
@@ -3523,10 +3524,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 2.515
-    y: 2.515
-    width: 12.575001
-    height: 31.13
+    x: 9.6
+    y: 9.6
+    width: 48
+    height: 108.899994
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}

@@ -184,6 +184,8 @@ namespace AC
 		public bool walkToHotspotMarkers = true;
 		/** The proportion of the screen that the mouse must be dragged for drag effects to kick in */
 		public float dragThreshold = 0f;
+		/** If True, Unity UI objects can be interacted with by a locked cursor */
+		public bool acceptUIInputFromCursorLocked;
 
 		// Inventory settings
 
@@ -911,6 +913,12 @@ namespace AC
 				}
 
 				unityUIClicksAlwaysBlocks = CustomGUILayout.ToggleLeft ("Unity UI blocks interaction and movement?", unityUIClicksAlwaysBlocks, "AC.KickStarter.settingsManager.unityUIClicksAlwaysBlocks", "If True, then movement and interaction clicks will be ignored if the cursor is over a Unity UI element - even those not linked to the Menu Manager");
+
+				if (inputMethod == InputMethod.MouseAndKeyboard)
+				{
+					acceptUIInputFromCursorLocked = CustomGUILayout.ToggleLeft ("Unity UI accepts locked cursor clicks?", acceptUIInputFromCursorLocked, "AC.KickStarter.settingsManager.acceptUIInputFromCursorLocked", "If True, Unity UI objects can be interacted with by a locked cursor");
+				}
+
 				if (dragDropThreshold > 0f && Mathf.Approximately (dragThreshold, 0f))
 				{
 					dragThreshold = dragDropThreshold / 1080f;
@@ -1364,7 +1372,7 @@ namespace AC
 					landscapeModeOnly = CustomGUILayout.Toggle ("Landscape-mode only?", landscapeModeOnly, "AC.KickStarter.settingsManager.landscapeModeOnly", "If True, then the game can only be played in landscape mode");
 #endif
 
-					renderBorderCamera = CustomGUILayout.ToggleLeft ("Render border camera?", renderBorderCamera, "AC.KickStarter.settingsManager.renderBorderCamera", "If True, a second camera is used to render borders.  This helps to prevent artefacts, but increases performance.");
+					//renderBorderCamera = CustomGUILayout.ToggleLeft ("Render border camera?", renderBorderCamera, "AC.KickStarter.settingsManager.renderBorderCamera", "If True, a second camera is used to render borders.  This helps to prevent artefacts, but increases performance.");
 				}
 
 				cacheCameraMain = CustomGUILayout.ToggleLeft ("Cache 'Camera.main' variable?", cacheCameraMain, "AC.KickStarter.settingsManager.cacheCameraMain", "If True, Unity's Camera.main variable will be cached for a minor performance boost");

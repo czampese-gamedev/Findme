@@ -116,15 +116,8 @@ namespace AC
 		
 		private void CopySlider (MenuSlider _element, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiSlider = null;
-			}
-			else
-			{
-				uiSlider = _element.uiSlider;
-			}
-
+			uiSlider = null;
+		
 			uiText = null;
 			#if TextMeshProIsPresent
 			uiTextTMP = null;

@@ -27,7 +27,7 @@ namespace AC
 			}
 
 			CustomGUILayout.Header ("Properties");
-			_target.skinnedMeshRenderer = (MeshRenderer) CustomGUILayout.ObjectField <MeshRenderer> ("Mesh Renderer:", _target.skinnedMeshRenderer, true, "", "The SkinnedMeshRenderer to affect");
+			_target.skinnedMeshRenderer = (Renderer) CustomGUILayout.ObjectField <Renderer> ("Renderer:", _target.skinnedMeshRenderer, true, "", "The Renderer to affect");
 			_target.materialIndex = CustomGUILayout.IntField ("Material to affect (index):", _target.materialIndex, "", "The index of the material to affect");
 			_target.propertyName = CustomGUILayout.TextField ("Texture property name:", _target.propertyName, "", "The material's property name that will be replaced");
 			_target.affectInLateUpdate = CustomGUILayout.Toggle ("Apply in LateUpdate?", _target.affectInLateUpdate, "", "If True, then changes to the material will by applied in LateUpdate, as opposed to Update");

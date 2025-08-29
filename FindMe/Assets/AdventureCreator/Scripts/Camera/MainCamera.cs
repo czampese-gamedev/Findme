@@ -352,7 +352,7 @@ namespace AC
 		{
 			if (SetAspectRatio ())
 			{
-				CreateBorderCamera ();
+				//CreateBorderCamera ();
 			}
 			CalculatePlayableScreenArea ();
 			SetCameraRect ();

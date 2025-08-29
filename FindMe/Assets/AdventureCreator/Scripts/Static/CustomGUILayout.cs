@@ -339,6 +339,17 @@ namespace AC
 		}
 
 
+		public static LayerMask LayerMaskField (string label, LayerMask layerMask, string api = "", string tooltip = "")
+		{
+			EditorGUIUtility.labelWidth = LabelWidth;
+			LayerMask tempMask = EditorGUILayout.MaskField (new GUIContent (label, tooltip), UnityEditorInternal.InternalEditorUtility.LayerMaskToConcatenatedLayersMask (layerMask), UnityEditorInternal.InternalEditorUtility.layers);
+			EditorGUIUtility.labelWidth = 0;
+			CreateMenu (api);
+			layerMask = UnityEditorInternal.InternalEditorUtility.ConcatenatedLayersMaskToLayerMask (tempMask);
+			return layerMask;
+		}
+
+
 		public static int IntField (int value, GUILayoutOption layoutOption, string api = "")
 		{
 			EditorGUIUtility.labelWidth = LabelWidth;

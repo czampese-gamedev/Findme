@@ -22,9 +22,6 @@ namespace AC
 	 * This script provides functions to enable and disable the Light component on the GameObject it is attached to.
 	 * These functions can be called either through script, or with the "Object: Send message" Action.
 	 */
-	#if !URPIsPresent
-	[RequireComponent (typeof (Light))]
-	#endif
 	[AddComponentMenu("Adventure Creator/Misc/Light switch")]
 	[HelpURL("https://www.adventurecreator.org/scripting-guide/class_a_c_1_1_light_switch.html")]
 	public class LightSwitch : MonoBehaviour
@@ -35,19 +32,23 @@ namespace AC
 		/** If True, then the Light component will be enabled when the game begins. */
 		public bool enableOnStart = false;
 
+		public bool affectChildren = false;
+
 		protected Light _light;
-		#if URPIsPresent
+		protected Light[] _lights;
+#if URPIsPresent
 		protected Light2D light2D;
-		#endif
+		protected Light2D[] light2Ds;		
+#endif
 
 		#endregion
 
 
 		#region UnityStandards
-		
-		protected void Awake ()
+
+		protected void Awake()
 		{
-			Switch (enableOnStart);
+			Switch(enableOnStart);
 		}
 
 		#endregion
@@ -73,17 +74,28 @@ namespace AC
 
 		#region ProtectedFunctions
 
-		protected void Switch (bool turnOn)
+		protected void Switch(bool turnOn)
 		{
 			if (_light == null)
 			{
-				_light = GetComponent <Light>();
+				_light = GetComponent<Light>();
 			}
 			if (_light)
 			{
 				_light.enabled = turnOn;
 			}
-			#if URPIsPresent
+			if (affectChildren)
+			{
+				if (_lights == null)
+				{
+					_lights = GetComponentsInChildren<Light>();
+				}
+				foreach (var childLight in _lights)
+				{
+					childLight.enabled = turnOn;
+				}
+			}
+#if URPIsPresent
 			if (light2D == null)
 			{
 				light2D = GetComponent <Light2D>();
@@ -92,7 +104,18 @@ namespace AC
 			{
 				light2D.enabled = turnOn;
 			}
-			#endif
+			if (affectChildren)
+			{
+				if (light2Ds == null)
+				{
+					light2Ds = GetComponentsInChildren<Light2D>();
+				}
+				foreach (var childLight2D in light2Ds)
+				{
+					childLight2D.enabled = turnOn;
+				}
+			}
+#endif
 		}
 
 		#endregion

@@ -675,6 +675,31 @@ namespace AC
 						}
 					}
 
+					// Scene attributes
+					tokenStart = "[scene:";
+					tokenIndex = _text.IndexOf (tokenStart);
+					if (tokenIndex >= 0)
+					{
+						tokenValueStartIndex = tokenIndex + tokenStart.Length;
+						tokenValueEndIndex = _text.Substring (tokenValueStartIndex).IndexOf ("]");
+
+						if (tokenValueEndIndex > 0)
+						{
+							string stringValue = _text.Substring (tokenValueStartIndex, tokenValueEndIndex);
+							int _varID = -1;
+							if (int.TryParse (stringValue, out _varID))
+							{
+								var attribute = KickStarter.sceneSettings.GetAttribute(_varID);
+								if (attribute != null)
+								{
+									string fullToken = tokenStart + stringValue + "]";
+									_text = _text.Replace (fullToken, attribute.GetValue (languageNumber));
+									numIterations = 2;
+								}
+							}
+						}
+					}
+
 					numIterations --;
 				}
 

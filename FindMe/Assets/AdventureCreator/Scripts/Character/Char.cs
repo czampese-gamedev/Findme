@@ -336,8 +336,9 @@ namespace AC
 
 		/** If True, then characters will slow down when walking into walls, if using AnimEngine_Mecanim or AnimEngine_SpritesUnityComplex */
 		public bool doWallReduction = false;
+		[SerializeField] private string wallLayer = "Default";
 		/** The layer that walls are expected to be placed on, if doWallReduction = True */
-		public string wallLayer = "Default";
+		public LayerMask wallLayerMask;
 		/** The distance to keep away from walls, if doWallReduction = True */
 		public float wallDistance = 0.5f;
 		/** If True, and doWallReduction = True, then the wall reduction factor will only affect the Animator move speed float parameter, and not character's actual speed */
@@ -1358,6 +1359,10 @@ namespace AC
 												newVel.y = -hitDownInfo.normal.y;
 											}*/
 										}
+										else if (activePath && activePath.affectY)
+										{
+											simulatedVerticalSpeed = 0f;
+										}
 										else
 										{
 											simulatedVerticalSpeed -= simulatedMass * Time.deltaTime;
@@ -1401,7 +1406,7 @@ namespace AC
 					{
 						if (_characterController && rootMotionType != RootMotionType.ThreeD)
 						{
-							if (!_characterController.isGrounded && !ignoreGravity)
+							if (!_characterController.isGrounded && !ignoreGravity && !(activePath && activePath.affectY))
 							{
 								simulatedVerticalSpeed -= simulatedMass * Time.deltaTime;
 
@@ -1936,7 +1941,7 @@ namespace AC
 				}
 
 				Vector2 origin = (Vector2) Transform.position + (Vector2) wallRayOrigin + (forwardVector * wallRayForward);
-				RaycastHit2D hit = UnityVersionHandler.Perform2DRaycast (origin, forwardVector, wallDistance, 1 << LayerMask.NameToLayer (wallLayer));
+				RaycastHit2D hit = UnityVersionHandler.Perform2DRaycast (origin, forwardVector, wallDistance, WallLayerMask);
 
 				if (hit.collider)
 				{
@@ -1953,7 +1958,7 @@ namespace AC
 
 				Vector3 origin = Transform.position + wallRayOrigin + (TransformForward * wallRayForward);
 				RaycastHit hit;
-				if (Physics.Raycast (origin, TransformForward, out hit, wallDistance, 1 << LayerMask.NameToLayer (wallLayer)))
+				if (Physics.Raycast (origin, TransformForward, out hit, wallDistance, WallLayerMask))
 				{
 					wallReductionFactor = wallReductionLerp.Update (wallReductionFactor, (hit.point - origin).magnitude / wallDistance, 10f);
 				}
@@ -4815,6 +4820,24 @@ namespace AC
 			set
 			{
 				upDirection = value;
+			}
+		}
+
+
+		public LayerMask WallLayerMask
+		{
+			get
+			{
+				if ((wallLayerMask.value == 0) && !string.IsNullOrEmpty (wallLayer))
+				{
+					wallLayerMask = 1 << LayerMask.NameToLayer (wallLayer);
+					wallLayer = string.Empty;
+				}
+				return wallLayerMask;
+			}
+			set
+			{
+				wallLayerMask = value;
 			}
 		}
 

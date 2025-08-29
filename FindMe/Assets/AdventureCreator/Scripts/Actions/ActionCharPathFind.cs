@@ -135,7 +135,7 @@ namespace AC
 						targetPosition += positionOffset;
 
 						float distance = Vector3.Distance (targetPosition, runtimeChar.Transform.position);
-						if (distance <= KickStarter.settingsManager.GetDestinationThreshold ())
+						if (distance <= KickStarter.settingsManager.GetDestinationThreshold () && !runtimeChar.retroPathfinding)
 						{
 							if (willWait && faceAfter)
 							{

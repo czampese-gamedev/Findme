@@ -365,7 +365,7 @@ namespace AC
 					origin = KickStarter.CameraMain.ScreenToWorldPoint (pos);
 				}
 
-				int numHits = UnityVersionHandler.Perform2DRaycasts (ref results2D, origin, Vector2.zero, KickStarter.settingsManager.hotspotRaycastLength, HotspotLayerMask);
+				int numHits = UnityVersionHandler.Perform2DRaycasts (ref results2D, origin, Vector2.zero, KickStarter.settingsManager.hotspotRaycastLength, HotspotLayerMask, CursorRadius);
 				
 				if (numHits > 0)
 				{
@@ -1757,7 +1757,8 @@ namespace AC
 						KickStarter.CameraMain.ScreenToWorldPoint (KickStarter.playerInput.GetMousePosition ()),
 						Vector2.zero,
 						KickStarter.settingsManager.hotspotRaycastLength,
-						HotspotLayerMask
+						HotspotLayerMask,
+						CursorRadius
 						);
 				}
 				else
@@ -1769,7 +1770,8 @@ namespace AC
 						KickStarter.CameraMain.ScreenToWorldPoint (pos),
 						Vector2.zero,
 						KickStarter.settingsManager.hotspotRaycastLength,
-						HotspotLayerMask
+						HotspotLayerMask,
+						CursorRadius
 						);
 				}
 				
@@ -1841,7 +1843,8 @@ namespace AC
 						KickStarter.CameraMain.ScreenToWorldPoint (KickStarter.playerInput.GetMousePosition ()),
 						Vector2.zero,
 						KickStarter.settingsManager.hotspotRaycastLength,
-						HotspotLayerMask
+						HotspotLayerMask,
+						CursorRadius
 						);
 				}
 				else
@@ -1853,7 +1856,8 @@ namespace AC
 						KickStarter.CameraMain.ScreenToWorldPoint (pos),
 						Vector2.zero,
 						KickStarter.settingsManager.hotspotRaycastLength,
-						HotspotLayerMask
+						HotspotLayerMask,
+						CursorRadius
 						);
 				}
 				
@@ -2505,6 +2509,30 @@ namespace AC
 						hasGive = true;
 					}
 				}
+				
+				// If: 
+				// Hotspot has no defined use interaction
+				// Inventory has an unhandled give interaction
+				// Hotspot has an NPC/parent
+				if (!hasGive && (hotspot.GetComponent <Char>() || hotspot.GetComponentInParent <Char>()))
+				{
+					bool hasUse = false;
+					foreach (var invButton in hotspot.invButtons)
+					{
+						if (invButton.invID == KickStarter.runtimeInventory.SelectedInstance.ItemID && !invButton.isDisabled && invButton.selectItemMode == SelectItemMode.Use)
+						{
+							hasUse = true;
+						}
+					}
+					if (!hasUse)
+					{
+						if (KickStarter.runtimeInventory.SelectedInstance.InvItem.unhandledGiveActionList ||
+							KickStarter.inventoryManager.unhandledGive)
+						{
+							hasGive = true;
+						}
+					}
+				}
 
 				KickStarter.runtimeInventory.SelectedInstance.SelectItemMode = hasGive ? SelectItemMode.Give : SelectItemMode.Use;
 			}
@@ -2624,6 +2652,10 @@ namespace AC
 				return hotspotLayerMask;
 			}
 		}
+
+
+		/** The radius to apply to cursor raycasting (2D only) */
+		public float CursorRadius { get; set; }
 
 	}
 	

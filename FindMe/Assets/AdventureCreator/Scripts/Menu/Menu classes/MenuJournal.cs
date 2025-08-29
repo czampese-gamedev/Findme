@@ -111,18 +111,11 @@ namespace AC
 		
 		private void CopyJournal (MenuJournal _element, bool fromEditor, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiText = null;
-			}
-			else
-			{
-				uiText = _element.uiText;
-				#if TextMeshProIsPresent
-				uiTextTMP = _element.uiTextTMP;
-				#endif
-			}
-
+			uiText = null;
+			#if TextMeshProIsPresent
+			uiTextTMP = null;
+			#endif
+			
 			pages = new List<JournalPage>();
 			foreach (JournalPage page in _element.pages)
 			{

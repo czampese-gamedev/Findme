@@ -128,9 +128,9 @@ namespace AC
 			character.doWallReduction = CustomGUILayout.Toggle ("Slow movement near walls?", character.doWallReduction, "", "If True, then characters will slow down when walking into walls");
 			if (character.doWallReduction)
 			{
-				character.wallLayer = CustomGUILayout.TextField ("Wall collider layer:", character.wallLayer, "", "The layer that walls are expected to be placed on");
+				character.WallLayerMask = CustomGUILayout.LayerMaskField ("Wall collision:", character.WallLayerMask, "", "The layers that walls are expected to be placed on");
 				character.wallDistance = CustomGUILayout.Slider ("Collider distance:", character.wallDistance, 0f, 2f, "", "The distance to keep away from walls");
-				character.wallReductionOnlyParameter = CustomGUILayout.Toggle ("Only affects Mecanim parameter?", character.wallReductionOnlyParameter, "", "If True, then the wall reduction factor will only affect the Animator move speed float parameter, and not character's actual speed");
+				character.wallReductionOnlyParameter = CustomGUILayout.Toggle ("Only affects parameter?", character.wallReductionOnlyParameter, "", "If True, then the wall reduction factor will only affect the Animator move speed float parameter, and not character's actual speed");
 			}
 
 			CustomGUILayout.EndVertical ();

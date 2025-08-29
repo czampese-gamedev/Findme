@@ -189,6 +189,18 @@ namespace AC
 				ObjectiveState newState = linkedObjective.GetState (value);
 				if (newState != null)
 				{
+					if (CurrentState.stateType == ObjectiveStateType.Active &&
+						linkedObjective.onlySuccessiveActiveStates &&
+						newState.stateType == ObjectiveStateType.Active &&
+						!linkedObjective.IsSuccessive (CurrentStateID, value))
+					{
+						if (currentStateID != value)
+						{
+							ACDebug.Log ("Cannot update the state of active Objective " + linkedObjective.Title + " as its next state is above it in the States panel.");
+						}
+						return;
+					}
+				
 					int oldStateID = currentStateID;
 					currentStateID = value;
 

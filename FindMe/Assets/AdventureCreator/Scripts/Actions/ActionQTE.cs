@@ -283,15 +283,15 @@ namespace AC
 			{
 				if (qteType == QTEType.SingleKeypress || qteType == QTEType.SingleAxis)
 				{
-					EditorGUILayout.HelpBox ("The Menu's UI must have an Animator with 2 States: Win, Lose.", MessageType.Info);
+					EditorGUILayout.HelpBox ("The Menu's UI must have an Animator with 2 Triggers: Win, Lose.", MessageType.Info);
 				}
 				else if (qteType == QTEType.ButtonMash)
 				{
-					EditorGUILayout.HelpBox ("The Menu's UI must have an Animator with 3 States: Hit, Win, Lose.", MessageType.Info);
+					EditorGUILayout.HelpBox ("The Menu's UI must have an Animator with 3 Triggers: Hit, Win, Lose.", MessageType.Info);
 				}
 				else if (qteType == QTEType.HoldKey)
 				{
-					EditorGUILayout.HelpBox ("The Menu's UI must have an Animator with 2 States: Win, Lose, and 1 Bool: Held.", MessageType.Info);
+					EditorGUILayout.HelpBox ("The Menu's UI must have an Animator with 2 Triggers: Win, Lose, and 1 Bool: Held.", MessageType.Info);
 				}
 			}
 		}

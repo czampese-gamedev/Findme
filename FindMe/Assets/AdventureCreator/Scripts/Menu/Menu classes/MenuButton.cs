@@ -149,22 +149,11 @@ namespace AC
 
 		private void CopyButton (MenuButton _element, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiButton = null;
-				uiText = null;
-				#if TextMeshProIsPresent
-				uiTextTMP = null;
-				#endif
-			}
-			else
-			{
-				uiButton = _element.uiButton;
-				uiText = _element.uiText;
-				#if TextMeshProIsPresent
-				uiTextTMP = _element.uiTextTMP;
-				#endif
-			}
+			uiButton = null;
+			uiText = null;
+			#if TextMeshProIsPresent
+			uiTextTMP = null;
+			#endif
 			uiPointerState = _element.uiPointerState;
 
 			_label = _element._label;

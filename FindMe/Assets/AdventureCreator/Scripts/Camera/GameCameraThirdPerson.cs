@@ -514,6 +514,12 @@ namespace AC
 
 		private void DoUpdate ()
 		{
+			if (KickStarter.stateHandler && !KickStarter.stateHandler.CameraSystemIsEnabled)
+			{
+				lastFrameInput = Vector2.zero;
+				return;
+			}
+
 			lookAtInfluence = GetOverrideInfluence ();
 
 			Vector2 frameInput = Vector2.zero;

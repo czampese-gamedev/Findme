@@ -190,6 +190,13 @@ namespace AC
 		}
 
 
+		public bool DidSingleClickThisFrame { get; private	set; }
+		public void OnStartFrame ()
+		{
+			DidSingleClickThisFrame = false;
+		}
+
+
 		/**
 		 * Updates the input handler.
 		 * This is called every frame by StateHandler.
@@ -325,6 +332,7 @@ namespace AC
 							{
 								dragStartPosition = GetInvertedMouse ();
 								mouseState = MouseState.SingleClick;
+								DidSingleClickThisFrame = true;
 								ResetClick ();
 								ResetDoubleClick ();
 							}
@@ -484,6 +492,7 @@ namespace AC
 								dragStartPosition = GetInvertedMouse ();
 								
 								mouseState = MouseState.SingleClick;
+								DidSingleClickThisFrame = true;
 
 								ResetClick ();
 								ResetDoubleClick ();
@@ -655,6 +664,7 @@ namespace AC
 							{
 								dragStartPosition = GetInvertedMouse ();
 								mouseState = MouseState.SingleClick;
+								DidSingleClickThisFrame = true;
 
 								ResetClick ();
 								ResetDoubleClick ();

@@ -51,6 +51,7 @@ namespace AC
 		protected ActiveList overrideActiveList;
 		protected ActiveList onFinishActiveList;
 		protected MenuDialogList linkedDialogList;
+		protected Coroutine delayCoroutine;
 
 		#endregion
 
@@ -284,7 +285,8 @@ namespace AC
 			}
 			else
 			{
-				KickStarter.playerInput.StartCoroutine (KickStarter.playerInput.DelayConversation (this, () => RunOption (buttonDialog)));
+				if (delayCoroutine == null)
+					delayCoroutine = StartCoroutine (KickStarter.playerInput.DelayConversation (this, () => RunOption (buttonDialog)));
 			}
 
 			KickStarter.playerInput.activeConversation = null;
@@ -316,7 +318,8 @@ namespace AC
 			}
 			else
 			{
-				KickStarter.playerInput.StartCoroutine (KickStarter.playerInput.DelayConversation (this, () => RunOption (buttonDialog)));
+				if (delayCoroutine == null)
+					delayCoroutine = StartCoroutine (KickStarter.playerInput.DelayConversation (this, () => RunOption (buttonDialog)));
 			}
 
 			KickStarter.playerInput.activeConversation = null;
@@ -730,6 +733,8 @@ namespace AC
 
 		protected void RunOption (ButtonDialog _option)
 		{
+			delayCoroutine = null;
+			
 			if (_option.autoTurnOff)
 			{
 				_option.isOn = false;

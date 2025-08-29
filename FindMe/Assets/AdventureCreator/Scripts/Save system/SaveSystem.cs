@@ -840,6 +840,8 @@ namespace AC
 							yield return returnCurrentLevelDataCoroutine.Current;
 						}
 
+						KickStarter.eventManager.Call_OnOverwriteMainData (saveID);
+
 						KickStarter.playerInput.OnLoad ();
 						KickStarter.sceneSettings.OnLoad ();
 						KickStarter.eventManager.Call_OnLoad (FileAccessState.After, saveID);

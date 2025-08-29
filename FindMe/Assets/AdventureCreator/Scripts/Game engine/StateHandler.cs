@@ -162,6 +162,8 @@ namespace AC
 			{
 				return;
 			}
+
+			KickStarter.playerInput.OnStartFrame ();
 			
 			if (KickStarter.settingsManager.IsInLoadingScene () || KickStarter.sceneChanger.IsLoading ())
 			{
@@ -561,14 +563,14 @@ namespace AC
 
 				if (inScriptedCutscene) return GameState.Cutscene;
 				if (KickStarter.mainCamera && KickStarter.mainCamera.IsShowingForcedOverlay ()) return GameState.Cutscene;
-				if (KickStarter.playerInteraction.InPreInteractionCutscene) return GameState.Cutscene;
+				if (KickStarter.playerInteraction && KickStarter.playerInteraction.InPreInteractionCutscene) return GameState.Cutscene;
 
 				if (KickStarter.actionListManager.IsGameplayBlocked ())
 				{
 					return GameState.Cutscene;
 				}
 
-				if (KickStarter.playerInput.IsInConversation (true))
+				if (KickStarter.playerInput && KickStarter.playerInput.IsInConversation (true))
 				{
 					return GameState.DialogOptions;
 				}

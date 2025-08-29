@@ -232,10 +232,16 @@ namespace AC
 		public void PlayDefaultSound (AudioClip audioClip, bool doLoop, bool avoidRestarting = false)
 		{
 			if (audioClip == null) return;
+			
 			if (defaultSound == null)
 			{
-				ACDebug.Log ("Cannot play audio '" + audioClip.name + "' since no Default Sound is defined in the scene - please assign one in the Scene Manager.", audioClip);
-				return;
+				GameObject defaultSoundOb = new GameObject ("Default Sound");
+				var defaultAudioSource = defaultSoundOb.AddComponent<AudioSource> ();
+				defaultSound = defaultSoundOb.AddComponent<Sound> ();
+				defaultSound.soundType = SoundType.SFX;
+				defaultSound.playWhilePaused = true;
+				defaultSound.SetMaxVolume ();
+				ACDebug.Log ("No Default Sound assigned in the Scene Manager - generating one at runtime.");
 			}
 
 			if (KickStarter.stateHandler.IsPaused () && !defaultSound.playWhilePaused)

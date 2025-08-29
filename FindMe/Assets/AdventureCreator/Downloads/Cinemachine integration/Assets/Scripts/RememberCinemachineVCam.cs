@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 
 namespace AC.Downloads.CinemachineIntegration
 {
@@ -19,12 +19,16 @@ namespace AC.Downloads.CinemachineIntegration
 
 			#if UNITY_2022_3_OR_NEWER
 			CinemachineBrain cinemachineBrain = Object.FindFirstObjectByType <CinemachineBrain> ();
-			#else
+#else
 			CinemachineBrain cinemachineBrain = Object.FindObjectOfType <CinemachineBrain> ();
-			#endif
-
+#endif
+			GameObject cam = null;
+			if (cinemachineBrain.ActiveVirtualCamera is CinemachineCamera c)
+            {
+				cam = c.gameObject;
+            }
 			data.priority = cinemachineVirtualCameraBase.Priority;
-			data.isActive = cinemachineBrain != null && cinemachineBrain.ActiveVirtualCamera != null && cinemachineBrain.ActiveVirtualCamera.VirtualCameraGameObject == cinemachineVirtualCameraBase.gameObject;
+			data.isActive = cinemachineBrain != null && cinemachineBrain.ActiveVirtualCamera != null && cam == cinemachineVirtualCameraBase.gameObject;
 			data.positionX = cinemachineVirtualCameraBase.transform.position.x;
 			data.positionY = cinemachineVirtualCameraBase.transform.position.y;
 			data.positionZ = cinemachineVirtualCameraBase.transform.position.z;
@@ -36,7 +40,7 @@ namespace AC.Downloads.CinemachineIntegration
 			CinemachineMixingCamera cinemachineMixingCamera = cinemachineVirtualCameraBase as CinemachineMixingCamera;
 			if (cinemachineMixingCamera)
 			{
-				data.mixingWeights = new float[cinemachineMixingCamera.ChildCameras.Length];
+				data.mixingWeights = new float[cinemachineMixingCamera.ChildCameras.Count];
 				for (int i = 0; i < data.mixingWeights.Length; i++)
 				{
 					data.mixingWeights[i] = cinemachineMixingCamera.GetWeight (i);

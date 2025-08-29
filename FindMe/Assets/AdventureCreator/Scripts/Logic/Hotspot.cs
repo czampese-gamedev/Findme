@@ -642,7 +642,7 @@ namespace AC
 				{
 					if (button != null && _button == button)
 					{
-						return HotspotInteractionType.Use;;
+						return HotspotInteractionType.Use;
 					}
 				}
 

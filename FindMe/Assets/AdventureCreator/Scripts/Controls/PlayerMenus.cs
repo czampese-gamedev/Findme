@@ -1087,13 +1087,16 @@ namespace AC
 			switch (menu.appearType)
 			{
 				case AppearType.Manual:
+				{
 					if (menu.IsVisible () && !menu.isLocked && menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks && !KickStarter.playerInput.IsCursorLocked ())
 					{
 						foundMouseOverMenu = true;
 					}
 					break;
+				}
 
 				case AppearType.OnViewDocument:
+				{
 					if (KickStarter.runtimeDocuments.ActiveDocument != null && !menu.isLocked && (!KickStarter.stateHandler.IsPaused () || menu.IsBlocking ()))
 					{
 						if (menu.IsVisible () && menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks && !KickStarter.playerInput.IsCursorLocked ())
@@ -1107,8 +1110,10 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
 
 				case AppearType.DuringGameplay:
+				{
 					if (KickStarter.stateHandler.IsInGameplay () && !menu.isLocked)
 					{
 						if (menu.IsOff ())
@@ -1130,8 +1135,10 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
 
 				case AppearType.DuringGameplayAndConversations:
+				{
 					if (!menu.isLocked && (KickStarter.stateHandler.gameState == GameState.Normal || KickStarter.stateHandler.gameState == GameState.DialogOptions))
 					{
 						if (menu.IsOff ())
@@ -1153,8 +1160,35 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
+
+				case AppearType.DuringCutscenesAndConversations:
+				{
+					if (!menu.isLocked && (KickStarter.stateHandler.gameState == GameState.Cutscene || KickStarter.stateHandler.gameState == GameState.DialogOptions))
+					{
+						if (menu.IsOff ())
+						{
+							menu.TurnOn (true);
+						}
+
+						if (menu.IsOn () && menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks && !KickStarter.playerInput.IsCursorLocked ())
+						{
+							foundMouseOverMenu = true;
+						}
+					}
+					else if (KickStarter.stateHandler.gameState == GameState.Paused)
+					{
+						menu.TurnOff (true);
+					}
+					else if (menu.IsOn () && !KickStarter.actionListManager.IsGameplayBlocked ())
+					{
+						menu.TurnOff (true);
+					}
+					break;
+				}
 
 				case AppearType.ExceptWhenPaused:
+				{
 					if (KickStarter.stateHandler.gameState != GameState.Paused && !menu.isLocked)
 					{
 						if (menu.IsOff ())
@@ -1172,8 +1206,10 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
 
 				case AppearType.DuringCutscene:
+				{
 					if (KickStarter.stateHandler.gameState == GameState.Cutscene && !menu.isLocked)
 					{
 						if (menu.IsOff ())
@@ -1195,8 +1231,10 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
 
 				case AppearType.MouseOver:
+				{
 					if (menu.pauseWhenEnabled)
 					{
 						if ((KickStarter.stateHandler.gameState == GameState.Paused || KickStarter.stateHandler.IsInGameplay ())
@@ -1241,8 +1279,10 @@ namespace AC
 						}
 					}
 					break;
+				}
 
 				case AppearType.OnContainer:
+				{
 					if (KickStarter.playerInput.activeContainer && !menu.isLocked && (KickStarter.stateHandler.IsInGameplay () || (KickStarter.stateHandler.gameState == AC.GameState.Paused && menu.IsBlocking ())))
 					{
 						if (menu.IsVisible () && !KickStarter.playerInput.IsCursorLocked () && menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks)
@@ -1256,8 +1296,10 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
 
 				case AppearType.DuringConversation:
+				{
 					if (menu.IsEnabled () && !menu.isLocked && !KickStarter.playerInput.IsCursorLocked () && menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks)
 					{
 						foundMouseOverMenu = true;
@@ -1276,8 +1318,10 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
 
 				case AppearType.OnInputKey:
+				{
 					if (menu.IsEnabled () && !menu.isLocked && !KickStarter.playerInput.IsCursorLocked () && menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks)
 					{
 						foundMouseOverMenu = true;
@@ -1312,8 +1356,10 @@ namespace AC
 						}
 					}
 					break;
+				}
 
 				case AppearType.OnHotspot:
+				{
 					if (KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ContextSensitive && !menu.isLocked && !InvInstance.IsValid (KickStarter.runtimeInventory.SelectedInstance))
 					{
 						Hotspot hotspot = menu.HotspotLabelData.Hotspot;
@@ -1349,8 +1395,10 @@ namespace AC
 						menu.TurnOff ();
 					}
 					break;
+				}
 
 				case AppearType.OnInteraction:
+				{
 					if (KickStarter.player != null && KickStarter.settingsManager.hotspotDetection == HotspotDetection.PlayerVicinity && KickStarter.player.hotspotDetector && KickStarter.settingsManager.closeInteractionMenusIfPlayerLeavesVicinity)
 					{
 						if (menu.TargetHotspot && !KickStarter.player.hotspotDetector.IsHotspotInTrigger (menu.TargetHotspot))
@@ -1449,8 +1497,10 @@ namespace AC
 						}
 					}
 					break;
+				}
 
 				case AppearType.WhenSpeechPlays:
+				{
 					if (KickStarter.stateHandler.gameState == GameState.Paused)
 					{
 						if (!menu.showWhenPaused)
@@ -1473,6 +1523,11 @@ namespace AC
 								(KickStarter.speechManager.forceSubtitles && !KickStarter.dialog.FoundAudio ())) 
 							{
 								menu.TurnOn (true);
+
+								if (menu.IsVisible () && !menu.isLocked && menu.IsPointInside (invertedMouse) && !menu.ignoreMouseClicks && !KickStarter.playerInput.IsCursorLocked ())
+								{
+									foundMouseOverMenu = true;
+								}
 							}
 							else
 							{
@@ -1485,8 +1540,10 @@ namespace AC
 						}
 					}
 					break;
+				}
 
 				case AppearType.WhileLoading:
+				{
 					if (KickStarter.sceneChanger.IsLoading () || KickStarter.settingsManager.IsInLoadingScene ())
 					{
 						menu.TurnOn (true);
@@ -1496,8 +1553,10 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
 
 				case AppearType.WhileInventorySelected:
+				{
 					if (InvInstance.IsValid (KickStarter.runtimeInventory.SelectedInstance))
 					{
 						menu.TurnOn (true);
@@ -1507,6 +1566,7 @@ namespace AC
 						menu.TurnOff (true);
 					}
 					break;
+				}
 			}
 
 			if (updateElements)
@@ -2983,7 +3043,7 @@ namespace AC
 
 		public bool CanCurrentlyRightClick ()
 		{
-			return isOverRightClickElement;
+			return IsMouseOverMenu () && isOverRightClickElement;
 		}
 		
 

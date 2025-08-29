@@ -129,44 +129,47 @@ namespace AC
 					NewGameWizardWindow.Init ();
 				}
 
-				GUI.Label (GetCentredRect (260, WindowWidth, 20), "<b>Showcase</b>",  CustomStyles.smallCentre);
-				if (package2DDemo && GUI.Button (new Rect (75, 280, ButtonWidth * 0.5f - 2, ButtonHeight), "2D Demo"))
+				if (package2DDemo || package3DDemo)
 				{
-					AdventureCreator.RefreshActions ();
-
-					if (!ACInstaller.IsInstalled ())
+					GUI.Label (GetCentredRect (260, WindowWidth, 20), "<b>Showcase</b>",  CustomStyles.smallCentre);
+					if (package2DDemo && GUI.Button (new Rect (75, 280, ButtonWidth * 0.5f - 2, ButtonHeight), "2D Demo"))
 					{
-						ACInstaller.DoInstall ();
-					}
+						AdventureCreator.RefreshActions ();
 
-					if (UnityVersionHandler.GetCurrentSceneName () != "Park")
-					{
-						if (UnityVersionHandler.SaveSceneIfUserWants ())
+						if (!ACInstaller.IsInstalled ())
 						{
-							UnityEditor.SceneManagement.EditorSceneManager.OpenScene ("Assets/AdventureCreator/2D Demo/Scenes/Park.unity");
+							ACInstaller.DoInstall ();
 						}
-					}
 
-					AdventureCreator.Init ();
-				}
-				if (package3DDemo && GUI.Button (new Rect (WindowWidth * 0.5f + 2, 280, ButtonWidth * 0.5f - 2, ButtonHeight), "3D Demo"))
-				{
-					AdventureCreator.RefreshActions ();
-
-					if (!ACInstaller.IsInstalled ())
-					{
-						ACInstaller.DoInstall ();
-					}
-
-					if (UnityVersionHandler.GetCurrentSceneName () != "Basement")
-					{
-						if (UnityVersionHandler.SaveSceneIfUserWants ())
+						if (UnityVersionHandler.GetCurrentSceneName () != "Park")
 						{
-							UnityEditor.SceneManagement.EditorSceneManager.OpenScene ("Assets/AdventureCreator/Demo/Scenes/Basement.unity");
+							if (UnityVersionHandler.SaveSceneIfUserWants ())
+							{
+								UnityEditor.SceneManagement.EditorSceneManager.OpenScene ("Assets/AdventureCreator/2D Demo/Scenes/Park.unity");
+							}
 						}
-					}
 
-					AdventureCreator.Init ();
+						AdventureCreator.Init ();
+					}
+					if (package3DDemo && GUI.Button (new Rect (WindowWidth * 0.5f + 2, 280, ButtonWidth * 0.5f - 2, ButtonHeight), "3D Demo"))
+					{
+						AdventureCreator.RefreshActions ();
+
+						if (!ACInstaller.IsInstalled ())
+						{
+							ACInstaller.DoInstall ();
+						}
+
+						if (UnityVersionHandler.GetCurrentSceneName () != "Basement")
+						{
+							if (UnityVersionHandler.SaveSceneIfUserWants ())
+							{
+								UnityEditor.SceneManagement.EditorSceneManager.OpenScene ("Assets/AdventureCreator/Demo/Scenes/Basement.unity");
+							}
+						}
+
+						AdventureCreator.Init ();
+					}
 				}
 			}
 			

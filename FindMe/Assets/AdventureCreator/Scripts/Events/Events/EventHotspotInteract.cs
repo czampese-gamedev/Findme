@@ -7,6 +7,8 @@ namespace AC
 	{
 
 		[SerializeField] private Hotspot hotspot = null;
+		[SerializeField] private bool filterByType;
+		[SerializeField] private HotspotInteractionType hotspotInteractionType;
 
 
 		public override string[] EditorNames { get { return new string[] { "Hotspot/Interact" }; } }
@@ -43,17 +45,36 @@ namespace AC
 		{
 			if (hotspot == null || hotspot == !_hotspot)
 			{
-				Run (new object[] { _hotspot.gameObject, button != null ? button.iconID : -1 });
+				var buttonType = _hotspot.GetButtonInteractionType(button);
+				if (filterByType && buttonType != hotspotInteractionType) return;
+
+				if (filterByType && buttonType == HotspotInteractionType.Inventory)
+				{
+					Run(new object[] { _hotspot.gameObject, button != null ? button.iconID : -1 });
+				}
+				else
+				{
+					Run(new object[] { _hotspot.gameObject, button != null ? button.iconID : -1 });
+				}
 			}
 		}
 
 
 		protected override ParameterReference[] GetParameterReferences ()
 		{
+			if (filterByType && hotspotInteractionType == HotspotInteractionType.Inventory)
+			{
+				return new ParameterReference[]
+				{
+					new ParameterReference(ParameterType.GameObject, "Hotspot"),
+					new ParameterReference(ParameterType.Integer, "Item ID"),
+				};
+			}
+
 			return new ParameterReference[]
 			{
-				new ParameterReference (ParameterType.GameObject, "Hotspot"),
-				new ParameterReference (ParameterType.Integer, "Icon ID"),
+				new ParameterReference(ParameterType.GameObject, "Hotspot"),
+				new ParameterReference(ParameterType.Integer, "Icon ID"),
 			};
 		}
 
@@ -62,7 +83,7 @@ namespace AC
 
 		protected override bool HasConditions (bool isAssetFile)
 		{
-			return !isAssetFile;
+			return true;
 		}
 
 
@@ -71,6 +92,12 @@ namespace AC
 			if (!isAssetFile)
 			{
 				hotspot = (Hotspot) CustomGUILayout.ObjectField<Hotspot> ("Hotspot:", hotspot, true);
+			}
+			
+			filterByType = CustomGUILayout.Toggle ("Filter by type?", filterByType);
+			if (filterByType)
+			{
+				hotspotInteractionType = (HotspotInteractionType) CustomGUILayout.EnumPopup ("Interaction type:", hotspotInteractionType);
 			}
 		}
 

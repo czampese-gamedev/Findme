@@ -27,7 +27,7 @@ namespace AC
 		public bool disableRenderer = true;
 
 		private Collider _collider;
-		private MeshRenderer _meshRenderer;
+		private Renderer _meshRenderer;
 		private MeshCollider _meshCollider;
 		private MeshFilter _meshFilter;
 
@@ -68,7 +68,7 @@ namespace AC
 			#if UNITY_EDITOR
 			if (_meshRenderer == null)
 			{
-				_meshRenderer = GetComponent <MeshRenderer>();
+				_meshRenderer = GetComponent <Renderer>();
 			}
 			#endif
 
@@ -135,7 +135,7 @@ namespace AC
 		protected void BaseAwake ()
 		{
 			_collider = GetComponent <Collider>();
-			_meshRenderer = GetComponent <MeshRenderer>();
+			_meshRenderer = GetComponent <Renderer>();
 			_meshCollider = GetComponent <MeshCollider>();
 			_meshFilter = GetComponent <MeshFilter>();
 

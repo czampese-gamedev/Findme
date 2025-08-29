@@ -9,8 +9,9 @@
  * 
  */
 
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace AC
 {
@@ -227,7 +228,13 @@ namespace AC
 			npcData.spriteDirection = GetSpriteDirectionToSave ();
 
 			npcData.spriteScale = spriteScale;
-			if (spriteChild && spriteChild.GetComponent<Renderer> ())
+			var sortingGroup = GetComponentInChildren<SortingGroup> ();
+			if (sortingGroup)
+			{
+				npcData.sortingOrder = sortingGroup.sortingOrder;
+				npcData.sortingLayer = sortingGroup.sortingLayerName;
+			}
+			else if (spriteChild && spriteChild.GetComponent<Renderer> ())
 			{
 				npcData.sortingOrder = spriteChild.GetComponent<Renderer> ().sortingOrder;
 				npcData.sortingLayer = spriteChild.GetComponent<Renderer> ().sortingLayerName;
@@ -440,7 +447,13 @@ namespace AC
 			}
 			if (data.lockSorting)
 			{
-				if (spriteChild && spriteChild.GetComponent<Renderer> ())
+				var sortingGroup = GetComponentInChildren<SortingGroup> ();
+				if (sortingGroup)
+				{
+					sortingGroup.sortingOrder = data.sortingOrder;
+					sortingGroup.sortingLayerName = data.sortingLayer;
+				}
+				else if (spriteChild && spriteChild.GetComponent<Renderer> ())
 				{
 					spriteChild.GetComponent<Renderer> ().sortingOrder = data.sortingOrder;
 					spriteChild.GetComponent<Renderer> ().sortingLayerName = data.sortingLayer;

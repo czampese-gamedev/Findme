@@ -23,7 +23,7 @@ namespace AC
 	public enum InteractionSource { InScene, AssetFile, CustomScript };
 	public enum TemplateCategory { SamplePlayer, SampleScene, Interface, Misc, None };
 	
-	public enum AppearType { Manual, MouseOver, DuringConversation, OnInputKey, OnInteraction, OnHotspot, WhenSpeechPlays, DuringGameplay, OnContainer, WhileLoading, DuringCutscene, WhileInventorySelected, ExceptWhenPaused, DuringGameplayAndConversations, OnViewDocument };
+	public enum AppearType { Manual, MouseOver, DuringConversation, OnInputKey, OnInteraction, OnHotspot, WhenSpeechPlays, DuringGameplay, OnContainer, WhileLoading, DuringCutscene, WhileInventorySelected, ExceptWhenPaused, DuringGameplayAndConversations, OnViewDocument, DuringCutscenesAndConversations };
 	public enum SpeechMenuType { All, CharactersOnly, NarrationOnly, SpecificCharactersOnly, AllExceptSpecificCharacters };
 	public enum SpeechMenuLimit { All, BlockingOnly, BackgroundOnly };
 	public enum MenuTransition { Fade, Pan, FadeAndPan, Zoom, None };

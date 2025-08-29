@@ -91,7 +91,7 @@ namespace AC
 			if (actionList == null) return false;
 
 			RuntimeActionList runtimeActionList = actionList as RuntimeActionList;
-			if (runtimeActionList != null)
+			if (runtimeActionList != null && KickStarter.actionListAssetManager)
 			{
 				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
@@ -126,7 +126,7 @@ namespace AC
 			if (actionList == null) return false;
 
 			RuntimeActionList runtimeActionList = actionList as RuntimeActionList;
-			if (runtimeActionList != null)
+			if (runtimeActionList && KickStarter.actionListAssetManager)
 			{
 				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
@@ -153,7 +153,7 @@ namespace AC
 		public bool CanResetSkipVars (ActionList actionList)
 		{
 			RuntimeActionList runtimeActionList = actionList as RuntimeActionList;
-			if (runtimeActionList != null)
+			if (runtimeActionList && KickStarter.actionListAssetManager)
 			{
 				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
@@ -263,23 +263,26 @@ namespace AC
 				}
 			}
 
-			foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+			if (KickStarter.actionListAssetManager)
 			{
-				if (activeList.actionList != null && activeList.actionList.actionListType == ActionListType.PauseGameplay && activeList.IsRunning ())
+				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
-					if (_actionToIgnore != null)
+					if (activeList.actionList != null && activeList.actionList.actionListType == ActionListType.PauseGameplay && activeList.IsRunning ())
 					{
-						if (activeList.actionList.actions.Contains (_actionToIgnore))
+						if (_actionToIgnore != null)
 						{
-							continue;
+							if (activeList.actionList.actions.Contains (_actionToIgnore))
+							{
+								continue;
+							}
 						}
-					}
 
-					if (showSaveDebug)
-					{
-						ACDebug.LogWarning ("Cannot save at this time - the ActionListAsset '" + activeList.actionList.name + "' is blocking gameplay.", activeList.actionList);
+						if (showSaveDebug)
+						{
+							ACDebug.LogWarning ("Cannot save at this time - the ActionListAsset '" + activeList.actionList.name + "' is blocking gameplay.", activeList.actionList);
+						}
+						return true;
 					}
-					return true;
 				}
 			}
 
@@ -301,11 +304,14 @@ namespace AC
 				}
 			}
 
-			foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+			if (KickStarter.actionListAssetManager)
 			{
-				if (activeList.CanUnfreezePauseMenus () && activeList.IsRunning ())
+				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
-					return true;
+					if (activeList.CanUnfreezePauseMenus () && activeList.IsRunning ())
+					{
+						return true;
+					}
 				}
 			}
 			return false;
@@ -336,14 +342,17 @@ namespace AC
 				}
 			}
 
-			foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+			if (KickStarter.actionListAssetManager)
 			{
-				if (activeList.IsRunning () && activeList.actionListAsset != null && activeList.actionListAsset.IsSkippable ())
+				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
-					return true;
+					if (activeList.IsRunning () && activeList.actionListAsset != null && activeList.actionListAsset.IsSkippable ())
+					{
+						return true;
+					}
 				}
 			}
-			
+
 			return false;
 		}
 
@@ -419,9 +428,13 @@ namespace AC
 			{
 				activeList.Reset (true);
 			}
-			foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+
+			if (KickStarter.actionListAssetManager)
 			{
-				activeList.Reset (true);
+				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+				{
+					activeList.Reset (true);
+				}
 			}
 		}
 
@@ -640,11 +653,14 @@ namespace AC
 				}
 			}
 
-			foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+			if (KickStarter.actionListAssetManager)
 			{
-				if (activeList.actionList && activeList.actionList.IsSkipping)
+				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
-					return true;
+					if (activeList.actionList && activeList.actionList.IsSkipping)
+					{
+						return true;
+					}
 				}
 			}
 
@@ -664,7 +680,7 @@ namespace AC
 			}
 			PurgeLists ();
 
-			RunVarChange (KickStarter.stateHandler.gameState);
+			RunVarChange ();
 		}
 
 
@@ -676,11 +692,11 @@ namespace AC
 				SaveSystem.SaveAutoSave ();
 			}
 
-			RunVarChange (gameState);
+			RunVarChange ();
 		}
 
 
-		protected void RunVarChange (GameState gameState)
+		protected void RunVarChange ()
 		{
 			playCutsceneOnVarChange = false;
 			/*if (playCutsceneOnVarChange && (gameState == GameState.Normal || gameState == GameState.DialogOptions))
@@ -714,12 +730,16 @@ namespace AC
 					i--;
 				}
 			}
-			for (int i=0; i<KickStarter.actionListAssetManager.ActiveLists.Count; i++)
+
+			if (KickStarter.actionListAssetManager)
 			{
-				if (!KickStarter.actionListAssetManager.ActiveLists[i].IsNecessary ())
+				for (int i=0; i<KickStarter.actionListAssetManager.ActiveLists.Count; i++)
 				{
-					KickStarter.actionListAssetManager.ActiveLists.RemoveAt (i);
-					i--;
+					if (!KickStarter.actionListAssetManager.ActiveLists[i].IsNecessary ())
+					{
+						KickStarter.actionListAssetManager.ActiveLists.RemoveAt (i);
+						i--;
+					}
 				}
 			}
 
@@ -746,15 +766,23 @@ namespace AC
 				{
 					activeList.inSkipQueue = false;
 				}
-				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+
+				if (KickStarter.actionListAssetManager)
 				{
-					activeList.inSkipQueue = false;
+					foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+					{
+						activeList.inSkipQueue = false;
+					}
 				}
 
 				skippableCutsceneSpawnedObjects.Clear ();
 
 				GlobalVariables.BackupAll ();
-				KickStarter.localVariables.BackupAllValues ();
+
+				if (KickStarter.localVariables)
+				{
+					KickStarter.localVariables.BackupAllValues ();
+				}
 			}
 		}
 
@@ -769,14 +797,17 @@ namespace AC
 				}
 			}
 
-			foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+			if (KickStarter.actionListAssetManager)
 			{
-				if (activeList.IsRunning () && activeList.inSkipQueue)
+				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
-					return true;
+					if (activeList.IsRunning () && activeList.inSkipQueue)
+					{
+						return true;
+					}
 				}
 			}
-			
+
 			return false;
 		}
 
@@ -865,15 +896,18 @@ namespace AC
 				}
 			}
 
-			foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
+			if (KickStarter.actionListAssetManager)
 			{
-				if (!activeList.inSkipQueue && activeList.actionList.IsSkippable ())
+				foreach (ActiveList activeList in KickStarter.actionListAssetManager.ActiveLists)
 				{
-					listsToReset.Add (activeList);
-				}
-				else
-				{
-					listsToSkip.Add (activeList);
+					if (!activeList.inSkipQueue && activeList.actionList.IsSkippable ())
+					{
+						listsToReset.Add (activeList);
+					}
+					else
+					{
+						listsToSkip.Add (activeList);
+					}
 				}
 			}
 

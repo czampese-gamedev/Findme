@@ -816,10 +816,10 @@ namespace AC
 					StopCoroutine (setLocaleCoroutine);
 				}
 				setLocaleCoroutine = StartCoroutine (SetLocaleCo (language));
+				return;
 			}
-			#else
-			KickStarter.eventManager.Call_OnChangeLanguage (language);
 			#endif
+			KickStarter.eventManager.Call_OnChangeLanguage (language);
 		}
 
 		#endregion

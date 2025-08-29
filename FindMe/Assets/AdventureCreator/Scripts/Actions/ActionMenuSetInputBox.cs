@@ -34,6 +34,7 @@ namespace AC
 		private int runtimeLineID;
 
 		public bool preProcessTokens;
+		public bool translateBeforePassing;
 
 		public enum SetMenuInputBoxSource { EnteredHere, FromGlobalVariable };
 		public SetMenuInputBoxSource setMenuInputBoxSource = SetMenuInputBoxSource.EnteredHere;
@@ -176,6 +177,12 @@ namespace AC
 								}
 							}
 						}
+						
+						if (translateBeforePassing && runtimeLineID >= 0)
+						{
+							runtimeNewLabel = KickStarter.runtimeLanguages.GetTranslation (runtimeNewLabel, runtimeLineID, Options.GetLanguage ());
+							runtimeLineID = -1;
+						}
 
 						runtimeNewLabel = AdvGame.ConvertParameterTokens (runtimeNewLabel, parameters, Options.GetLanguage ());
 					}
@@ -265,7 +272,7 @@ namespace AC
 									{
 										menuGraphic.SetNormalGraphicTexture (runtimeNewTexture);
 									}
-									else if (menuGraphic.ParentMenu && menuGraphic.ParentMenu.IsUnityUI ())
+									else if (menuElement.ParentMenu && menuElement.ParentMenu.IsUnityUI ())
 									{
 										LogWarning ("Only 'AC' Menus and Graphic elements can have their texture updated at runtime");
 									}
@@ -319,6 +326,7 @@ namespace AC
 							}
 
 							preProcessTokens = EditorGUILayout.Toggle ("Pre-process tokens?", preProcessTokens);
+							translateBeforePassing = EditorGUILayout.Toggle ("Translate before sending?", translateBeforePassing);
 						}
 						else if (setMenuInputBoxSource == SetMenuInputBoxSource.FromGlobalVariable)
 						{

@@ -511,7 +511,7 @@ namespace AC
 								lastPressTime = Time.time;
 								if (animator)
 								{
-									animator.Play ("Hit", 0, 0f);
+									animator.SetTrigger ("Hit");
 								}
 								canMash = false;
 							}
@@ -540,7 +540,7 @@ namespace AC
 								lastPressTime = Time.time;
 								if (animator)
 								{
-									animator.Play ("Hit", 0, 0f);
+									animator.SetTrigger ("Hit");
 								}
 								canMash = false;
 							}
@@ -688,7 +688,7 @@ namespace AC
 		{
 			if (animator)
 			{
-				animator.Play ("Win");
+				animator.SetTrigger ("Win");
 			}
 			qteState = QTEState.Win;
 			endTime = 0f;
@@ -703,7 +703,7 @@ namespace AC
 			endTime = 0f;
 			if (animator)
 			{
-				animator.Play ("Lose");
+				animator.SetTrigger ("Lose");
 			}
 
 			KickStarter.eventManager.Call_OnQTEEnd (qteType, false);

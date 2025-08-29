@@ -256,16 +256,23 @@ namespace AC
 						if (Mathf.Approximately (targetVector.y, 0f)) numZeros ++;
 						if (Mathf.Approximately (targetVector.z, 0f)) numZeros ++;
 
-						if (numZeros == 2)
+						if (numZeros == 3)
 						{
 							targetVector = SetRelativeTarget (targetVector, isSkipping, runtimeLinkedProp.transform.eulerAngles);
 						}
 						else
 						{
-							Quaternion currentRotation = runtimeLinkedProp.transform.localRotation;
-							runtimeLinkedProp.transform.Rotate (targetVector, Space.World);
-							targetVector = runtimeLinkedProp.transform.localEulerAngles;
-							runtimeLinkedProp.transform.localRotation = currentRotation;
+							if (doEulerRotation)
+							{
+								targetVector += runtimeLinkedProp.transform.localEulerAngles;
+							}
+							else
+							{
+								Quaternion currentRotation = runtimeLinkedProp.transform.localRotation;
+								runtimeLinkedProp.transform.Rotate (targetVector, Space.World);
+								targetVector = runtimeLinkedProp.transform.localEulerAngles;
+								runtimeLinkedProp.transform.localRotation = currentRotation;
+							}
 						}
 
 						speedScaler = targetVector.magnitude;

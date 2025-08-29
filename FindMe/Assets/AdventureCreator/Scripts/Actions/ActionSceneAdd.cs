@@ -32,6 +32,7 @@ namespace AC
 		public int sceneNumber;
 		public int sceneNumberParameterID = -1;
 		public string sceneName;
+		private string runtimeSceneName;
 		public int sceneNameParameterID = -1;
 
 		protected bool awaitingCallback = false;
@@ -46,7 +47,8 @@ namespace AC
 		public override void AssignValues (List<ActionParameter> parameters)
 		{
 			sceneNumber = AssignInteger (parameters, sceneNumberParameterID, sceneNumber);
-			sceneName = AssignString (parameters, sceneNameParameterID, sceneName);
+			runtimeSceneName = AssignString (parameters, sceneNameParameterID, sceneName);
+			runtimeSceneName = AdvGame.ConvertTokens (runtimeSceneName, Options.GetLanguage ());
 		}
 		
 		
@@ -93,6 +95,8 @@ namespace AC
 		private float UpdateSceneByName ()
 		{
 			string runtimeSceneName = (chooseSceneBy == ChooseSceneBy.Name) ? sceneName : KickStarter.sceneChanger.IndexToName (sceneNumber);
+			runtimeSceneName = AdvGame.ConvertTokens (runtimeSceneName, Options.GetLanguage ());
+			
 			if (string.IsNullOrEmpty (runtimeSceneName)) return 0f;
 
 			switch (sceneAddRemove)

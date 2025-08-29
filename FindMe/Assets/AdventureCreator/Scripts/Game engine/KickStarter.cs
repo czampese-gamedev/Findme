@@ -73,6 +73,8 @@ namespace AC
 		private static EventManager eventManagerComponent = null;
 		private static KickStarter kickStarterComponent = null;
 
+		public static bool CanCreateComponentsWithoutGameEngine = false;
+
 
 		protected void Awake ()
 		{
@@ -816,9 +818,12 @@ namespace AC
 				if (gameEnginePrefab)
 				{
 					actionListManagerComponent = gameEnginePrefab.GetComponent <ActionListManager>();
-					return actionListManagerComponent;
 				}
-				return null;
+				else
+				{
+					actionListManagerComponent = CreateSingleComponentObject<ActionListManager> ();
+				}
+				return actionListManagerComponent;
 			}
 		}
 		
@@ -876,10 +881,26 @@ namespace AC
 				if (gameEnginePrefab)
 				{
 					eventManagerComponent = gameEnginePrefab.GetComponent <EventManager>();
-					return eventManagerComponent;
 				}
-				return null;
+				else
+				{
+					eventManagerComponent = CreateSingleComponentObject<EventManager> ();
+				}
+				
+				return eventManagerComponent;
 			}
+		}
+
+
+		private static T CreateSingleComponentObject<T> () where T : Component
+		{
+			if (CanCreateComponentsWithoutGameEngine && Application.isPlaying)
+			{
+				GameObject newOb = new GameObject ("AC_" + typeof (T).Name);
+				T newComponent = newOb.AddComponent<T> ();
+				return newComponent;
+			}
+			return null;
 		}
 
 

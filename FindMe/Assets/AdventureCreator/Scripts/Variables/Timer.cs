@@ -39,6 +39,8 @@ namespace AC
 		[SerializeField] private ActionListAsset actionListAssetOnComplete = null;
 		[SerializeField] private bool onlyRunDuringGameplay;
 		[SerializeField] string tokenFormat = "{h}:{m:D2}:{s:D2}";
+		[SerializeField] private UpdateMode updateMode = UpdateMode.Normal;
+		private enum UpdateMode { Normal, UnscaledTime };
 
 		private float ticker;
 		private float unlinkedValue;
@@ -153,7 +155,17 @@ namespace AC
 				return;
 			}
 
-			ticker -= Time.deltaTime;
+			switch (updateMode)
+			{
+				case UpdateMode.UnscaledTime:
+					ticker -= Time.unscaledDeltaTime;
+					break;
+
+				default:
+					ticker -= Time.deltaTime;
+					break;
+			}
+			
 			if (ticker <= 0f)
 			{
 				ticker = updateFrequency;

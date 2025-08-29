@@ -128,9 +128,9 @@ namespace AC
 			}
 
 			character.doWallReduction = EditorGUILayout.BeginToggleGroup ("Slow movement near walls?", character.doWallReduction);
-			character.wallLayer = EditorGUILayout.TextField ("Wall collider layer:", character.wallLayer);
+			character.WallLayerMask = CustomGUILayout.LayerMaskField ("Wall collision:", character.WallLayerMask, "", "The layers that walls are expected to be placed on");
 			character.wallDistance = EditorGUILayout.Slider ("Collider distance:", character.wallDistance, 0f, 2f);
-			character.wallReductionOnlyParameter = EditorGUILayout.Toggle ("Only affects Mecanim parameter?", character.wallReductionOnlyParameter);
+			character.wallReductionOnlyParameter = EditorGUILayout.Toggle ("Only affects parameter?", character.wallReductionOnlyParameter);
 			EditorGUILayout.EndToggleGroup ();
 
 			if (SceneSettings.CameraPerspective != CameraPerspective.TwoD)

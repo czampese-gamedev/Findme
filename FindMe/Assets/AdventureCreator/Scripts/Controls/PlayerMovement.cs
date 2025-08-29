@@ -120,7 +120,7 @@ namespace AC
 							else
 							{
 								// Move along pre-determined path
-								DirectControlPlayerPath (KickStarter.playerInput.GetMoveKeys ());
+								DirectControlPlayerPath (false, KickStarter.playerInput.GetMoveKeys ());
 							}
 						}
 						break;
@@ -165,8 +165,8 @@ namespace AC
 									break;
 
 								case FirstPersonTouchScreen.CustomInput:
-									FirstPersonControlPlayer ();
-									DirectControlPlayer (true, KickStarter.playerInput.GetMoveKeys ());
+									FirstPersonControlPlayer();
+									DirectControlPlayer(true, KickStarter.playerInput.GetMoveKeys());
 									break;
 
 								default:
@@ -175,8 +175,17 @@ namespace AC
 						}
 						else
 						{
-							FirstPersonControlPlayer ();
-							DirectControlPlayer (true, KickStarter.playerInput.GetMoveKeys ());
+							FirstPersonControlPlayer();
+							if (KickStarter.player.GetPath () == null || !KickStarter.player.IsLockedToPath ())
+							{
+								// Normal gameplay
+								DirectControlPlayer (true, KickStarter.playerInput.GetMoveKeys ());
+							}
+							else
+							{
+								// Move along pre-determined path
+								DirectControlPlayerPath (true, KickStarter.playerInput.GetMoveKeys ());
+							}
 						}
 						break;
 				}
@@ -871,7 +880,7 @@ namespace AC
 		}
 
 
-		protected void DirectControlPlayerPath (Vector2 moveKeys)
+		protected void DirectControlPlayerPath (bool isFirstPerson, Vector2 moveKeys)
 		{
 			if (moveKeys != Vector2.zero)
 			{
@@ -880,6 +889,10 @@ namespace AC
 				if (SceneSettings.IsTopDown ())
 				{
 					moveDirectionInput = (moveKeys.y * Vector3.forward) + (moveKeys.x * Vector3.right);
+				}
+				else if (isFirstPerson)
+				{
+					moveDirectionInput = (moveKeys.y * KickStarter.CameraMainTransform.forward) + (moveKeys.x * KickStarter.CameraMainTransform.right);
 				}
 				else
 				{
@@ -891,14 +904,15 @@ namespace AC
 					}
 				}
 
-				Vector3 direction = KickStarter.player.GetPath ().nodes[KickStarter.player.GetTargetNode ()] - KickStarter.player.Transform.position;
+				Vector3 direction = (KickStarter.player.GetPath ().nodes[KickStarter.player.GetTargetNode ()] - KickStarter.player.Transform.position).normalized;
 				if (SceneSettings.IsUnity2D ())
 				{
 					direction.z = 0f;
 				}
 
-				float dotProduct = Vector3.Dot (moveDirectionInput, direction.normalized);
-				if (dotProduct > 0.5f)
+				float dotProduct = Vector3.Dot (moveDirectionInput.normalized, direction);
+				float dotThreshold = isFirstPerson ? 0.5f : 0.5f;
+				if (dotProduct > dotThreshold)
 				{
 					if (KickStarter.player.LockedEndIndex >= 0 && KickStarter.player.LockedEndIndex == KickStarter.player.GetTargetNode ())
 					{
@@ -909,9 +923,36 @@ namespace AC
 					KickStarter.player.isRunning = KickStarter.playerInput.IsPlayerControlledRunning ();
 					KickStarter.player.charState = CharState.Move;
 				}
-				else if (dotProduct < -0.5f)
+				else if (dotProduct < -dotThreshold)
 				{
-					KickStarter.player.ReverseDirectPathDirection ();
+					KickStarter.player.ReverseDirectPathDirection();
+				}
+				else
+				{
+					float pathDot = Vector3.Dot (Vector3.up, direction);
+					if (Mathf.Abs(pathDot) > 0.9f)
+					{
+						// Ladder
+						bool goingDown = pathDot < 0f;
+
+						if (moveKeys.y > 0f)
+						{
+							if (goingDown)
+							{
+								KickStarter.player.ReverseDirectPathDirection ();
+							}
+						}
+						else
+						{
+							if (!goingDown)
+							{
+								KickStarter.player.ReverseDirectPathDirection ();
+							}
+						}
+
+						KickStarter.player.isRunning = KickStarter.playerInput.IsPlayerControlledRunning ();
+						KickStarter.player.charState = CharState.Move;
+					}
 				}
 			}
 			else

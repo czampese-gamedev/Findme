@@ -250,11 +250,23 @@ namespace AC
 
 		private void GenerateTypeReferencesArray ()
 		{
-			Assembly assembly = typeof (EventBase).Assembly;
-			var types = assembly.GetTypes ().Where (t => t.BaseType == typeof (EventBase));
+			List<Type> allTypes = new List<Type>();
+
+			foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies ())
+			{
+				try
+				{
+					var types = assembly.GetTypes ().Where (t => t.IsSubclassOf (typeof (EventBase)) && !t.IsAbstract);
+					allTypes.AddRange (types);
+				}
+				catch (ReflectionTypeLoadException e)
+				{
+					ACDebug.LogWarning (e.Message);
+				}
+			}
 
 			List<EventTypeReference> eventTypeReferencesList = new List<EventTypeReference> ();
-			foreach (Type type in types)
+			foreach (Type type in allTypes)
 			{
 				EventBase eventBase = (EventBase) Activator.CreateInstance (type);
 

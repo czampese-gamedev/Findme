@@ -44,6 +44,8 @@ namespace AC
 		public bool lockStateWhenComplete = true;
 		/** If True, the state cannot be changed once it is considered failed */
 		public bool lockStateWhenFail = true;
+		/* If True, the active state can only be changed if the new state is listed underneath the current state */
+		public bool onlySuccessiveActiveStates;
 		/** The Objective's Category ID */
 		public int binID = 0;
 		/** The Objective's properties */
@@ -82,6 +84,27 @@ namespace AC
 
 
 		#region PublicFunctions
+
+		public bool IsSuccessive (int currentStateID, int nextStateID)
+		{
+			int currentIndex = -1;
+			int nextIndex = -1;
+
+			for (int i = 0; i < states.Count; i++)
+			{
+				if (states[i].ID == currentStateID)
+				{
+					currentIndex = i;
+				}
+				if (states[i].ID == nextStateID)
+				{
+					nextIndex = i;
+				}
+			}
+
+			return nextIndex > currentIndex;
+		}
+
 
 		public void RebuildProperties ()
 		{
@@ -315,8 +338,9 @@ namespace AC
 			}
 
 			texture = (Texture2D) CustomGUILayout.ObjectField <Texture2D> ("Texture:", texture, false, apiPrefix + ".texture");
-			lockStateWhenComplete = CustomGUILayout.Toggle ("Lock state when complete?", lockStateWhenComplete, apiPrefix + ".lockStateWhenComplete");
-			lockStateWhenFail = CustomGUILayout.Toggle ("Lock state when fail?", lockStateWhenFail, apiPrefix + ".lockStateWhenFail");
+			lockStateWhenComplete = CustomGUILayout.Toggle ("Lock when complete?", lockStateWhenComplete, apiPrefix + ".lockStateWhenComplete", "If True, the Objective's state will be locked once complete");
+			lockStateWhenFail = CustomGUILayout.Toggle ("Lock when fail?", lockStateWhenFail, apiPrefix + ".lockStateWhenFail", "If True, the Objective's state will be locked once failed");
+			onlySuccessiveActiveStates = CustomGUILayout.Toggle ("Prevent reversing active?", onlySuccessiveActiveStates, apiPrefix + ".onlySuccessiveActiveStates", "If True, the active state can only be changed if the new state is listed underneath the current state");
 
 			EditorGUILayout.Space ();
 

@@ -1,5 +1,5 @@
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 using AC;
 
 public class SetPlayerTarget : MonoBehaviour
@@ -11,7 +11,7 @@ public class SetPlayerTarget : MonoBehaviour
     private void SetNewPlayer(Player player)
     {
        // GetComponent<CinemachineVirtualCam>().m_Follow = player.transform;
-        GetComponent<CinemachineVirtualCamera>().m_LookAt = player.transform;
+        GetComponent<CinemachineCamera>().LookAt = player.transform;
     }
 
 }

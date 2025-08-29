@@ -51,8 +51,7 @@ namespace AC
 		protected bool isAwaitingDelay;
 
 		protected RuntimeActionList runtimeActionList;
-		protected Conversation[] conversations;
-
+		
 		[SerializeField] protected RunMode runMode = RunMode.RunOnly;
 		protected RunMode runtimeRunMode;
 		protected enum RunMode { RunOnly, SetParametersAndRun, SetParametersOnly };
@@ -261,19 +260,13 @@ namespace AC
 								EventManager.OnEndActionList -= OnEndActionList;
 								return defaultPauseTime;
 							}
-							else if (nestedAwaitingActiveList != null && nestedAwaitingActiveList.Conversation)
+							else if (nestedAwaitingActiveList != null && nestedAwaitingActiveList.Conversation && nestedAwaitingActiveList.Conversation.IsOverridingActionList (actionList))
 							{
-								if (nestedAwaitingActiveList.Conversation.IsOverridingActionList (actionList))
-								{
-									return defaultPauseTime;
-								}
+								return defaultPauseTime;
 							}
 							else
 							{
-								if (conversations == null)
-								{
-									conversations = UnityVersionHandler.FindObjectsOfType<Conversation> ();
-								}
+								var conversations = GetConversations ();
 								foreach (Conversation conversation in conversations)
 								{
 									if (conversation.IsOverridingActionList (actionList))
@@ -309,19 +302,13 @@ namespace AC
 										return defaultPauseTime;
 									}
 
-									if (nestedAwaitingActiveList != null && nestedAwaitingActiveList.Conversation)
+									if (nestedAwaitingActiveList != null && nestedAwaitingActiveList.Conversation && nestedAwaitingActiveList.Conversation.IsOverridingActionList (runtimeActionList))
 									{
-										if (nestedAwaitingActiveList.Conversation.IsOverridingActionList (runtimeActionList))
-										{
-											return defaultPauseTime;
-										}
+										return defaultPauseTime;
 									}
 									else
 									{
-										if (conversations == null)
-										{
-											conversations = UnityVersionHandler.FindObjectsOfType<Conversation> ();
-										}
+										var conversations = GetConversations ();
 										foreach (Conversation conversation in conversations)
 										{
 											if (conversation.IsOverridingActionList (runtimeActionList))
@@ -525,6 +512,23 @@ namespace AC
 			}
 			SyncLists (externalParameters, localParameters);
 			SetParametersBase.BulkAssignParameterValues (externalParameters, localParameters, sendingToAsset, isAssetFile);
+		}
+
+
+		private HashSet<Conversation> GetConversations ()
+		{
+			HashSet<Conversation> conversations = new HashSet<Conversation> ();
+			Conversation[] conversationsArray = UnityVersionHandler.FindObjectsOfType<Conversation> ();
+			foreach (Conversation conversation in conversationsArray)
+			{
+				conversations.Add (conversation);
+			}
+
+			if (KickStarter.playerInput.activeConversation && !conversations.Contains (KickStarter.playerInput.activeConversation))
+			{
+				conversations.Add (KickStarter.playerInput.activeConversation);
+			}
+			return conversations;
 		}
 
 

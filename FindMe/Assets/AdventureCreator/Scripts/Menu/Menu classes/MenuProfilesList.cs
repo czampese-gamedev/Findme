@@ -105,6 +105,7 @@ namespace AC
 				for (int i=0; i<uiSlots.Length; i++)
 				{
 					uiSlots[i] = new UISlot (_element.uiSlots[i]);
+					uiSlots[i].uiButton = null;
 				}
 			}
 			

@@ -35,6 +35,7 @@ namespace AC
 		public int parameterID = -1;
 
 		protected ActionListAsset runtimeActionListAsset;
+		protected ActionList parentActionList;
 		protected bool isSkipping = false;
 
 
@@ -53,6 +54,13 @@ namespace AC
 		public override void Skip ()
 		{
 			isSkipping = true;
+		}
+
+
+		public override void AssignParentList (ActionList actionList)
+		{
+			parentActionList = actionList;
+			base.AssignParentList (actionList);
 		}
 
 
@@ -87,7 +95,17 @@ namespace AC
 			}
 			else if (listSource == ListSource.AssetFile && runtimeActionListAsset != null)
 			{
-				return KickStarter.actionListAssetManager.IsListRunning (runtimeActionListAsset);
+				foreach (var activeList in KickStarter.actionListAssetManager.ActiveLists)
+				{
+					if (!activeList.IsRunning ()) continue;
+					if (!activeList.IsFor (runtimeActionListAsset)) continue;
+
+					if (activeList.actionList != parentActionList)
+					{
+						return true;
+					}
+				}
+				//return KickStarter.actionListAssetManager.IsListRunning (runtimeActionListAsset);
 			}
 			
 			return false;

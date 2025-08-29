@@ -2173,7 +2173,7 @@ namespace AC
 						string sceneName = System.IO.Path.GetFileNameWithoutExtension (sceneFile);
 						if (sceneName != speechLine.scene && sceneFile != speechLine.scene) continue;
 
-						UnityVersionHandler.OpenScene (sceneFile);
+						UnityVersionHandler.OpenScene (sceneFile, true);
 
 						// Actions
 						#if CAN_SEARCH_INACTIVE

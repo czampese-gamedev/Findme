@@ -174,7 +174,7 @@ namespace AC
 			}
 			else if (_hotspot.invButtons.Contains (this) && InvInstance.IsValid (invInstance))
 			{
-				string prefix = invInstance.GetHotspotPrefixLabel (_language);
+				string prefix = invInstance.GetHotspotPrefixLabel (_language, (selectItemMode == SelectItemMode.Give));
 				string hotspotName = _hotspot.GetName (_language);
 				if (_hotspot.canBeLowerCase && !string.IsNullOrEmpty (prefix))
 				{

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace AC.Templates.SamplePlayer3D
 {
@@ -15,6 +15,8 @@ namespace AC.Templates.SamplePlayer3D
 		[SerializeField] private string landTrigger = "Land";
 		[SerializeField] private float slowMovementTime = 0.7f;
 		[SerializeField] [Range (0f, 1f)] private float slowMovementFactor = 0.2f;
+		[SerializeField] private UnityEvent onJump = null;
+		[SerializeField] private UnityEvent onLand = null;
 		private float peakMidAirHeight;
 		private bool isPlayingAnim;
 
@@ -22,6 +24,18 @@ namespace AC.Templates.SamplePlayer3D
 
 
 		#region UnityStandards
+
+		private void OnEnable ()
+		{
+			EventManager.OnPlayerJump += OnPlayerJump;
+		}
+
+
+		private void OnDisable ()
+		{
+			EventManager.OnPlayerJump -= OnPlayerJump;
+		}
+
 
 		private void Update ()
 		{
@@ -46,11 +60,27 @@ namespace AC.Templates.SamplePlayer3D
 		#endregion
 
 
+		#region CustomEvents
+
+		private void OnPlayerJump (Player _player)
+		{
+			if (player == _player)
+			{
+				onJump?.Invoke ();
+			}
+		}
+
+		#endregion
+
+
 		#region PrivateFunctions
 
 		private IEnumerator PlayLandAnim ()
 		{
 			isPlayingAnim = true;
+
+			player.GetAnimator ().SetTrigger (landTrigger);
+			onLand?.Invoke ();
 
 			float originalWalkSpeed = player.walkSpeedScale;
 			float originalRunSpeed = player.runSpeedScale;
@@ -58,7 +88,6 @@ namespace AC.Templates.SamplePlayer3D
 			player.walkSpeedScale *= slowMovementFactor;
 			player.runSpeedScale = slowMovementFactor;
 
-			player.GetAnimator ().SetTrigger (landTrigger);
 			yield return new WaitForSeconds (slowMovementTime);
 
 			player.walkSpeedScale = originalWalkSpeed;

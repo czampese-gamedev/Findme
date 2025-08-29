@@ -12,7 +12,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
+using Unity.Cinemachine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

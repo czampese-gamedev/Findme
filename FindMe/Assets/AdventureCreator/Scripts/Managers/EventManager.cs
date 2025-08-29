@@ -1101,6 +1101,8 @@ namespace AC
 		public static Delegate_SaveFile OnFinishSaving;
 		/** An event triggered after an attempt to save a game fails */
 		public static Delegate_SaveID OnFailSaving;
+		/** An event triggered during the loading process, once main data has been applied, but before the scene's OnLoad cutscene is triggered */
+		public static Delegate_SaveID OnOverwriteMainData;
 		/** An event triggered before a save game file is loaded */
 		public static Delegate_SaveFile OnBeforeLoading;
 		/** An event triggered after a save game file is loaded */
@@ -1164,6 +1166,19 @@ namespace AC
 			else if (fileAccessState == FileAccessState.Fail && OnFailLoading != null)
 			{
 				OnFailLoading (saveID);
+			}
+		}
+
+
+		/**
+		 * <summary>Triggers the OnOverwriteMainData event.</summary>
+		 * <param name = "saveID">The ID of the slot being loaded</param>
+		 */
+		public void Call_OnOverwriteMainData (int saveID)
+		{
+			if (OnOverwriteMainData != null)
+			{
+				OnOverwriteMainData (saveID);
 			}
 		}
 

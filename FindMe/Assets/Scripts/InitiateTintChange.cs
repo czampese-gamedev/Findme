@@ -8,7 +8,9 @@ public class InitiateTintChange : MonoBehaviour
     public Color tintColor;
     [Range(0f, 1f)]
     public float tintStrength;
-    public float tintduration = 1f;
+    public float tintduration;
+
+    public List<Collider> currentColliders;
 
     public Transform p;
 
@@ -18,6 +20,7 @@ public class InitiateTintChange : MonoBehaviour
 
         if (other.tag == "ChangePlayerTint")
         {
+            currentColliders.Add(other);
             //Check if parent has updatetint component
             UpdateTint utparent = gameObject.GetComponent<UpdateTint>();
             if (utparent != null)

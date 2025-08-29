@@ -78,6 +78,7 @@ namespace AC
 		public UISlot (UISlot uiSlot)
 		{
 			uiButton = uiSlot.uiButton;
+			if (uiButton) uiButton.gameObject.SetActive (true);
 			uiButtonID = uiSlot.uiButtonID;
 			sprite = uiSlot.sprite;
 			uiImage = null;

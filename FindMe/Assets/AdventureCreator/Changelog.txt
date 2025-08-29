@@ -1,3 +1,101 @@
+Version 1.84.0:
+
+= Upgrade notes =
+-Quick-time events now animate UIs using Triggers, rather than referencing state name
+-The "Render border camera?" option has been removed, following its conflict with URP in Unity 6.1
+
+= Templates =
+-Added: Input System integration (Unity 2022+) - import to have AC work with Unity's Input System package
+-Fixed: Title Screen template sometimes causing the game to remain paused once a new game begins
+-Fixed: "Animated cursor" template not animating while the game is paused
+
+= Editor =
+-Added: The New Game Wizard and Character Wizard windows are now resizable
+-Added: Clicking the folder icon on the New Game Wizard's "Game name" page now opens a dialog box to override the install path
+-Added: If no Default Sound is assigned in the Scene Manager, one is now generated at runtime
+-Added: Ability to filter the "Hotspot / Interact" event by Interaction type
+-Fixed: Actions sometimes adjusting their output wires when switching ActionLists in the ActionList Editor
+-Fixed: Minor issues with the ActionList Editor
+
+= Characters =
+-Added: On Jump and On Land event fields to the Player Jump component
+-Added: Improved handling of First Person players when locked to a vertical Path
+-Fixed: Character wall-detection not working correctly in v1.83.0
+-Fixed: Character prefab data being modified if they are set to play speech but are not in the scene
+-Fixed: Characters with a Character Controller ignoring their Path's "Ignore gravity?" option
+-Fixed: LipSync Texture component's "Renderer" field not accepting Skinned Mesh Renderers
+
+= Cursor =
+-Fixed: Unity UI Cursor component's "Click Trigger" Animator parameter not always being invoked
+-Fixed: Unity UI Cursor sometimes showing during gameplay when "Display cursor" is set to "Only When Paused"
+
+= Menus =
+-Added: Ability for Unity UI objects to accept mouse clicks from the cursor when it is locked
+-Added: Ability to insert Scene Attribute values in text fields using the [scene:X] token
+-Changed: Quick-time events now animate UIs using Triggers, rather than referencing state name
+-Fixed: Issue when using Events to turn off a Menu immediately after it is turned on
+-Fixed: Menu text not updating upon switching language if the Localization package is present but "Auto-sync Locale with Language?" is unchecked
+
+= Inventory =
+-Fixed: "Auto-toggle 'Give' mode?" Inventory setting not accounting for unhandled interactions
+-Fixed: Inventory items sometimes not de-selecting when right-clicking in v1.83.0
+
+= Cameras =
+-Changed: The "Render border camera?" option has been removed, following its conflict with URP in Unity 6.1
+-Fixed: Rotation issue when re-enabling the Camera system while the Third-person camera type is in use
+-Fixed: Sample 3D Scene's Third-person camera having incorrect pitch angles
+
+= Misc =
+-Added: OnOverwriteMainData custom event - fired while loading once main data has been applied, but before the scene's OnLoad cutscene
+-Added: "Affect children?" option to the Light Switch component
+-Fixed: Issue with "Object: Transform" Action's Rotate By option
+-Fixed: "Action: Run ActionList" Actions ending prematurely if the ActionList they run triggers multiple Conversations
+-Fixed: Issue when spamming dialogue options on a Conversation that is always shown
+
+
+Version 1.83.0:
+
+= Update note =
+-Player/NPC "Wall collider layer" fields are now a LayerMask field, not a text box
+
+= Templates =
+-Added: "Cutscene borders" template - use to display animated borders during cutscenes
+
+= ActionLists =
+-Added: Ability to disable Actions within the ActionList Editor window
+-Added: Ability to auto-arrange all Actions within a selected Group
+-Changed: If the "ActionList: Check running" Action is used by an asset to check if itself is running, the check will ignore its own instance
+-Fixed: "Camera: Switch" Action's "Wait until finish?" option not working if "Return to last?" is checked
+-Fixed: ActionList groups not updating correctly when scrolling with the mouse-wheel
+-Fixed: "Scene: Switch" and "Scene: Add or remove" Actions not accepting tokens when referencing scenes by name
+
+= Menus =
+-Added: Option to the "Menu: Update content" Action to handle text translations before updating the Menu element
+-Added: "During Cutscenes And Conversations" Menu appear type option
+-Added: The alignment of item count labels can now be configured for AC-based InventoryBox menu elements
+-Fixed: Auto Correct UI Dimensions component shrinking Menus each time they turn on
+-Fixed: Unity UI-based Menus sometimes behaving incorrectly after loading a save-game file
+-Fixed: InventoryBox element affecting Text children even if its properties are configured so as to have no text
+-Fixed: Issue when updating a Menu element's texture with the "Menu: Update content" Action
+
+= Interactions =
+-Added: Ability to set - through script - the radius of the cursor raycasts used by the PlayerInteraction script in 2D games
+-Fixed: Hotspot labels sometimes replacing "Give" interactions with "Use"
+
+= Characters =
+-Changed: Player/NPC "Wall collider layer" fields are now a LayerMask field, not a text box
+-Fixed: Character sorting lock data not being saved correctly if they rely on a Sorting Group component
+-Fixed: Characters that use "retro-mode pathfinding" sometimes not moving when a "Character: Move to point" Action's target is too close to the character
+-Fixed: Footstep sounds played via animation events playing multiple times while blending animation states
+
+= Misc =
+-Added: Ability for custom Events Editor event scripts to exist outside of AC's Scripts folder
+-Added: Option to prevent Objectives from setting their Active state to one listed above its current state in the Editor's States panel
+-Added: Options for Timers to run in "unscaled time"
+-Added: Ability to manually force the GameEngine object as the scene's main instance within the Multi Scene Checker component
+-Changed: The AC Status box now scales with screen size, so that it is always readable
+
+
 Version 1.82.5:
 
 -Changed: The LipSync Texture component can now affect all Mesh Renderers, as opposed to just Skinned Mesh Renderers

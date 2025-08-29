@@ -126,21 +126,11 @@ namespace AC
 		
 		private void CopyLabel (MenuLabel _element, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiText = null;
-				#if TextMeshProIsPresent
-				uiTextTMP = null;
-				#endif
-			}
-			else
-			{
-				uiText = _element.uiText;
-				#if TextMeshProIsPresent
-				uiTextTMP = _element.uiTextTMP;
-				#endif
-			}
-
+			uiText = null;
+			#if TextMeshProIsPresent
+			uiTextTMP = null;
+			#endif
+			
 			_label = _element._label;
 			anchor = _element.anchor;
 			textEffects = _element.textEffects;

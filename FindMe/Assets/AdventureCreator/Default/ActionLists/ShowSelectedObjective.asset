@@ -45,16 +45,11 @@ MonoBehaviour:
   comment: 
   willWait: 0
   endAction: 1
-  skipAction: -99
+  skipAction: 3
   skipActionActual: {fileID: 11428390}
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 1
-    skipAction: 3
-    skipActionActual: {fileID: 11428390}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
+  endings: []
   isEnabled: 1
   isAssetFile: 1
   isBreakPoint: 0
@@ -63,7 +58,7 @@ MonoBehaviour:
     x: 14
     y: 524
     width: 300
-    height: 132
+    height: 122
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
@@ -98,16 +93,11 @@ MonoBehaviour:
   comment: 
   willWait: 0
   endAction: 2
-  skipAction: -99
+  skipAction: 3
   skipActionActual: {fileID: 11428390}
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 2
-    skipAction: 3
-    skipActionActual: {fileID: 11428390}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
+  endings: []
   isEnabled: 1
   isAssetFile: 1
   isBreakPoint: 0
@@ -116,7 +106,7 @@ MonoBehaviour:
     x: 14
     y: 354
     width: 300
-    height: 152
+    height: 140
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
@@ -151,16 +141,11 @@ MonoBehaviour:
   comment: 
   willWait: 0
   endAction: 2
-  skipAction: -99
+  skipAction: 2
   skipActionActual: {fileID: 11457398}
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 2
-    skipAction: 2
-    skipActionActual: {fileID: 11457398}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
+  endings: []
   isEnabled: 1
   isAssetFile: 1
   isBreakPoint: 0
@@ -169,7 +154,7 @@ MonoBehaviour:
     x: 14
     y: 184
     width: 300
-    height: 152
+    height: 140
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
@@ -204,16 +189,11 @@ MonoBehaviour:
   comment: 
   willWait: 0
   endAction: 2
-  skipAction: -99
+  skipAction: 1
   skipActionActual: {fileID: 11482464}
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 2
-    skipAction: 1
-    skipActionActual: {fileID: 11482464}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
+  endings: []
   isEnabled: 1
   isAssetFile: 1
   isBreakPoint: 0
@@ -222,7 +202,7 @@ MonoBehaviour:
     x: 14
     y: 14
     width: 300
-    height: 152
+    height: 140
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}

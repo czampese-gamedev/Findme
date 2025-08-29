@@ -404,7 +404,8 @@ namespace AC
 				if (!actions[i].isEnabled)
 				{
 					// Disabled, try next
-					ProcessAction (i + 1);
+					//ProcessAction (i + 1);
+					EndAction (actions[i]);
 				}
 				else
 				{
@@ -547,7 +548,7 @@ namespace AC
 		{
 			action.isRunning = false;
 
-			int endIndex = action.GetNextOutputIndex ();
+			int endIndex = action.isEnabled ? action.GetNextOutputIndex () : 0;
 			ActionEnd actionEnd = (endIndex < 0 || endIndex >= action.endings.Count) ? Action.GenerateStopActionEnd () : action.endings[endIndex];
 			
 			if (action.NumSockets <= 0)

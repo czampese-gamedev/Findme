@@ -42,6 +42,7 @@ namespace AC
 
 		private string gameName = "My new game";
 		private string projectName;
+		private string overridePath;
 
 		#endregion
 
@@ -51,10 +52,11 @@ namespace AC
 		[MenuItem ("Adventure Creator/Getting started/New Game wizard", false, -10)]
 		public static void Init ()
 		{
-			NewGameWizardWindow window = EditorWindow.GetWindowWithRect <NewGameWizardWindow> (DefaultWindowRect, true, "New Game Wizard", true);
+			NewGameWizardWindow window = EditorWindow.GetWindow <NewGameWizardWindow> (true, "New Game Wizard", true);
 			window.titleContent.text = "New Game wizard";
 			window.position = DefaultWindowRect;
 			window.pageType = PageType.Welcome;
+			window.minSize = DefaultWindowRect.size;
 		}
 
 		#endregion
@@ -196,7 +198,8 @@ namespace AC
 			GUI.Box (new Rect (Padding, customHeight + 45, boxWidth, 60), "", CustomStyles.Header);
 			if (GUI.Button (new Rect (Padding, customHeight, boxWidth, 40), "New game", ButtonStyle))
 			{
-				wizardPath = WizardPath.New;				
+				wizardPath = WizardPath.New;
+				overridePath = string.Empty;			
 				NextPage ();
 			}
 			GUI.Label (new Rect (Padding + textPadding, customHeight + 50, boxWidth - (textPadding * 2f), 40), "Create a set of Managers, tailored to your needs by answering a few questions.  Based on the answers, a series of optional add-ons may be suggested.", LabelStyle);
@@ -226,8 +229,25 @@ namespace AC
 
 			GUI.Box (new Rect (Padding, 300, position.width - Padding - Padding, 90), "", CustomStyles.Header);
 			GUI.Label (new Rect (Padding + 40, 300, 120, 20), "Install path:", LabelStyle);
-			GUI.Label (new Rect (Padding + 20, 330, position.width - (Padding * 2f) - 40, 40), "/Assets/" + projectName, InputStyle);
-			GUI.Label (new Rect (position.width - Padding - 50, 340, 40, 40), "", CustomStyles.FolderIcon);
+			GUI.Label (new Rect (Padding + 20, 330, position.width - (Padding * 2f) - 40, 40), "Assets/" + ProjectName, InputStyle);
+			if (GUI.Button (new Rect (position.width - Padding - 50, 340, 40, 40), "", CustomStyles.FolderIcon))
+			{
+				overridePath = EditorUtility.OpenFolderPanel ("Set installation path", "", "");
+				if (overridePath.StartsWith (Application.dataPath) && overridePath.Length > (Application.dataPath.Length + 1))
+				{
+					overridePath = overridePath.Substring (Application.dataPath.Length + 1);
+					if (("Assets/" + overridePath).StartsWith (Resource.MainFolderPath))
+					{
+						overridePath = string.Empty;
+						ACDebug.LogWarning ("The chosen path cannot be within the Adventure Creator folder");
+					}
+				}
+				else
+				{
+					overridePath = string.Empty;
+					ACDebug.LogWarning ("The chosen path must be a subdirectry inside the project's Assets folder");
+				}
+        	}
 
 			if (ClickedBottomButton ((position.width - BottomButtonWidth) * 0.5f - 165, "Back"))
 			{
@@ -335,9 +355,12 @@ namespace AC
 			int numTemplates = availableTemplates.Count;
 			int totalScrollViewHeight = 30 * numTemplates;
 
-			GUI.Box (new Rect (Padding, 160, 315, Mathf.Min (totalScrollViewHeight + 40, 320)), "", CustomStyles.Header);
+			float windowHeightChange = position.height - DefaultWindowRect.size.y;
+			float templateBoxHeight = Mathf.Min (totalScrollViewHeight + 40, 320 + windowHeightChange);
 
-			scrollPosition = GUI.BeginScrollView (new Rect (Padding + 10, 180, 295, 280), scrollPosition, new Rect (0, 0, ScrollBoxWidth - 20, totalScrollViewHeight));
+			GUI.Box (new Rect (Padding, 160, 315, templateBoxHeight), "", CustomStyles.Header);
+
+			scrollPosition = GUI.BeginScrollView (new Rect (Padding + 10, 180, 295, 280 + windowHeightChange), scrollPosition, new Rect (0, 0, ScrollBoxWidth - 20, totalScrollViewHeight));
 
 			string[] templateLabels = new string[numTemplates];
 			for (int i = 0; i < templateLabels.Length; i++)
@@ -662,11 +685,14 @@ namespace AC
 		}
 
 
+		private string ProjectName => !string.IsNullOrEmpty (overridePath) ? overridePath : projectName;
+
+
 		private void CreateFiles ()
 		{
 			UpdateProjectName ();
 
-			string managerPath = projectName + "/Managers";
+			string managerPath = ProjectName + "/Managers";
 			try
 			{
 				System.IO.Directory.CreateDirectory (Application.dataPath + "/" + managerPath);
@@ -728,9 +754,9 @@ namespace AC
 
 				ShowProgress (8);
 
-				ManagerPackage newManagerPackage = CreateManagerPackage (projectName, newSceneManager, newSettingsManager, newActionsManager, newVariablesManager, newInventoryManager, newSpeechManager, newCursorManager, newMenuManager);
+				ManagerPackage newManagerPackage = CreateManagerPackage (ProjectName, newSceneManager, newSettingsManager, newActionsManager, newVariablesManager, newInventoryManager, newSpeechManager, newCursorManager, newMenuManager);
 
-				string installPath = "Assets/" + projectName;
+				string installPath = "Assets/" + ProjectName;
 				data.Apply (installPath, newSettingsManager, newCursorManager, newMenuManager, newSpeechManager);
 
 				for (int i = 0; i < chosenTemplates.Count; i++)
@@ -775,8 +801,8 @@ namespace AC
 			string installPath = "";
 			if (template.RequiresInstallPath)
 			{
-				AssetDatabase.CreateFolder ("Assets/" + projectName, template.FolderName);
-				installPath = "Assets/" + projectName + "/" + template.FolderName;
+				AssetDatabase.CreateFolder ("Assets/" + ProjectName, template.FolderName);
+				installPath = "Assets/" + ProjectName + "/" + template.FolderName;
 			}
 
 			string scenePath = installPath;

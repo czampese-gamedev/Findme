@@ -177,6 +177,7 @@ namespace AC
 				for (int i=0; i<uiSlots.Length; i++)
 				{
 					uiSlots[i] = new UISlot (_element.uiSlots[i]);
+					uiSlots[i].uiButton = null;
 				}
 			}
 
@@ -568,10 +569,7 @@ namespace AC
 
 		protected override void ShowTextGUI (string apiPrefix)
 		{
-			if (displayType == ConversationDisplayType.TextOnly)
-			{
-				anchor = (TextAnchor) CustomGUILayout.EnumPopup ("Text alignment:", anchor, apiPrefix + ".anchor", "The text alignment");
-			}
+			anchor = (TextAnchor) CustomGUILayout.EnumPopup ("Text alignment:", anchor, apiPrefix + ".anchor", "The text alignment");
 			textEffects = (TextEffects) CustomGUILayout.EnumPopup ("Text effect:", textEffects, apiPrefix + ".textEffects", "The special FX applied to the text");
 			if (textEffects != TextEffects.None)
 			{
@@ -960,7 +958,18 @@ namespace AC
 				{
 					LimitUISlotVisibility (uiSlots, numSlots, uiHideStyle, emptySlotTexture);
 
-					uiSlots[_slot].SetText (labels [_slot]);
+					if (inventoryBoxType == AC_InventoryBoxType.Default || inventoryBoxType == AC_InventoryBoxType.CustomScript || inventoryBoxType == AC_InventoryBoxType.HotspotBased)
+					{
+						if (displayType != ConversationDisplayType.IconOnly || inventoryItemCountDisplay != InventoryItemCountDisplay.Never)
+						{
+							uiSlots[_slot].SetText (labels [_slot]);
+						}
+					}
+					else
+					{
+						uiSlots[_slot].SetText (labels [_slot]);
+					}
+
 					if (displayType == ConversationDisplayType.IconOnly || displayType == ConversationDisplayType.IconAndText)
 					{
 						Texture tex = null;
@@ -1053,10 +1062,7 @@ namespace AC
 
 			_style.wordWrap = true;
 
-			if (displayType == ConversationDisplayType.TextOnly)
-			{
-				_style.alignment = anchor;
-			}
+			_style.alignment = anchor;
 
 			if (inventoryBoxType == AC_InventoryBoxType.CollectedDocuments || inventoryBoxType == AC_InventoryBoxType.Objectives || inventoryBoxType == AC_InventoryBoxType.SubObjectives)
 			{

@@ -9,8 +9,9 @@
  * 
  */
 
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace AC
 {
@@ -729,7 +730,13 @@ namespace AC
 			playerData.playerSpriteDirection = GetSpriteDirectionToSave ();
 
 			playerData.playerSpriteScale = spriteScale;
-			if (spriteChild && spriteChild.GetComponent <Renderer>())
+			var sortingGroup = GetComponentInChildren<SortingGroup> ();
+			if (sortingGroup)
+			{
+				playerData.playerSortingOrder = sortingGroup.sortingOrder;
+				playerData.playerSortingLayer = sortingGroup.sortingLayerName;
+			}
+			else if (spriteChild && spriteChild.GetComponent <Renderer>())
 			{
 				playerData.playerSortingOrder = spriteChild.GetComponent <Renderer>().sortingOrder;
 				playerData.playerSortingLayer = spriteChild.GetComponent <Renderer>().sortingLayerName;
@@ -975,7 +982,13 @@ namespace AC
 			}
 			if (playerData.playerLockSorting)
 			{
-				if (spriteChild && spriteChild.GetComponent <Renderer>())
+				var sortingGroup = GetComponentInChildren<SortingGroup> ();
+				if (sortingGroup)
+				{
+					sortingGroup.sortingOrder = playerData.playerSortingOrder;
+					sortingGroup.sortingLayerName = playerData.playerSortingLayer;
+				}
+				else if (spriteChild && spriteChild.GetComponent <Renderer>())
 				{
 					spriteChild.GetComponent <Renderer>().sortingOrder = playerData.playerSortingOrder;
 					spriteChild.GetComponent <Renderer>().sortingLayerName = playerData.playerSortingLayer;

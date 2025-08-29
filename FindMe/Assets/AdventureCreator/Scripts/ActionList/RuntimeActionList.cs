@@ -109,6 +109,7 @@ namespace AC
 										? Instantiate (action)
 										: action;
 					#endif
+					newAction.isRunning = false;
 
 					if (doSkip)
 					{

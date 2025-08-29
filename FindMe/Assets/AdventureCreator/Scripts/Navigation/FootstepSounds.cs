@@ -131,6 +131,15 @@ namespace AC
 
 		#region PublicFunctions		
 
+		/** Triggered by PlayFootstep animation events */
+		public void PlayFootstep (AnimationEvent animationEvent)
+		{
+			if (!IsHeaviestAnimClip (animationEvent.animatorClipInfo.clip)) return;
+			
+			PlayFootstep ();
+		}
+
+
 		/** Plays one of the footstepSounds at random on the assigned Sound object. */
 		public void PlayFootstep ()
 		{
@@ -289,6 +298,29 @@ namespace AC
 				audioSource.PlayOneShot (clip, localVolume);
 				if (KickStarter.eventManager) KickStarter.eventManager.Call_OnPlayFootstepSound (character, this, !isRunSound, audioSource, clip);
 			}
+		}
+
+
+		protected bool IsHeaviestAnimClip (AnimationClip currentClip)
+		{
+			Animator _animator = GetComponent<Animator> ();
+			if (_animator == null) return true;
+
+			var currentAnimatorClipInfo = _animator.GetCurrentAnimatorClipInfo(0);
+			float highestWeight = 0f;
+			AnimationClip highestWeightClip = null;
+				
+			// Find the clip with the highest weight
+			foreach (var clipInfo in currentAnimatorClipInfo)
+			{
+				if (clipInfo.weight > highestWeight)
+				{
+					highestWeight = clipInfo.weight;
+					highestWeightClip = clipInfo.clip;
+				}
+			}
+				
+			return highestWeightClip != null && currentClip == highestWeightClip;
 		}
 
 		#endregion

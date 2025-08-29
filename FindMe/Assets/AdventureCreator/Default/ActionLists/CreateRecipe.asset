@@ -15,7 +15,7 @@ MonoBehaviour:
   actions:
   - {fileID: 4661914646270565907}
   isSkippable: 1
-  actionListType: 0
+  actionListType: 1
   unfreezePauseMenus: 1
   useParameters: 0
   canRunMultipleInstances: 0
@@ -23,6 +23,7 @@ MonoBehaviour:
   revertToDefaultParametersAfterRunning: 0
   parameters: []
   tagID: 0
+  groups: []
   backupData: []
 --- !u!114 &4661914646270565907
 MonoBehaviour:
@@ -64,6 +65,7 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
+  groupID: 0
   craftingMethod: 1
   specificElement: 0
   menuName: 

@@ -1,6 +1,6 @@
 ﻿/*
  *
- *	Adventure Creator
+ *    Adventure Creator
  *	by Chris Burton, 2013-2024
  *	
  *	"AutoCorrectUIDimensions.cs"
@@ -37,6 +37,7 @@ namespace AC
 		public bool accountForSafeArea = false;
 
 		protected Vector2 originalReferenceResolution;
+		protected bool hasInitialised;
 
 		#endregion
 
@@ -70,6 +71,8 @@ namespace AC
 
 		protected void Initialise ()
 		{
+			if (hasInitialised) return;
+
 			canvasScaler = GetComponent<CanvasScaler> ();
 			if (canvasScaler)
 			{
@@ -80,6 +83,8 @@ namespace AC
 			{
 				ACDebug.LogWarning ("The Auto Correct UI Dimensions component on " + gameObject.name + " must be attached to a GameObject with a CanvasScaler component - be sure to attach it to the root Canvas object.", this);
 			}
+			
+			hasInitialised = true;
 		}
 
 

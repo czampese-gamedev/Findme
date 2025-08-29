@@ -96,17 +96,10 @@ namespace AC
 		
 		private void CopyInput (MenuInput _element, bool ignoreUnityUI)
 		{
-			if (ignoreUnityUI)
-			{
-				uiInput = null;
-			}
-			else
-			{
-				uiInput = _element.uiInput;
-				#if TextMeshProIsPresent
-				uiInputTMP = _element.uiInputTMP;
-				#endif
-			}
+			uiInput = null;
+			#if TextMeshProIsPresent
+			uiInputTMP = null;
+			#endif
 
 			label = _element.label;
 			anchor = _element.anchor;

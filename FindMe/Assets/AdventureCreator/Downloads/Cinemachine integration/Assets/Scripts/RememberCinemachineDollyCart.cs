@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 
 namespace AC.Downloads.CinemachineIntegration
 {

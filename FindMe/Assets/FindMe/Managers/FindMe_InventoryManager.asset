@@ -13,195 +13,19 @@ MonoBehaviour:
   m_Name: FindMe_InventoryManager
   m_EditorClassIdentifier: 
   items:
-  - label: SphereInventoryItem
-    id: 0
-    altLabel: Sphere from Museum
-    carryOnStart: 0
-    carryOnStartNotDefault: 0
-    carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
-    canCarryMultiple: 0
-    count: 1
-    canBeLowerCase: 0
-    maxCount: 999
-    itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 4fea09402a031d14299ece6fd60f2732, type: 3}
-    activeTex: {fileID: 2800000, guid: 55fdaa17683d6374b8d9ee7d3e6e8605, type: 3}
-    selectedTex: {fileID: 0}
-    linkedPrefab: {fileID: 0}
-    cursorIcon:
-      texture: {fileID: 2800000, guid: b78e44a2bd3794959853cec49ff0b2df, type: 3}
-      isAnimated: 0
-      numFrames: 1
-      numRows: 1
-      numCols: 1
-      size: 0.04
-      animSpeed: 4
-      endAnimOnLastFrame: 0
-      skipFirstFrameWhenLooping: 0
-      clickOffset: {x: 0, y: 0}
-      frameSpeeds: []
-      alwaysAnimate: 0
-      dontCycle: 0
-      label: Icon 1
-      lineID: -1
-      id: 0
-    lineID: 149
-    useIconID: 0
-    binID: 0
-    overrideUseSyntax: 0
-    hotspotPrefix1:
-      label: Use
-      lineID: -1
-    hotspotPrefix2:
-      label: on
-      lineID: -1
-    useActionList: {fileID: 0}
-    lookActionList: {fileID: 0}
-    interactions: []
-    combineInteractions: []
-    combineActionList: []
-    combineID: 
-    unhandledActionList: {fileID: 0}
-    unhandledGiveActionList: {fileID: 0}
-    unhandledCombineActionList: {fileID: 0}
-    carryOnStartID: -1
-    useSeparateSlots: 0
-    selectSingle: 0
-  - label: Building
-    id: 1
-    altLabel: 
-    carryOnStart: 0
-    carryOnStartNotDefault: 0
-    carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
-    canCarryMultiple: 0
-    count: 1
-    canBeLowerCase: 0
-    maxCount: 999
-    itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 9ec4e316700da46b88741a8153b33963, type: 3}
-    activeTex: {fileID: 0}
-    selectedTex: {fileID: 0}
-    linkedPrefab: {fileID: 0}
-    cursorIcon:
-      texture: {fileID: 0}
-      isAnimated: 0
-      numFrames: 1
-      numRows: 1
-      numCols: 1
-      size: 0.04
-      animSpeed: 4
-      endAnimOnLastFrame: 0
-      skipFirstFrameWhenLooping: 0
-      clickOffset: {x: 0, y: 0}
-      frameSpeeds: []
-      alwaysAnimate: 0
-      dontCycle: 0
-      label: Icon 1
-      lineID: -1
-      id: 0
-    lineID: 150
-    useIconID: 0
-    binID: 0
-    overrideUseSyntax: 0
-    hotspotPrefix1:
-      label: Use
-      lineID: -1
-    hotspotPrefix2:
-      label: on
-      lineID: -1
-    useActionList: {fileID: 0}
-    lookActionList: {fileID: 0}
-    interactions: []
-    combineInteractions: []
-    combineActionList: []
-    combineID: 
-    unhandledActionList: {fileID: 0}
-    unhandledGiveActionList: {fileID: 0}
-    unhandledCombineActionList: {fileID: 0}
-    carryOnStartID: -1
-    useSeparateSlots: 0
-    selectSingle: 0
-  - label: Item1
+  - label: Chocolate
     id: 2
-    altLabel: THIS IS A BOOK!!!
-    carryOnStart: 0
+    altLabel: 
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 919a486aa3cc42f44b5e2a7d5feaa18d, type: 3}
+    tex: {fileID: 2800000, guid: 7b118390c60c7fd49995c13a9352c593, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -244,43 +68,21 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item2
+  - label: 'Batteries '
     id: 3
     altLabel: 
-    carryOnStart: 0
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 393eac77c51489e45aff8d9a255caf65, type: 3}
-    activeTex: {fileID: 2800000, guid: bce43503518074f40aaca9d808ac14a3, type: 3}
-    selectedTex: {fileID: 2800000, guid: b899cb067eb334c238dad8512d11ff14, type: 3}
+    tex: {fileID: 2800000, guid: d5a4fe46d229e574eb0bcd41a65544a2, type: 3}
+    activeTex: {fileID: 0}
+    selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
     cursorIcon:
       texture: {fileID: 0}
@@ -321,41 +123,19 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item3
+  - label: 'Pen Knife '
     id: 4
     altLabel: 
     carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 55fe68d6b832b89458bbb003d99cc904, type: 3}
+    tex: {fileID: 2800000, guid: 3d892a6e87e31314d94292eae7a66664, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -398,41 +178,19 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item4
+  - label: 'Medication '
     id: 5
     altLabel: 
-    carryOnStart: 0
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 627b3901a7130714aacdedbeca9426c5, type: 3}
+    tex: {fileID: 2800000, guid: 4f0cc1bc5894e6340a6d2f19cb91854e, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -475,41 +233,19 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item5
+  - label: 'Toilet Roll '
     id: 6
     altLabel: 
-    carryOnStart: 0
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 1536f7d13b3574d4c99ecd9a3ff9f2b4, type: 3}
+    tex: {fileID: 2800000, guid: 977dc042638e11947b3cf9b7816ee74c, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -556,43 +292,21 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item6
+  - label: Toothbrush
     id: 7
-    altLabel: ANOTHER BOOK!
-    carryOnStart: 0
+    altLabel: 
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 1
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 393eac77c51489e45aff8d9a255caf65, type: 3}
-    activeTex: {fileID: 2800000, guid: 7bf8a73ceaa48ca4d9f6ecacb75fbf95, type: 3}
-    selectedTex: {fileID: 2800000, guid: 69f0f7102fe10df4bb5d64ce5544ab3e, type: 3}
+    tex: {fileID: 2800000, guid: f43ac7a9e9721df4a92381ae7d3819b9, type: 3}
+    activeTex: {fileID: 0}
+    selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
     cursorIcon:
       texture: {fileID: 0}
@@ -633,41 +347,19 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item7
+  - label: 'Glasses '
     id: 8
     altLabel: 
-    carryOnStart: 0
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 08383a9b8abcfe04288ac5b99286315c, type: 3}
+    tex: {fileID: 2800000, guid: 2a5253288c3cb1c4fa5ce058a0f4b574, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -710,41 +402,19 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item8
+  - label: 'Clothes '
     id: 9
     altLabel: 
-    carryOnStart: 0
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 60ff8b289c4c5874e8376c194d6b50f7, type: 3}
+    tex: {fileID: 2800000, guid: a5a99be3a5a8f7447882470bb47258ff, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -787,41 +457,19 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item9
+  - label: 'Torch '
     id: 10
     altLabel: 
-    carryOnStart: 0
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 89df9cdcd61c5f04681baca7c01f13e6, type: 3}
+    tex: {fileID: 2800000, guid: b91d09b180832b049bc1a927e28e8388, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -864,41 +512,19 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Item10
+  - label: 'Hip Flask '
     id: 11
     altLabel: 
-    carryOnStart: 0
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 7e9b8a748cfd638428980fc828a329de, type: 3}
+    tex: {fileID: 2800000, guid: 6858e30217b2fbe42961170c32f07bf6, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -921,7 +547,7 @@ MonoBehaviour:
       id: 0
     lineID: 160
     useIconID: 0
-    binID: 1
+    binID: 0
     overrideUseSyntax: 0
     hotspotPrefix1:
       label: Use
@@ -945,41 +571,19 @@ MonoBehaviour:
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0
-  - label: Comb8_10
+  - label: 'Photo of Alice '
     id: 12
     altLabel: 
-    carryOnStart: 0
+    carryOnStart: 1
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
     maxCount: 999
     itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 0e41388a6f0c74d4ba0443f7862ee7f4, type: 3}
+    tex: {fileID: 2800000, guid: d49896c59f398e24a802becaf42d9dd0, type: 3}
     activeTex: {fileID: 0}
     selectedTex: {fileID: 0}
     linkedPrefab: {fileID: 0}
@@ -1002,160 +606,6 @@ MonoBehaviour:
       id: 0
     lineID: 161
     useIconID: 0
-    binID: 2
-    overrideUseSyntax: 0
-    hotspotPrefix1:
-      label: Use
-      lineID: -1
-    hotspotPrefix2:
-      label: on
-      lineID: -1
-    useActionList: {fileID: 0}
-    lookActionList: {fileID: 0}
-    interactions: []
-    combineInteractions: []
-    combineActionList: []
-    combineID: 
-    unhandledActionList: {fileID: 0}
-    unhandledGiveActionList: {fileID: 0}
-    unhandledCombineActionList: {fileID: 0}
-    carryOnStartID: -1
-    useSeparateSlots: 0
-    selectSingle: 0
-  - label: Comb5_6
-    id: 13
-    altLabel: 
-    carryOnStart: 0
-    carryOnStartNotDefault: 0
-    carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
-    canCarryMultiple: 0
-    count: 1
-    canBeLowerCase: 0
-    maxCount: 999
-    itemStackingMode: 0
-    tex: {fileID: 2800000, guid: e31d699199a973243ae98abc1a563574, type: 3}
-    activeTex: {fileID: 0}
-    selectedTex: {fileID: 0}
-    linkedPrefab: {fileID: 0}
-    cursorIcon:
-      texture: {fileID: 0}
-      isAnimated: 0
-      numFrames: 1
-      numRows: 1
-      numCols: 1
-      size: 0.04
-      animSpeed: 4
-      endAnimOnLastFrame: 0
-      skipFirstFrameWhenLooping: 0
-      clickOffset: {x: 0, y: 0}
-      frameSpeeds: []
-      alwaysAnimate: 0
-      dontCycle: 0
-      label: Icon 1
-      lineID: -1
-      id: 0
-    lineID: 162
-    useIconID: 0
-    binID: 2
-    overrideUseSyntax: 0
-    hotspotPrefix1:
-      label: Use
-      lineID: -1
-    hotspotPrefix2:
-      label: on
-      lineID: -1
-    useActionList: {fileID: 0}
-    lookActionList: {fileID: 0}
-    interactions: []
-    combineInteractions: []
-    combineActionList: []
-    combineID: 
-    unhandledActionList: {fileID: 0}
-    unhandledGiveActionList: {fileID: 0}
-    unhandledCombineActionList: {fileID: 0}
-    carryOnStartID: -1
-    useSeparateSlots: 0
-    selectSingle: 0
-  - label: Wine Bottle
-    id: 14
-    altLabel: 
-    carryOnStart: 0
-    carryOnStartNotDefault: 0
-    carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
-    canCarryMultiple: 0
-    count: 1
-    canBeLowerCase: 0
-    maxCount: 999
-    itemStackingMode: 0
-    tex: {fileID: 2800000, guid: 49c7a836ff20f3242802230b04da1138, type: 3}
-    activeTex: {fileID: 0}
-    selectedTex: {fileID: 0}
-    linkedPrefab: {fileID: 0}
-    cursorIcon:
-      texture: {fileID: 0}
-      isAnimated: 0
-      numFrames: 1
-      numRows: 1
-      numCols: 1
-      size: 0.04
-      animSpeed: 4
-      endAnimOnLastFrame: 0
-      skipFirstFrameWhenLooping: 0
-      clickOffset: {x: 0, y: 0}
-      frameSpeeds: []
-      alwaysAnimate: 0
-      dontCycle: 0
-      label: Icon 1
-      lineID: -1
-      id: 0
-    lineID: 163
-    useIconID: 0
     binID: 0
     overrideUseSyntax: 0
     hotspotPrefix1:
@@ -1165,83 +615,6 @@ MonoBehaviour:
       label: on
       lineID: -1
     useActionList: {fileID: 0}
-    lookActionList: {fileID: 0}
-    interactions: []
-    combineInteractions: []
-    combineActionList: []
-    combineID: 
-    unhandledActionList: {fileID: 0}
-    unhandledGiveActionList: {fileID: 0}
-    unhandledCombineActionList: {fileID: 0}
-    carryOnStartID: -1
-    useSeparateSlots: 0
-    selectSingle: 0
-  - label: Paper
-    id: 15
-    altLabel: 
-    carryOnStart: 1
-    carryOnStartNotDefault: 0
-    carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 1
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
-    canCarryMultiple: 0
-    count: 1
-    canBeLowerCase: 0
-    maxCount: 999
-    itemStackingMode: 0
-    tex: {fileID: 2800000, guid: c597b1ab988343e4eadb66d9fd6e827d, type: 3}
-    activeTex: {fileID: 0}
-    selectedTex: {fileID: 0}
-    linkedPrefab: {fileID: 0}
-    cursorIcon:
-      texture: {fileID: 0}
-      isAnimated: 0
-      numFrames: 1
-      numRows: 1
-      numCols: 1
-      size: 0.04
-      animSpeed: 4
-      endAnimOnLastFrame: 0
-      skipFirstFrameWhenLooping: 0
-      clickOffset: {x: 0, y: 0}
-      frameSpeeds: []
-      alwaysAnimate: 0
-      dontCycle: 0
-      label: Icon 1
-      lineID: -1
-      id: 0
-    lineID: 164
-    useIconID: 0
-    binID: 0
-    overrideUseSyntax: 0
-    hotspotPrefix1:
-      label: Use
-      lineID: -1
-    hotspotPrefix2:
-      label: on
-      lineID: -1
-    useActionList: {fileID: 11400000, guid: 09f42a4bc92b8d349879726881639595, type: 2}
     lookActionList: {fileID: 0}
     interactions: []
     combineInteractions: []
@@ -1254,24 +627,14 @@ MonoBehaviour:
     useSeparateSlots: 0
     selectSingle: 0
   bins:
-  - label: 2025
+  - label: ALL
     id: 0
-    notForItems: 0
-    forObjectives: 0
-    forDocuments: 0
-  - label: 1440
-    id: 1
-    notForItems: 0
-    forObjectives: 0
-    forDocuments: 0
-  - label: Timeless
-    id: 2
     notForItems: 0
     forObjectives: 0
     forDocuments: 0
   invVars: []
   unhandledCombine: {fileID: 0}
-  unhandledHotspot: {fileID: 0}
+  unhandledHotspot: {fileID: 11400000, guid: f60fa8d1eaa2294449e9bf6878160d7b, type: 2}
   passUnhandledHotspotAsParameter: 0
   unhandledGive: {fileID: 0}
   recipes: []

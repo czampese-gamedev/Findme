@@ -23,8 +23,8 @@ namespace AC
 
 		#region Variables
 
-		/** The MeshRenderer to affect */
-		public MeshRenderer skinnedMeshRenderer;
+		/** The Renderer to affect */
+		public Renderer skinnedMeshRenderer;
 		/** The index of the material to affect */
 		public int materialIndex;
 		/** The material's property name that will be replaced */
