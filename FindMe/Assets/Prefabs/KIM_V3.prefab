@@ -70,6 +70,7 @@ MonoBehaviour:
   tintColor: {r: 0.3773585, g: 0.13579474, b: 0.008899963, a: 0}
   tintStrength: 0.862
   tintduration: 1
+  currentColliders: []
   p: {fileID: 0}
 --- !u!54 &396604244535482607
 Rigidbody:
@@ -1027,6 +1028,7 @@ GameObject:
   - component: {fileID: 2334371874432252555}
   - component: {fileID: 3962288062594811553}
   - component: {fileID: 9080700947251722767}
+  - component: {fileID: 1407997727943306751}
   m_Layer: 2
   m_Name: KIM_V3
   m_TagString: Untagged
@@ -1433,6 +1435,40 @@ MonoBehaviour:
   volumeVariance: 0
   walkSeparationTime: 0.5
   runSeparationTime: 0.25
+--- !u!114 &1407997727943306751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3270134724075099014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64578247383140469c45370654a984a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: Player
+  persistentDataName: Player__141380
+  portrait: {fileID: 0}
+  spritePortrait: {fileID: 0}
+  audioSource: {fileID: 0}
+  barkUISettings:
+    barkUI: {fileID: 0}
+    barkUIOffset: {x: 0, y: 2, z: 0}
+  standardDialogueUISettings:
+    subtitlePanelNumber: 0
+    customSubtitlePanel: {fileID: 0}
+    customSubtitlePanelOffset: {x: 0, y: 0, z: 0}
+    menuPanelNumber: 0
+    customMenuPanel: {fileID: 0}
+    customMenuPanelOffset: {x: 0, y: 0, z: 0}
+    useMenuPanelFor: 0
+    portraitAnimatorController: {fileID: 0}
+    setSubtitleColor: 0
+    applyColorToPrependedName: 0
+    prependActorNameSeparator: ': '
+    prependActorNameFormat: '{0}{1}'
+    subtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3374510535253087139
 GameObject:
   m_ObjectHideFlags: 0

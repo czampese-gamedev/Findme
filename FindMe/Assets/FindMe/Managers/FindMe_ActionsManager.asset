@@ -15,6 +15,7 @@ MonoBehaviour:
   customFolderPaths:
   - Scripts
   - AdventureCreator/Downloads/Cinemachine integration/Assets/Scripts/CustomActions
+  - Pixel Crushers/Dialogue System/Third Party Support/Adventure Creator Support/Scripts/AdventureCreatorActions
   - 
   allFavouriteActionData: []
   displayActionsInInspector: 1
@@ -846,6 +847,124 @@ MonoBehaviour:
     category: 18
     title: Set Mixer snapshot
     description: Transitions to a single or multiple Audio Mixer snapshots.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemAlert
+    category: 19
+    title: Dialogue System Alert
+    description: Shows an alert message through the Dialogue System.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemBark
+    category: 19
+    title: Dialogue System Bark
+    description: Plays a Dialogue System bark. Leave Actor blank to default to the
+      player (the target of the bark).
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemVarCheck
+    category: 19
+    title: Dialogue System Check
+    description: Evaluates a Lua expression in the Dialogue System.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemCheckConversationActive
+    category: 19
+    title: Dialogue System Check Is Conversation Active
+    description: Checks if a Dialogue System conversation is active.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemConversation
+    category: 19
+    title: Dialogue System Conversation
+    description: Starts a Dialogue System conversation. Leave Actor blank to default
+      to the player.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemGetRelationship
+    category: 19
+    title: Dialogue System GetRelationship
+    description: Runs GetRelationship() Lua function.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemGetStatus
+    category: 19
+    title: Dialogue System GetStatus
+    description: Runs GetStatus() Lua function.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemLua
+    category: 19
+    title: Dialogue System Lua
+    description: Runs Lua code in the Dialogue System's Lua environment.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemPause
+    category: 19
+    title: Dialogue System Pause
+    description: Pauses or unpauses the Dialogue System.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemQuestCheck
+    category: 19
+    title: Dialogue System Quest Check
+    description: Checks a Dialogue System quest state.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemQuestLogWindow
+    category: 19
+    title: Dialogue System Quest Log Window
+    description: Shows or hides the quest log window.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemQuestSet
+    category: 19
+    title: Dialogue System Quest Set
+    description: Sets a Dialogue System quest state or quest entry state.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemRefocusResponseMenu
+    category: 19
+    title: Dialogue System Refocus Response Menu
+    description: Refocuses the response menu if active and Auto Focus is ticked.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemRestoreData
+    category: 19
+    title: Dialogue System Restore Data
+    description: Restores the Dialogue System's data from an Adventure Creator global
+      variable.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemSaveData
+    category: 19
+    title: Dialogue System Save Data
+    description: Saves the Dialogue System's data to an Adventure Creator global
+      variable.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemSequencerMessage
+    category: 19
+    title: Dialogue System Sequencer Message
+    description: Sends a message to the Dialogue System sequencer.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemSetRelationship
+    category: 19
+    title: Dialogue System SetRelationship
+    description: Runs Dialogue System SetRelationship().
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemSetStatus
+    category: 19
+    title: Dialogue System SetStatus
+    description: Runs Dialogue System SetStatus().
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionDialogueSystemSyncLua
+    category: 19
+    title: Dialogue System Sync Lua
+    description: Syncs AC data to Dialogue System Lua or Lua to AC.
     isEnabled: 1
     color: {r: 1, g: 1, b: 1, a: 1}
   - fileName: AC.ActionPlayMaker
