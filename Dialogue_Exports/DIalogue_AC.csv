@@ -1,0 +1,154 @@
+﻿ID,Type,Original text,Scene,Description,Original text
+127,Speech,You need a drink before you head out!,TestInterior,From: Exit: Use,You need a drink before you head out!
+136,Hotspot,LookAt_Desk,TestInterior,From: LookAt_Desk,LookAt_Desk
+129,Hotspot,6,TestInterior,From: Drawer6_HS,6
+132,Hotspot,4,TestInterior,From: Drawer4_HS,4
+137,Hotspot,THIS IS A BOOK!!!,TestInterior,From: Hotspot,THIS IS A BOOK!!!
+140,Hotspot,DeskLongDrawer_HS,TestInterior,From: DeskLongDrawer_HS,DeskLongDrawer_HS
+133,Hotspot,8,TestInterior,From: Drawer8_HS,8
+128,Hotspot,5,TestInterior,From: Drawer5_HS,5
+143,Hotspot,Exit,TestInterior,From: DoorCollider,Exit
+142,Hotspot,Card Cabinet,TestInterior,From: CubbyHoleLookAt_HS,Card Cabinet
+197,Hotspot,THIS IS A BOOK!!!,TestInterior,From: Hotspot,THIS IS A BOOK!!!
+139,Hotspot,TrolleyHotspot,TestInterior,From: TrolleyHotspot,TrolleyHotspot
+134,Hotspot,7,TestInterior,From: Drawer7_HS,7
+130,Hotspot,3,TestInterior,From: Drawer3_HS,3
+135,Hotspot,9,TestInterior,From: Drawer9_HS,9
+131,Hotspot,2,TestInterior,From: Drawer2_HS,2
+144,Hotspot,Paper_HS,TestInterior,From: Paper_HS,Paper_HS
+141,Hotspot,WIne_HS,TestInterior,From: WIne_HS,WIne_HS
+138,Hotspot,1,TestInterior,From: Drawer1_HS,1
+145,MenuElement,Save, , ,Save
+146,MenuElement,Import, , ,Import
+147,MenuElement,Autosave, , ,Autosave
+151,InventoryItem,Chocolate, , ,Chocolate
+152,InventoryItem,Batteries , , ,Batteries 
+153,InventoryItem,Pen Knife , , ,Pen Knife 
+154,InventoryItem,Medication , , ,Medication 
+155,InventoryItem,Toilet Roll , , ,Toilet Roll 
+156,InventoryItem,Toothbrush, , ,Toothbrush
+157,InventoryItem,Glasses , , ,Glasses 
+158,InventoryItem,Clothes , , ,Clothes 
+159,InventoryItem,Torch , , ,Torch 
+160,InventoryItem,Hip Flask , , ,Hip Flask 
+161,InventoryItem,Photo of Alice , , ,Photo of Alice 
+165,Document,Test_SympbolsDoc, , ,Test_SympbolsDoc
+166,Document,These symbols might be useful..., , ,These symbols might be useful...
+168,HotspotPrefix,Use, , ,Use
+169,HotspotPrefix,on, , ,on
+170,HotspotPrefix,Give, , ,Give
+171,HotspotPrefix,to, , ,to
+172,HotspotPrefix,Walk to, , ,Walk to
+173,CursorIcon,Use, , ,Use
+174,CursorIcon,Talk to, , ,Talk to
+175,CursorIcon,Look at, , ,Look at
+176,CursorIcon,Up, , ,Up
+177,CursorIcon,UseNoExamine, , ,UseNoExamine
+66,MenuElement,Resume, , ,Resume
+67,MenuElement,Options, , ,Options
+68,MenuElement,Save, , ,Save
+69,MenuElement,Load, , ,Load
+178,MenuElement,Profiles, , ,Profiles
+70,MenuElement,Quit, , ,Quit
+71,MenuElement,Options, , ,Options
+72,MenuElement,Speech volume, , ,Speech volume
+73,MenuElement,Music volume, , ,Music volume
+74,MenuElement,SFX volume, , ,SFX volume
+75,MenuElement,Language, , ,Language
+76,MenuElement,Subtitles, , ,Subtitles
+179,MenuElement,On, , ,On
+180,MenuElement,Off, , ,Off
+77,MenuElement,Back, , ,Back
+78,MenuElement,Save game, , ,Save game
+88,MenuElement,New save, , ,New save
+79,MenuElement,Back, , ,Back
+80,MenuElement,Load game, , ,Load game
+81,MenuElement,Back, , ,Back
+181,MenuElement,Profiles, , ,Profiles
+182,MenuElement,Current:, , ,Current:
+183,MenuElement,Create new profile, , ,Create new profile
+184,MenuElement,Back, , ,Back
+185,MenuElement,2025, , ,2025
+186,MenuElement,1440, , ,1440
+187,MenuElement,CLOSE, , ,CLOSE
+84,MenuElement,Menu, , ,Menu
+89,MenuElement,Container, , ,Container
+90,MenuElement,Close, , ,Close
+91,MenuElement,Take all, , ,Take all
+92,MenuElement,Inventory, , ,Inventory
+99,MenuElement,Create, , ,Create
+100,MenuElement,Close, , ,Close
+101,MenuElement,Ingredients, , ,Ingredients
+102,MenuElement,Inventory, , ,Inventory
+103,MenuElement,Output, , ,Output
+188,MenuElement,Close, , ,Close
+104,MenuElement,Objectives, , ,Objectives
+105,MenuElement,Back, , ,Back
+189,MenuElement,Button, , ,Button
+190,MenuElement,Inv, , ,Inv
+191,MenuElement,SKIP, , ,SKIP
+106,MenuElement,New Game, , ,New Game
+107,MenuElement,Options, , ,Options
+108,MenuElement,Load, , ,Load
+192,MenuElement,Profiles, , ,Profiles
+109,MenuElement,Quit, , ,Quit
+193,MenuElement,Label, , ,Label
+194,Speech,Hmmm....nope, ,From: UnhandledUseOnHotspot,Hmmm....nope
+195,Speech,All the information you need is in the task, ,From: UnhandledUseOnHotspot,All the information you need is in the task
+196,Speech,I dont think that will work here, ,From: UnhandledUseOnHotspot,I dont think that will work here
+198,Speech,See ya!,OpeningScene,From: TalkToGreg,See ya!
+199,Speech,"Yep, catch ya later",OpeningScene,From: TalkToGreg,"Yep, catch ya later"
+200,Speech,Hows Debbie? And the kids? all going okay?,OpeningScene,From: TalkToGreg,Hows Debbie? And the kids? all going okay?
+201,Speech,"All good, you know, kids are kids",OpeningScene,From: TalkToGreg,"All good, you know, kids are kids"
+202,Speech,Delightful weather today huh?,OpeningScene,From: TalkToGreg,Delightful weather today huh?
+203,Speech,Yeah...are you trying to avoid talking about your presentation? ,OpeningScene,From: TalkToGreg,Yeah...are you trying to avoid talking about your presentation? 
+204,Speech,No.,OpeningScene,From: TalkToGreg,No.
+205,Speech,well that was not my best work!,OpeningScene,From: TalkToGreg,well that was not my best work!
+206,Speech,"Yeah, at least only <b>one<b> kid cried",OpeningScene,From: TalkToGreg,"Yeah, at least only <b>one<b> kid cried"
+207,Speech,"Thanks, that makes me feel so much better",OpeningScene,From: TalkToGreg,"Thanks, that makes me feel so much better"
+208,Speech,"I need to get home, drink some wine and forget about today",OpeningScene,From: TalkToGreg,"I need to get home, drink some wine and forget about today"
+209,Character,KIM_V3,OpeningScene,From: KIM_V3,KIM_V3
+210,Hotspot,Greg,OpeningScene,From: Greg,Greg
+211,Character,Greg,OpeningScene,From: Greg,Greg
+212,Hotspot,Bicycle,OpeningScene,From: Bicycle,Bicycle
+213,Hotspot,Cube_Hotspot,OpeningScene,From: Cube_Hotspot,Cube_Hotspot
+214,DialogueOption,What a day huh?,OpeningScene,From: ChatWithGreg,What a day huh?
+215,DialogueOption,Hows the kids?,OpeningScene,From: ChatWithGreg,Hows the kids?
+216,DialogueOption,See ya!,OpeningScene,From: ChatWithGreg,See ya!
+217,DialogueOption,Chat about the weather,OpeningScene,From: Greg - what a day,Chat about the weather
+218,DialogueOption,Talk about the presentation,OpeningScene,From: Greg - what a day,Talk about the presentation
+219,DialogueOption,Ugh,OpeningScene,From: Greg - what a day,Ugh
+220,Speech,Looks like an apple,1526_Street,From: Apple: Examine,Looks like an apple
+221,Speech,I dont think trying to give him his stolen apple would be the best plan,1526_Street,From: Merchant: Apple,I dont think trying to give him his stolen apple would be the best plan
+222,Speech,Looks like a relative of cut me own throat Dibbler,1526_Street,From: Merchant: Examine,Looks like a relative of cut me own throat Dibbler
+223,Hotspot,Merchant,1526_Street,From: FarmerConversation,Merchant
+224,Hotspot,Horsey,1526_Street,From: Hotspot_Horse,Horsey
+225,Character,KIM_V3,1526_Street,From: KIM_V3,KIM_V3
+226,Hotspot,Apple,1526_Street,From: Hotspot_apple,Apple
+227,Character,KIM_V3, , ,KIM_V3
+228,InventoryItem,Apple, , ,Apple
+229,Objective,Active, , ,Active
+230,Objective,Complete, , ,Complete
+231,Objective,Fail, , ,Fail
+232,Objective,Befriend The Merchant, , ,Befriend The Merchant
+233,Objective,The merchant is grumpy. You need to try and get on his good side, , ,The merchant is grumpy. You need to try and get on his good side
+234,Objective,Talk to the merchant for the first time, , ,Talk to the merchant for the first time
+235,Objective,Description for talk to merchant for the first time, , ,Description for talk to merchant for the first time
+236,Objective,Get the apple, , ,Get the apple
+237,Objective,Use the Saraswati App, , ,Use the Saraswati App
+238,Objective,Talk to the merchant again, , ,Talk to the merchant again
+239,Objective,Completed, , ,Completed
+240,CursorIcon,Down, , ,Down
+241,MenuElement,Button, , ,Button
+242,MenuElement,Button, , ,Button
+243,MenuElement,Button, , ,Button
+244,MenuElement,Button, , ,Button
+245,MenuElement,Button, , ,Button
+246,MenuElement,Button, , ,Button
+247,MenuElement,Close, , ,Close
+248,MenuElement,Close, , ,Close
+249,MenuElement,Button, , ,Button
+250,MenuElement,Button, , ,Button
+251,Speech,"History isn't something that's dead.[break]The past is something we're part of, and so is the future", ,From: OpeningSceneTimeline,"History isn't something that's dead.[break]The past is something we're part of, and so is the future"
+252,Speech,"We pick up the threads left by people in the past, and we shape the future even when we’re not in it anymore. ", ,From: OpeningSceneTimeline,"We pick up the threads left by people in the past, and we shape the future even when we’re not in it anymore. "
+253,Speech,The dance goes on and on[wait:2] <b><i>forever, ,From: OpeningSceneTimeline,The dance goes on and on[wait:2] <b><i>forever

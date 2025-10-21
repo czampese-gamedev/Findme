@@ -144,20 +144,6 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
-  - id: 2
-    fields:
-    - title: Name
-      value: DS_MerchantConversation1
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: False
-      type: 2
-      typeString: CustomFieldType_Boolean
-    - title: Description
-      value: Had 1st conversation with Merchant
-      type: 0
-      typeString: 
   - id: 3
     fields:
     - title: Name
@@ -180,7 +166,9 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
-      value: 
+      value: Initial conversation with the Merchant. First time you have spoken to
+        someone from a different time, and you are still confused about how you got
+        here, where you are and who these people are
       type: 0
       typeString: CustomFieldType_Text
     - title: Actor
@@ -281,7 +269,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: HelloDescription
+        value: "Said in the same way someone in modern times might say 'WTF' when
+          interrupted\t"
         type: 0
         typeString: 
       - title: Actor
@@ -613,7 +602,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: Shouted in religious tones
         type: 0
         typeString: 
       - title: Actor
@@ -668,7 +657,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: flustering, aplogetic
         type: 0
         typeString: 
       - title: Actor
@@ -780,7 +769,9 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
-      value: "\t"
+      value: Conversation with MARCO that appears when the player initiates a conversation
+        with MARCO that is not initiated by the game. This conversation is mostly
+        for fun, but may contain hints in particular parts of the game
       type: 0
       typeString: CustomFieldType_Text
     - title: Actor
@@ -881,7 +872,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: When the conversation starts the player will ask MARCO if he has anything
+          useful to say using one of the MARCO Greetings (recorded separately)
         type: 0
         typeString: 
       - title: Actor
@@ -949,7 +941,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: A randomised response by MARCO
         type: 0
         typeString: 
       - title: Actor
@@ -993,8 +985,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 88
-        y: 251
+        x: 89.886795
+        y: 250.05661
         width: 160
         height: 30
     - id: 5
@@ -1004,7 +996,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: A randomised response by MARCO
         type: 0
         typeString: 
       - title: Actor
@@ -1103,8 +1095,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 518
-        y: 269
+        x: 517.05664
+        y: 269.9434
         width: 160
         height: 30
     - id: 8
@@ -1114,7 +1106,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: "(sarcastic)\t"
         type: 0
         typeString: 
       - title: Actor
@@ -1163,7 +1155,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: "(mildly surprised as you have been just told an interesting fact)\t"
         type: 0
         typeString: 
       - title: Actor
@@ -1312,8 +1304,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 170.96747, y: 36.434147}
+    canvasZoom: 1.06
   - id: 3
     fields:
     - title: Title

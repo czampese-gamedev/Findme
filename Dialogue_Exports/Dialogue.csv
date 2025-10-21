@@ -1,0 +1,71 @@
+﻿Database,FindMeDialogueDatabase
+Author,
+Version,
+Description,
+
+---Actors---
+Name,Description
+Player,
+NPC,
+Merchant,
+MARCO,
+
+---Conversations---
+
+Conversation 1,MerchantConversation1
+Description,"Initial conversation with the Merchant. First time you have spoken to someone from a different time, and you are still confused about how you got here, where you are and who these people are"
+entrytag,Actor,Description,Dialogue Text
+Merchant_1_1,Merchant,Siad in the same way someone in modern times might say 'WTF' when interrupted	,Jackanapes!!
+Player_1_2,Player,,Sorry...I....
+Merchant_1_4,Merchant,,Stand off else I’ll fetch you a broken pate! \nWhat do you mean by exciting my horse?
+Player_1_5,Player,,"I was just… I think I’m in a dream, so…"
+Merchant_1_6,Merchant,,"From where do you come? Why are you attired so, and speak in this forked tongue? "
+Player_1_7,Player,,"I’m – I just live along the river, in…"
+Merchant_1_8,Merchant,Shouted in religious tones,[em3]ART THOU SATAN?[/em3]
+Player_1_9,Player,"flustering, aplogetic","No! What? Look, I’ll just – I’ll just back off. Sorry for freaking out the horse. Chill out, mate"
+Merchant_1_10,Merchant,,
+
+Conversation 2,MARCO_1
+Description,"Conversation with MARCO that appears when the player initiates a conversation with MARCO that is not initiated by the game. This conversation is mostly for fun, but may contain hints in particular parts of the game"
+entrytag,Actor,Description,Dialogue Text
+Player_2_3,Player,When the conversation starts the player will ask MARCO if he has anything useful to say using one of the MARCO Greetings (recorded separately),"[lua(RandomElement(Variable[""MarcoGreeting""]))] . Got anything useful for me? "
+MARCO_2_4,MARCO,A randomised response by MARCO,Ummm....nope
+MARCO_2_5,MARCO,A randomised response by MARCO,A cloud weighs around a million tonnes
+MARCO_2_7,MARCO,,Water might not be wet
+Player_2_8,Player,(sarcastic)	,"Gee, thanks"
+Player_2_9,Player,(mildly surprised as you have been just told an interesting fact)	,Holy Shit...well that is interesting
+Player_2_10,Player,,Huh?
+MARCO_2_11,MARCO,,"This is because most scientists define wetness as a liquid’s ability to maintain contact with a solid surface, meaning that water itself is not wet, but can make other objects wet."
+
+Conversation 3,MerchantConversation2
+Description,
+entrytag,Actor,Description,Dialogue Text
+Player_3_1,Player,,Good day. Apologies for the horse thing. 
+Merchant_3_2,Merchant,,"Good day. No, I should apologise. I should not have implied that you were the Prince of Darkness. The source of all evil. It was an overreaction to a lost apple. "
+Player_3_3,Player,,"This is me asking a question - what I am asking is quite different to what the player selected. This means we can have a list of questions like 'Ask the merchant about the shop', and when you select that option what Kim actually says is far more interestingly worded than that "
+Player_3_4,Player,,Or a different question?
+Player_3_5,Player,,Or even a third question? 
+Merchant_3_6,Merchant,,Right...you sound nuts
+Merchant_3_7,Merchant,,That <b>IS </b> a different question
+Merchant_3_8,Merchant,,"Three questions...what am I, a question genie?"
+
+Conversation 4,1526_Marco1
+Description,	
+entrytag,Actor,Description,Dialogue Text
+Player_4_3,Player,,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . What can you tell me about this place? "
+MARCO_4_4,MARCO,,It looks like we are in...1526
+Player_4_8,Player,,Ohhh...wow!
+
+Conversation 5,1526_Marco_InitialConversation
+Description,
+entrytag,Actor,Description,Dialogue Text
+Player_5_1,Player,This is the first real interaction with MARCO,Siri… what’s the date? 
+MARCO_5_2,MARCO,First time responding - Kim has called you Siri,"This is Marco, your personal assistant app!"
+Player_5_3,Player,,Right. Marco. Whatever.
+MARCO_5_4,MARCO,,"It’s not really a case of ‘whatever’. I’m the most advanced AI that’s been devised. I don’t even rely on wifi, which is pretty useful given where you’ve found yourself."
+Player_5_5,Player,,Where <i>have</i> I…
+MARCO_5_6,MARCO,,"I’m only bringing it up because – got to address it, elephant in the room – I did hear you say earlier that I was a, quote, ‘shitty version of Siri’. I realise this was ignorance rather than malice, but of course, it hurts. I’m many more times more powerful than Siri, Alex, any of these goons."
+Player_5_7,Player,,"Fine. I didn’t mean to… like, I wouldn’t think it would be possible to hurt the feelings of a…"
+MARCO_5_8,MARCO,,"Of a machine. No. My super-intelligence is both blessing and curse. Anyway, what was it you wanted to ask? Another thing about my sophisticated human mimicry is that I quite often forget what the hell I’m meant to be doing."
+Player_5_9,Player,,"I was asking you what date it is, what… what year it is."
+MARCO_5_10,MARCO,,Oh. Easy. It’s August 5th... \. 1526.

@@ -303,7 +303,7 @@ MonoBehaviour:
         id: 3
         cutscene: {fileID: 0}
         actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
-        parameterIDs: ffffffff
+        parameterIDs: 00000000
         onOff: 1
         menuName: Inventory
     - rid: 8110134286589624325
@@ -313,7 +313,7 @@ MonoBehaviour:
         id: 4
         cutscene: {fileID: 0}
         actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
-        parameterIDs: ffffffff
+        parameterIDs: 00000000
         onOff: 0
         menuName: Pause
     - rid: 8110134286589624326
@@ -323,6 +323,6 @@ MonoBehaviour:
         id: 5
         cutscene: {fileID: 0}
         actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
-        parameterIDs: ffffffff
+        parameterIDs: 00000000
         onOff: 1
         menuName: Pause
