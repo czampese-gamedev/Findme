@@ -166,7 +166,9 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
-      value: 
+      value: Initial conversation with the Merchant. First time you have spoken to
+        someone from a different time, and you are still confused about how you got
+        here, where you are and who these people are
       type: 0
       typeString: CustomFieldType_Text
     - title: Actor
@@ -267,7 +269,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: HelloDescription
+        value: "Said in the same way someone in modern times might say 'WTF' when
+          interrupted\t"
         type: 0
         typeString: 
       - title: Actor
@@ -599,7 +602,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: Shouted in religious tones
         type: 0
         typeString: 
       - title: Actor
@@ -654,7 +657,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: flustering, aplogetic
         type: 0
         typeString: 
       - title: Actor
@@ -766,7 +769,9 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Description
-      value: "\t"
+      value: Conversation with MARCO that appears when the player initiates a conversation
+        with MARCO that is not initiated by the game. This conversation is mostly
+        for fun, but may contain hints in particular parts of the game
       type: 0
       typeString: CustomFieldType_Text
     - title: Actor
@@ -867,7 +872,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: When the conversation starts the player will ask MARCO if he has anything
+          useful to say using one of the MARCO Greetings (recorded separately)
         type: 0
         typeString: 
       - title: Actor
@@ -935,7 +941,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: A randomised response by MARCO
         type: 0
         typeString: 
       - title: Actor
@@ -979,8 +985,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 88
-        y: 251
+        x: 89.886795
+        y: 250.05661
         width: 160
         height: 30
     - id: 5
@@ -990,7 +996,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: A randomised response by MARCO
         type: 0
         typeString: 
       - title: Actor
@@ -1089,8 +1095,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 518
-        y: 269
+        x: 517.05664
+        y: 269.9434
         width: 160
         height: 30
     - id: 8
@@ -1100,7 +1106,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: "(sarcastic)\t"
         type: 0
         typeString: 
       - title: Actor
@@ -1149,7 +1155,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Description
-        value: 
+        value: "(mildly surprised as you have been just told an interesting fact)\t"
         type: 0
         typeString: 
       - title: Actor
@@ -2813,6 +2819,270 @@ MonoBehaviour:
     entryGroups: []
     canvasScrollPosition: {x: 22.54283, y: 6.561535}
     canvasZoom: 1.0899999
+  - id: 6
+    fields:
+    - title: Title
+      value: MARCO_1526_Area2EnteredMultiplw
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: Entered 1526 area 2 multiple times
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Actor
+      value: 4
+      type: 5
+      typeString: CustomFieldType_Actor
+    - title: Conversant
+      value: 1
+      type: 5
+      typeString: CustomFieldType_Actor
+    overrideSettings:
+      useOverrides: 0
+      overrideSubtitleSettings: 0
+      showNPCSubtitlesDuringLine: 1
+      showNPCSubtitlesWithResponses: 1
+      showPCSubtitlesDuringLine: 0
+      skipPCSubtitleAfterResponseMenu: 0
+      subtitleCharsPerSecond: 30
+      minSubtitleSeconds: 2
+      continueButton: 0
+      overrideSequenceSettings: 0
+      defaultSequence: 
+      defaultPlayerSequence: 
+      defaultResponseMenuSequence: 
+      overrideInputSettings: 0
+      alwaysForceResponseMenu: 1
+      includeInvalidEntries: 0
+      responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
+      cancelSubtitle:
+        key: 27
+        buttonName: 
+      cancelConversation:
+        key: 27
+        buttonName: 
+    nodeColor: 
+    dialogueEntries:
+    - id: 0
+      fields:
+      - title: Title
+        value: START
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: None()
+        type: 0
+        typeString: 
+      conversationID: 6
+      isRoot: 1
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 0
+        destinationConversationID: 6
+        destinationDialogueID: 1
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 172
+        y: 46
+        width: 160
+        height: 30
+    - id: 1
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 'Excuse me for being nosy, but are you lost? '
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 1
+        destinationConversationID: 6
+        destinationDialogueID: 2
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 172
+        y: 96
+        width: 160
+        height: 30
+    - id: 2
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 'What makes you say that? '
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 2
+        destinationConversationID: 6
+        destinationDialogueID: 3
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 172
+        y: 146
+        width: 160
+        height: 30
+    - id: 3
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 4
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: Well, you have been here a number of times and you dont seem to be
+          doing much
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 172
+        y: 196
+        width: 160
+        height: 30
+    entryGroups: []
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 1
   syncInfo:
     syncActors: 0
     syncItems: 0

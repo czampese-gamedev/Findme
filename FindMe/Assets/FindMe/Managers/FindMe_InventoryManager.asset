@@ -939,13 +939,28 @@ MonoBehaviour:
     notForItems: 1
     forObjectives: 1
     forDocuments: 0
-  - label: Objective1526
+  - label: 1526
     id: 3
     notForItems: 1
     forObjectives: 1
     forDocuments: 0
   - label: EscapeFromJail
     id: 4
+    notForItems: 1
+    forObjectives: 1
+    forDocuments: 0
+  - label: 1966
+    id: 5
+    notForItems: 1
+    forObjectives: 1
+    forDocuments: 0
+  - label: GlobalObjective
+    id: 6
+    notForItems: 1
+    forObjectives: 1
+    forDocuments: 0
+  - label: GlobalbjectiveSub
+    id: 7
     notForItems: 1
     forObjectives: 1
     forDocuments: 0
@@ -1134,7 +1149,7 @@ MonoBehaviour:
     binID: 2
     vars: []
   - ID: 0
-    title: Find the church
+    title: 1526 Find the church
     titleLineID: -1
     description: Find the Church
     descriptionLineID: -1
@@ -1175,9 +1190,9 @@ MonoBehaviour:
     binID: 3
     vars: []
   - ID: 5
-    title: punch vicar
+    title: ' 526 Punch the Vicar'
     titleLineID: -1
-    description: Punch the VIcar
+    description: Punch the Vicar
     descriptionLineID: -1
     perPlayer: 0
     texture: {fileID: 0}
@@ -1216,9 +1231,9 @@ MonoBehaviour:
     binID: 3
     vars: []
   - ID: 6
-    title: excape from jail
+    title: 1526 Escape from jail
     titleLineID: -1
-    description: Escape from Jaill
+    description: Escape from Jail
     descriptionLineID: -1
     perPlayer: 0
     texture: {fileID: 0}
@@ -1257,7 +1272,7 @@ MonoBehaviour:
     binID: 3
     vars: []
   - ID: 7
-    title: Seduce guard
+    title: 1526 - Escape From Jail - Seduce guard
     titleLineID: -1
     description: Seduce The Guard
     descriptionLineID: -1
@@ -1298,7 +1313,7 @@ MonoBehaviour:
     binID: 4
     vars: []
   - ID: 8
-    title: Steal Key
+    title: 1526 - Escape From Jail - Steal the Key
     titleLineID: -1
     description: Steal the key
     descriptionLineID: -1
@@ -1339,7 +1354,7 @@ MonoBehaviour:
     binID: 4
     vars: []
   - ID: 9
-    title: Climb out window
+    title: 1526 - Escape From Jail - Climb out window
     titleLineID: -1
     description: Climb Out the window
     descriptionLineID: -1
@@ -1378,6 +1393,129 @@ MonoBehaviour:
     lockStateWhenFail: 1
     onlySuccessiveActiveStates: 0
     binID: 4
+    vars: []
+  - ID: 10
+    title: Test 1966 Cat1
+    titleLineID: -1
+    description: Test 1966 Cat1
+    descriptionLineID: -1
+    perPlayer: 0
+    texture: {fileID: 0}
+    states:
+    - ID: 0
+      label: Started
+      labelLineID: -1
+      description: 
+      descriptionLineID: -1
+      stateType: 1
+      actionListOnEnter: {fileID: 0}
+      autoStartSubObjectives: 0
+      texture: {fileID: 0}
+      autoStateIDOnAllSubObsCompletePlusOne: 0
+      autoStateIDOnAnySubObsCompletePlusOne: 0
+      autoStateIDOnAllSubObsFailPlusOne: 0
+      autoStateIDOnAnySubObsFailPlusOne: 0
+      linkedCategoryIDPlusOne: 0
+    - ID: 1
+      label: Completed
+      labelLineID: -1
+      description: 
+      descriptionLineID: -1
+      stateType: 2
+      actionListOnEnter: {fileID: 0}
+      autoStartSubObjectives: 0
+      texture: {fileID: 0}
+      autoStateIDOnAllSubObsCompletePlusOne: 0
+      autoStateIDOnAnySubObsCompletePlusOne: 0
+      autoStateIDOnAllSubObsFailPlusOne: 0
+      autoStateIDOnAnySubObsFailPlusOne: 0
+      linkedCategoryIDPlusOne: 0
+    lockStateWhenComplete: 1
+    lockStateWhenFail: 1
+    onlySuccessiveActiveStates: 0
+    binID: 5
+    vars: []
+  - ID: 11
+    title: Test 1966 Cat2
+    titleLineID: -1
+    description: Test 1966 Cat2
+    descriptionLineID: -1
+    perPlayer: 0
+    texture: {fileID: 0}
+    states:
+    - ID: 0
+      label: Started
+      labelLineID: -1
+      description: 
+      descriptionLineID: -1
+      stateType: 1
+      actionListOnEnter: {fileID: 0}
+      autoStartSubObjectives: 0
+      texture: {fileID: 0}
+      autoStateIDOnAllSubObsCompletePlusOne: 0
+      autoStateIDOnAnySubObsCompletePlusOne: 0
+      autoStateIDOnAllSubObsFailPlusOne: 0
+      autoStateIDOnAnySubObsFailPlusOne: 0
+      linkedCategoryIDPlusOne: 0
+    - ID: 1
+      label: Completed
+      labelLineID: -1
+      description: 
+      descriptionLineID: -1
+      stateType: 2
+      actionListOnEnter: {fileID: 0}
+      autoStartSubObjectives: 0
+      texture: {fileID: 0}
+      autoStateIDOnAllSubObsCompletePlusOne: 0
+      autoStateIDOnAnySubObsCompletePlusOne: 0
+      autoStateIDOnAllSubObsFailPlusOne: 0
+      autoStateIDOnAnySubObsFailPlusOne: 0
+      linkedCategoryIDPlusOne: 0
+    lockStateWhenComplete: 1
+    lockStateWhenFail: 1
+    onlySuccessiveActiveStates: 0
+    binID: 5
+    vars: []
+  - ID: 12
+    title: Test Global Objective
+    titleLineID: -1
+    description: Test First Global Objective
+    descriptionLineID: -1
+    perPlayer: 0
+    texture: {fileID: 0}
+    states:
+    - ID: 0
+      label: Started
+      labelLineID: -1
+      description: 
+      descriptionLineID: -1
+      stateType: 1
+      actionListOnEnter: {fileID: 0}
+      autoStartSubObjectives: 0
+      texture: {fileID: 0}
+      autoStateIDOnAllSubObsCompletePlusOne: 0
+      autoStateIDOnAnySubObsCompletePlusOne: 0
+      autoStateIDOnAllSubObsFailPlusOne: 0
+      autoStateIDOnAnySubObsFailPlusOne: 0
+      linkedCategoryIDPlusOne: 0
+    - ID: 1
+      label: Completed
+      labelLineID: -1
+      description: 
+      descriptionLineID: -1
+      stateType: 2
+      actionListOnEnter: {fileID: 0}
+      autoStartSubObjectives: 0
+      texture: {fileID: 0}
+      autoStateIDOnAllSubObsCompletePlusOne: 0
+      autoStateIDOnAnySubObsCompletePlusOne: 0
+      autoStateIDOnAllSubObsFailPlusOne: 0
+      autoStateIDOnAnySubObsFailPlusOne: 0
+      linkedCategoryIDPlusOne: 0
+    lockStateWhenComplete: 1
+    lockStateWhenFail: 1
+    onlySuccessiveActiveStates: 0
+    binID: 6
     vars: []
   objectiveStateActiveLabel:
     label: Active
