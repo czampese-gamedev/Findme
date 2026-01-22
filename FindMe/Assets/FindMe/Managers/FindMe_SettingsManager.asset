@@ -24,7 +24,7 @@ MonoBehaviour:
   maxSaves: 5
   orderSavesByUpdateTime: 0
   reloadSceneWhenLoading: 1
-  saveWithThreading: 0
+  saveWithThreading: 1
   saveCompression: 0
   saveAssetReferencesWithAddressables: 0
   saveLabels:
@@ -34,7 +34,7 @@ MonoBehaviour:
     importLabelID: 146
     defaultAutosaveLabel: Autosave
     autosaveLabelID: 147
-  referenceScenesInSave: 0
+  referenceScenesInSave: 1
   useInvariantCulture: 1
   sceneAttributes: []
   actionListOnStart: {fileID: 0}
@@ -50,7 +50,7 @@ MonoBehaviour:
   playerSwitching: 1
   legacyPlayer: {fileID: 0}
   playerPrefab:
-    playerOb: {fileID: 699321504592781697, guid: b27d4f27684bcba439a25d9160b1185b, type: 3}
+    playerOb: {fileID: 5256155724544908414, guid: 1b71fa5ec2a621a439880be23b0e3d0b, type: 3}
     ID: 0
     isDefault: 0
     startingSceneIndex: 0

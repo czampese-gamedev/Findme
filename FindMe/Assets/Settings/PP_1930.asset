@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Bloom
   m_EditorClassIdentifier: 
   active: 0
+  skipIterations:
+    m_OverrideState: 1
+    m_Value: 2
   threshold:
     m_OverrideState: 1
     m_Value: 0.24
@@ -31,9 +34,12 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
-  skipIterations:
-    m_OverrideState: 1
-    m_Value: 2
+  downscale:
+    m_OverrideState: 0
+    m_Value: 0
+  maxIterations:
+    m_OverrideState: 0
+    m_Value: 6
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 2800000, guid: 62f8dda50382d487597224e197cbd34f, type: 3}
@@ -259,6 +265,30 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 1
+  neutralHDRRangeReductionMode:
+    m_OverrideState: 0
+    m_Value: 2
+  acesPreset:
+    m_OverrideState: 0
+    m_Value: 3
+  hueShiftAmount:
+    m_OverrideState: 0
+    m_Value: 0
+  detectPaperWhite:
+    m_OverrideState: 0
+    m_Value: 0
+  paperWhite:
+    m_OverrideState: 0
+    m_Value: 300
+  detectBrightnessLimits:
+    m_OverrideState: 0
+    m_Value: 1
+  minNits:
+    m_OverrideState: 0
+    m_Value: 0.005
+  maxNits:
+    m_OverrideState: 0
+    m_Value: 1000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +312,7 @@ MonoBehaviour:
   - {fileID: -8645655610014948807}
   - {fileID: 6107344497176604921}
   - {fileID: -6300291958703200268}
+  - {fileID: 8443507179285670611}
 --- !u!114 &6107344497176604921
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -309,4 +340,56 @@ MonoBehaviour:
     m_Value: 0.469
   rounded:
     m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &8443507179285670611
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d826a74763129a5418f79e0502eb07e5, type: 3}
+  m_Name: HazeGlobalFogVolumeComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  _globalDensityMultiplier:
+    m_OverrideState: 1
+    m_Value: 0.27
+  _globalDensityThreshold:
+    m_OverrideState: 1
+    m_Value: 0.63
+  _ambientColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.2688679, b: 0.2688679, a: 1}
+  _mainLightContribution:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  _heightFogFactor:
+    m_OverrideState: 1
+    m_Value: 0
+  _maxFogHeight:
+    m_OverrideState: 1
+    m_Value: 0
+  _heightFogSmoothness:
+    m_OverrideState: 1
+    m_Value: 0
+  _cameraRelativeHeightFog:
+    m_OverrideState: 1
+    m_Value: 0
+  _additionalLightContribution:
+    m_OverrideState: 1
+    m_Value: 1
+  _probeVolumeContribution:
+    m_OverrideState: 1
+    m_Value: 0
+  _mainLightScattering:
+    m_OverrideState: 1
+    m_Value: 1
+  _globalMainLightDensityBoost:
+    m_OverrideState: 1
+    m_Value: 0
+  _globalSecondaryLightDensityBoost:
+    m_OverrideState: 1
     m_Value: 0

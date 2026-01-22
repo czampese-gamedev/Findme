@@ -31,7 +31,7 @@ public class ToDoListUpdateTMP : MonoBehaviour
     private StringBuilder ToDoText = new StringBuilder();
 
     private string currentCategory;
-
+    private int levelcategoryorGlobalDisplayed = 0;
     private void OnEnable()
     {
         //subscribe to the onmenuturnon event
@@ -45,9 +45,11 @@ public class ToDoListUpdateTMP : MonoBehaviour
 
     private void OnMenuTurnOn(AC.Menu menu, bool isInstant)
     {
+       
         //When a menu turns on, check if its the 'to do' menu, and run the update if it is
         if (menu.title == "ToDoList")
         {
+
             UpdateToDoListMenu();
         }
     }
@@ -59,12 +61,12 @@ public class ToDoListUpdateTMP : MonoBehaviour
         //Clear the stringbuilder each time the menu is activated
         ToDoText.Clear();
         currentCategory = "blank";
+        levelcategoryorGlobalDisplayed = 0;
+        ToDoListTextObject.pageToDisplay = 1;
+    Debug.Log("Got in UpdateToDoList");
 
-
-            previousPageButton.SetActive(false);
+        previousPageButton.SetActive(false);
             nextPageButton.SetActive(false);
-   
-      
 
 
         string currentLevelObjective = AC.LocalVariables.GetVariable("Objective").TextValue;
@@ -78,7 +80,9 @@ public class ToDoListUpdateTMP : MonoBehaviour
             string catName = KickStarter.inventoryManager.bins[mo.Objective.binID].label;
             if (catName == currentLevelObjective && CategoriesToDisplay.Contains(catName) && mo.CurrentState.Label != "Completed")
             {
+                Debug.Log("Showing Current Level Objectives");
                 DisplayObjectives(mo, catName);
+ 
             }
 
         }
@@ -89,11 +93,14 @@ public class ToDoListUpdateTMP : MonoBehaviour
             string catName = KickStarter.inventoryManager.bins[mo.Objective.binID].label;
             if (catName == "GlobalObjective" && CategoriesToDisplay.Contains(catName) && mo.CurrentState.Label != "Completed")
             {
+                Debug.Log("Showing Global Objectives");
                 DisplayObjectives(mo, catName);
+
             }
             
         }     
 
+      
         //Iterate through all the other objectives and set up the UI for each
         foreach (ObjectiveInstance mo in mainObjectiveInstances)
         {
@@ -103,8 +110,9 @@ public class ToDoListUpdateTMP : MonoBehaviour
             {
                 //If there are any current level objectives or global objectives
                 //active then add a page break
-             
-                DisplayObjectives(mo, catName);                      
+                Debug.Log("Showing all other Objectives");
+                DisplayObjectives(mo, catName);
+               
             }
         }
 
@@ -119,16 +127,24 @@ private void DisplayObjectives(ObjectiveInstance o, string c)
             if (c == "GlobalObjective")
             {
                 ToDoText.AppendLine(MainObjectiveHeadingStyle + "Timeless" + MainObjectiveHeadingStyleEnd);
+                levelcategoryorGlobalDisplayed++;
             }
             else
             {
-                if (c != AC.LocalVariables.GetVariable("Objective").TextValue)
+                if (c == AC.LocalVariables.GetVariable("Objective").TextValue)
                 {
-                    ToDoText.AppendLine("<page>");
-                    previousPageButton.SetActive(true);
-                    nextPageButton.SetActive(true);
+                    levelcategoryorGlobalDisplayed++;
+                }
+
+                if (c != AC.LocalVariables.GetVariable("Objective").TextValue && levelcategoryorGlobalDisplayed > 0)
+                {                   
+                        ToDoText.AppendLine("<page>");
+                        previousPageButton.SetActive(true);
+                        nextPageButton.SetActive(true);   
+
                 }
                 ToDoText.AppendLine(MainObjectiveHeadingStyle + c + MainObjectiveHeadingStyleEnd);
+               
             }
             currentCategory = c;
         }

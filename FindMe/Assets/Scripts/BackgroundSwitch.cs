@@ -17,14 +17,7 @@ public class BackgroundSwitch : MonoBehaviour
             else { go.SetActive(false); }
         }
 
-        foreach (GameObject go in bg)
-        {
-            if (go.activeSelf)
-            {
-                Debug.Log("Go " + go.name + "is currently active");
-            }
-            else { Debug.Log("Go " + go.name + "is NOT active"); }
-        }
+     
     }
 
     // Update is called once per frame

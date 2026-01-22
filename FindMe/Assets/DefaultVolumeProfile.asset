@@ -72,6 +72,43 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-5420408998689854981
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e935d2f44fe5e4d8189a02cd3b2bbf, type: 3}
+  m_Name: HazeOverridesVolumeComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  _noiseTiling:
+    m_OverrideState: 1
+    m_Value: 0.001
+  _noisePanningSpeed:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  _noiseWeights:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 1}
+  _multipleScatteringIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+  _multipleScatteringRadius:
+    m_OverrideState: 1
+    m_Value: 7
+  _multipleScatteringScatter:
+    m_OverrideState: 1
+    m_Value: 1
+  _multipleScatteringThreshold:
+    m_OverrideState: 1
+    m_Value: 0
+  _maxMultipleScatteringIterations:
+    m_OverrideState: 1
+    m_Value: 5
 --- !u!114 &-4771760154042898830
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -558,6 +595,60 @@ MonoBehaviour:
   - {fileID: -1861669711076887842}
   - {fileID: 3195612222670462936}
   - {fileID: -2673214112702815555}
+  - {fileID: -5420408998689854981}
+  - {fileID: 1223186301474608165}
+--- !u!114 &1223186301474608165
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d826a74763129a5418f79e0502eb07e5, type: 3}
+  m_Name: HazeGlobalFogVolumeComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  _globalDensityMultiplier:
+    m_OverrideState: 1
+    m_Value: 0
+  _globalDensityThreshold:
+    m_OverrideState: 1
+    m_Value: 0.2
+  _ambientColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  _mainLightContribution:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  _heightFogFactor:
+    m_OverrideState: 1
+    m_Value: 0
+  _maxFogHeight:
+    m_OverrideState: 1
+    m_Value: 0
+  _heightFogSmoothness:
+    m_OverrideState: 1
+    m_Value: 0
+  _cameraRelativeHeightFog:
+    m_OverrideState: 1
+    m_Value: 0
+  _additionalLightContribution:
+    m_OverrideState: 1
+    m_Value: 1
+  _probeVolumeContribution:
+    m_OverrideState: 1
+    m_Value: 0
+  _mainLightScattering:
+    m_OverrideState: 1
+    m_Value: 1
+  _globalMainLightDensityBoost:
+    m_OverrideState: 1
+    m_Value: 0
+  _globalSecondaryLightDensityBoost:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &1285214687382289444
 MonoBehaviour:
   m_ObjectHideFlags: 3
