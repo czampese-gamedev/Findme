@@ -77,6 +77,7 @@ MonoBehaviour:
     m_Extent: {x: 0, y: 0, z: 0}
   bakedSimplificationLevels: 3
   bakedMinDistanceBetweenProbes: 1
+  bakedProbeOcclusion: 0
   bakedSkyOcclusionValue: 0
   bakedSkyShadingDirectionValue: 0
   bakedProbeOffset: {x: 0, y: 0, z: 0}
@@ -90,6 +91,7 @@ MonoBehaviour:
   L0ChunkSize: 0
   L1ChunkSize: 0
   L2TextureChunkSize: 0
+  ProbeOcclusionChunkSize: 0
   sharedValidityMaskChunkSize: 8192
   sharedSkyOcclusionL0L1ChunkSize: 0
   sharedSkyShadingDirectionIndicesChunkSize: 0
@@ -101,7 +103,7 @@ MonoBehaviour:
   supportOffsetsChunkSize: 0
   supportDataChunkSize: 0
   lightingScenario: Default
-  version: 1
+  version: 2
   freezePlacement: 0
   probeOffset: {x: 0, y: 0, z: 0}
   simplificationLevels: 3

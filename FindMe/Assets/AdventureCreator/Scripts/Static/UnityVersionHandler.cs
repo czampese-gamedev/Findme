@@ -850,7 +850,7 @@ namespace AC
 		public static Vector3 GetRigidbody2DVelocity (Rigidbody2D rigidbody)
 		{
 #if UNITY_6000_0_OR_NEWER
-			return rigidbody.velocity;
+			return rigidbody.linearVelocity;
 #else
 			return rigidbody.velocity;
 #endif
