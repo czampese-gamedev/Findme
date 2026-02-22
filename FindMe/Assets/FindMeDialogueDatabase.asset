@@ -341,11 +341,11 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: Sorry...I....
+        value: Im so sorry....
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: SALSA(speech/Test/test3);
         type: 0
         typeString: 
       conversationID: 1
@@ -362,6 +362,12 @@ MonoBehaviour:
         destinationDialogueID: 4
         isConnector: 0
         priority: 2
+      - originConversationID: 1
+        originDialogueID: 2
+        destinationConversationID: 1
+        destinationDialogueID: 10
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -369,8 +375,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 160
-        y: 202.09274
+        x: 158.6885
+        y: 200.78128
         width: 160
         height: 30
     - id: 4
@@ -452,10 +458,14 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "I was just\u2026 I think I\u2019m in a dream, so\u2026"
+        value: 'I didnt mean it. Forgive me? '
         type: 0
         typeString: 
       - title: Sequence
+        value: SALSA(speech/Test/test4,,speech/Test/test5);
+        type: 0
+        typeString: 
+      - title: Response Menu Sequence
         value: 
         type: 0
         typeString: 
@@ -481,7 +491,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 197.20113
-        y: 340.3906
+        y: 339.1406
         width: 160
         height: 30
     - id: 6
@@ -567,7 +577,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: SALSA(speech/Test/test3);
         type: 0
         typeString: 
       conversationID: 1
@@ -591,8 +601,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 197.20113
-        y: 440.3906
+        x: 198.45113
+        y: 444.1406
         width: 160
         height: 30
     - id: 8
@@ -678,7 +688,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: TextSync()
         type: 0
         typeString: 
       conversationID: 1
@@ -760,8 +770,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 32.8125, y: 0}
-    canvasZoom: 0.6400002
+    canvasScrollPosition: {x: 20.701859, y: 0}
+    canvasZoom: 0.61000025
   - id: 2
     fields:
     - title: Title
@@ -2289,7 +2299,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: SALSA()
         type: 0
         typeString: 
       conversationID: 5
