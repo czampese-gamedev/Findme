@@ -19,7 +19,7 @@ MonoBehaviour:
   narrationTextScrollCLip: {fileID: 0}
   playScrollAudioEveryCharacter: 0
   speechScrollAudioSource: 0
-  waitTimeOffset: 0
+  waitTimeOffset: 0.1
   displayForever: 0
   displayNarrationForever: 0
   playAnimationForever: 1
@@ -28,9 +28,9 @@ MonoBehaviour:
   screenTimeFactor: 0.1
   allowSpeechSkipping: 0
   allowGameplaySpeechSkipping: 0
-  skipThresholdTime: 0
-  endScrollBeforeSkip: 1
-  ifSkipWhileScrolling: 0
+  skipThresholdTime: 0.5
+  endScrollBeforeSkip: 0
+  ifSkipWhileScrolling: 2
   scrollingTextFactorsLength: 0
   syncSubtitlesToAudio: 0
   useAssetBundles: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
     translationText:
     - "Comment avez-vous d'\xEAtre un lutteur \xE0 tirer une promo pour un moteur
       de jeu?"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -86,6 +87,7 @@ MonoBehaviour:
     translationText:
     - "Eh bien, \xE9tant un sportif professionnel, je suis habitu\xE9 \xE0 sellings
       choses avec mon charisme naturel."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -106,6 +108,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - De plus, j'habite juste en face de la rue.
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -126,6 +129,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Disons .. appeler celui-l\xE0 pour la bobine Outtake."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -146,6 +150,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Que pouvez-vous me dire \xE0 propos de Adventure Creator?"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -166,6 +171,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - Bonne question, mon ami robot!
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -191,6 +197,7 @@ MonoBehaviour:
       vos propres jeux d'aventure 3D. Pas de scripts, des charges de fonctionnalit\xE9s
       - tout de sauvegarder et de charger \xE0 plusieurs styles de jeu et le soutien
       de la traduction."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -211,6 +218,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - Cela sonne bien! Dites-moi plus!
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -231,6 +239,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "J'aimerais bien, mais j'ai oubli\xE9 le reste de mes lignes."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -251,6 +260,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Je ferais mieux de ne pas nuire aux talents - nous n'avons pas pay\xE9 l'assurance."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -271,6 +281,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Je ferais mieux de retourner \xE0 la fixation de l'ensemble."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -291,6 +302,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Prenez votre temps, je suis pay\xE9 \xE0 l'heure!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -311,6 +323,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "On dirait une affiche pour une sorte de jeu vid\xE9o 2D."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -331,6 +344,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - 2D? (Frisson)
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -351,6 +365,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Pourriez-vous m'aider l\xE8ve la toile?"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -373,6 +388,7 @@ MonoBehaviour:
     translationText:
     - "Je serais tout \xE0 fait, mais ces gars de sant\xE9 et de s\xE9curit\xE9 pourrait
       faire une apparition soudaine \xE0 tout moment!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -393,6 +409,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Si vous allez \xE0 l'\xE9tage, pouvez-vous me faire un sandwich?"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -413,6 +430,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - Salut!
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -433,6 +451,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Bienvenue \xE0 la d\xE9mo ! Je suis le cerveau , et c'est-"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -455,6 +474,7 @@ MonoBehaviour:
     translationText:
     - "Voyant que la tenue de d\xE9chets toxiques du baril, je ne pense pas que je
       devrais aller sur la faisant levier le couvercle."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -475,6 +495,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - Je dois ... le pouvoir!
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -495,6 +516,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Heh, votre enthousiasme monte en fl\xE8che."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -515,6 +537,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Ce canon est arr\xEAt\xE9 juste en face de la toile."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -535,6 +558,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Je ne suis pas vraiment s\xFBr de ce que je peux faire avec elle, par elle-m\xEAme."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -555,6 +579,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Avez-vous vu cela? Il est tomb\xE9 sur lui tout seul!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -575,6 +600,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Je me demande o\xF9 cette porte m\xE8ne."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -595,6 +621,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Nulle part, il est tout simplement mis en d\xE9coration."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -615,6 +642,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - Eh bien, cela expliquerait la mauvaise texturing.
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -636,6 +664,7 @@ MonoBehaviour:
     translationText:
     - "Je dis \xE0 mon agent que je veux \xE9toiles dans un jeu vid\xE9o , et il
       me fait une promo de moteur .."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -656,6 +685,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Eh bien, pas \xE0 moi de r\xE9soudre le probl\xE8me!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -676,6 +706,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Ne vous inqui\xE9tez pas, monsieur!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -696,6 +727,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Comme la mascotte du moteur, j'adore r\xE9soudre des \xE9nigmes!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -716,6 +748,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Rappelez-moi de vous prendre pour mon crois\xE9s plus tard."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -736,6 +769,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "J'ai trouv\xE9 une fausse \xE9p\xE9e!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -756,6 +790,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Hm. Remerciements \xE0 vous."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -776,6 +811,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Il ne sert \xE0 rien - j'ai besoin d'une sorte d'effet de levier pour la soulever."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -796,6 +832,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Wah! \xCAtes-vous d'accord?"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -816,6 +853,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Ne vous inqui\xE9tez pas!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -836,6 +874,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "Woohoo! Et c'est comme \xE7a que j'ai sauv\xE9 la journ\xE9e!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -856,6 +895,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - Monsieur?
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -876,6 +916,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - "H\xE9, petit robot!"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -896,6 +937,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - Je pensais que ce set'd ont de meilleures valeurs de production.
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -916,6 +958,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - Tableau d'affichage
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -936,6 +979,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - Canvas
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -956,6 +1000,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - "Cam\xE9ra"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -976,6 +1021,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - Brain
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -996,6 +1042,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - Porte
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1016,6 +1063,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - Escalier
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1036,6 +1084,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - Baril
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1056,6 +1105,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - "Ep\xE9e prop"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1076,6 +1126,7 @@ MonoBehaviour:
     textType: 1
     translationText:
     - Baril
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1096,6 +1147,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - Ce n'est rien.
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1116,6 +1168,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - "Ce n'\xE9tait pas moi."
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1136,6 +1189,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - Ce n'est pas de ma faute!
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1156,6 +1210,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - "\u2026"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1176,6 +1231,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - "Aventure Cr\xE9ateur"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1196,6 +1252,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - Aider
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1216,6 +1273,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - Brain
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1236,6 +1294,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - "Ep\xE9e"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1256,6 +1315,7 @@ MonoBehaviour:
     textType: 2
     translationText:
     - Adieu
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1276,6 +1336,7 @@ MonoBehaviour:
     textType: 0
     translationText:
     - Je ne peux pas couper cela.
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1296,6 +1357,7 @@ MonoBehaviour:
     textType: 3
     translationText:
     - "Ep\xE9e prop"
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1316,6 +1378,7 @@ MonoBehaviour:
     textType: 6
     translationText:
     - Usez
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1336,6 +1399,7 @@ MonoBehaviour:
     textType: 6
     translationText:
     - sur
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1356,6 +1420,7 @@ MonoBehaviour:
     textType: 6
     translationText:
     - Give
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1376,6 +1441,7 @@ MonoBehaviour:
     textType: 6
     translationText:
     - to
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1396,6 +1462,7 @@ MonoBehaviour:
     textType: 6
     translationText:
     - Walk to
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1416,6 +1483,7 @@ MonoBehaviour:
     textType: 4
     translationText:
     - Usez
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1436,6 +1504,7 @@ MonoBehaviour:
     textType: 4
     translationText:
     - Parlez
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1456,6 +1525,7 @@ MonoBehaviour:
     textType: 4
     translationText:
     - Regardez
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1476,6 +1546,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Reprendre
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1496,6 +1567,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Options
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1516,6 +1588,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Sauvegarder
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1536,6 +1609,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Charger
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1556,6 +1630,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Test
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1576,6 +1651,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Quitter
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1596,6 +1672,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Options
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1616,6 +1693,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Volume Voix
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1636,6 +1714,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Volume Musique
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1656,6 +1735,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Volume Sonore
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1676,6 +1756,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Langue
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1696,6 +1777,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Sous-titres
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1716,6 +1798,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Retour
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1736,6 +1819,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Sauvegarder la partie
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1756,6 +1840,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Nouvelle sauvegarde
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1776,6 +1861,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Retour
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1796,6 +1882,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Charger la partie
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1816,6 +1903,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Retour
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1836,6 +1924,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Brain
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1856,6 +1945,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Hi!
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1876,6 +1966,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Create new profile
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1896,6 +1987,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Back
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1916,6 +2008,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Menu
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1936,6 +2029,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Container
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1956,6 +2050,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Close
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1976,6 +2071,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Take all
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -1996,6 +2092,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Inventory
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -2016,6 +2113,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Create
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -2036,6 +2134,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Close
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -2056,6 +2155,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Ingredients
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -2076,6 +2176,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Inventory
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -2096,6 +2197,7 @@ MonoBehaviour:
     textType: 5
     translationText:
     - Output
+    - 
     customAudioClip: {fileID: 0}
     customLipsyncFile: {fileID: 0}
     customTranslationAudioClips: []
@@ -2107,10 +2209,19 @@ MonoBehaviour:
     customFilename: 
     orderID: 0
     orderPrefix: 
-  languages: []
-  languageIsRightToLeft: 
-  languageAudioAssetBundles: []
-  languageLipsyncAssetBundles: []
+  languages:
+  - Original
+  - French
+  - New 2
+  languageIsRightToLeft: 000000
+  languageAudioAssetBundles:
+  - 
+  - 
+  - 
+  languageLipsyncAssetBundles:
+  - 
+  - 
+  - 
   Languages:
   - name: Original
     isRightToLeft: 0
@@ -2133,15 +2244,51 @@ MonoBehaviour:
   - 'B/M/P/MBP/ '
   - AY/AH/IH/EY/ER
   - G/O/OO/OH/W
-  - SH/R/Z/SF/D/L/F/TN/K/N/NG/H/X/FV
   - UH/EH/DH/AE/IY
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   lipSyncSpeed: 1
   translatableTextTypes: -1
   maxID: -1
   speechIDRecycling: 0
   mergeMatchingSpeechIDs: 0
-  useSpeechTags: 0
-  speechTags: []
+  useSpeechTags: 1
+  speechTags:
+  - ID: 0
+    label: (Untagged)
+  - ID: 1
+    label: 1
+  - ID: 2
+    label: 2
+  - ID: 3
+    label: 3
+  - ID: 5
+    label: 5
+  - ID: 4
+    label: 
+  - ID: 6
+    label: 
+  - ID: 7
+    label: 
+  - ID: 8
+    label: 
   gatherInactiveGameObjects: 0
   previewMenuName: Subtitles
   mergeMatchingIDs: 0

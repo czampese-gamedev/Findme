@@ -19,29 +19,7 @@ MonoBehaviour:
     carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
-    vars:
-    - label: Property 1
-      id: 0
-      type: 0
-      val: 0
-      floatVal: 0
-      textVal: 
-      gameObjectVal: {fileID: 0}
-      gameObjectSaveReferences: 0
-      objectVal: {fileID: 0}
-      popUps: []
-      vector3Val: {x: 0, y: 0, z: 0}
-      link: 0
-      pmVar: 
-      updateLinkOnStart: 0
-      canTranslate: 1
-      popUpID: 0
-      ignorePresets: 0
-      textValLineID: -1
-      popUpsLineID: -1
-      description: 
-      limitToCategories: 0
-      categoryIDs: 
+    vars: []
     canCarryMultiple: 0
     count: 1
     canBeLowerCase: 0
@@ -50,7 +28,8 @@ MonoBehaviour:
     tex: {fileID: 2800000, guid: a01609783128744659e8933c2954ac90, type: 3}
     activeTex: {fileID: 2800000, guid: e54effe7242064987b6b9ae71576d6fc, type: 3}
     selectedTex: {fileID: 0}
-    linkedPrefab: {fileID: 8969564443499206269, guid: fa8c376a85cbfcd49886bafc0c12f54b, type: 3}
+    linkedPrefab: {fileID: 6862019052093651036, guid: 561e1ffd13a847d488fbc036be4df515,
+      type: 3}
     cursorIcon:
       texture: {fileID: 0}
       isAnimated: 0
@@ -84,16 +63,16 @@ MonoBehaviour:
     combineInteractions: []
     combineActionList: []
     combineID: 
-    unhandledActionList: {fileID: 11400000, guid: 54296a732499f4243b4013168b66ef94, type: 2}
+    unhandledActionList: {fileID: 0}
     unhandledGiveActionList: {fileID: 0}
     unhandledCombineActionList: {fileID: 0}
-    carryOnStartID: -1
+    carryOnStartID: 0
     useSeparateSlots: 0
     selectSingle: 0
   bins: []
   invVars: []
   unhandledCombine: {fileID: 0}
-  unhandledHotspot: {fileID: 0}
+  unhandledHotspot: {fileID: 11400000, guid: 54296a732499f4243b4013168b66ef94, type: 2}
   passUnhandledHotspotAsParameter: 0
   unhandledGive: {fileID: 0}
   recipes: []

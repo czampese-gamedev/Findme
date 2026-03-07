@@ -235,14 +235,24 @@ MonoBehaviour:
   blackOutWhenInitialising: 1
   spawnPersistentEnginePrefab: 1
   autoCallUnloadUnusedAssets: 1
-  playMusicWhilePaused: 0
+  playMusicWhilePaused: 1
   playAmbienceWhilePaused: 0
-  musicStorages: []
-  ambienceStorages: []
+  musicStorages:
+  - ID: 0
+    label: TEST intro music
+    audioClip: {fileID: 8300000, guid: bd77d1d54c411c04ba849984779b636c, type: 3}
+    relativeVolume: 1
+    overrideMixerGroup: {fileID: 0}
+  ambienceStorages:
+  - ID: 0
+    label: TrainArriving
+    audioClip: {fileID: 8300000, guid: fa9d72d8574893c4ead447fa7ab0388e, type: 3}
+    relativeVolume: 1
+    overrideMixerGroup: {fileID: 0}
   loadAmbienceFadeTime: 0
   crossfadeAmbienceWhenLoading: 0
   restartAmbienceTrackWhenLoading: 0
-  loadMusicFadeTime: 0
+  loadMusicFadeTime: 1.02
   crossfadeMusicWhenLoading: 0
   restartMusicTrackWhenLoading: 0
   autoEndOtherMusicWhenPlayed: 1

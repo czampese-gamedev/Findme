@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   separateEditorSaveFiles: 0
   saveFileName: AdventureCreator_Demo
-  saveTimeDisplay: 1
+  saveTimeDisplay: 0
   customSaveFormat: MMMM dd, yyyy
   takeSaveScreenshots: 0
   screenshotRenderTexture: {fileID: 0}
@@ -24,7 +24,7 @@ MonoBehaviour:
   maxSaves: 8
   orderSavesByUpdateTime: 0
   reloadSceneWhenLoading: 0
-  saveWithThreading: 0
+  saveWithThreading: 1
   saveCompression: 0
   saveAssetReferencesWithAddressables: 0
   saveLabels:
@@ -65,7 +65,7 @@ MonoBehaviour:
   stopPlayerOnClickHotspot: 0
   cycleInventoryCursors: 1
   scaleCursorSpeedWithScreen: 1
-  autoCycleWhenInteract: 0
+  autoCycleWhenInteract: 1
   showHoverInteractionInHotspotLabel: 0
   allowDefaultinteractions: 0
   alwaysCloseInteractionMenus: 1
@@ -74,13 +74,14 @@ MonoBehaviour:
   hideLockedCursor: 0
   disableFreeAimWhenDragging: 0
   disableFreeAimWhenDraggingPickUp: 0
-  runConversationsWithKeys: 0
+  runConversationsWithKeys: 1
   clickUpInteractions: 0
   clickUpHotspots: 0
   defaultMouseClicks: 1
   allowGameplayDuringConversations: 0
   walkToHotspotMarkers: 1
   dragThreshold: 0
+  acceptUIInputFromCursorLocked: 0
   maxInventorySlots: 0
   shareInventory: 0
   inventoryDragDrop: 0
@@ -111,7 +112,7 @@ MonoBehaviour:
   autoDisableUnhandledHotspots: 0
   autoToggleGiveMode: 1
   clickPrefab: {fileID: 400000, guid: 5afa28bedf2ed4d77b1485bcdd7c48d9, type: 3}
-  showClickPrefabWithStraightToCursorHeld: 0
+  showClickPrefabWithStraightToCursorHeld: 1
   clickMarkerPosition: 0
   walkableClickRange: 0.5
   navMeshSearchDirection: 1
@@ -138,7 +139,7 @@ MonoBehaviour:
   clickHoldSeparationStraight: 0.3
   useFPCamDuringConversations: 1
   onlyInteractWhenCursorUnlocked: 0
-  freeAimSmoothSpeed: 50
+  freeAimSmoothSpeed: 30
   firstPersonMovementSmoothing: 1
   assumeInputsDefined: 0
   activeInputs:
@@ -148,7 +149,7 @@ MonoBehaviour:
     enabledOnStart: 1
     gameState: 0
     gameStateFlags: 7
-    actionListAsset: {fileID: 11400000, guid: 7069ac1fb1485e24a950ee372c0cdb6f, type: 2}
+    actionListAsset: {fileID: 11400000, guid: 258f9f028384de74883611288b086650, type: 2}
     inputType: 0
     axisThreshold: 0.2
     buttonType: 0
@@ -167,7 +168,7 @@ MonoBehaviour:
   touchUpWhenPaused: 0
   touchUpInteractScene: 0
   forceAspectRatio: 0
-  aspectRatioEnforcement: 1
+  aspectRatioEnforcement: 0
   wantedAspectRatio: 1.7778
   maxAspectRatio: 2.39
   renderBorderCamera: 1
@@ -231,14 +232,14 @@ MonoBehaviour:
   playMusicWhilePaused: 1
   playAmbienceWhilePaused: 0
   musicStorages:
-  - ID: 0
-    label: 
-    audioClip: {fileID: 8300000, guid: bdeb32adbfd1740efbc7ef1229edecb9, type: 3}
-    relativeVolume: 1
-    overrideMixerGroup: {fileID: 0}
   - ID: 1
     label: 
     audioClip: {fileID: 8300000, guid: 8cbb78bffe57d4cd0bdbaa52b00a3148, type: 3}
+    relativeVolume: 1
+    overrideMixerGroup: {fileID: 0}
+  - ID: 0
+    label: 
+    audioClip: {fileID: 8300000, guid: bdeb32adbfd1740efbc7ef1229edecb9, type: 3}
     relativeVolume: 1
     overrideMixerGroup: {fileID: 0}
   - ID: 2
