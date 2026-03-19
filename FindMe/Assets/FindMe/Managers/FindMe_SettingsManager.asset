@@ -59,7 +59,7 @@ MonoBehaviour:
     useSceneDefaultPlayerStart: 0
     startingPlayerStartID: 0
   players: []
-  movementMethod: 0
+  movementMethod: 4
   inputMethod: 0
   simulatedCursorMoveSpeed: 4
   interactionMethod: 0
@@ -224,14 +224,14 @@ MonoBehaviour:
   navMeshLayer: NavMesh
   backgroundImageLayer: BackgroundImage
   deactivatedLayer: Ignore Raycast
-  useLoadingScreen: 0
+  useLoadingScreen: 1
   manualSceneActivation: 0
-  loadingSceneIs: 0
+  loadingSceneIs: 1
   loadScenesFromAddressable: 0
-  loadingSceneName: 
+  loadingSceneName: Loading
   loadingScene: 0
-  useAsyncLoading: 0
-  loadingDelay: 0
+  useAsyncLoading: 1
+  loadingDelay: 0.5
   blackOutWhenInitialising: 1
   spawnPersistentEnginePrefab: 1
   autoCallUnloadUnusedAssets: 1
@@ -242,7 +242,7 @@ MonoBehaviour:
     label: TEST intro music
     audioClip: {fileID: 8300000, guid: bd77d1d54c411c04ba849984779b636c, type: 3}
     relativeVolume: 1
-    overrideMixerGroup: {fileID: 0}
+    overrideMixerGroup: {fileID: -3319318880078704915, guid: 0b97b9922595cd4438a207f9537deb59, type: 2}
   ambienceStorages:
   - ID: 0
     label: TrainArriving
@@ -258,10 +258,10 @@ MonoBehaviour:
   autoEndOtherMusicWhenPlayed: 1
   musicPrefabOverride: {fileID: 0}
   ambiencePrefabOverride: {fileID: 0}
-  volumeControl: 0
-  musicMixerGroup: {fileID: 0}
-  sfxMixerGroup: {fileID: 0}
-  speechMixerGroup: {fileID: 0}
+  volumeControl: 1
+  musicMixerGroup: {fileID: -3319318880078704915, guid: 0b97b9922595cd4438a207f9537deb59, type: 2}
+  sfxMixerGroup: {fileID: 5404753608617207959, guid: 0b97b9922595cd4438a207f9537deb59, type: 2}
+  speechMixerGroup: {fileID: 7655570796625398065, guid: 0b97b9922595cd4438a207f9537deb59, type: 2}
   musicAttentuationParameter: musicVolume
   sfxAttentuationParameter: sfxVolume
   speechAttentuationParameter: speechVolume

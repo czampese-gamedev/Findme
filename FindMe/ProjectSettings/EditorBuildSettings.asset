@@ -8,16 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 76800e94c60f2c94f91977fc890a64a6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OpeningScene.unity
     guid: f5e7a5f46d29a3e449cefb273e0094b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MuseumExterior2024.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MuseumInterior2024.unity
     guid: c70204939fc74684d9428d0cb4f0740c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestInterior.unity
     guid: 36d06907cfc4ca84dabeff9cc3fb75b1
   - enabled: 1
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Underground2000s.unity
     guid: 1c226a751f3a11c47916b2fdbc4d1ce1
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 73f25ec8d8755d14489c0808b91e3a91
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e8baea42ae441614f91a52da5d84f75b, type: 2}
   m_UseUCBPForAssetBundles: 0

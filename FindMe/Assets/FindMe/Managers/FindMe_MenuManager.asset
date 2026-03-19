@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuSource: 1
-  canvas: {fileID: 6532465011613638211, guid: ba339e5101a31684cad61eb0cc30b630, type: 3}
+  canvas: {fileID: 5156777941754443344, guid: 0eda60e32e1fadc42a9adfb52c5fd2a5, type: 3}
   canvasAssetKey: 
   canvasID: 0
-  rectTransform: {fileID: 6185120937090674737, guid: ba339e5101a31684cad61eb0cc30b630, type: 3}
-  rectTransformID: 282876
-  uiTransitionType: 2
+  rectTransform: {fileID: 7531250466275805585, guid: 0eda60e32e1fadc42a9adfb52c5fd2a5, type: 3}
+  rectTransformID: 343000
+  uiTransitionType: 1
   uiPositionType: 0
   _isLocked: 0
   id: 28
@@ -60,7 +60,7 @@ MonoBehaviour:
   orientation: 1
   transitionType: 4
   panDirection: 0
-  panMovement: 0
+  panMovement: 1
   timeCurve:
     serializedVersion: 2
     m_Curve:
@@ -1163,7 +1163,7 @@ MonoBehaviour:
     height: 37.5
   relativePosition: {x: 0, y: 0}
   numSlots: 1
-  uiButton: {fileID: 0}
+  uiButton: {fileID: 11400020, guid: 929247f9cf5de5f40ad461bf6bf93bc4, type: 3}
   uiPointerState: 0
   _label: Options
   hotspotLabel: 
@@ -2833,6 +2833,106 @@ MonoBehaviour:
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
   uiComponentHideStyle: 0
+--- !u!114 &-4591870318844030921
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f455f0e4a864975bf60bc153fbe20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AC::AC.Menu
+  menuSource: 1
+  canvas: {fileID: 22300000, guid: b6c7ce455593bc64eb8fb181bc2a4312, type: 3}
+  canvasAssetKey: 
+  canvasID: 0
+  rectTransform: {fileID: 2701336624581683605, guid: b6c7ce455593bc64eb8fb181bc2a4312, type: 3}
+  rectTransformID: 152138
+  uiTransitionType: 1
+  uiPositionType: 0
+  _isLocked: 0
+  id: 29
+  title: ShowYear
+  manualSize: {x: 0.5, y: 0.7651757}
+  positionType: 0
+  manualPosition: {x: 239.5, y: 156.5}
+  positionSmoothing: 0
+  alignment: 4
+  toggleKey: 
+  ignoreMouseClicks: 0
+  pauseWhenEnabled: 0
+  showWhenPaused: 0
+  canClickInCutscene: 0
+  enabledOnStart: 0
+  actionListOnTurnOn: {fileID: 0}
+  actionListOnTurnOff: {fileID: 0}
+  updateWhenFadeOut: 1
+  hideDuringSaveScreenshots: 1
+  useTextMeshProComponents: 1
+  fitWithinScreen: 1
+  backgroundTexture: {fileID: 0}
+  visibleElements: []
+  transitionProgress: 0
+  appearType: 0
+  speechMenuType: 0
+  speechMenuLimit: 0
+  limitToCharacters: 
+  forceSubtitles: 0
+  moveWithCharacter: 1
+  selected_element: {fileID: 0}
+  selected_slot: 0
+  autoSelectFirstVisibleElement: 0
+  firstSelectedElement: 
+  elements: []
+  spacing: 0.5
+  sizeType: 0
+  autoSizeEveryFrame: 0
+  orientation: 1
+  transitionType: 4
+  panDirection: 0
+  panMovement: 1
+  timeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panDistance: 0.5
+  fadeSpeed: 0.38
+  zoomAnchor: 4
+  zoomElements: 0
+  oneMenuPerSpeech: 0
+  speechProximityLimit: 0
+  speechProximityDistance: 10
+  deleteUIWhenTurnOff: 0
+  biggestElementSize: {x: 0, y: 0}
+  rect:
+    serializedVersion: 2
+    x: 238.3025
+    y: 155.3025
+    width: 2.395
+    height: 2.395
 --- !u!114 &-4423712185749440160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4869,7 +4969,7 @@ MonoBehaviour:
   uiPositionType: 0
   _isLocked: 0
   id: 18
-  title: InGameInventoryUI
+  title: InventoryInGameUI
   manualSize: {x: 0.5, y: 0.8873239}
   positionType: 0
   manualPosition: {x: 252, y: 142}
@@ -6235,6 +6335,7 @@ MonoBehaviour:
   - {fileID: -264121696923577267}
   - {fileID: 1406284897882364495}
   - {fileID: -9210894643988771063}
+  - {fileID: -4591870318844030921}
   - {fileID: -3026636012901074921}
   - {fileID: -107698194490697197}
   - {fileID: -4414443447822327083}
@@ -6290,7 +6391,7 @@ MonoBehaviour:
   canvasID: 0
   rectTransform: {fileID: 22400000, guid: a647b1742e2b60649b0ccda87cb5130b, type: 3}
   rectTransformID: 422912
-  uiTransitionType: 1
+  uiTransitionType: 0
   uiPositionType: 0
   _isLocked: 0
   id: 19
@@ -6334,7 +6435,7 @@ MonoBehaviour:
   orientation: 1
   transitionType: 4
   panDirection: 0
-  panMovement: 0
+  panMovement: 1
   timeCurve:
     serializedVersion: 2
     m_Curve:
@@ -6360,7 +6461,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   panDistance: 0.5
-  fadeSpeed: 0
+  fadeSpeed: 1
   zoomAnchor: 4
   zoomElements: 0
   oneMenuPerSpeech: 0
@@ -8920,7 +9021,7 @@ MonoBehaviour:
     height: 37.5
   relativePosition: {x: 0, y: 0}
   numSlots: 1
-  uiToggle: {fileID: 0}
+  uiToggle: {fileID: 11400006, guid: cea203b17128b85488ae1d3f9d2f16e6, type: 3}
   toggleType: 0
   actionListOnClick: {fileID: 0}
   label: Subtitles

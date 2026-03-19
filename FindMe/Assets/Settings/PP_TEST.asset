@@ -12,26 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   skipIterations:
     m_OverrideState: 1
     m_Value: 2
   threshold:
     m_OverrideState: 1
-    m_Value: 0.18
+    m_Value: 0.16
   intensity:
     m_OverrideState: 1
-    m_Value: 0.44
+    m_Value: 0.27
   scatter:
-    m_OverrideState: 1
-    m_Value: 0.03
+    m_OverrideState: 0
+    m_Value: 0.224
   clamp:
-    m_OverrideState: 1
-    m_Value: 0.6
+    m_OverrideState: 0
+    m_Value: 0.45
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.700685, b: 0.5707547, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
+    m_OverrideState: 0
+    m_Value: 0
+  filter:
     m_OverrideState: 0
     m_Value: 0
   downscale:
@@ -46,7 +49,7 @@ MonoBehaviour:
     dimension: 1
   dirtIntensity:
     m_OverrideState: 0
-    m_Value: 0.74
+    m_Value: 23.86
 --- !u!114 &-7777726320820484395
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -62,13 +65,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.85920346, y: 0.93584734, z: 1, w: 0.04502699}
+    m_Value: {x: 0.9167676, y: 0.94972247, z: 1, w: -0.11842355}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.8294778, y: 0.8682865, z: 1, w: 0.08163266}
+    m_Value: {x: 0.83373296, y: 0.8557788, z: 1, w: 0.08163266}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.740911, y: 0.91102403, z: 1, w: 0.061224483}
+    m_Value: {x: 1, y: 0.9774692, z: 0.9874275, w: 0.061224483}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0.1
@@ -96,19 +99,19 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: -0.59
+    m_Value: -0.18
   contrast:
     m_OverrideState: 1
-    m_Value: -21
+    m_Value: -10
   colorFilter:
     m_OverrideState: 0
-    m_Value: {r: 0.033795543, g: 0.025649952, b: 0.044194173, a: 1}
+    m_Value: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 80
   saturation:
-    m_OverrideState: 0
-    m_Value: -3
+    m_OverrideState: 1
+    m_Value: 13
 --- !u!114 &-5915899025678989705
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -149,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
   m_Name: WhiteBalance
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   temperature:
     m_OverrideState: 1
-    m_Value: 29
+    m_Value: 17
   tint:
     m_OverrideState: 0
     m_Value: 1
@@ -174,10 +177,10 @@ MonoBehaviour:
     m_Value: {x: 0.9322615, y: 0.9721006, z: 1, w: -0.04081632}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.991666, z: 0.99834967, w: 0.061224494}
+    m_Value: {x: 1, y: 0.991666, z: 0.99834967, w: 0.32009092}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.80813384, z: 0.739223, w: 0.20408164}
+    m_Value: {x: 1, y: 0.80813384, z: 0.739223, w: 0.0022704466}
 --- !u!114 &-2764795061077874546
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -211,7 +214,7 @@ MonoBehaviour:
     m_Value: 1
   aperture:
     m_OverrideState: 1
-    m_Value: 5.6
+    m_Value: 20
   focalLength:
     m_OverrideState: 1
     m_Value: 1
@@ -220,10 +223,10 @@ MonoBehaviour:
     m_Value: 5
   bladeCurvature:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   bladeRotation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -21
 --- !u!114 &-1481910988856050941
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -239,7 +242,7 @@ MonoBehaviour:
   active: 0
   mode:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 0
   neutralHDRRangeReductionMode:
     m_OverrideState: 0
     m_Value: 2
@@ -264,6 +267,58 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
+--- !u!114 &-1148528626028631253
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d826a74763129a5418f79e0502eb07e5, type: 3}
+  m_Name: HazeGlobalFogVolumeComponent
+  m_EditorClassIdentifier: Haze.Runtime::Haze.Runtime.HazeGlobalFogVolumeComponent
+  active: 0
+  _globalDensityMultiplier:
+    m_OverrideState: 1
+    m_Value: 1.39
+  _globalDensityThreshold:
+    m_OverrideState: 1
+    m_Value: 0.34
+  _ambientColor:
+    m_OverrideState: 1
+    m_Value: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
+  _mainLightContribution:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  _heightFogFactor:
+    m_OverrideState: 0
+    m_Value: 0.19
+  _maxFogHeight:
+    m_OverrideState: 0
+    m_Value: 1.53
+  _heightFogSmoothness:
+    m_OverrideState: 0
+    m_Value: 0.95
+  _cameraRelativeHeightFog:
+    m_OverrideState: 0
+    m_Value: 0
+  _additionalLightContribution:
+    m_OverrideState: 0
+    m_Value: 1
+  _probeVolumeContribution:
+    m_OverrideState: 0
+    m_Value: 0
+  _mainLightScattering:
+    m_OverrideState: 0
+    m_Value: 1
+  _globalMainLightDensityBoost:
+    m_OverrideState: 0
+    m_Value: 0
+  _globalSecondaryLightDensityBoost:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +341,7 @@ MonoBehaviour:
   - {fileID: -5915899025678989705}
   - {fileID: -8645655610014948807}
   - {fileID: 6107344497176604921}
+  - {fileID: -1148528626028631253}
 --- !u!114 &6107344497176604921
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -307,7 +363,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.451
+    m_Value: 0.419
   smoothness:
     m_OverrideState: 1
     m_Value: 0.135

@@ -15,6 +15,7 @@ Material:
   - AMBIENT
   - ANIME_SOFT
   - DIFFUSE
+  - FLAT
   - FOG
   - MATCAP_PERSPECTIVE
   - OUTLINE
@@ -207,7 +208,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Flat: 0
+    - _Flat: 1
     - _Fog: 1
     - _GlossMapScale: 0
     - _Glossiness: 0

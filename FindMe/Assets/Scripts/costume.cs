@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using AC;
 public class costume : MonoBehaviour
 {
-    private string sceneYear;
+    private string sceneClothes;
 
     public GameObject[] clothesBase;
     public GameObject[] clothing2016Uniform;
@@ -23,7 +23,7 @@ public class costume : MonoBehaviour
     private void ChangedActiveScene(Scene current, Scene next)
     {
   
-        sceneYear = AC.LocalVariables.GetVariable("SceneClothes").GetValue();
+        sceneClothes = AC.LocalVariables.GetVariable("SceneClothes").GetValue();
 
        
 
@@ -37,7 +37,7 @@ public class costume : MonoBehaviour
         { go.SetActive(false); }
 
 
-        switch (sceneYear)
+        switch (sceneClothes)
         {
             case "2016Uniform":
                 foreach (GameObject go in clothing2016Uniform)
