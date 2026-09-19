@@ -102,7 +102,7 @@ MonoBehaviour:
     m_Value: -0.32
   contrast:
     m_OverrideState: 1
-    m_Value: -31
+    m_Value: -29
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 0.033795543, g: 0.025649952, b: 0.044194173, a: 1}
@@ -110,8 +110,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 80
   saturation:
-    m_OverrideState: 0
-    m_Value: -100
+    m_OverrideState: 1
+    m_Value: -11
 --- !u!114 &-5915899025678989705
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -181,6 +181,61 @@ MonoBehaviour:
   gain:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.80118775, z: 0.9371397, w: 0.3930969}
+--- !u!114 &-4806389321448224848
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d468b943de483f641a8eb80fcd52e584, type: 3}
+  m_Name: SSCC
+  m_EditorClassIdentifier: SSCC.Universal.Runtime::ScreenSpaceCavityCurvature.Universal.SSCC
+  active: 1
+  effectIntensity:
+    m_OverrideState: 1
+    m_Value: 0.102
+  distanceFade:
+    m_OverrideState: 1
+    m_Value: 0
+  curvaturePixelRadius:
+    m_OverrideState: 1
+    m_Value: 2
+  curvatureBrights:
+    m_OverrideState: 1
+    m_Value: 2
+  curvatureDarks:
+    m_OverrideState: 1
+    m_Value: 3
+  cavitySamples:
+    m_OverrideState: 1
+    m_Value: 2
+  saturateCavity:
+    m_OverrideState: 1
+    m_Value: 1
+  cavityRadius:
+    m_OverrideState: 1
+    m_Value: 0.25
+  cavityBrights:
+    m_OverrideState: 1
+    m_Value: 3
+  cavityDarks:
+    m_OverrideState: 1
+    m_Value: 2
+  cavityResolution:
+    m_OverrideState: 1
+    m_Value: 0
+  normalsSource:
+    m_OverrideState: 1
+    m_Value: 1
+  debugMode:
+    m_OverrideState: 1
+    m_Value: 0
+  output:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-2764795061077874546
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -290,6 +345,7 @@ MonoBehaviour:
   - {fileID: -8645655610014948807}
   - {fileID: 6107344497176604921}
   - {fileID: 3758711922937008741}
+  - {fileID: -4806389321448224848}
 --- !u!114 &3758711922937008741
 MonoBehaviour:
   m_ObjectHideFlags: 3

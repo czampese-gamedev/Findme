@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
@@ -25,7 +26,7 @@ namespace Haze.Runtime
             CameraRelative
         }
 
-        public enum Resolution
+        private enum Resolution
         {
             _16 = 0,
             _32 = 1,
@@ -34,11 +35,18 @@ namespace Haze.Runtime
             _256 = 4
         }
 
-        public enum AspectRatioAdjustment
+        private enum AspectRatioAdjustment
         {
             None = 0,
             Upscale = 1,
             Downscale = 2
+        }
+
+        private enum BufferSampling
+        {
+            Tricubic = 0,
+            Trilinear = 1,
+            Point = 2
         }
         
 #region Density Volume Data
@@ -48,19 +56,28 @@ namespace Haze.Runtime
         {
             public float4x4 WorldToLocal;
             public float Shape;
-            public float Density;
-            public float MainLightDensityBoost;
-            public float SecondaryLightDensityBoost;
-            public float NoiseThreshold;
+            /*
+             * X -> Density
+             * Y -> Noise Threshold
+             * Z -> Main light density boost
+             * W -> Secondary light density boost
+             */
+            public float4 DensitySettings;
             public float3 AmbientColor;
             public float3 LightContribution;
             public float4 HeightFog;
-            public float AdditionalLightContribution;
-            public float ProbeVolumeContribution;
-            public float MainLightPhase;
-            public float GradientSamplingIndex;
 
-            public static int SizeInBytes => sizeof(float) * ((4 * 4) + 1 + 1 + 1 + 1 + 1 + 3 + 3 + 4 + 1 + 1 + 1 + 1);
+            /*
+             * X -> Additional light contribution
+             * Y -> Probe volume contribution
+             * Z -> Main light phase
+             * W -> Gradient sampling index
+             */
+            public float4 LightAndGradientSettings;
+            public float GradientMappingMethod;
+            public float Override;
+
+            public static int SizeInBytes => sizeof(float) * ((4 * 4) + 1 + 4 + 3 + 3 + 4 + 4 + 1 + 1);
             
             public void SetData(HazeDensityVolume densityVolume)
             {
@@ -69,18 +86,17 @@ namespace Haze.Runtime
 
                 WorldToLocal = densityVolume.WorldToLocal;
                 Shape = (float)densityVolume.VolumeShape;
-                Density = densityVolume.Density;
-                MainLightDensityBoost = densityVolume.MainLightDensityBoost;
-                SecondaryLightDensityBoost = densityVolume.SecondaryLightDensityBoost;
-                NoiseThreshold = densityVolume.NoiseThreshold;
+                DensitySettings = new float4(densityVolume.Density, densityVolume.NoiseThreshold,
+                    densityVolume.MainLightDensityBoost, densityVolume.SecondaryLightDensityBoost);
                 AmbientColor = new float3(ambientColor.r, ambientColor.g, ambientColor.b);
                 LightContribution = new float3(lightContribution.r, lightContribution.g, lightContribution.b);
                 HeightFog = new float4(densityVolume.MaxFogHeight, densityVolume.HeightFogSmoothness,
                     densityVolume.HeightFogFactor, (float)densityVolume.VolumeHeightFogMode);
-                AdditionalLightContribution = densityVolume.AdditionalLightContribution;
-                ProbeVolumeContribution = densityVolume.ProbeVolumeContribution;
-                MainLightPhase = densityVolume.MainLightScattering;
-                GradientSamplingIndex = densityVolume.VolumeIndex;
+                LightAndGradientSettings = new float4(densityVolume.AdditionalLightContribution,
+                    densityVolume.ProbeVolumeContribution, densityVolume.MainLightScattering,
+                    densityVolume.VolumeIndex);
+                GradientMappingMethod = (float)densityVolume.GradientMappingMethod + densityVolume.GradientLightScattering;
+                Override = densityVolume.DensityMode == HazeDensityVolume.VolumeDensityMode.Override ? 1 : 0;
             }
         }
 
@@ -93,7 +109,7 @@ namespace Haze.Runtime
 
         private static Camera _currentCamera;
         private static readonly List<HazeDensityVolume> DensityVolumes = new();
-        private readonly List<HazeDensityVolume> _visibleDensityVolumes = new();
+        private List<HazeDensityVolume> _visibleDensityVolumes = new();
         private readonly Plane[] _planeArray = new Plane[6];
 
 #endregion
@@ -124,7 +140,7 @@ namespace Haze.Runtime
             [SerializeField] [Range(3, 10)] internal int maxIterations = 5;
         }
 
-        public struct FroxelFogPassSettings
+        private struct FroxelFogPassSettings
         {
             public int3 Resolution;
             public float2 FroxelFogRange;
@@ -132,6 +148,8 @@ namespace Haze.Runtime
             public Texture3D NoiseTexture;
             public NoiseData NoiseData;
             public float TemporalAccumulationBlending;
+            public float MainLightShadowBias;
+            public bool JitterNoiseMotion;
         }
         
         private static readonly int VolumeNearClipPlane = Shader.PropertyToID("_VolumeNearClipPlane");
@@ -160,14 +178,20 @@ namespace Haze.Runtime
         [SerializeField] private Resolution _froxelBufferDepth = Resolution._64;
         [Tooltip("The near and far clipping planes of the froxel fog effect.")]
         [SerializeField] private float2 _froxelFogRange = new(0.1f, 500.0f);
-        [Tooltip("Toggles tricubic sampling of the fog buffer. Enabling it greatly reduces aliasing artifacts at a small performance cost.")]
-        [SerializeField] private bool _tricubicSampling = true;
+        [Tooltip("Sampling method for the froxel buffer. Tricubic is the most artifact-free but more performance-intensive. Point is for more lo-fi stylized effects.")]
+        [SerializeField] private BufferSampling _bufferSampling;
         [Tooltip("Adjusts the strength of the interleaved gradient noise (IGN) which reduces artifacts when using TAA.")]
         [SerializeField, Range(0,1)] private float _interleavedGradientNoiseStrength = 1.0f;
+        [Tooltip("Toggles the motion of the jitter noise. Turn off for a more lo-fi result.")]
+        [SerializeField] private bool _jitterNoiseMotion = true;
 
         [Header("Temporal accumulation")]
         [Tooltip("Controls the temporal accumulation blending. Set to 0 to disable temporal accumulation.")]
         [SerializeField, Range(0, 0.99f)] private float _temporalAccumulationBlending = 0.95f;
+
+        [Header("Lighting settings")] 
+        [Tooltip("Main light shadow bias to help with light leaking from walls.")]
+        [SerializeField, Range(-0.5f, 0.5f)] private float _mainLightShadowBias = 0.0f;
         
         [Header("Volume settings")]
         [Tooltip("Maximum distance at which density volumes are considered visible.")]
@@ -188,18 +212,38 @@ namespace Haze.Runtime
 #if UNITY_EDITOR
         private static bool _initialized = false;
 #endif
+        private static readonly int GlobalBloomTexture = Shader.PropertyToID("_GLOBAL_BloomTexture");
 
         #region Density Volume Methods
-        
-        private static int DensityVolumeSorting(HazeDensityVolume a, HazeDensityVolume b)
+
+        private static readonly Func<HazeDensityVolume, HazeDensityVolume, bool> VolumeOrderComparison = (a, b) =>
         {
             var biasA = a.Density < 0 ? 0 : 1000;
             var biasB = b.Density < 0 ? 0 : 1000;
-            var distanceComparison = (math.distancesq(_currentCamera.transform.position, a.transform.position) + biasA)
-                .CompareTo(math.distancesq(_currentCamera.transform.position, b.transform.position) + biasB);
+            var camPos = _currentCamera.transform.position;
+            if (a.Priority != b.Priority)
+            {
+                return a.Priority + biasA > b.Priority + biasB;
+            }
+            var distanceComparison = math.distancesq(camPos, a.VolumeBounds.ClosestPoint(camPos)) + biasA > math.distancesq(camPos, b.VolumeBounds.ClosestPoint(camPos)) + biasB;
             return distanceComparison;
+        };
+
+        private static void SortVolumes(ref List<HazeDensityVolume> volumes,
+            Func<HazeDensityVolume, HazeDensityVolume, bool> compare)
+        {
+            var len = volumes.Count;
+            for (var i = 0; i < len; i++)
+            {
+                var current = volumes[i];
+                for (var j = i - 1; j >= 0 && !compare(current, volumes[j]); j--)
+                {
+                    volumes[j + 1] = volumes[j];
+                    volumes[j] = current;
+                }
+            }
         }
-        
+
         private void UpdateVolumeVisibility()
         {
             if (_currentCamera == null || (Application.isPlaying && (!_currentCamera.transform.hasChanged || _currentCamera.cameraType == CameraType.SceneView)) || _currentCamera.cameraType == CameraType.Preview)
@@ -214,14 +258,14 @@ namespace Haze.Runtime
 
             foreach (var densityVolume in DensityVolumes)
             {
-                if (math.distancesq(_currentCamera.transform.position, densityVolume.transform.position) < _maximumVolumeDistance * _maximumVolumeDistance
+                if (densityVolume.IsWithinRange(_currentCamera.transform.position, _maximumVolumeDistance)
                     && densityVolume.IsWithinCameraFrustum(_planeArray))
                 {
                     _visibleDensityVolumes.Add(densityVolume);
                 }
             }
 
-            _visibleDensityVolumes.Sort(DensityVolumeSorting);
+            SortVolumes(ref _visibleDensityVolumes, VolumeOrderComparison);
             _froxelFogRenderPass?.UpdateVisibleDensityVolumeCount(_visibleDensityVolumes.Count);
         }
 
@@ -245,7 +289,7 @@ namespace Haze.Runtime
                 return;
             }
 
-            for (var i = 0; i < _visibleDensityVolumes.Count; i++)
+            for (var i = 0; i < math.min(MaximumDensityVolumes, _visibleDensityVolumes.Count); i++)
             {
                 _densityVolumeData[i] = _visibleDensityVolumes[i].DensityVolumeData;
             }
@@ -405,7 +449,9 @@ namespace Haze.Runtime
                 FroxelFogComputeShader = _froxelFogComputeShader,
                 NoiseTexture = _noiseTexture,
                 NoiseData = _noiseData,
-                TemporalAccumulationBlending = _temporalAccumulationBlending
+                TemporalAccumulationBlending = _temporalAccumulationBlending,
+                MainLightShadowBias = _mainLightShadowBias,
+                JitterNoiseMotion = _jitterNoiseMotion
             };
             
             _froxelFogRenderPass = new FroxelFogRenderPass(froxelFogPassSettings)
@@ -418,7 +464,7 @@ namespace Haze.Runtime
                 return;
             }
             
-            _froxelFogCompositePass = new FroxelFogCompositePass(_froxelFogCompositeShader, _tricubicSampling, _multipleScatteringData, _interleavedGradientNoiseStrength)
+            _froxelFogCompositePass = new FroxelFogCompositePass(_froxelFogCompositeShader, _bufferSampling, _multipleScatteringData, _interleavedGradientNoiseStrength)
             {
                 renderPassEvent = _renderBeforeTransparents ? RenderPassEvent.BeforeRenderingTransparents : RenderPassEvent.BeforeRenderingPostProcessing
             };
@@ -431,7 +477,7 @@ namespace Haze.Runtime
                 return;
             }
 
-            _multipleScatteringPass = new MultipleScatteringPass(_bloomShader, _froxelFogRange, _multipleScatteringData)
+            _multipleScatteringPass = new MultipleScatteringPass(_bloomShader, _multipleScatteringData)
             {
                 renderPassEvent = _renderBeforeTransparents ? RenderPassEvent.AfterRenderingSkybox : RenderPassEvent.AfterRenderingTransparents
             };
@@ -501,10 +547,12 @@ namespace Haze.Runtime
 
         private class FroxelFogRenderPass : ScriptableRenderPass
         {
-            private class PassData
+            private class ScatterPassData
             {
                 internal TextureHandle WriteBuffer;
                 internal TextureHandle ReadBuffer;
+                internal ComputeShader ComputeShader;
+                internal int2 ScatterThreadGroups;
             }
 
             private class DensityGatherPassData
@@ -516,16 +564,18 @@ namespace Haze.Runtime
                 internal Matrix4x4 PrevViewProjectionMatrix;
                 internal float4 ZBufferParameters;
                 internal bool TemporalReprojection;
-                internal GraphicsBuffer LightAlphaBuffer;
+                internal BufferHandle LightAlphaBuffer;
                 internal BufferHandle DensityVolumeDataBuffer;
                 internal TextureHandle VolumeGradientTexture;
+                internal FroxelFogPassSettings Settings;
+                internal int3 DensityGatherThreadGroups;
+                internal int VisibleDensityVolumes;
             }
             
             private GraphicsBuffer _densityVolumeDataBuffer;
             private GraphicsBuffer _lightAlphaBuffer;
             private int _visibleDensityVolumes;
             
-            private readonly ComputeShader _froxelFogComputeShader;
             private readonly RenderTexture _colorDensityBuffer;
             private readonly RenderTexture _colorDensityHistoryBuffer;
             private readonly RenderTexture _scatterBuffer;
@@ -537,20 +587,17 @@ namespace Haze.Runtime
             private readonly RTHandle _scatterBufferHandle;
             private RTHandle _volumeGradientTextureHandle;
             
-            private readonly int3 _resolution;
-            private readonly float2 _froxelFogRange;
             private readonly RenderTargetInfo _renderTargetInfo;
             private readonly int3 _densityGatherThreadGroups;
-            private readonly int3 _scatterThreadGroups;
-            private readonly float _temporalAccumulationBlending;
+            private readonly int2 _scatterThreadGroups;
+
+            private readonly FroxelFogPassSettings _passSetings;
             
             private Matrix4x4 _prevViewProjectionMatrix;
 
             private const int DensityGatherKernelIndex = 0;
             private const int ScatterKernelIndex = 1;
-
-            private readonly NoiseData _noiseData;
-            private readonly Texture3D _fallbackNoiseTexture;
+            private const int MaximumVisibleLights = 128;
 
             private void InitializeRenderTexture(ref RenderTexture renderTexture)
             {
@@ -559,9 +606,10 @@ namespace Haze.Runtime
                     return;
                 }
 
-                renderTexture = new RenderTexture(_resolution.x, _resolution.y, 0, GraphicsFormat.R16G16B16A16_SFloat)
+                var resolution = _passSetings.Resolution;
+                renderTexture = new RenderTexture(resolution.x, resolution.y, 0, GraphicsFormat.R16G16B16A16_SFloat)
                 {
-                    volumeDepth = _resolution.z,
+                    volumeDepth = resolution.z,
                     dimension = TextureDimension.Tex3D,
                     enableRandomWrite = true
                 };
@@ -587,11 +635,8 @@ namespace Haze.Runtime
             public FroxelFogRenderPass(FroxelFogPassSettings settings)
             {
                 profilingSampler = new ProfilingSampler("Haze Froxel Fog");
-                _resolution = settings.Resolution;
-                _froxelFogComputeShader = settings.FroxelFogComputeShader;
-                _froxelFogRange = settings.FroxelFogRange;
-                _noiseData = settings.NoiseData;
-                _temporalAccumulationBlending = settings.TemporalAccumulationBlending;
+                _passSetings = settings;
+                var resolution = _passSetings.Resolution;
                 
                 InitializeRenderTexture(ref _colorDensityBuffer);
                 InitializeRenderTexture(ref _colorDensityHistoryBuffer);
@@ -600,9 +645,9 @@ namespace Haze.Runtime
                 _renderTargetInfo = new RenderTargetInfo()
                 {
                     format = GraphicsFormat.R16G16B16A16_SFloat,
-                    width = _resolution.x,
-                    height = _resolution.y,
-                    volumeDepth = _resolution.z,
+                    width = resolution.x,
+                    height = resolution.y,
+                    volumeDepth = resolution.z,
                     msaaSamples = 1
                 };
 
@@ -610,23 +655,24 @@ namespace Haze.Runtime
                 _colorDensityHistoryBufferHandle = RTHandles.Alloc(_colorDensityHistoryBuffer);
                 _scatterBufferHandle = RTHandles.Alloc(_scatterBuffer);
 
-                _fallbackNoiseTexture = new Texture3D(1, 1, 1, GraphicsFormat.R16G16B16A16_SFloat,
+                var fallbackNoiseTexture = new Texture3D(1, 1, 1, GraphicsFormat.R16G16B16A16_SFloat,
                     TextureCreationFlags.DontInitializePixels);
-                _fallbackNoiseTexture.SetPixel(0,0,0,Color.white);
-                _fallbackNoiseTexture.Apply();
+                fallbackNoiseTexture.SetPixel(0,0,0,Color.white);
+                fallbackNoiseTexture.Apply();
 
-                _noiseTextureHandle = RTHandles.Alloc(settings.NoiseTexture == null ? _fallbackNoiseTexture : settings.NoiseTexture);
+                _noiseTextureHandle = RTHandles.Alloc(settings.NoiseTexture == null ? fallbackNoiseTexture : settings.NoiseTexture);
                 _volumeGradientTextureHandle = RTHandles.Alloc(Texture2D.whiteTexture);
                 
-                _froxelFogComputeShader.GetKernelThreadGroupSizes(DensityGatherKernelIndex, out var threadGroupSizesX, out var threadGroupSizesY, out var threadGroupSizesZ);
-                _densityGatherThreadGroups = new int3(  Mathf.CeilToInt((float) _resolution.x / threadGroupSizesX), 
-                                                        Mathf.CeilToInt((float) _resolution.y / threadGroupSizesY), 
-                                                        Mathf.CeilToInt((float) _resolution.z / threadGroupSizesZ));
+                _passSetings.FroxelFogComputeShader.GetKernelThreadGroupSizes(DensityGatherKernelIndex, out var threadGroupSizesX, out var threadGroupSizesY, out var threadGroupSizesZ);
+                _densityGatherThreadGroups = new int3(  Mathf.CeilToInt((float) resolution.x / threadGroupSizesX), 
+                                                        Mathf.CeilToInt((float) resolution.y / threadGroupSizesY), 
+                                                        Mathf.CeilToInt((float) resolution.z / threadGroupSizesZ));
                 
-                _froxelFogComputeShader.GetKernelThreadGroupSizes(ScatterKernelIndex, out threadGroupSizesX, out threadGroupSizesY, out threadGroupSizesZ);
-                _scatterThreadGroups = new int3(Mathf.CeilToInt((float) _resolution.x / threadGroupSizesX), 
-                                                Mathf.CeilToInt((float) _resolution.y / threadGroupSizesY), 
-                                                Mathf.CeilToInt((float) _resolution.z / threadGroupSizesZ));
+                _passSetings.FroxelFogComputeShader.GetKernelThreadGroupSizes(ScatterKernelIndex, out threadGroupSizesX, out threadGroupSizesY, out threadGroupSizesZ);
+                _scatterThreadGroups = new int2(Mathf.CeilToInt((float) resolution.x / threadGroupSizesX), 
+                                                Mathf.CeilToInt((float) resolution.y / threadGroupSizesY));
+                
+                _lightAlphaBuffer = new GraphicsBuffer(GraphicsBuffer.Target.Structured, MaximumVisibleLights, sizeof(float));
             }
 
             private class CustomData : ContextItem
@@ -639,18 +685,138 @@ namespace Haze.Runtime
                 }
             }
 
-            private void ExecuteDensityGatherPass(DensityGatherPassData data, ComputeGraphContext context)
+            public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
             {
-                context.cmd.SetComputeVectorParam(_froxelFogComputeShader, "_ZBufferParameters", data.ZBufferParameters);
-                context.cmd.SetComputeMatrixParam(_froxelFogComputeShader, "_InverseViewProjectionMatrix", data.InverseViewProjectionMatrix);
-                context.cmd.SetComputeMatrixParam(_froxelFogComputeShader, "_PrevViewProjectionMatrix", data.PrevViewProjectionMatrix);
+                var cameraData = frameData.Get<UniversalCameraData>();
+                var lightData = frameData.Get<UniversalLightData>();
                 
-                context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_TemporalReprojection", data.TemporalReprojection ? 1 : 0);
-                context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_TemporalAccumulationBlending", 1.0f - _temporalAccumulationBlending);
+                var visibleLights = lightData.visibleLights;
+                var punctualLightsAmount = 0;
+                
+                foreach (var light in visibleLights)
+                {
+                    if (light.lightType is LightType.Spot or LightType.Point)
+                    {
+                        punctualLightsAmount++;
+                    }
+                }
 
-                var noiseTiling = _noiseData.noiseTiling;
-                var noisePanningSpeed = _noiseData.noisePanningSpeed;
-                var noiseWeights = _noiseData.noiseWeights;
+                punctualLightsAmount = math.min(MaximumVisibleLights, punctualLightsAmount);
+                var lightAlphaArray = new NativeArray<float>(1, Allocator.Temp);
+                if (punctualLightsAmount > 0)
+                {
+                    lightAlphaArray.Dispose();
+                    lightAlphaArray = new NativeArray<float>(punctualLightsAmount, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+                    var counter = 0;
+                   // foreach (var visibleLight in visibleLights)
+                    for (var i  = 0; i < visibleLights.Length && counter < punctualLightsAmount; i++)
+                    {
+                            var visibleLight = visibleLights[i];
+                        if (visibleLight.lightType is LightType.Spot or LightType.Point)
+                        {
+                            lightAlphaArray[counter++] = visibleLight.light.color.a;
+                        }
+                    }
+                }
+
+                _lightAlphaBuffer.SetData(lightAlphaArray);
+                lightAlphaArray.Dispose();
+
+                var colorDensityBuffer = renderGraph.ImportTexture(_colorDensityBufferHandle, _renderTargetInfo);
+                var colorDensityHistoryBuffer = renderGraph.ImportTexture(_colorDensityHistoryBufferHandle, _renderTargetInfo);
+                var scatterBuffer = renderGraph.ImportTexture(_scatterBufferHandle, _renderTargetInfo);
+                var noiseTexture = renderGraph.ImportTexture(_noiseTextureHandle);
+                var volumeGradientTexture = renderGraph.ImportTexture(_volumeGradientTextureHandle);
+                var densityVolumeDataBuffer = renderGraph.ImportBuffer(_densityVolumeDataBuffer);
+                var lightAlphaBuffer = renderGraph.ImportBuffer(_lightAlphaBuffer);
+
+                using (var builder = renderGraph.AddComputePass("Color density accumulation", out DensityGatherPassData passData, profilingSampler))
+                {
+                    passData.WriteBuffer = colorDensityBuffer;
+                    passData.ReadBuffer = colorDensityHistoryBuffer;
+                    passData.NoiseTexture = noiseTexture;
+                    passData.PrevViewProjectionMatrix = _prevViewProjectionMatrix;
+                    passData.LightAlphaBuffer = lightAlphaBuffer;
+                    passData.DensityVolumeDataBuffer = densityVolumeDataBuffer;
+                    passData.VolumeGradientTexture = volumeGradientTexture;
+                    passData.Settings = _passSetings;
+                    passData.VisibleDensityVolumes = _visibleDensityVolumes;
+                    passData.DensityGatherThreadGroups = _densityGatherThreadGroups;
+                    
+                    builder.UseTexture(passData.WriteBuffer, AccessFlags.Write);
+                    builder.UseTexture(passData.ReadBuffer);
+                    builder.UseTexture(passData.NoiseTexture);
+                    builder.UseTexture(passData.VolumeGradientTexture);
+                    builder.UseBuffer(passData.DensityVolumeDataBuffer);
+                    builder.AllowPassCulling(false);
+
+                    var customData = frameData.Create<CustomData>();
+                    customData.IntermediateBuffer = colorDensityBuffer;
+
+                    var froxelFogRange = _passSetings.FroxelFogRange;
+                    var farDivNear = froxelFogRange.y / froxelFogRange.x;
+                    var zBufferParameters = new float4(1.0f - farDivNear, farDivNear, froxelFogRange.x, froxelFogRange.y);
+                    
+                    var viewMatrix = cameraData.camera.worldToCameraMatrix;
+                    var projMatrix = Matrix4x4.Perspective(cameraData.camera.GetGateFittedFieldOfView(), cameraData.camera.aspect, froxelFogRange.x, froxelFogRange.y);
+                    var viewProjectionMatrix = projMatrix * viewMatrix;
+                    
+                    Shader.SetGlobalFloat(VolumeNearClipPlane, froxelFogRange.x);
+                    Shader.SetGlobalFloat(VolumeFarClipPlane, froxelFogRange.y);
+                    Shader.SetGlobalMatrix(FroxelVolumeVp, viewProjectionMatrix);
+
+                    passData.InverseViewProjectionMatrix = Matrix4x4.Inverse(viewProjectionMatrix);
+                    passData.ZBufferParameters = zBufferParameters;
+                    passData.TemporalReprojection = (Application.isPlaying && cameraData.cameraType == CameraType.Game) ||
+                                                    (!Application.isPlaying && cameraData.cameraType == CameraType.SceneView);
+                    
+                    builder.SetRenderFunc((DensityGatherPassData data, ComputeGraphContext context) => ExecuteDensityGatherPass(data, context));
+
+                    if (passData.TemporalReprojection)
+                    {
+                        (_colorDensityBufferHandle, _colorDensityHistoryBufferHandle) = (_colorDensityHistoryBufferHandle, _colorDensityBufferHandle);
+                        // Orthographic projection doesn't use VP matrix; assign previous view matrix instead
+                        _prevViewProjectionMatrix = cameraData.camera.orthographic ? viewMatrix : viewProjectionMatrix;
+                    }
+                }
+
+                using (var builder = renderGraph.AddComputePass("Scatter", out ScatterPassData passData, profilingSampler))
+                {
+                    var customData = frameData.Get<CustomData>();
+                    passData.WriteBuffer = scatterBuffer;
+                    passData.ReadBuffer = customData.IntermediateBuffer;
+                    passData.ComputeShader = _passSetings.FroxelFogComputeShader;
+                    passData.ScatterThreadGroups = _scatterThreadGroups.xy;
+
+                    customData.IntermediateBuffer = scatterBuffer;
+                    builder.UseTexture(passData.WriteBuffer, AccessFlags.Write);
+                    builder.UseTexture(passData.ReadBuffer);
+                    builder.AllowPassCulling(false);
+                    
+                    builder.SetGlobalTextureAfterPass(passData.WriteBuffer, Shader.PropertyToID("_ScatterBuffer"));
+                    
+                    builder.SetRenderFunc((ScatterPassData data, ComputeGraphContext context) =>
+                    {
+                        ExecuteScatterPass(context, data);
+                    });
+                }
+            }
+            
+            private static void ExecuteDensityGatherPass(DensityGatherPassData data, ComputeGraphContext context)
+            {
+                var settings = data.Settings;
+                context.cmd.SetComputeVectorParam(settings.FroxelFogComputeShader, "_ZBufferParameters", data.ZBufferParameters);
+                context.cmd.SetComputeMatrixParam(settings.FroxelFogComputeShader, "_InverseViewProjectionMatrix", data.InverseViewProjectionMatrix);
+                context.cmd.SetComputeMatrixParam(settings.FroxelFogComputeShader, "_PrevViewProjectionMatrix", data.PrevViewProjectionMatrix);
+                
+                context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_TemporalReprojection", data.TemporalReprojection ? 1 : 0);
+                context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_TemporalAccumulationBlending", 1.0f - settings.TemporalAccumulationBlending);
+                context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_MainLightShadowBias", settings.MainLightShadowBias);
+                context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_JitterNoiseMotion", settings.JitterNoiseMotion ? 1 : 0);
+
+                var noiseTiling = settings.NoiseData.noiseTiling;
+                var noisePanningSpeed = settings.NoiseData.noisePanningSpeed;
+                var noiseWeights = settings.NoiseData.noiseWeights;
                 
                 var hazeSettingsOverrides = VolumeManager.instance.stack?.GetComponent<HazeOverridesVolumeComponent>();
                 if (hazeSettingsOverrides != null && hazeSettingsOverrides.IsActive())
@@ -671,142 +837,44 @@ namespace Haze.Runtime
                     }
                 }
                 
-                context.cmd.SetComputeVectorParam(_froxelFogComputeShader, "_GlobalNoisePanningTiling", new float4(noisePanningSpeed, noiseTiling));
-                context.cmd.SetComputeVectorParam(_froxelFogComputeShader, "_GlobalNoiseWeights", noiseWeights);
-                context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_VisibleDensityVolumes", _visibleDensityVolumes);
+                context.cmd.SetComputeVectorParam(settings.FroxelFogComputeShader, "_GlobalNoisePanningTiling", new float4(noisePanningSpeed, noiseTiling));
+                context.cmd.SetComputeVectorParam(settings.FroxelFogComputeShader, "_GlobalNoiseWeights", noiseWeights);
+                context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_VisibleDensityVolumes", data.VisibleDensityVolumes);
 
                 //Volume parameters
                 var globalFogVolumeComponent = VolumeManager.instance.stack?.GetComponent<HazeGlobalFogVolumeComponent>();
 
                 if (globalFogVolumeComponent != null && globalFogVolumeComponent.active)
                 {
-                    context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_GlobalDensityMultiplier", globalFogVolumeComponent.GlobalDensityMultiplier.value);
-                    context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_GlobalDensityThreshold", globalFogVolumeComponent.GlobalDensityThreshold.value);
-                    context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_GlobalMainLightDensityBoost", globalFogVolumeComponent.GlobalMainLightDensityBoost.value);
-                    context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_GlobalSecondaryLightDensityBoost", globalFogVolumeComponent.GlobalSecondaryLightDensityBoost.value);
-                    context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_LightScattering", globalFogVolumeComponent.MainLightScattering.value);
-                    context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_GlobalAdditionalLightContribution", globalFogVolumeComponent.AdditionalLightContribution.value);
-                    context.cmd.SetComputeFloatParam(_froxelFogComputeShader, "_GlobalProbeVolumeContribution", globalFogVolumeComponent.ProbeVolumeContribution.value);
-                    context.cmd.SetComputeVectorParam(_froxelFogComputeShader, "_AmbientColor", globalFogVolumeComponent.AmbientColor.value);
-                    context.cmd.SetComputeVectorParam(_froxelFogComputeShader, "_GlobalMainLightContribution", globalFogVolumeComponent.MainLightContribution.value);
-                    context.cmd.SetComputeVectorParam(_froxelFogComputeShader, "_GlobalHeightFog", new float4(globalFogVolumeComponent.MaxFogHeight.value,
+                    context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_GlobalDensityMultiplier", globalFogVolumeComponent.GlobalDensityMultiplier.value);
+                    context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_GlobalDensityThreshold", globalFogVolumeComponent.GlobalDensityThreshold.value);
+                    context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_GlobalMainLightDensityBoost", globalFogVolumeComponent.GlobalMainLightDensityBoost.value);
+                    context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_GlobalSecondaryLightDensityBoost", globalFogVolumeComponent.GlobalSecondaryLightDensityBoost.value);
+                    context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_LightScattering", globalFogVolumeComponent.MainLightScattering.value);
+                    context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_GlobalAdditionalLightContribution", globalFogVolumeComponent.AdditionalLightContribution.value);
+                    context.cmd.SetComputeFloatParam(settings.FroxelFogComputeShader, "_GlobalProbeVolumeContribution", globalFogVolumeComponent.ProbeVolumeContribution.value);
+                    context.cmd.SetComputeVectorParam(settings.FroxelFogComputeShader, "_AmbientColor", globalFogVolumeComponent.AmbientColor.value);
+                    context.cmd.SetComputeVectorParam(settings.FroxelFogComputeShader, "_GlobalMainLightContribution", globalFogVolumeComponent.MainLightContribution.value);
+                    context.cmd.SetComputeVectorParam(settings.FroxelFogComputeShader, "_GlobalHeightFog", new float4(globalFogVolumeComponent.MaxFogHeight.value,
                     globalFogVolumeComponent.HeightFogSmoothness.value, globalFogVolumeComponent.HeightFogFactor.value, globalFogVolumeComponent.CameraRelativeHeightFog.value ? 1 : 0));
                 }
 
-                context.cmd.SetComputeTextureParam(_froxelFogComputeShader, DensityGatherKernelIndex, "_ColorDensityBuffer", data.WriteBuffer);
-                context.cmd.SetComputeTextureParam(_froxelFogComputeShader, DensityGatherKernelIndex, "_ColorDensityReadBuffer", data.ReadBuffer);
-                context.cmd.SetComputeTextureParam(_froxelFogComputeShader, DensityGatherKernelIndex, "_GlobalNoiseTexture", data.NoiseTexture);
-                context.cmd.SetComputeTextureParam(_froxelFogComputeShader, DensityGatherKernelIndex, "_VolumeGradientTexture", data.VolumeGradientTexture);
+                context.cmd.SetComputeTextureParam(settings.FroxelFogComputeShader, DensityGatherKernelIndex, "_ColorDensityBuffer", data.WriteBuffer);
+                context.cmd.SetComputeTextureParam(settings.FroxelFogComputeShader, DensityGatherKernelIndex, "_ColorDensityReadBuffer", data.ReadBuffer);
+                context.cmd.SetComputeTextureParam(settings.FroxelFogComputeShader, DensityGatherKernelIndex, "_GlobalNoiseTexture", data.NoiseTexture);
+                context.cmd.SetComputeTextureParam(settings.FroxelFogComputeShader, DensityGatherKernelIndex, "_VolumeGradientTexture", data.VolumeGradientTexture);
                 
-                context.cmd.SetComputeBufferParam(_froxelFogComputeShader, DensityGatherKernelIndex, "_HazeDensityVolumeBuffer", data.DensityVolumeDataBuffer);
-                context.cmd.SetComputeBufferParam(_froxelFogComputeShader, DensityGatherKernelIndex, "_SecondaryLightAlphaBuffer", data.LightAlphaBuffer);
+                context.cmd.SetComputeBufferParam(settings.FroxelFogComputeShader, DensityGatherKernelIndex, "_HazeDensityVolumeBuffer", data.DensityVolumeDataBuffer);
+                context.cmd.SetComputeBufferParam(settings.FroxelFogComputeShader, DensityGatherKernelIndex, "_SecondaryLightAlphaBuffer", data.LightAlphaBuffer);
                 
-                context.cmd.DispatchCompute(_froxelFogComputeShader, DensityGatherKernelIndex, _densityGatherThreadGroups.x, _densityGatherThreadGroups.y, _densityGatherThreadGroups.z);
+                context.cmd.DispatchCompute(settings.FroxelFogComputeShader, DensityGatherKernelIndex, data.DensityGatherThreadGroups.x, data.DensityGatherThreadGroups.y, data.DensityGatherThreadGroups.z);
             }
-            
-            public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
+
+            private static void ExecuteScatterPass(ComputeGraphContext context, ScatterPassData data)
             {
-                var cameraData = frameData.Get<UniversalCameraData>();
-                var lightData = frameData.Get<UniversalLightData>();
-                
-                var visibleLights = lightData.visibleLights;
-                var visiblePunctualLights = new List<VisibleLight>();
-                foreach (var visibleLight in visibleLights)
-                {
-                    if (visibleLight.lightType is LightType.Spot or LightType.Point)
-                    {
-                        visiblePunctualLights.Add(visibleLight);
-                    }
-                }
-
-                var lightAlphaArray = new []{1.0f};
-
-                if (visiblePunctualLights.Count > 0)
-                {
-                    lightAlphaArray = new float[visiblePunctualLights.Count];
-                    for (var i = 0; i < visiblePunctualLights.Count; i++)
-                    {
-                        lightAlphaArray[i] = visiblePunctualLights[i].light.color.a;
-                    }
-                }
-                
-                _lightAlphaBuffer?.Release();
-                _lightAlphaBuffer = new GraphicsBuffer(GraphicsBuffer.Target.Structured, lightAlphaArray.Length, sizeof(float));
-                _lightAlphaBuffer.SetData(lightAlphaArray);
-
-                var colorDensityBuffer = renderGraph.ImportTexture(_colorDensityBufferHandle, _renderTargetInfo);
-                var colorDensityHistoryBuffer = renderGraph.ImportTexture(_colorDensityHistoryBufferHandle, _renderTargetInfo);
-                var scatterBuffer = renderGraph.ImportTexture(_scatterBufferHandle, _renderTargetInfo);
-                var noiseTexture = renderGraph.ImportTexture(_noiseTextureHandle);
-                var volumeGradientTexture = renderGraph.ImportTexture(_volumeGradientTextureHandle);
-                var densityVolumeDataBuffer = renderGraph.ImportBuffer(_densityVolumeDataBuffer);
-
-                using (var builder = renderGraph.AddComputePass("Color density accumulation", out DensityGatherPassData passData, profilingSampler))
-                {
-                    passData.WriteBuffer = colorDensityBuffer;
-                    passData.ReadBuffer = colorDensityHistoryBuffer;
-                    passData.NoiseTexture = noiseTexture;
-                    passData.PrevViewProjectionMatrix = _prevViewProjectionMatrix;
-                    passData.LightAlphaBuffer = _lightAlphaBuffer;
-                    passData.DensityVolumeDataBuffer = densityVolumeDataBuffer;
-                    passData.VolumeGradientTexture = volumeGradientTexture;
-                    
-                    builder.UseTexture(passData.WriteBuffer, AccessFlags.Write);
-                    builder.UseTexture(passData.ReadBuffer);
-                    builder.UseTexture(passData.NoiseTexture);
-                    builder.UseTexture(passData.VolumeGradientTexture);
-                    builder.UseBuffer(passData.DensityVolumeDataBuffer);
-                    builder.AllowPassCulling(false);
-
-                    var customData = frameData.Create<CustomData>();
-                    customData.IntermediateBuffer = colorDensityBuffer;
-                    
-                    var farDivNear = _froxelFogRange.y / _froxelFogRange.x;
-                    var zBufferParameters = new float4(1.0f - farDivNear, farDivNear, _froxelFogRange.x, _froxelFogRange.y);
-                    
-                    var viewMatrix = cameraData.camera.worldToCameraMatrix;
-                    var projMatrix = Matrix4x4.Perspective(cameraData.camera.GetGateFittedFieldOfView(), cameraData.camera.aspect, _froxelFogRange.x, _froxelFogRange.y);
-                    var viewProjectionMatrix = projMatrix * viewMatrix;
-                    
-                    Shader.SetGlobalFloat(VolumeNearClipPlane, _froxelFogRange.x);
-                    Shader.SetGlobalFloat(VolumeFarClipPlane, _froxelFogRange.y);
-                    Shader.SetGlobalMatrix(FroxelVolumeVp, viewProjectionMatrix);
-
-                    passData.InverseViewProjectionMatrix = Matrix4x4.Inverse(viewProjectionMatrix);
-                    passData.ZBufferParameters = zBufferParameters;
-                    passData.TemporalReprojection = (Application.isPlaying && cameraData.cameraType == CameraType.Game) ||
-                                                    (!Application.isPlaying && cameraData.cameraType == CameraType.SceneView);
-                    
-                    builder.SetRenderFunc((DensityGatherPassData data, ComputeGraphContext context) => ExecuteDensityGatherPass(data, context));
-
-                    if (passData.TemporalReprojection)
-                    {
-                        (_colorDensityBufferHandle, _colorDensityHistoryBufferHandle) = (_colorDensityHistoryBufferHandle, _colorDensityBufferHandle);
-                        // Orthographic projection doesn't use VP matrix; assign previous view matrix instead
-                        _prevViewProjectionMatrix = cameraData.camera.orthographic ? viewMatrix : viewProjectionMatrix;
-                    }
-                }
-
-                using (var builder = renderGraph.AddComputePass("Scatter", out PassData passData, profilingSampler))
-                {
-                    var customData = frameData.Get<CustomData>();
-                    passData.WriteBuffer = scatterBuffer;
-                    passData.ReadBuffer = customData.IntermediateBuffer;
-
-                    customData.IntermediateBuffer = scatterBuffer;
-                    builder.UseTexture(passData.WriteBuffer, AccessFlags.Write);
-                    builder.UseTexture(passData.ReadBuffer);
-                    builder.AllowPassCulling(false);
-                    
-                    builder.SetGlobalTextureAfterPass(passData.WriteBuffer, Shader.PropertyToID("_ScatterBuffer"));
-                    
-                    builder.SetRenderFunc((PassData data, ComputeGraphContext context) =>
-                    {
-                        context.cmd.SetComputeTextureParam(_froxelFogComputeShader, ScatterKernelIndex, "_ScatterBuffer", data.WriteBuffer);
-                        context.cmd.SetComputeTextureParam(_froxelFogComputeShader, ScatterKernelIndex, "_ColorDensityReadBuffer", data.ReadBuffer);
-                        context.cmd.DispatchCompute(_froxelFogComputeShader, ScatterKernelIndex, _scatterThreadGroups.x, _scatterThreadGroups.y, _densityGatherThreadGroups.z);
-                    });
-                }
+                context.cmd.SetComputeTextureParam(data.ComputeShader, ScatterKernelIndex, "_ScatterBuffer", data.WriteBuffer);
+                context.cmd.SetComputeTextureParam(data.ComputeShader, ScatterKernelIndex, "_ColorDensityReadBuffer", data.ReadBuffer);
+                context.cmd.DispatchCompute(data.ComputeShader, ScatterKernelIndex, data.ScatterThreadGroups.x, data.ScatterThreadGroups.y, 1);
             }
 
             public void Dispose()
@@ -827,14 +895,14 @@ namespace Haze.Runtime
         private class FroxelFogCompositePass : ScriptableRenderPass
         {
             private readonly Material _froxelFogCompositeMaterial;
-            private readonly bool _tricubicSampling;
+            private readonly BufferSampling _bufferSampling;
             private readonly float _interleavedGradientNoiseStrength;
             private readonly MultipleScatteringData _multipleScatteringData;
 
-            public FroxelFogCompositePass(Shader froxelFogCompositeShader, bool tricubicSampling, MultipleScatteringData multipleScatteringData, float interleavedGradientNoiseStrength)
+            public FroxelFogCompositePass(Shader froxelFogCompositeShader, BufferSampling bufferSampling, MultipleScatteringData multipleScatteringData, float interleavedGradientNoiseStrength)
             {
                 _froxelFogCompositeMaterial = CoreUtils.CreateEngineMaterial(froxelFogCompositeShader);
-                _tricubicSampling = tricubicSampling;
+                _bufferSampling = bufferSampling;
                 _multipleScatteringData = multipleScatteringData;
                 _interleavedGradientNoiseStrength = interleavedGradientNoiseStrength;
             }
@@ -848,14 +916,18 @@ namespace Haze.Runtime
                 textureDesc.depthBufferBits = 0;
                 
                 var copiedTexture = renderGraph.CreateTexture(textureDesc);
-
-                if (_tricubicSampling)
+                switch (_bufferSampling)
                 {
-                    _froxelFogCompositeMaterial.EnableKeyword("TRICUBIC_SAMPLING");
-                }
-                else
-                {
-                    _froxelFogCompositeMaterial.DisableKeyword("TRICUBIC_SAMPLING");
+                    case BufferSampling.Tricubic:
+                        _froxelFogCompositeMaterial.EnableKeyword("TRICUBIC_SAMPLING");
+                        break;
+                    case BufferSampling.Point:
+                        _froxelFogCompositeMaterial.EnableKeyword("POINT_SAMPLING");
+                        break;
+                    case BufferSampling.Trilinear:
+                    default:
+                        _froxelFogCompositeMaterial.EnableKeyword("TRILINEAR_SAMPLING");
+                        break;
                 }
 
                 Shader.SetGlobalFloat(IgnStrength, _interleavedGradientNoiseStrength);
@@ -892,24 +964,28 @@ namespace Haze.Runtime
         private class MultipleScatteringPass : ScriptableRenderPass
         {
             private readonly Material _ssmsMaterial;
-            private float _scatter;
-            private float _threshold;
-            private int _maxIterations;
-            private float2 _froxelFogRange;
+            private readonly float _scatter;
+            private readonly float _threshold;
+            private readonly int _maxIterations;
+            private ProfilingSampler _prefilterSampler = new("Prefilter");
+            private ProfilingSampler _downscaleSampler = new ("Downscale");
+            private ProfilingSampler _upscaleSampler = new ("Upscale");
 
             private class PassData
             {
                 internal Material BloomMaterial;
                 internal TextureHandle ColorTexture;
-                internal TextureHandle[] DownsampleBuffers;
-                internal TextureHandle[] UpsampleBuffers;
+                internal NativeArray<TextureHandle> DownsampleBuffers;
+                internal NativeArray<TextureHandle> UpsampleBuffers;
+                internal ProfilingSampler PrefilterSampler;
+                internal ProfilingSampler DownscaleSampler;
+                internal ProfilingSampler UpscaleSampler;
                 internal int MipCount;
             }
             
-            public MultipleScatteringPass(Shader bloomShader,float2 froxelFogRange, MultipleScatteringData multipleScatteringData)
+            public MultipleScatteringPass(Shader bloomShader, MultipleScatteringData multipleScatteringData)
             {
                 _ssmsMaterial = CoreUtils.CreateEngineMaterial(bloomShader);
-                _froxelFogRange = froxelFogRange;
                 _scatter = multipleScatteringData.scatter;
                 _threshold = multipleScatteringData.threshold;
                 _maxIterations = multipleScatteringData.maxIterations;
@@ -918,7 +994,6 @@ namespace Haze.Runtime
             public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
             {
                 var resourceData = frameData.Get<UniversalResourceData>();
-                var cameraData = frameData.Get<UniversalCameraData>();
                 var srcCamColor = resourceData.activeColorTexture;
                 var textureDesc = srcCamColor.GetDescriptor(renderGraph);
 
@@ -957,8 +1032,10 @@ namespace Haze.Runtime
                 var iterations = Mathf.FloorToInt(Mathf.Log(maxSize, 2f) - 1);
                 var mipCount = Mathf.Clamp(iterations, 1, maxIterations);
                 
-                var downsampleBuffers = new TextureHandle[mipCount];
-                var upsampleBuffers = new TextureHandle[mipCount];
+                // var downsampleBuffers = new TextureHandle[mipCount];
+                // var upsampleBuffers = new TextureHandle[mipCount];
+                var downsampleBuffers = new NativeArray<TextureHandle>(mipCount, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+                var upsampleBuffers = new NativeArray<TextureHandle>(mipCount, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
 
                 textureDesc.clearBuffer = false;
 
@@ -979,9 +1056,9 @@ namespace Haze.Runtime
                     height = math.max(1, height >> 1);
                     textureDesc.width = width;
                     textureDesc.height = height;
-                    textureDesc.name = $"DownscaledBuffer_{i}";
+                    textureDesc.name = "DownscaledBuffer";
                     downsampleBuffers[i] = renderGraph.CreateTexture(textureDesc);
-                    textureDesc.name = $"UpscaledBuffer_{i}";
+                    textureDesc.name = "UpscaledBuffer";
                     upsampleBuffers[i] = renderGraph.CreateTexture(textureDesc);
                 }
 
@@ -991,6 +1068,9 @@ namespace Haze.Runtime
                     passData.DownsampleBuffers = downsampleBuffers;
                     passData.UpsampleBuffers = upsampleBuffers;
                     passData.MipCount = mipCount;
+                    passData.PrefilterSampler = _prefilterSampler;
+                    passData.DownscaleSampler = _downscaleSampler;
+                    passData.UpscaleSampler = _upscaleSampler;
                     
                     passData.ColorTexture = srcCamColor;
                     
@@ -1002,49 +1082,57 @@ namespace Haze.Runtime
                     }
 
                     builder.AllowPassCulling(false);
-                    builder.SetGlobalTextureAfterPass(passData.UpsampleBuffers[0], Shader.PropertyToID("_GLOBAL_BloomTexture"));
+                    builder.SetGlobalTextureAfterPass(passData.UpsampleBuffers[0], GlobalBloomTexture);
                     
                     builder.SetRenderFunc((PassData data, UnsafeGraphContext context) =>
                     {
-                        var unsafeCmd = CommandBufferHelpers.GetNativeCommandBuffer(context.cmd);
-                        
-                        var loadAction = RenderBufferLoadAction.DontCare;
-                        var storeAction = RenderBufferStoreAction.Store;
-
-                        using (new ProfilingScope(unsafeCmd, new ProfilingSampler("Prefilter")))
-                        {
-                            Blitter.BlitCameraTexture(unsafeCmd, data.ColorTexture, data.DownsampleBuffers[0], loadAction, storeAction, data.BloomMaterial, 0);
-                        }
-
-                        using (new ProfilingScope(unsafeCmd, new ProfilingSampler("Downscale")))
-                        {
-                            var last = data.DownsampleBuffers[0];
-                            
-                            for (var i = 1; i < data.MipCount; i++)
-                            {
-                                var mipDown = data.DownsampleBuffers[i];
-                                var mipUp = data.UpsampleBuffers[i];
-                                
-                                Blitter.BlitCameraTexture(unsafeCmd, last, mipUp, loadAction, storeAction, data.BloomMaterial, 1);
-                                Blitter.BlitCameraTexture(unsafeCmd, mipUp, mipDown, loadAction, storeAction, data.BloomMaterial, 2);
-
-                                last = mipDown;
-                            }
-                        }
-
-                        using (new ProfilingScope(unsafeCmd, new ProfilingSampler("Upscale")))
-                        {
-                            for (var i = data.MipCount - 2; i >= 0; i--)
-                            {
-                                var lowMip = (i == data.MipCount - 2) ? data.DownsampleBuffers[i + 1] : data.UpsampleBuffers[i + 1];
-                                var highMip = data.DownsampleBuffers[i];
-                                var mipUp = data.UpsampleBuffers[i];
-                                
-                                unsafeCmd.SetGlobalTexture(SourceTexLowMip, lowMip);
-                                Blitter.BlitCameraTexture(unsafeCmd, highMip, mipUp, loadAction, storeAction, data.BloomMaterial, 3);
-                            }
-                        }
+                        ExecuteMultipleScatteringPass(context, data);
                     });
+                }
+
+                downsampleBuffers.Dispose();
+                upsampleBuffers.Dispose();
+            }
+
+            private static void ExecuteMultipleScatteringPass(UnsafeGraphContext context, PassData data)
+            {
+                var unsafeCmd = CommandBufferHelpers.GetNativeCommandBuffer(context.cmd);
+                        
+                var loadAction = RenderBufferLoadAction.DontCare;
+                var storeAction = RenderBufferStoreAction.Store;
+
+                using (new ProfilingScope(unsafeCmd, data.PrefilterSampler))
+                {
+                    Blitter.BlitCameraTexture(unsafeCmd, data.ColorTexture, data.DownsampleBuffers[0], loadAction, storeAction, data.BloomMaterial, 0);
+                }
+
+                using (new ProfilingScope(unsafeCmd, data.DownscaleSampler))
+                {
+                    var last = data.DownsampleBuffers[0];
+                            
+                    for (var i = 1; i < data.MipCount; i++)
+                    {
+                        var mipDown = data.DownsampleBuffers[i];
+                        var mipUp = data.UpsampleBuffers[i];
+                                
+                        Blitter.BlitCameraTexture(unsafeCmd, last, mipUp, loadAction, storeAction, data.BloomMaterial, 1);
+                        Blitter.BlitCameraTexture(unsafeCmd, mipUp, mipDown, loadAction, storeAction, data.BloomMaterial, 2);
+
+                        last = mipDown;
+                    }
+                }
+
+                using (new ProfilingScope(unsafeCmd, data.UpscaleSampler))
+                {
+                    for (var i = data.MipCount - 2; i >= 0; i--)
+                    {
+                        var lowMip = (i == data.MipCount - 2) ? data.DownsampleBuffers[i + 1] : data.UpsampleBuffers[i + 1];
+                        var highMip = data.DownsampleBuffers[i];
+                        var mipUp = data.UpsampleBuffers[i];
+                                
+                        unsafeCmd.SetGlobalTexture(SourceTexLowMip, lowMip);
+                        Blitter.BlitCameraTexture(unsafeCmd, highMip, mipUp, loadAction, storeAction, data.BloomMaterial, 3);
+                    }
                 }
             }
 

@@ -111,7 +111,7 @@ MonoBehaviour:
     m_Value: 80
   saturation:
     m_OverrideState: 1
-    m_Value: 13
+    m_Value: -10
 --- !u!114 &-5915899025678989705
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -211,10 +211,10 @@ MonoBehaviour:
     m_Value: 1
   focusDistance:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.5
   aperture:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 4.4
   focalLength:
     m_OverrideState: 1
     m_Value: 1
@@ -227,6 +227,61 @@ MonoBehaviour:
   bladeRotation:
     m_OverrideState: 1
     m_Value: -21
+--- !u!114 &-1917765859206267331
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d468b943de483f641a8eb80fcd52e584, type: 3}
+  m_Name: SSCC
+  m_EditorClassIdentifier: SSCC.Universal.Runtime::ScreenSpaceCavityCurvature.Universal.SSCC
+  active: 1
+  effectIntensity:
+    m_OverrideState: 1
+    m_Value: 0.125
+  distanceFade:
+    m_OverrideState: 1
+    m_Value: 0
+  curvaturePixelRadius:
+    m_OverrideState: 1
+    m_Value: 1
+  curvatureBrights:
+    m_OverrideState: 1
+    m_Value: 1.64
+  curvatureDarks:
+    m_OverrideState: 1
+    m_Value: 1.45
+  cavitySamples:
+    m_OverrideState: 1
+    m_Value: 2
+  saturateCavity:
+    m_OverrideState: 1
+    m_Value: 1
+  cavityRadius:
+    m_OverrideState: 1
+    m_Value: 0.221
+  cavityBrights:
+    m_OverrideState: 1
+    m_Value: 2.24
+  cavityDarks:
+    m_OverrideState: 1
+    m_Value: 4.99
+  cavityResolution:
+    m_OverrideState: 1
+    m_Value: 0
+  normalsSource:
+    m_OverrideState: 1
+    m_Value: 1
+  debugMode:
+    m_OverrideState: 1
+    m_Value: 0
+  output:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-1481910988856050941
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -282,19 +337,19 @@ MonoBehaviour:
   active: 0
   _globalDensityMultiplier:
     m_OverrideState: 1
-    m_Value: 1.39
+    m_Value: 0.81
   _globalDensityThreshold:
     m_OverrideState: 1
-    m_Value: 0.34
+    m_Value: -0.01
   _ambientColor:
-    m_OverrideState: 1
-    m_Value: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   _mainLightContribution:
-    m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 2.7954404, g: 2.7954404, b: 2.7954404, a: 1}
   _heightFogFactor:
     m_OverrideState: 0
-    m_Value: 0.19
+    m_Value: 0.96
   _maxFogHeight:
     m_OverrideState: 0
     m_Value: 1.53
@@ -309,7 +364,7 @@ MonoBehaviour:
     m_Value: 1
   _probeVolumeContribution:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.73
   _mainLightScattering:
     m_OverrideState: 0
     m_Value: 1
@@ -342,6 +397,7 @@ MonoBehaviour:
   - {fileID: -8645655610014948807}
   - {fileID: 6107344497176604921}
   - {fileID: -1148528626028631253}
+  - {fileID: -1917765859206267331}
 --- !u!114 &6107344497176604921
 MonoBehaviour:
   m_ObjectHideFlags: 3

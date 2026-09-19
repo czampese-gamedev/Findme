@@ -1,0 +1,278 @@
+﻿Database
+Name,Version,Author,Description,Emphasis1,Emphasis2,Emphasis3,Emphasis4
+FindMeDialogueDatabase,,,,#b4b0b0ff ---,#7f0000ff ---,#ffffffff b--,#0000ffff ---
+Global User Script
+
+Conversations
+ID,Title,Description,Actor,Conversant,Overrides
+Number,Text,Text,Actor,Actor,JSON
+2,MARCO_1,"Conversation with MARCO that appears when the player initiates a conversation with MARCO that is not initiated by the game. This conversation is mostly for fun, but may contain hints in particular parts of the game",1,4,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+4,1526_Marco1,	,1,4,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+5,1526_Marco_InitialConversation,,1,4,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+6,MARCO_1526_Area2EnteredMultiplw,Entered 1526 area 2 multiple times,4,1,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+7,May2016_cutscene/Kim_Alice_1,Cutscene 1 - Kim and Alice first meeting on a train 2016,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+8,May2016_cutscene/Kim_Alice_2,First conversation Kim and Alice ,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+9,May2016_cutscene/Kim_Alice_3,First conversation Kim and Alice ,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+10,May2016_cutscene/Kim_Alice_4,,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+11,July2016_Cutscene/Tourist1,,1,6,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+12,July2016_Cutscene/Alice,,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+13,August2026_cutscene/KimKids1,,1,-1,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+14,August2026_cutscene/KimKids2,,1,-1,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+15,August2026_cutscene/KimKids3,,1,7,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+16,August2026_cutscene/KimKids_crying,,-1,-1,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+18,July2016_Cutscene/Alice2,,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+19,August2026_cutscene/KimKidsYesYou,,1,-1,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+20,August2026_Office/Saraswati,,1,10,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+21,August2026_Office/BMA,,1,11,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+23,August2026_Office/Today,,1,11,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+24,August2026_Office/MARCO,,1,11,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+25,August2026_Office/Restaurant,,1,12,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+26,August2026_Office/River,,1,12,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+27,August2026_Office/Pub,,1,12,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+DialogueEntries
+entrytag,ConvID,ID,Actor,Conversant,Title,MenuText,DialogueText,IsGroup,FalseConditionAction,ConditionPriority,Conditions,Script,Sequence,Description,French,English,en,fr,Response Menu Sequence,EventGuid,canvasRect
+Text,Number,Number,Number,Number,Text,Text,Text,Boolean,Special,Special,Text,Text,Text,Text,Localization,Localization,Localization,Localization,Text,Text,Text
+2_Kim_0,2,0,1,4,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},156;31
+2_Kim_3,2,3,1,4,,,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . Got anything useful for me? ",False,Block,Normal,,RandomizeNextEntry(),,When the conversation starts the player will ask MARCO if he has anything useful to say using one of the MARCO Greetings (recorded separately),,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . Got anything useful for me? ",{{omit}},{{omit}},{{omit}},{{omit}},178;137
+2_MARCO_4,2,4,4,1,,,Ummm....nope,False,Block,Normal,,,,A randomised response by MARCO,,Ummm....nope,{{omit}},{{omit}},{{omit}},{{omit}},89.8868;250.0566
+2_MARCO_5,2,5,4,1,,,A cloud weighs around a million tonnes,False,Block,Normal,,,,A randomised response by MARCO,,A cloud weighs around a million tonnes,{{omit}},{{omit}},{{omit}},{{omit}},296;262
+2_MARCO_7,2,7,4,1,,,Water might not be wet,False,Block,Normal,,,,,,Water might not be wet,{{omit}},{{omit}},{{omit}},{{omit}},517.0566;269.9434
+2_Kim_8,2,8,1,4,,,"Gee, thanks",False,Block,Normal,,,,(sarcastic)	,,"Gee, thanks",{{omit}},{{omit}},{{omit}},{{omit}},86;361
+2_Kim_9,2,9,1,4,,,Holy Shit...well that is interesting,False,Block,Normal,,,,(mildly surprised as you have been just told an interesting fact)	,,Holy Shit...well that is interesting,{{omit}},{{omit}},{{omit}},{{omit}},296;312
+2_Kim_10,2,10,1,4,,,Huh?,False,Block,Normal,,,,,,Huh?,{{omit}},{{omit}},{{omit}},{{omit}},518;319
+2_MARCO_11,2,11,4,1,,,"This is because most scientists define wetness as a liquid’s ability to maintain contact with a solid surface, meaning that water itself is not wet, but can make other objects wet.",False,Block,Normal,,,,,,"This is because most scientists define wetness as a liquid’s ability to maintain contact with a solid surface, meaning that water itself is not wet, but can make other objects wet.",{{omit}},{{omit}},{{omit}},{{omit}},518;369
+4_Kim_0,4,0,1,4,START,,,False,Block,Normal,,,None(),,,,,,{{omit}},{{omit}},156;31
+4_Kim_3,4,3,1,4,,,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . What can you tell me about this place? ",False,Block,Normal,,RandomizeNextEntry(),,,,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . What can you tell me about this place? ",{{omit}},{{omit}},{{omit}},{{omit}},178;137
+4_MARCO_4,4,4,4,1,,,It looks like we are in...1526,False,Block,Normal,,,,,,It looks like we are in...1526,{{omit}},{{omit}},{{omit}},{{omit}},234;255
+4_Kim_8,4,8,1,4,,,Ohhh...wow!,False,Block,Normal,,,,,,Ohhh...wow!,{{omit}},{{omit}},{{omit}},{{omit}},233;362
+5_Kim_0,5,0,1,4,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+5_Kim_1,5,1,1,4,,,Siri… what’s the date? ,False,Block,Normal,,,SALSA(),This is the first real interaction with MARCO,,Siri… what’s the date? ,{{omit}},{{omit}},{{omit}},{{omit}},160;80
+5_MARCO_2,5,2,4,1,,,"This is Marco, your personal assistant app!",False,Block,Normal,,,,First time responding - Kim has called you Siri,,"This is Marco, your personal assistant app!",{{omit}},{{omit}},{{omit}},{{omit}},160;130
+5_Kim_3,5,3,1,4,,,Right. Marco. Whatever.,False,Block,Normal,,,,,,Right. Marco. Whatever.,{{omit}},{{omit}},{{omit}},{{omit}},160;180
+5_MARCO_4,5,4,4,1,,,"It’s not really a case of ‘whatever’. I’m the most advanced AI that’s been devised. I don’t even rely on wifi, which is pretty useful given where you’ve found yourself.",False,Block,Normal,,,,,,"It’s not really a case of ‘whatever’. I’m the most advanced AI that’s been devised. I don’t even rely on wifi, which is pretty useful given where you’ve found yourself.",{{omit}},{{omit}},{{omit}},{{omit}},160;230
+5_Kim_5,5,5,1,4,,,Where <i>have</i> I…,False,Block,Normal,,,,,,Where <i>have</i> I…,{{omit}},{{omit}},{{omit}},{{omit}},160;280
+5_MARCO_6,5,6,4,1,,,"I’m only bringing it up because – got to address it, elephant in the room – I did hear you say earlier that I was a, quote, ‘shitty version of Siri’. I realise this was ignorance rather than malice, but of course, it hurts. I’m many more times more powerful than Siri, Alex, any of these goons.",False,Block,Normal,,,,,,"I’m only bringing it up because – got to address it, elephant in the room – I did hear you say earlier that I was a, quote, ‘shitty version of Siri’. I realise this was ignorance rather than malice, but of course, it hurts. I’m many more times more powerful than Siri, Alex, any of these goons.",{{omit}},{{omit}},{{omit}},{{omit}},160;330
+5_Kim_7,5,7,1,4,,,"Fine. I didn’t mean to… like, I wouldn’t think it would be possible to hurt the feelings of a…",False,Block,Normal,,,,,,"Fine. I didn’t mean to… like, I wouldn’t think it would be possible to hurt the feelings of a…",{{omit}},{{omit}},{{omit}},{{omit}},160;380
+5_MARCO_8,5,8,4,1,,,"Of a machine. No. My super-intelligence is both blessing and curse. Anyway, what was it you wanted to ask? Another thing about my sophisticated human mimicry is that I quite often forget what the hell I’m meant to be doing.",False,Block,Normal,,,,,,"Of a machine. No. My super-intelligence is both blessing and curse. Anyway, what was it you wanted to ask? Another thing about my sophisticated human mimicry is that I quite often forget what the hell I’m meant to be doing.",{{omit}},{{omit}},{{omit}},{{omit}},430;32.64949
+5_Kim_9,5,9,1,4,,,"I was asking you what date it is, what… what year it is.",False,Block,Normal,,,,,,"I was asking you what date it is, what… what year it is.",{{omit}},{{omit}},{{omit}},{{omit}},430;81
+5_MARCO_10,5,10,4,1,,,Oh. Easy. It’s August 5th... \. 1526.,False,Block,Normal,,,,,,Oh. Easy. It’s August 5th... \. 1526.,{{omit}},{{omit}},{{omit}},{{omit}},430;131
+6_MARCO_0,6,0,4,1,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},172;46
+6_MARCO_1,6,1,4,1,,,"Excuse me for being nosy, but are you lost? ",False,Block,Normal,,,,,,"Excuse me for being nosy, but are you lost? ",{{omit}},{{omit}},{{omit}},{{omit}},172;96
+6_Kim_2,6,2,1,4,,,What makes you say that? ,False,Block,Normal,,,,,,What makes you say that? ,{{omit}},{{omit}},{{omit}},{{omit}},172;146
+6_MARCO_3,6,3,4,1,,,"Well, you have been here a number of times and you dont seem to be doing much",False,Block,Normal,,,,,,"Well, you have been here a number of times and you dont seem to be doing much",{{omit}},{{omit}},{{omit}},{{omit}},172;196
+7_Kim_0,7,0,1,5,START,,,False,Block,Normal,,,None(),,,,,,{{omit}},{{omit}},161.3572;31.14285
+7_Alice_1,7,1,5,1,,,"Oh my God, thank you!",False,Block,Normal,,,"SALSA(speech/Test/Alice1);\nCinemachinePriority(AliceCloseup,11);\nCinemachinePriority(KimCloseup,0);",[Kim just helped Alice barely squeeze onto the train],"Oh mon Dieu, merci!","Oh my God, <b><WIGGLE><RAINB>thank you!",,,,,157.4988;93.25336
+7_Alice_3,7,3,5,1,,,"Hey, does this go to Stockwell?",False,Block,Normal,,,"SALSA(speech/Test/Alice2);\nCinemachinePriority(AliceCloseup,11);\nCinemachinePriority(KimCloseup,0);",,"Salut, est-ce que ça concerne Stockwell ?","Hey, does this go to Stockwell?",,,{{omit}},{{omit}},160.35;195.2
+7_Kim_4,7,4,1,5,,,"Um, No.",False,Block,Normal,,,"SALSA(speech/Test/Kim1);\nCinemachinePriority(AliceCloseup,0);\nCinemachinePriority(KimCloseup,11);",,"Eu, Non.","Um, No.",,,{{omit}},{{omit}},158.4185;243.95
+7_Alice_5,7,5,5,1,,,Oh. Probably shouldn’t have risked my life getting on.,False,Block,Normal,,,"SALSA(speech/Test/Alice3);\nCinemachinePriority(AliceCloseup,11);\nCinemachinePriority(KimCloseup,0);",,Oh. Je n'aurais probablement pas dû risquer ma vie en montant.,Oh. Probably shouldn’t have risked my life getting on.,,,{{omit}},{{omit}},181.0285;297.4857
+7_Kim_6,7,6,1,5,,,"But you could actually change at...\n well, stay on and I’ll show you.",False,Block,Normal,,,"SALSA(speech/Test/Kim2);\nCinemachinePriority(AliceCloseup,0);\nCinemachinePriority(KimCloseup,11);",,"Mais vous pourriez en fait changer à… enfin, restez connectés et je vais vous montrer.","But you could actually change at – well, stay on and I’ll show you.",,,{{omit}},{{omit}},150.1715;346.3429
+7_Alice_7,7,7,5,1,,,Thank you! You live in London? ,False,Block,Normal,,,"SALSA(speech/Test/Alice4);\nCinemachinePriority(AliceCloseup,11);\nCinemachinePriority(KimCloseup,0);",,Merci ! Vous habitez à Londres ?,Thank you! You live in London? ,,,{{omit}},{{omit}},163.0545;399.7715
+7_Kim_8,7,8,1,5,,,Um. Yep,False,Block,Normal,,,"SALSA(speech/Test/Kim3);\nCinemachinePriority(AliceCloseup,0);\nCinemachinePriority(KimCloseup,11);",,Euh… Oui.,Um. Yep,,,{{omit}},,169.916;465.7797
+7_Kim_9,7,9,1,5,,,You’re welcome…,False,Block,Normal,,,"SALSA(speech/Test/entrytag);\nCinemachinePriority(AliceCloseup,0);\nCinemachinePriority(KimCloseup,11);",,Vous êtes les bienvenus…,You’re welcome…,,,{{omit}},{{omit}},202.9491;136.5471
+7_Alice_10,7,10,5,1,,,,False,Block,Normal,,,"CinemachinePriority(AliceCloseup,0);\nCinemachinePriority(KimCloseup,0);",,,,,,{{omit}},{{omit}},204.5106;530.9149
+8_Kim_0,8,0,1,5,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},158.8571;31.14285
+8_Alice_9,8,9,5,1,,,"Is that your uniform? I mean, I guess it is.\nYou probably wouldn’t wear a name badge if it was your real clothes.",False,Block,Normal,,,"SALSA(speech/Test/Alice5);\nDelay(1);\nCinemachinePriority(AliceCloseup,0);\nCinemachinePriority(KimCloseup,0);\nCinemachinePriority(NameBadgeCloseUp,11);",,"C’est votre uniforme ? Enfin, je suppose que oui.\nVous ne porteriez probablement pas d’insigne si c’était vos vêtements de tous les jours.","Is that your uniform? I mean, I guess it is.\nYou probably wouldn’t wear a name badge if it was your real clothes.",{{omit}},{{omit}},{{omit}},{{omit}},191.641;97.13838
+8_Kim_10,8,10,1,5,,,"Yes, I work at – um. I’ve just started at, do you know the Bankside Museum!",False,Block,Normal,,,"SALSA(speech/Test/Kim5);\nSendMessage(PickRandomSitAnimation, , speaker);\nCinemachinePriority(NameBadgeCloseUp,0);",,"Oui, je travaille à… euh… Je viens de commencer au… vous connaissez le musée Bankside ?","Yes, I work at – um. I’ve just started at, do you know the Bankside Museum!",{{omit}},{{omit}},{{omit}},{{omit}},187.3761;164.3606
+8_Alice_11,8,11,5,1,,,"Cool, yeah!",False,Block,Normal,,,SALSA(speech/Test/Alice6);,,"Cool, ouais !","Cool, yeah!",{{omit}},{{omit}},{{omit}},{{omit}},185.637;214.3607
+8_Kim_12,8,12,1,5,,,\. Do you know it?,False,Block,Normal,,,"SALSA(speech/Test/Kim5);\nSendMessage(PickRandomSitAnimation, , speaker);",,\. Le savez-vous ?,\. Do you know it?,{{omit}},{{omit}},{{omit}},{{omit}},185.637;264.3606
+8_Alice_13,8,13,5,1,,,Um. No. I just wanted to sound enthusiastic. ,False,Block,Normal,,,SALSA(speech/Test/Alice7);,,Euh… Non. Je voulais juste paraître enthousiaste.,Um. No. I just wanted to sound enthusiastic. ,{{omit}},{{omit}},{{omit}},{{omit}},185.637;314.3606
+8_Kim_14,8,14,1,5,,,(Laughter) Fair enough,False,Block,Normal,,,"SALSA(speech/Test/Kim6);\nSendMessage(PickRandomSitAnimation, , speaker);",,(Rires) C'est bien vrai.,(Laughter) Fair enough,{{omit}},{{omit}},{{omit}},{{omit}},190.3652;364.6491
+8_Alice_15,8,15,5,1,,,I’ve been to London Zoo if that’s the same kind of thing?,False,Block,Normal,,,SALSA(speech/Test/Alice8);,,"Je suis déjà allé au zoo de Londres, est-ce que c'est le même genre d'endroit ?",I’ve been to London Zoo if that’s the same kind of thing?,{{omit}},{{omit}},{{omit}},{{omit}},188.7139;415.8991
+8_Kim_16,8,16,1,5,,,"I guess it is, yeah.",False,Block,Normal,,,"SALSA(speech/Test/Kim7);\nSendMessage(PickRandomSitAnimation, , speaker);",,Je suppose que oui.,"I guess it is, yeah.",{{omit}},{{omit}},{{omit}},{{omit}},192.5935;464.3606
+8_Alice_17,8,17,5,1,,,"It’s not, remotely, is it?",False,Block,Normal,,,SALSA(speech/Test/Alice9);,,"Ce n'est pas le cas, loin de là, n'est-ce pas ?","It’s not, remotely, is it?",{{omit}},{{omit}},,{{omit}},187.0163;518.6577
+8_Kim_18,8,18,1,5,,,"I mean, no. We don’t have any live animals. \nThey don’t have any 16th century tableware.",False,Block,Normal,,,SALSA(speech/Test/Kim8);,,"Non, enfin, nous n’avons pas d’animaux vivants.\nIls n’ont pas de vaisselle du XVIe siècle. ","I mean, no. We don’t have any live animals. \nThey don’t have any 16th century tableware.",{{omit}},{{omit}},{{omit}},{{omit}},183.8979;564.3606
+9_Kim_0,9,0,1,5,START,,,False,Block,Normal,,,None(),,,,{{omit}},{{omit}},{{omit}},{{omit}},158.8571;31.14285
+9_Kim_10,9,10,1,5,So you don’t live in London?,,So you don’t live in London?,False,Block,Normal,,,"SALSA(speech/Test/Kim9);\nSendMessage(PickRandomSitAnimation, , speaker);",,"Oui, je travaille à… euh… Je viens de commencer au… vous connaissez le musée Bankside ?",So you don’t live in London?,{{omit}},{{omit}},{{omit}},{{omit}},173.7761;109.9606
+9_Alice_11,9,11,5,1,,,I don’t live anywhere. I’m homeless!,False,Block,Normal,,,SALSA(speech/Test/Alice10);,,"Cool, ouais !",I don’t live anywhere. I’m homeless!,{{omit}},{{omit}},{{omit}},{{omit}},184.837;179.9607
+9_Kim_12,9,12,1,5,,,…what?,False,Block,Normal,,,"SALSA(speech/Test/Kim10);\nSendMessage(PickRandomSitAnimation, , speaker);",,Le savez-vous ?,…what?,{{omit}},{{omit}},{{omit}},{{omit}},185.637;264.3606
+9_Alice_13,9,13,5,1,,,"God sorry, that was a stupid joke. Um I just mean I don’t have a home – a specific home – right now. I’m on my way to look at a place. A house share.",False,Block,Normal,,,SALSA(speech/Test/Alice11);,,Euh… Non. Je voulais juste paraître enthousiaste.,"God sorry, that was a stupid joke. Um I just mean I don’t have a home – a specific home – right now. I’m on my way to look at a place. A house share.",{{omit}},{{omit}},{{omit}},{{omit}},185.637;314.3606
+9_Kim_14,9,14,1,5,,,"Oh right. Well, I – I hope it works out.",False,Block,Normal,,,"SALSA(speech/Test/Kim11);\nSendMessage(PickRandomSitAnimation, , speaker);",,(Rires) C'est bien vrai.,"Oh right. Well, I – I hope it works out.",{{omit}},{{omit}},{{omit}},{{omit}},190.3652;364.6491
+9_Alice_15,9,15,5,1,,,"Me too, or I might end up sleeping in the museum after you lock up.",False,Block,Normal,,,SALSA(speech/Test/Alice12);,,"Je suis déjà allé au zoo de Londres, est-ce que c'est le même genre d'endroit ?","Me too, or I might end up sleeping in the museum after you lock up.",{{omit}},{{omit}},{{omit}},{{omit}},188.7139;415.8991
+9_Kim_16,9,16,1,5,,,"Um, I don’t think…",False,Block,Normal,,,"SALSA(speech/Test/Kim12);\nSendMessage(PickRandomSitAnimation, , speaker);",,Je suppose que oui.,"Um, I don’t think…",{{omit}},{{omit}},{{omit}},{{omit}},192.5935;464.3606
+9_Alice_17,9,17,5,1,,,Another stupid joke! Sorry again. I – sometimes I do that when I’m nervous.,False,Block,Normal,,,SALSA(speech/Test/Alice1);,,"Ce n'est pas le cas, loin de là, n'est-ce pas ?",Another stupid joke! Sorry again. I – sometimes I do that when I’m nervous.,{{omit}},{{omit}},,{{omit}},185.637;515.899
+9_Kim_18,9,18,1,5,,,"What are you nervous about, about the… house…",False,Block,Normal,,,SALSA(speech/Test/Kim13);,,"Non, enfin, nous n’avons pas d’animaux vivants.\nIls n’ont pas de vaisselle du XVIe siècle. ","What are you nervous about, about the… house…",{{omit}},{{omit}},{{omit}},{{omit}},185.0919;564.3606
+9_Alice_19,9,19,5,1,,,"I just mean about, you know, whether I like the house.",False,Block,Normal,,,SALSA(speech/Test/Alice2);,,,"I just mean about, you know, whether I like the house.",{{omit}},{{omit}},{{omit}},{{omit}},185.0919;614.3606
+9_Kim_20,9,20,1,5,,,Oh! This is you,False,Block,Normal,,,SALSA(speech/Test/Kim1);,,,Oh! This is you,{{omit}},{{omit}},{{omit}},{{omit}},186.7245;665.9932
+10_Kim_0,10,0,1,5,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+10_Kim_1,10,1,1,5,,,Good Luck!,False,Block,Normal,,,SALSA(speech/Test/Kim2);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+11_Kim_0,11,0,1,6,START,,,False,,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+11_Tourist_1,11,1,6,1,,,"Excuse me, can I ask you a question?",False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},,{{omit}},160;80
+11_Kim_2,11,2,1,6,,,"Of course! It’s beautiful, isn’t it? Probably late Medieval. What would you like to know?",False,Block,Normal,,,SALSA(speech/Test/Kim5);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;130
+11_Tourist_3,11,3,6,1,,,Where are the toilets?,False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;180
+11_Kim_4,11,4,1,6,,,"Oh. Um. Down that way, first on the right.",False,Block,Normal,,,SALSA(speech/Test/Kim5);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;230
+12_Kim_0,12,0,1,5,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+12_Alice_1,12,1,5,1,,,"Hey, I had a question too",False,Block,Normal,,,SALSA(speech/Test/Alice1);\nContinue()@3,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},158.9474;122.1052
+12_Kim_2,12,2,1,5,,,Oh! – hey!,False,Block,Normal,,,SALSA(speech/Test/Kim1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},157.4928;172.1052
+12_Alice_3,12,3,5,1,,,"Hey, we met on the…",False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},158.9474;222.1052
+12_Kim_4,12,4,1,5,,,"I remember, yes. So – what was your question? Let me guess: toilets or gift shop.",False,Block,Normal,,,SALSA(speech/Test/Kim1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},157.4928;272.1052
+12_Alice_5,12,5,5,1,,,Wrong,False,Block,Normal,,,SALSA(speech/Test/Alice1);\nContinue()@2	,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},159.2961;324.8325
+12_Kim_6,12,6,1,5,,,Oh! 	,False,Block,Normal,,,SALSA(speech/Test/Kim1);\nContinue()@2,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},158.9474;372.1052
+13_Kim_0,13,0,1,-1,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+13_Kim_1,13,1,1,-1,,,"…that’s the thing, history isn’t something that’s finished, gone. It’s forever. We’re part of it right now, we take our little turn. ",False,Block,Normal,,,"AnimatorBool(Lecturing, true)",,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+13_Kim_2,13,2,1,-1,,,There are things even in this room that were around long before we were born and will still be here after we’re dead.,False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;130
+13_Kim_3,13,3,1,1,,,,False,Block,Normal,,,"SetDialoguePanel(false); AnimatorBool(Lecturing, false);Continue()",,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;178.9873
+14_Kim_0,14,0,1,-1,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+14_Kim_1,14,1,1,-1,,,"Damn it, I thought we were going to get through one without anyone crying. OK… any questions?",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+14_Kim_2,14,2,1,1,,,,False,Block,Normal,,,"SetDialoguePanel(false); AnimatorBool(Lecturing, false);Continue()",,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;130
+15_Kim_0,15,0,1,7,START,,,False,,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+15_Kid1_1,15,1,7,1,,,Have you ever been locked in here at night and like all the mummies and the dinosaurs come to life and you have to kill them before they kill you?,False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+15_Kim_2,15,2,1,7,,,"Haha, no, I’ve been here a few years now and I’ve never been threatened by anyone from the undead. Anyone else?<waitfor=1>yes?",False,Block,Normal,,,"AnimatorBool(Lecturing, true)",,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;130
+15_Kid1_3,15,3,7,1,,"If you did have to try and kill a mummy, what weapon would you…",,False,Block,Normal,,,"AnimatorBool(Lecturing, false)",,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;180
+15_Kim_4,15,4,1,7,,,Has anyone got a question that isn’t about the museum turning into a horror movie?,False,Block,Normal,,,"AnimatorBool(Lecturing, true)",,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;230
+15_Kim_5,15,5,1,7,,,"OK, well, thanks for coming to the Bankside Museum. If you’d like to leave a review… <waitfor=1> Oh, sorry. Miss Crane was it?",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;280
+15_Miss_Crane_6,15,6,8,7,,,"Yes. Sorry, this might sound silly, but do you think time travel will ever be possible? Or has ever been possible. If you see what I mean.",False,Block,Normal,,,"AnimatorBool(Lecturing, false)",,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},162.7586;328.2609
+15_Kim_7,15,7,1,8,,,Well. Good question. I guess the argument against it is – you’ve probably heard of the time travel paradox. ,False,Block,Normal,,,"AnimatorBool(Lecturing, true)",,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},161.3793;381.3793
+15_Kim_8,15,8,1,8,,,"And in that version of the world we might not be here to go back and change that thing. So, I guess I’d say…",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;505.6364
+15_Kid1_9,15,9,7,8,,,"Miss, Miss, Donny’s got a nosebleed and it’s gone on a vase.",False,Block,Normal,"AnimatorBool(Lecturing, false)",,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},161.3913;567.2726
+15_Kim_10,15,10,1,8,,,"If we could go back and change even the smallest thing, we’d create a different world. ",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},159.6489;446.1254
+invalid_entrytag,16,0,-1,-1,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+16_CyringKid_1,16,1,9,1,,,waaah...,False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+18_Kim_0,18,0,1,5,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;50
+18_Alice_7,18,7,5,1,,,I was going to ask if you have a café.,False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;134
+18_Kim_8,18,8,1,5,,,"<i>(sighs)</i> We do, but they’ll be closing, they normally close at…",False,Block,Normal,,,SALSA(speech/Test/Kim1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;218
+18_Alice_10,18,10,5,1,,,"OK, how about a pub?",False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;302
+18_Kim_11,18,11,1,5,,,"What? We’re a museum, we…",False,Block,Normal,,,SALSA(speech/Test/Kim1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;386
+18_Alice_12,18,12,5,1,,,You’re not making this easy. Can I take you to the pub? ,False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;470
+18_Alice_13,18,13,5,1,,,For a drink? ,False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;554
+18_Alice_14,18,14,5,1,,,When you finish work?,False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;638
+18_Kim_15,18,15,1,5,,,…oh.,False,Block,Normal,,,SALSA(speech/Test/Kim1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;722
+18_Alice_16,18,16,5,1,,,"It’s Alice, by the way. You can say no, I don’t even know if you’re… I just had to ask. And I was passing anyway.",False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;806
+18_Kim_17,18,17,1,5,,,<pause> Were you?,False,Block,Normal,,,SALSA(speech/Test/Kim1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;890
+18_Alice_18,18,18,5,1,,,No. It took me an hour and a quarter to get here.,False,Block,Normal,,,SALSA(speech/Test/Alice1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;974
+18_Kim_19,18,19,1,5,,,I’m Kim. And… yes please.,False,Block,Normal,,,SALSA(speech/Test/Kim1);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;1058
+19_Kim_0,19,0,1,-1,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+19_Kim_2,19,2,1,1,,,"Yes, you.",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;130
+20_Kim_0,20,0,1,10,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+20_Saraswati_1,20,1,10,1,,,GOOD DAY TO YE! LET US TALK!,False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160.7143;80
+20_Kim_2,20,2,1,10,,,"So, this app supposedly – they gave a free trial to everyone at the museum – they claim it can translate between modern and ancient languages. I’ve literally never opened it. We don’t get a lot with Ancient Mesopotamians coming round. Lucky really, they might some of their stuff back.",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},164.9999;131.4286
+21_Kim_0,21,0,1,11,START,,,False,,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+21_BMA_1,21,1,11,1,,,"Good afternoon, how may I enlighten you?",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160.8;92
+21_Kim_2,21,2,1,11,,,"This is basically like a tiny little Wikipedia for history stuff. Anything covered in the museum, you can find on here somewhere. Kind of makes it pointless me having spent years learning it all, I guess, but there we go.",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160.8;142
+23_Kim_0,23,0,1,11,START,,,False,,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+23_Kim_1,23,1,1,11,,,"Yeah, I’d rather not look at that right now. It’s – it just reminds you about birthdays, appointments, whatever. But today is… well. I’m not likely to forget.",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+24_Kim_0,24,0,1,11,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+24_Kim_1,24,1,1,11,,,"Mobile AI Research Companion and Organiser. This is just like a shitty version of Siri. I pretty much never use it. There are aspects of my existence I’d like to subcontract to a robot, but thinking – not so much. ",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80.8
+25_Kim_0,25,0,1,12,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;30
+25_Waiter2026_1,25,1,12,1,,,"Madame, with the greatest respect, should I take one of the menus away?",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;80
+25_Alice_2,25,2,5,1,,,"God this is so embarrassing, can you come and find me?",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;130
+25_Kim_3,25,3,1,5,,,I thought you were standing me up! On a first date!,False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;180
+25_Alice_4,25,4,5,1,,,"No, I’m just an idiot",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;230
+25_Kim_5,25,5,1,5,,,"OK, what can you see?",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;280
+25_Alice_6,25,6,5,1,,,Um. Grass.,False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;330
+25_Kim_7,25,7,1,5,,,"…right, I’ll just look around London for some grass.",False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},80;380
+26_Kim_0,26,0,1,12,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+26_Kim_1,26,1,1,12,,,River Conversation Goes here,False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+27_Kim_0,27,0,1,12,START,,,False,,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+27_Kim_1,27,1,1,12,,,Pub Conversation goes here,False,Block,Normal,,,,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+OutgoingLinks
+OriginConvID,OriginID,DestConvID,DestID,ConditionPriority
+Number,Number,Number,Number,Special
+2,0,2,3,Normal
+2,3,2,4,Normal
+2,3,2,5,Normal
+2,3,2,7,Normal
+2,4,2,8,Normal
+2,5,2,9,Normal
+2,7,2,10,Normal
+2,10,2,11,Normal
+4,0,4,3,Normal
+4,3,4,4,Normal
+4,4,4,8,Normal
+5,0,5,1,Normal
+5,1,5,2,Normal
+5,2,5,3,Normal
+5,3,5,4,Normal
+5,4,5,5,Normal
+5,5,5,6,Normal
+5,6,5,7,Normal
+5,7,5,8,Normal
+5,8,5,9,Normal
+5,9,5,10,Normal
+6,0,6,1,Normal
+6,1,6,2,Normal
+6,2,6,3,Normal
+7,0,7,1,Normal
+7,1,7,9,Normal
+7,3,7,4,Normal
+7,4,7,5,Normal
+7,5,7,6,Normal
+7,6,7,7,Normal
+7,7,7,8,Normal
+7,8,7,10,Normal
+7,9,7,3,Normal
+8,0,8,9,Normal
+8,9,8,10,Normal
+8,10,8,11,Normal
+8,11,8,12,Normal
+8,12,8,13,Normal
+8,13,8,14,Normal
+8,14,8,15,Normal
+8,15,8,16,Normal
+8,16,8,17,Normal
+8,17,8,18,Normal
+9,0,9,10,Normal
+9,10,9,11,Normal
+9,11,9,12,Normal
+9,12,9,13,Normal
+9,13,9,14,Normal
+9,14,9,15,Normal
+9,15,9,16,Normal
+9,16,9,17,Normal
+9,17,9,18,Normal
+9,18,9,19,Normal
+9,19,9,20,Normal
+10,0,10,1,Normal
+11,0,11,1,Normal
+11,1,11,2,Normal
+11,2,11,3,Normal
+11,3,11,4,Normal
+12,0,12,1,Normal
+12,1,12,2,Normal
+12,2,12,3,Normal
+12,3,12,4,Normal
+12,4,12,5,Normal
+12,5,12,6,Normal
+13,0,13,1,Normal
+13,1,13,2,Normal
+13,2,13,3,Normal
+14,0,14,1,Normal
+14,1,14,2,Normal
+15,0,15,1,Normal
+15,1,15,2,Normal
+15,2,15,3,Normal
+15,3,15,4,Normal
+15,4,15,5,Normal
+15,5,15,6,Normal
+15,6,15,7,Normal
+15,7,15,10,Normal
+15,8,15,9,Normal
+15,10,15,8,Normal
+16,0,16,1,Normal
+18,0,18,7,Normal
+18,7,18,8,Normal
+18,8,18,10,Normal
+18,10,18,11,Normal
+18,11,18,12,Normal
+18,12,18,13,Normal
+18,13,18,14,Normal
+18,14,18,15,Normal
+18,15,18,16,Normal
+18,16,18,17,Normal
+18,17,18,18,Normal
+18,18,18,19,Normal
+19,0,19,2,Normal
+20,0,20,1,Normal
+20,1,20,2,Normal
+21,0,21,1,Normal
+21,1,21,2,Normal
+23,0,23,1,Normal
+24,0,24,1,Normal
+25,0,25,1,Normal
+25,1,25,2,Normal
+25,2,25,3,Normal
+25,3,25,4,Normal
+25,4,25,5,Normal
+25,5,25,6,Normal
+25,6,25,7,Normal
+26,0,26,1,Normal
+27,0,27,1,Normal

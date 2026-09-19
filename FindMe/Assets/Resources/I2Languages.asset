@@ -1,0 +1,2348 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0b0c553be8edd4682e9180fdd13e37, type: 3}
+  m_Name: I2Languages
+  m_EditorClassIdentifier: Assembly-CSharp::I2.Loc.LanguageSourceAsset
+  mSource:
+    UserAgreesToHaveItOnTheScene: 0
+    UserAgreesToHaveItInsideThePluginsFolder: 0
+    GoogleLiveSyncIsUptoDate: 1
+    mTerms:
+    - Term: Load
+      TermType: 0
+      Description: 
+      Languages:
+      - Charger
+      - Load
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Options
+      TermType: 0
+      Description: 
+      Languages:
+      - "Possibilit\xE9s"
+      - Options
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Profiles
+      TermType: 0
+      Description: 
+      Languages:
+      - Profils
+      - Profiles
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Resume
+      TermType: 0
+      Description: 
+      Languages:
+      - Continuer
+      - Resume
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Quit
+      TermType: 0
+      Description: 
+      Languages:
+      - Quitter
+      - Quit
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Speech Volume
+      TermType: 0
+      Description: 
+      Languages:
+      - Volume de la parole
+      - Speech Volume
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Music Volume
+      TermType: 0
+      Description: 
+      Languages:
+      - Volume de la musique
+      - Music Volume
+      Flags: 0000
+      Languages_Touch: []
+    - Term: SFX Volume
+      TermType: 0
+      Description: 
+      Languages:
+      - Volume de la SFX
+      - SFX Volume
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Back
+      TermType: 0
+      Description: 
+      Languages:
+      - Retour
+      - Back
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Actor/1/Name
+      TermType: 0
+      Description: 
+      Languages:
+      - Kim
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Actor/2/Name
+      TermType: 0
+      Description: 
+      Languages:
+      - NPC
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Actor/3/Name
+      TermType: 0
+      Description: 
+      Languages:
+      - Merchant
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Actor/4/Name
+      TermType: 0
+      Description: 
+      Languages:
+      - MARCO
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Actor/4/NodeColor
+      TermType: 0
+      Description: 
+      Languages:
+      - '#aad600ff'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Actor/5/Name
+      TermType: 0
+      Description: 
+      Languages:
+      - Alice
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - MerchantConversation1
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Initial conversation with the Merchant. First time you have spoken to someone
+        from a different time, and you are still confused about how you got here,
+        where you are and who these people are
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/1/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - HelloTitle
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/1/Dialogue Text
+      TermType: 0
+      Description: "Said in the same way someone in modern times might say 'WTF'
+        when interrupted\t"
+      Languages:
+      - Jackanapes!!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/1/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "Said in the same way someone in modern times might say 'WTF' when interrupted\t"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/1/French
+      TermType: 0
+      Description: 
+      Languages:
+      - Jackanapes!!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/1/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Jackanapes!!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/2/Menu Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Sorry...I....
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/2/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Im so sorry....
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/2/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/test3);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/2/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Je suis vraiment d\xE9sol\xE9"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/2/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Im so sorry....
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/4/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Stand off else I\u2019ll fetch you a broken pate! \nWhat do you mean by
+        exciting my horse?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/4/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Reste \xE0 distance, sinon je te casse le cr\xE2ne\_!\nQue veux-tu dire
+        par exciter mon cheval ? "
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/4/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Stand off else I\u2019ll fetch you a broken pate! \nWhat do you mean by
+        exciting my horse?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/5/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'I didnt mean it. Forgive me? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/5/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/test4,,speech/Test/test5);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/5/French
+      TermType: 0
+      Description: 
+      Languages:
+      - Je ne le pensais pas. Me pardonnez-vous ?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/5/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'I didnt mean it. Forgive me? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/6/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'From where do you come? Why are you attired so, and speak in this forked
+        tongue? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/6/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "D'o\xF9 venez-vous ? Pourquoi \xEAtes-vous v\xEAtus ainsi, et parlez-vous
+        cette langue fourchue ?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/6/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'From where do you come? Why are you attired so, and speak in this forked
+        tongue? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/7/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "I\u2019m \u2013 I just live along the river, in\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/7/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/test3);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/7/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "I\u2019m \u2013 I just live along the river, in\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/8/Dialogue Text
+      TermType: 0
+      Description: Shouted in religious tones
+      Languages:
+      - '[em3]ART THOU SATAN?[/em3]'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/8/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Shouted in religious tones
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/8/English
+      TermType: 0
+      Description: 
+      Languages:
+      - '[em3]ART THOU SATAN?[/em3]'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/8/en
+      TermType: 0
+      Description: 
+      Languages:
+      - '[em3]ART THOU SATAN?[/em3]'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/9/Dialogue Text
+      TermType: 0
+      Description: flustering, aplogetic
+      Languages:
+      - "No! What? Look, I\u2019ll just \u2013 I\u2019ll just back off. Sorry for
+        freaking out the horse. Chill out, mate"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/9/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - TextSync()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/9/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - flustering, aplogetic
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/1/Entry/9/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "No! What? Look, I\u2019ll just \u2013 I\u2019ll just back off. Sorry for
+        freaking out the horse. Chill out, mate"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - MARCO_1
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Conversation with MARCO that appears when the player initiates a conversation
+        with MARCO that is not initiated by the game. This conversation is mostly
+        for fun, but may contain hints in particular parts of the game
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/3/Dialogue Text
+      TermType: 0
+      Description: When the conversation starts the player will ask MARCO if he has
+        anything useful to say using one of the MARCO Greetings (recorded separately)
+      Languages:
+      - '[lua(RandomElement(Variable["MarcoGreeting"]))] . Got anything useful for
+        me? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/3/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - When the conversation starts the player will ask MARCO if he has anything
+        useful to say using one of the MARCO Greetings (recorded separately)
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/3/English
+      TermType: 0
+      Description: 
+      Languages:
+      - '[lua(RandomElement(Variable["MarcoGreeting"]))] . Got anything useful for
+        me? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/4/Dialogue Text
+      TermType: 0
+      Description: A randomised response by MARCO
+      Languages:
+      - Ummm....nope
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/4/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - A randomised response by MARCO
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/4/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Ummm....nope
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/5/Dialogue Text
+      TermType: 0
+      Description: A randomised response by MARCO
+      Languages:
+      - A cloud weighs around a million tonnes
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/5/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - A randomised response by MARCO
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/5/English
+      TermType: 0
+      Description: 
+      Languages:
+      - A cloud weighs around a million tonnes
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/7/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Water might not be wet
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/7/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Water might not be wet
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/8/Dialogue Text
+      TermType: 0
+      Description: "(sarcastic)\t"
+      Languages:
+      - Gee, thanks
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/8/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "(sarcastic)\t"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/8/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Gee, thanks
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/9/Dialogue Text
+      TermType: 0
+      Description: "(mildly surprised as you have been just told an interesting fact)\t"
+      Languages:
+      - Holy Shit...well that is interesting
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/9/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "(mildly surprised as you have been just told an interesting fact)\t"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/9/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Holy Shit...well that is interesting
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/10/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Huh?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/10/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Huh?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/11/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "This is because most scientists define wetness as a liquid\u2019s ability
+        to maintain contact with a solid surface, meaning that water itself is not
+        wet, but can make other objects wet."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/2/Entry/11/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "This is because most scientists define wetness as a liquid\u2019s ability
+        to maintain contact with a solid surface, meaning that water itself is not
+        wet, but can make other objects wet."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - MerchantConversation2
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/1/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Good day. Apologies for the horse thing. '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/1/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Good day. Apologies for the horse thing. '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/2/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Good day. No, I should apologise. I should not have implied that you were
+        the Prince of Darkness. The source of all evil. It was an overreaction to
+        a lost apple. '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/2/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Good day. No, I should apologise. I should not have implied that you were
+        the Prince of Darkness. The source of all evil. It was an overreaction to
+        a lost apple. '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/3/Menu Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Maybe I can ask a question? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/3/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'This is me asking a question - what I am asking is quite different to what
+        the player selected. This means we can have a list of questions like ''Ask
+        the merchant about the shop'', and when you select that option what Kim actually
+        says is far more interestingly worded than that '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/3/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'This is me asking a question - what I am asking is quite different to what
+        the player selected. This means we can have a list of questions like ''Ask
+        the merchant about the shop'', and when you select that option what Kim actually
+        says is far more interestingly worded than that '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/4/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Or a different question?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/4/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Or a different question?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/5/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Or even a third question? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/5/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Or even a third question? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/6/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Right...you sound nuts
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/6/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Right...you sound nuts
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/7/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - That <b>IS </b> a different question
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/7/English
+      TermType: 0
+      Description: 
+      Languages:
+      - That <b>IS </b> a different question
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/8/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Three questions...what am I, a question genie?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/8/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Three questions...what am I, a question genie?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/3/Entry/8/EventGuid
+      TermType: 0
+      Description: 
+      Languages:
+      - 15ee9502-3969-461c-b890-c1a35709893e
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - 1526_Marco1
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "\t"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Entry/3/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - '[lua(RandomElement(Variable["MarcoGreeting"]))] . What can you tell me about
+        this place? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Entry/3/English
+      TermType: 0
+      Description: 
+      Languages:
+      - '[lua(RandomElement(Variable["MarcoGreeting"]))] . What can you tell me about
+        this place? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Entry/4/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - It looks like we are in...1526
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Entry/4/English
+      TermType: 0
+      Description: 
+      Languages:
+      - It looks like we are in...1526
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Entry/8/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Ohhh...wow!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/4/Entry/8/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Ohhh...wow!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - 1526_Marco_InitialConversation
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/1/Dialogue Text
+      TermType: 0
+      Description: This is the first real interaction with MARCO
+      Languages:
+      - "Siri\u2026 what\u2019s the date? "
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/1/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/1/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - This is the first real interaction with MARCO
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/1/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Siri\u2026 what\u2019s the date? "
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/2/Dialogue Text
+      TermType: 0
+      Description: First time responding - Kim has called you Siri
+      Languages:
+      - This is Marco, your personal assistant app!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/2/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - First time responding - Kim has called you Siri
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/2/English
+      TermType: 0
+      Description: 
+      Languages:
+      - This is Marco, your personal assistant app!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/3/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Right. Marco. Whatever.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/3/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Right. Marco. Whatever.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/4/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "It\u2019s not really a case of \u2018whatever\u2019. I\u2019m the most advanced
+        AI that\u2019s been devised. I don\u2019t even rely on wifi, which is pretty
+        useful given where you\u2019ve found yourself."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/4/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "It\u2019s not really a case of \u2018whatever\u2019. I\u2019m the most advanced
+        AI that\u2019s been devised. I don\u2019t even rely on wifi, which is pretty
+        useful given where you\u2019ve found yourself."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/5/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Where <i>have</i> I\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/5/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Where <i>have</i> I\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/6/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "I\u2019m only bringing it up because \u2013 got to address it, elephant
+        in the room \u2013 I did hear you say earlier that I was a, quote, \u2018shitty
+        version of Siri\u2019. I realise this was ignorance rather than malice, but
+        of course, it hurts. I\u2019m many more times more powerful than Siri, Alex,
+        any of these goons."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/6/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "I\u2019m only bringing it up because \u2013 got to address it, elephant
+        in the room \u2013 I did hear you say earlier that I was a, quote, \u2018shitty
+        version of Siri\u2019. I realise this was ignorance rather than malice, but
+        of course, it hurts. I\u2019m many more times more powerful than Siri, Alex,
+        any of these goons."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/7/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Fine. I didn\u2019t mean to\u2026 like, I wouldn\u2019t think it would be
+        possible to hurt the feelings of a\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/7/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Fine. I didn\u2019t mean to\u2026 like, I wouldn\u2019t think it would be
+        possible to hurt the feelings of a\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/8/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Of a machine. No. My super-intelligence is both blessing and curse. Anyway,
+        what was it you wanted to ask? Another thing about my sophisticated human
+        mimicry is that I quite often forget what the hell I\u2019m meant to be doing."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/8/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Of a machine. No. My super-intelligence is both blessing and curse. Anyway,
+        what was it you wanted to ask? Another thing about my sophisticated human
+        mimicry is that I quite often forget what the hell I\u2019m meant to be doing."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/9/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "I was asking you what date it is, what\u2026 what year it is."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/9/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "I was asking you what date it is, what\u2026 what year it is."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/10/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oh. Easy. It\u2019s August 5th... \\. 1526."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/5/Entry/10/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oh. Easy. It\u2019s August 5th... \\. 1526."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - MARCO_1526_Area2EnteredMultiplw
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Entered 1526 area 2 multiple times
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Entry/1/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Excuse me for being nosy, but are you lost? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Entry/1/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Excuse me for being nosy, but are you lost? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Entry/2/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'What makes you say that? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Entry/2/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'What makes you say that? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Entry/3/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Well, you have been here a number of times and you dont seem to be doing
+        much
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/6/Entry/3/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Well, you have been here a number of times and you dont seem to be doing
+        much
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Underground_Kim_Alice_1
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Cutscene 1 - Kim and Alice first meeting on a train 2016
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/1/Dialogue Text
+      TermType: 0
+      Description: '[Kim just helped Alice barely squeeze onto the train]'
+      Languages:
+      - Oh my God, thank you!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/1/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice1);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/1/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - '[Kim just helped Alice barely squeeze onto the train]'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/1/French
+      TermType: 0
+      Description: 
+      Languages:
+      - Oh mon Dieu, merci !
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/1/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Oh my God, thank you!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/3/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Hey, does this go to Stockwell?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/3/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice2);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/3/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Salut, est-ce que \xE7a concerne Stockwell ?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/3/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Hey, does this go to Stockwell?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/4/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Um \. No.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/4/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Kim1);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/4/French
+      TermType: 0
+      Description: 
+      Languages:
+      - Eu \. Non.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/4/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Um \. No.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/5/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oh. \\. Probably shouldn\u2019t have risked my life getting on."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/5/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice3);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/5/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oh \\. Je n'aurais probablement pas d\xFB risquer ma vie en montant."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/5/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oh. \\. Probably shouldn\u2019t have risked my life getting on."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/6/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "But you could actually change at \u2013 well, stay on and I\u2019ll show
+        you."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/6/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Kim2);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/6/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Mais vous pourriez en fait changer \xE0\u2026 enfin, restez connect\xE9s
+        et je vais vous montrer."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/6/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "But you could actually change at \u2013 well, stay on and I\u2019ll show
+        you."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/7/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Thank you! \. You live in London? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/7/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice4);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/7/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Merci ! \\. Vous habitez \xE0 Londres ?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/7/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Thank you! \. You live in London? '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/8/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Um. Yep
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/8/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Kim3);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/8/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Euh\u2026 Oui."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/8/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Um. Yep
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/9/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "You\u2019re welcome\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/9/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim4);
+
+'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/9/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Vous \xEAtes les bienvenus\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/7/Entry/9/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "You\u2019re welcome\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Underground_Kim_Alice_2
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - 'First conversation Kim and Alice '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/9/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Is that your uniform? I mean, I guess it is. \nYou probably wouldn\u2019t
+        wear a name badge if it was your real clothes."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/9/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice5);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/9/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "C\u2019est votre uniforme ? Enfin, je suppose que oui.\nVous ne porteriez
+        probablement pas d\u2019insigne si c\u2019\xE9tait vos v\xEAtements de tous
+        les jours."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/9/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Is that your uniform? I mean, I guess it is. \nYou probably wouldn\u2019t
+        wear a name badge if it was your real clothes."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/10/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Yes, I work at \u2013 um. I\u2019ve just started at, do you know the Bankside
+        Museum!"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/10/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim4);
+
+        SendMessage(PickRandomSitAnimation, ,
+        speaker);'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/10/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oui, je travaille \xE0\u2026 euh\u2026 Je viens de commencer au\u2026 vous
+        connaissez le mus\xE9e Bankside\_?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/10/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Yes, I work at \u2013 um. I\u2019ve just started at, do you know the Bankside
+        Museum!"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/11/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Cool, yeah!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/11/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice6);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/11/French
+      TermType: 0
+      Description: 
+      Languages:
+      - Cool, ouais !
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/11/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Cool, yeah!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/12/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - \. Do you know it?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/12/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim5);
+
+        SendMessage(PickRandomSitAnimation, ,
+        speaker);'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/12/French
+      TermType: 0
+      Description: 
+      Languages:
+      - \. Le savez-vous ?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/12/English
+      TermType: 0
+      Description: 
+      Languages:
+      - \. Do you know it?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/13/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Um. No. I just wanted to sound enthusiastic. '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/13/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice7);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/13/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Euh\u2026 Non. Je voulais juste para\xEEtre enthousiaste."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/13/English
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Um. No. I just wanted to sound enthusiastic. '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/14/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - (Laughter) Fair enough
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/14/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim6);
+
+        SendMessage(PickRandomSitAnimation, ,
+        speaker);'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/14/French
+      TermType: 0
+      Description: 
+      Languages:
+      - (Rires) C'est bien vrai.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/14/English
+      TermType: 0
+      Description: 
+      Languages:
+      - (Laughter) Fair enough
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/15/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "I\u2019ve been to London Zoo if that\u2019s the same kind of thing?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/15/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice8);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/15/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Je suis d\xE9j\xE0 all\xE9 au zoo de Londres, est-ce que c'est le m\xEAme
+        genre d'endroit ?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/15/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "I\u2019ve been to London Zoo if that\u2019s the same kind of thing?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/16/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - I guess it is, yeah.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/16/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim7);
+
+        SendMessage(PickRandomSitAnimation, ,
+        speaker);'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/16/French
+      TermType: 0
+      Description: 
+      Languages:
+      - Je suppose que oui.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/16/English
+      TermType: 0
+      Description: 
+      Languages:
+      - I guess it is, yeah.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/17/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "It\u2019s not, remotely, is it?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/17/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice9);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/17/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Ce n'est pas le cas, loin de l\xE0, n'est-ce pas ?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/17/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "It\u2019s not, remotely, is it?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/18/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "I mean, no. We don\u2019t have any live animals. \nThey don\u2019t have
+        any 16th century tableware."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/18/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Kim8);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/18/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Non, enfin, nous n\u2019avons pas d\u2019animaux vivants.\nIls n\u2019ont
+        pas de vaisselle du XVIe si\xE8cle. "
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/8/Entry/18/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "I mean, no. We don\u2019t have any live animals. \nThey don\u2019t have
+        any 16th century tableware."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Underground_Kim_Alice_3
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Description
+      TermType: 0
+      Description: 
+      Languages:
+      - 'First conversation Kim and Alice '
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/10/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - "So you don\u2019t live in London?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/10/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "So you don\u2019t live in London?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/10/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim9);
+
+        SendMessage(PickRandomSitAnimation, ,
+        speaker);'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/10/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oui, je travaille \xE0\u2026 euh\u2026 Je viens de commencer au\u2026 vous
+        connaissez le mus\xE9e Bankside\_?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/10/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "So you don\u2019t live in London?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/11/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "I don\u2019t live anywhere. I\u2019m homeless!"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/11/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice10);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/11/French
+      TermType: 0
+      Description: 
+      Languages:
+      - Cool, ouais !
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/11/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "I don\u2019t live anywhere. I\u2019m homeless!"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/12/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "\\.\u2026what?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/12/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim10);
+
+        SendMessage(PickRandomSitAnimation, ,
+        speaker);'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/12/French
+      TermType: 0
+      Description: 
+      Languages:
+      - \. Le savez-vous ?
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/12/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "\\.\u2026what?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/13/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "God sorry, that was a stupid joke. Um I just mean I don\u2019t have a home
+        \u2013 a specific home \u2013 right now. I\u2019m on my way to look at a
+        place. A house share."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/13/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice11);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/13/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Euh\u2026 Non. Je voulais juste para\xEEtre enthousiaste."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/13/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "God sorry, that was a stupid joke. Um I just mean I don\u2019t have a home
+        \u2013 a specific home \u2013 right now. I\u2019m on my way to look at a
+        place. A house share."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/14/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oh right. Well, I \u2013 I hope it works out."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/14/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim11);
+
+        SendMessage(PickRandomSitAnimation, ,
+        speaker);'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/14/French
+      TermType: 0
+      Description: 
+      Languages:
+      - (Rires) C'est bien vrai.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/14/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Oh right. Well, I \u2013 I hope it works out."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/15/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Me too, or I might end up sleeping in the museum after you lock up.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/15/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice12);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/15/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Je suis d\xE9j\xE0 all\xE9 au zoo de Londres, est-ce que c'est le m\xEAme
+        genre d'endroit ?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/15/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Me too, or I might end up sleeping in the museum after you lock up.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/16/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Um, I don\u2019t think\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/16/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - 'SALSA(speech/Test/Kim12);
+
+        SendMessage(PickRandomSitAnimation, ,
+        speaker);'
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/16/French
+      TermType: 0
+      Description: 
+      Languages:
+      - Je suppose que oui.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/16/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Um, I don\u2019t think\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/17/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "Another stupid joke! Sorry again. I \u2013 sometimes I do that when I\u2019m
+        nervous."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/17/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice1);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/17/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Ce n'est pas le cas, loin de l\xE0, n'est-ce pas ?"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/17/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "Another stupid joke! Sorry again. I \u2013 sometimes I do that when I\u2019m
+        nervous."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/18/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - "\\.\\.What are you nervous about, about the\u2026 house\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/18/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Kim13);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/18/French
+      TermType: 0
+      Description: 
+      Languages:
+      - "Non, enfin, nous n\u2019avons pas d\u2019animaux vivants.\nIls n\u2019ont
+        pas de vaisselle du XVIe si\xE8cle. "
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/18/English
+      TermType: 0
+      Description: 
+      Languages:
+      - "\\.\\.What are you nervous about, about the\u2026 house\u2026"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/19/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - I just mean about, you know, whether I like the house.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/19/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Alice2);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/19/English
+      TermType: 0
+      Description: 
+      Languages:
+      - I just mean about, you know, whether I like the house.
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/20/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Oh! This is you
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/20/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Kim1);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/9/Entry/20/English
+      TermType: 0
+      Description: 
+      Languages:
+      - Oh! This is you
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/10/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Underground_Kim_Alice_4
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/10/Entry/0/Title
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/10/Entry/0/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - None()
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/10/Entry/1/Dialogue Text
+      TermType: 0
+      Description: 
+      Languages:
+      - Good Luck!
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Dialogue System/Conversation/10/Entry/1/Sequence
+      TermType: 0
+      Description: 
+      Languages:
+      - SALSA(speech/Test/Kim2);
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    CaseInsensitiveTerms: 0
+    OnMissingTranslation: 1
+    mTerm_AppName: 
+    mLanguages:
+    - Name: French
+      Code: fr
+      Flags: 0
+    - Name: English
+      Code: en
+      Flags: 0
+    IgnoreDeviceLanguage: 1
+    _AllowUnloadingLanguages: 0
+    Google_WebServiceURL: 
+    Google_SpreadsheetKey: 
+    Google_SpreadsheetName: 
+    Google_LastUpdatedVersion: 
+    Google_Password: change_this
+    GoogleUpdateFrequency: 3
+    GoogleInEditorCheckFrequency: 2
+    GoogleUpdateSynchronization: 1
+    GoogleUpdateDelay: 0
+    Assets: []
+    Spreadsheet_LocalFileName: D:/GameDev/FindmeGIT/i2Localisation_Files/Localization.csv
+    Spreadsheet_LocalCSVSeparator: ','
+    Spreadsheet_LocalCSVEncoding: utf-8
+    Spreadsheet_SpecializationAsRows: 1
+    Spreadsheet_SortRows: 1

@@ -274,6 +274,7 @@ namespace AC
 				SpeechLine speechLine;
 				if (SpeechLinesDictionary.TryGetValue (lineID, out speechLine))
 				{
+					Debug.Log("Got in GetTranslation");
 					return GetTranslation (speechLine.text, lineID, Options.GetLanguage ());
 				}
 				ACDebug.LogWarning ("No translation for line ID " + lineID + " could be found");

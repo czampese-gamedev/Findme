@@ -1,0 +1,202 @@
+﻿Database
+Name,Version,Author,Description,Emphasis1,Emphasis2,Emphasis3,Emphasis4
+FindMeDialogueDatabase,,,,#b4b0b0ff ---,#7f0000ff ---,#ffffffff b--,#0000ffff ---
+Global User Script
+
+Actors
+ID,Portrait,AltPortraits,SpritePortrait,AltSpritePortraits,Name,Pictures,Description,IsPlayer,NodeColor
+Number,Special,Special,Special,Special,Text,Files,Text,Boolean,Text
+1,,[],,[],Player,[],,TRUE,{{omit}}
+2,,[],,[],NPC,[],,FALSE,{{omit}}
+3,,[],,[],Merchant,[],,FALSE,{{omit}}
+4,Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/Shared Textures/Test Portrait.png,[],,[],MARCO,[],,FALSE,#aad600ff
+5,,[],,[],Alice,[],,FALSE,{{omit}}
+Items
+ID
+Number
+Locations
+ID
+Number
+Variables
+ID,Name,Initial Value,Description,InitialValueType
+Number,Text,Text,Text,Text
+1,Alert,,,Text
+3,MarcoGreeting,Hey Marco|Yo Computer boy|Hey Siri..I mean...you know,,Text
+Conversations
+ID,Title,Description,Actor,Conversant,Overrides
+Number,Text,Text,Actor,Actor,JSON
+1,MerchantConversation1,"Initial conversation with the Merchant. First time you have spoken to someone from a different time, and you are still confused about how you got here, where you are and who these people are",1,3,"{""useOverrides"":false,""overrideSubtitleSettings"":true,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":false,""showPCSubtitlesDuringLine"":true,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":1,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+2,MARCO_1,"Conversation with MARCO that appears when the player initiates a conversation with MARCO that is not initiated by the game. This conversation is mostly for fun, but may contain hints in particular parts of the game",1,4,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+3,MerchantConversation2,,1,3,"{""useOverrides"":false,""overrideSubtitleSettings"":true,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+4,1526_Marco1,	,1,4,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+5,1526_Marco_InitialConversation,,1,4,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+6,MARCO_1526_Area2EnteredMultiplw,Entered 1526 area 2 multiple times,4,1,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+7,Underground_Kim_Alice_1,First conversation Kim and Alice ,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+8,Underground_Kim_Alice_2,First conversation Kim and Alice ,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+9,Underground_Kim_Alice_3,First conversation Kim and Alice ,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+10,Underground_Kim_Alice_4,,1,5,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+DialogueEntries
+entrytag,ConvID,ID,Actor,Conversant,Title,MenuText,DialogueText,IsGroup,FalseConditionAction,ConditionPriority,Conditions,Script,Sequence,Description,French,English,Response Menu Sequence,en,fr,EventGuid,canvasRect
+Text,Number,Number,Number,Number,Text,Text,Text,Boolean,Special,Special,Text,Text,Text,Text,Localization,Localization,Text,Localization,Localization,Text,Text
+Player_MerchantConversation1_START,1,0,1,3,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},161.0309;30
+Merchant_MerchantConversation1_HelloTitle,1,1,3,1,HelloTitle,,Jackanapes!!,False,Block,Normal,,,,Said in the same way someone in modern times might say 'WTF' when interrupted	,Jackanapes!!,Jackanapes!!,{{omit}},{{omit}},{{omit}},{{omit}},162.5603;116.1586
+Player_MerchantConversation1_Sorry...I....,1,2,1,3,,Sorry...I....,Im so sorry....,False,Block,Normal,,,SALSA(speech/Test/test3);,,Je suis vraiment désolé,Im so sorry....,{{omit}},{{omit}},{{omit}},{{omit}},158.6885;199.4698
+Merchant_MerchantConversation1_4,1,4,3,1,,,Stand off else I’ll fetch you a broken pate! \nWhat do you mean by exciting my horse?,False,Block,Normal,,,,,"Reste à distance, sinon je te casse le crâne !\nQue veux-tu dire par exciter mon cheval ? ",Stand off else I’ll fetch you a broken pate! \nWhat do you mean by exciting my horse?,{{omit}},{{omit}},{{omit}},{{omit}},195.0735;265.9225
+Player_MerchantConversation1_5,1,5,1,3,,,I didnt mean it. Forgive me? ,False,Block,Normal,,,"SALSA(speech/Test/test4,,speech/Test/test5);",,Je ne le pensais pas. Me pardonnez-vous ?,I didnt mean it. Forgive me? ,,{{omit}},{{omit}},{{omit}},197.2011;339.1406
+Merchant_MerchantConversation1_6,1,6,3,1,,,"From where do you come? Why are you attired so, and speak in this forked tongue? ",False,Block,Normal,,,,,"D'où venez-vous ? Pourquoi êtes-vous vêtus ainsi, et parlez-vous cette langue fourchue ?","From where do you come? Why are you attired so, and speak in this forked tongue? ",{{omit}},{{omit}},{{omit}},{{omit}},197.2011;390.3906
+Player_MerchantConversation1_7,1,7,1,3,,,"I’m – I just live along the river, in…",False,Block,Normal,,,SALSA(speech/Test/test3);,,,"I’m – I just live along the river, in…",{{omit}},{{omit}},{{omit}},{{omit}},198.4511;444.1406
+Merchant_MerchantConversation1_8,1,8,3,1,,,[em3]ART THOU SATAN?[/em3],False,Block,Normal,,,,Shouted in religious tones,,[em3]ART THOU SATAN?[/em3],{{omit}},[em3]ART THOU SATAN?[/em3],,{{omit}},199.5541;489.2141
+Player_MerchantConversation1_9,1,9,1,3,,,"No! What? Look, I’ll just – I’ll just back off. Sorry for freaking out the horse. Chill out, mate",False,Block,Normal,,,TextSync(),"flustering, aplogetic",,"No! What? Look, I’ll just – I’ll just back off. Sorry for freaking out the horse. Chill out, mate",{{omit}},{{omit}},{{omit}},{{omit}},199.5541;539.2141
+Merchant_MerchantConversation1_10,1,10,3,1,,,,False,Block,Normal,,,,,,,{{omit}},{{omit}},{{omit}},,199.5541;584.2286
+Player_MARCO_1_START,2,0,1,4,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},156;31
+Player_MARCO_1_3,2,3,1,4,,,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . Got anything useful for me? ",False,Block,Normal,,RandomizeNextEntry(),,When the conversation starts the player will ask MARCO if he has anything useful to say using one of the MARCO Greetings (recorded separately),,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . Got anything useful for me? ",{{omit}},{{omit}},{{omit}},{{omit}},178;137
+MARCO_MARCO_1_4,2,4,4,1,,,Ummm....nope,False,Block,Normal,,,,A randomised response by MARCO,,Ummm....nope,{{omit}},{{omit}},{{omit}},{{omit}},89.8868;250.0566
+MARCO_MARCO_1_5,2,5,4,1,,,A cloud weighs around a million tonnes,False,Block,Normal,,,,A randomised response by MARCO,,A cloud weighs around a million tonnes,{{omit}},{{omit}},{{omit}},{{omit}},296;262
+MARCO_MARCO_1_7,2,7,4,1,,,Water might not be wet,False,Block,Normal,,,,,,Water might not be wet,{{omit}},{{omit}},{{omit}},{{omit}},517.0566;269.9434
+Player_MARCO_1_8,2,8,1,4,,,"Gee, thanks",False,Block,Normal,,,,(sarcastic)	,,"Gee, thanks",{{omit}},{{omit}},{{omit}},{{omit}},86;361
+Player_MARCO_1_9,2,9,1,4,,,Holy Shit...well that is interesting,False,Block,Normal,,,,(mildly surprised as you have been just told an interesting fact)	,,Holy Shit...well that is interesting,{{omit}},{{omit}},{{omit}},{{omit}},296;312
+Player_MARCO_1_10,2,10,1,4,,,Huh?,False,Block,Normal,,,,,,Huh?,{{omit}},{{omit}},{{omit}},{{omit}},518;319
+MARCO_MARCO_1_11,2,11,4,1,,,"This is because most scientists define wetness as a liquid’s ability to maintain contact with a solid surface, meaning that water itself is not wet, but can make other objects wet.",False,Block,Normal,,,,,,"This is because most scientists define wetness as a liquid’s ability to maintain contact with a solid surface, meaning that water itself is not wet, but can make other objects wet.",{{omit}},{{omit}},{{omit}},{{omit}},518;369
+Player_MerchantConversation2_START,3,0,1,3,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+Player_MerchantConversation2_1,3,1,1,3,,,Good day. Apologies for the horse thing. ,False,Block,Normal,,,,,,Good day. Apologies for the horse thing. ,{{omit}},{{omit}},{{omit}},{{omit}},160;80
+Merchant_MerchantConversation2_2,3,2,3,1,,,"Good day. No, I should apologise. I should not have implied that you were the Prince of Darkness. The source of all evil. It was an overreaction to a lost apple. ",False,Block,Normal,,,,,,"Good day. No, I should apologise. I should not have implied that you were the Prince of Darkness. The source of all evil. It was an overreaction to a lost apple. ",{{omit}},{{omit}},{{omit}},{{omit}},158;143
+Player_MerchantConversation2_Maybe_I_can_ask_a_question__,3,3,1,3,,Maybe I can ask a question? ,"This is me asking a question - what I am asking is quite different to what the player selected. This means we can have a list of questions like 'Ask the merchant about the shop', and when you select that option what Kim actually says is far more interestingly worded than that ",False,Block,Normal,,,,,,"This is me asking a question - what I am asking is quite different to what the player selected. This means we can have a list of questions like 'Ask the merchant about the shop', and when you select that option what Kim actually says is far more interestingly worded than that ",{{omit}},{{omit}},{{omit}},{{omit}},101.9485;269
+Player_MerchantConversation2_4,3,4,1,3,,,Or a different question?,False,Block,Normal,,,,,,Or a different question?,{{omit}},{{omit}},{{omit}},{{omit}},298;268
+Player_MerchantConversation2_5,3,5,1,3,,,Or even a third question? ,False,Block,Normal,,,,,,Or even a third question? ,{{omit}},{{omit}},{{omit}},{{omit}},506;269
+Merchant_MerchantConversation2_6,3,6,3,1,,,Right...you sound nuts,False,Block,Normal,,,,,,Right...you sound nuts,{{omit}},{{omit}},{{omit}},{{omit}},127;439
+Merchant_MerchantConversation2_7,3,7,3,1,,,That <b>IS </b> a different question,False,Block,Normal,,,,,,That <b>IS </b> a different question,{{omit}},{{omit}},{{omit}},{{omit}},328;425
+Merchant_MerchantConversation2_8,3,8,3,1,,,"Three questions...what am I, a question genie?",False,Block,Normal,,,,,,"Three questions...what am I, a question genie?",{{omit}},{{omit}},{{omit}},15ee9502-3969-461c-b890-c1a35709893e,651;419
+Player_1526_Marco1_START,4,0,1,4,START,,,False,Block,Normal,,,None(),,,,{{omit}},,,{{omit}},156;31
+Player_1526_Marco1_3,4,3,1,4,,,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . What can you tell me about this place? ",False,Block,Normal,,RandomizeNextEntry(),,,,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . What can you tell me about this place? ",{{omit}},{{omit}},{{omit}},{{omit}},178;137
+MARCO_1526_Marco1_4,4,4,4,1,,,It looks like we are in...1526,False,Block,Normal,,,,,,It looks like we are in...1526,{{omit}},{{omit}},{{omit}},{{omit}},234;255
+Player_1526_Marco1_8,4,8,1,4,,,Ohhh...wow!,False,Block,Normal,,,,,,Ohhh...wow!,{{omit}},{{omit}},{{omit}},{{omit}},233;362
+Player_1526_Marco_InitialConversation_START,5,0,1,4,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+Player_1526_Marco_InitialConversation_1,5,1,1,4,,,Siri… what’s the date? ,False,Block,Normal,,,SALSA(),This is the first real interaction with MARCO,,Siri… what’s the date? ,{{omit}},{{omit}},{{omit}},{{omit}},160;80
+MARCO_1526_Marco_InitialConversation_2,5,2,4,1,,,"This is Marco, your personal assistant app!",False,Block,Normal,,,,First time responding - Kim has called you Siri,,"This is Marco, your personal assistant app!",{{omit}},{{omit}},{{omit}},{{omit}},160;130
+Player_1526_Marco_InitialConversation_3,5,3,1,4,,,Right. Marco. Whatever.,False,Block,Normal,,,,,,Right. Marco. Whatever.,{{omit}},{{omit}},{{omit}},{{omit}},160;180
+MARCO_1526_Marco_InitialConversation_4,5,4,4,1,,,"It’s not really a case of ‘whatever’. I’m the most advanced AI that’s been devised. I don’t even rely on wifi, which is pretty useful given where you’ve found yourself.",False,Block,Normal,,,,,,"It’s not really a case of ‘whatever’. I’m the most advanced AI that’s been devised. I don’t even rely on wifi, which is pretty useful given where you’ve found yourself.",{{omit}},{{omit}},{{omit}},{{omit}},160;230
+Player_1526_Marco_InitialConversation_5,5,5,1,4,,,Where <i>have</i> I…,False,Block,Normal,,,,,,Where <i>have</i> I…,{{omit}},{{omit}},{{omit}},{{omit}},160;280
+MARCO_1526_Marco_InitialConversation_6,5,6,4,1,,,"I’m only bringing it up because – got to address it, elephant in the room – I did hear you say earlier that I was a, quote, ‘shitty version of Siri’. I realise this was ignorance rather than malice, but of course, it hurts. I’m many more times more powerful than Siri, Alex, any of these goons.",False,Block,Normal,,,,,,"I’m only bringing it up because – got to address it, elephant in the room – I did hear you say earlier that I was a, quote, ‘shitty version of Siri’. I realise this was ignorance rather than malice, but of course, it hurts. I’m many more times more powerful than Siri, Alex, any of these goons.",{{omit}},{{omit}},{{omit}},{{omit}},160;330
+Player_1526_Marco_InitialConversation_7,5,7,1,4,,,"Fine. I didn’t mean to… like, I wouldn’t think it would be possible to hurt the feelings of a…",False,Block,Normal,,,,,,"Fine. I didn’t mean to… like, I wouldn’t think it would be possible to hurt the feelings of a…",{{omit}},{{omit}},{{omit}},{{omit}},160;380
+MARCO_1526_Marco_InitialConversation_8,5,8,4,1,,,"Of a machine. No. My super-intelligence is both blessing and curse. Anyway, what was it you wanted to ask? Another thing about my sophisticated human mimicry is that I quite often forget what the hell I’m meant to be doing.",False,Block,Normal,,,,,,"Of a machine. No. My super-intelligence is both blessing and curse. Anyway, what was it you wanted to ask? Another thing about my sophisticated human mimicry is that I quite often forget what the hell I’m meant to be doing.",{{omit}},{{omit}},{{omit}},{{omit}},430;32.64949
+Player_1526_Marco_InitialConversation_9,5,9,1,4,,,"I was asking you what date it is, what… what year it is.",False,Block,Normal,,,,,,"I was asking you what date it is, what… what year it is.",{{omit}},{{omit}},{{omit}},{{omit}},430;81
+MARCO_1526_Marco_InitialConversation_10,5,10,4,1,,,Oh. Easy. It’s August 5th... \. 1526.,False,Block,Normal,,,,,,Oh. Easy. It’s August 5th... \. 1526.,{{omit}},{{omit}},{{omit}},{{omit}},430;131
+MARCO_MARCO_1526_Area2EnteredMultiplw_START,6,0,4,1,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},172;46
+MARCO_MARCO_1526_Area2EnteredMultiplw_1,6,1,4,1,,,"Excuse me for being nosy, but are you lost? ",False,Block,Normal,,,,,,"Excuse me for being nosy, but are you lost? ",{{omit}},{{omit}},{{omit}},{{omit}},172;96
+Player_MARCO_1526_Area2EnteredMultiplw_2,6,2,1,4,,,What makes you say that? ,False,Block,Normal,,,,,,What makes you say that? ,{{omit}},{{omit}},{{omit}},{{omit}},172;146
+MARCO_MARCO_1526_Area2EnteredMultiplw_3,6,3,4,1,,,"Well, you have been here a number of times and you dont seem to be doing much",False,Block,Normal,,,,,,"Well, you have been here a number of times and you dont seem to be doing much",{{omit}},{{omit}},{{omit}},{{omit}},172;196
+Player_Underground_Kim_Alice_1_START,7,0,1,5,START,,,False,Block,Normal,,,None(),,,,{{omit}},,,{{omit}},161.3572;31.14285
+Alice_Underground_Kim_Alice_1_1,7,1,5,1,,,"Oh my God, thank you!",False,Block,Normal,,,SALSA(speech/Test/Alice1);,,"Oh mon Dieu, merci !","Oh my God, thank you!",,,,,175.7845;91.09119
+Alice_Underground_Kim_Alice_1_3,7,3,5,1,,,"Hey, does this go to Stockwell?",False,Block,Normal,,,SALSA(speech/Test/Alice2);,,"Salut, est-ce que ça concerne Stockwell ?","Hey, does this go to Stockwell?",{{omit}},,,{{omit}},160.35;195.2
+Player_Underground_Kim_Alice_1_4,7,4,1,5,,,Um \. No.,False,Block,Normal,,,SALSA(speech/Test/Kim1);,,Eu \. Non.,Um \. No.,{{omit}},,,{{omit}},162.7428;243.95
+Alice_Underground_Kim_Alice_1_5,7,5,5,1,,,Oh. \. Probably shouldn’t have risked my life getting on.,False,Block,Normal,,,SALSA(speech/Test/Alice3);,,Oh \. Je n'aurais probablement pas dû risquer ma vie en montant.,Oh. \. Probably shouldn’t have risked my life getting on.,{{omit}},{{omit}},{{omit}},{{omit}},181.0285;297.4857
+Player_Underground_Kim_Alice_1_6,7,6,1,5,,,"But you could actually change at – well, stay on and I’ll show you.",False,Block,Normal,,,SALSA(speech/Test/Kim2);,,"Mais vous pourriez en fait changer à… enfin, restez connectés et je vais vous montrer.","But you could actually change at – well, stay on and I’ll show you.",{{omit}},{{omit}},{{omit}},{{omit}},150.1715;346.3429
+Alice_Underground_Kim_Alice_1_7,7,7,5,1,,,Thank you! \. You live in London? ,False,Block,Normal,,,SALSA(speech/Test/Alice4);,,Merci ! \. Vous habitez à Londres ?,Thank you! \. You live in London? ,{{omit}},{{omit}},{{omit}},{{omit}},161.6;399.7715
+Player_Underground_Kim_Alice_1_8,7,8,1,5,,,Um. Yep,False,Block,Normal,,,SALSA(speech/Test/Kim3);,,Euh… Oui.,Um. Yep,{{omit}},,,,167.7539;463.6176
+Player_Underground_Kim_Alice_1_9,7,9,1,5,,,You’re welcome…,False,Block,Normal,,,SALSA(speech/Test/Kim4);\n,,Vous êtes les bienvenus…,You’re welcome…,{{omit}},,,{{omit}},202.9491;136.5471
+Player_Underground_Kim_Alice_2_START,8,0,1,5,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},158.8571;31.14285
+Alice_Underground_Kim_Alice_2_9,8,9,5,1,,,"Is that your uniform? I mean, I guess it is. \nYou probably wouldn’t wear a name badge if it was your real clothes.",False,Block,Normal,,,SALSA(speech/Test/Alice5);,,"C’est votre uniforme ? Enfin, je suppose que oui.\nVous ne porteriez probablement pas d’insigne si c’était vos vêtements de tous les jours.","Is that your uniform? I mean, I guess it is. \nYou probably wouldn’t wear a name badge if it was your real clothes.",{{omit}},{{omit}},{{omit}},{{omit}},191.641;97.13838
+Player_Underground_Kim_Alice_2_10,8,10,1,5,,,"Yes, I work at – um. I’ve just started at, do you know the Bankside Museum!",False,Block,Normal,,,"SALSA(speech/Test/Kim4);\nSendMessage(PickRandomSitAnimation, , speaker);",,"Oui, je travaille à… euh… Je viens de commencer au… vous connaissez le musée Bankside ?","Yes, I work at – um. I’ve just started at, do you know the Bankside Museum!",{{omit}},{{omit}},{{omit}},{{omit}},187.3761;164.3606
+Alice_Underground_Kim_Alice_2_11,8,11,5,1,,,"Cool, yeah!",False,Block,Normal,,,SALSA(speech/Test/Alice6);,,"Cool, ouais !","Cool, yeah!",{{omit}},{{omit}},{{omit}},{{omit}},185.637;214.3607
+Player_Underground_Kim_Alice_2_12,8,12,1,5,,,\. Do you know it?,False,Block,Normal,,,"SALSA(speech/Test/Kim5);\nSendMessage(PickRandomSitAnimation, , speaker);",,\. Le savez-vous ?,\. Do you know it?,{{omit}},{{omit}},{{omit}},{{omit}},185.637;264.3606
+Alice_Underground_Kim_Alice_2_13,8,13,5,1,,,Um. No. I just wanted to sound enthusiastic. ,False,Block,Normal,,,SALSA(speech/Test/Alice7);,,Euh… Non. Je voulais juste paraître enthousiaste.,Um. No. I just wanted to sound enthusiastic. ,{{omit}},{{omit}},{{omit}},{{omit}},185.637;314.3606
+Player_Underground_Kim_Alice_2_14,8,14,1,5,,,(Laughter) Fair enough,False,Block,Normal,,,"SALSA(speech/Test/Kim6);\nSendMessage(PickRandomSitAnimation, , speaker);",,(Rires) C'est bien vrai.,(Laughter) Fair enough,{{omit}},{{omit}},{{omit}},{{omit}},190.3652;364.6491
+Alice_Underground_Kim_Alice_2_15,8,15,5,1,,,I’ve been to London Zoo if that’s the same kind of thing?,False,Block,Normal,,,SALSA(speech/Test/Alice8);,,"Je suis déjà allé au zoo de Londres, est-ce que c'est le même genre d'endroit ?",I’ve been to London Zoo if that’s the same kind of thing?,{{omit}},{{omit}},{{omit}},{{omit}},188.7139;415.8991
+Player_Underground_Kim_Alice_2_16,8,16,1,5,,,"I guess it is, yeah.",False,Block,Normal,,,"SALSA(speech/Test/Kim7);\nSendMessage(PickRandomSitAnimation, , speaker);",,Je suppose que oui.,"I guess it is, yeah.",{{omit}},{{omit}},{{omit}},{{omit}},192.5935;464.3606
+Alice_Underground_Kim_Alice_2_17,8,17,5,1,,,"It’s not, remotely, is it?",False,Block,Normal,,,SALSA(speech/Test/Alice9);,,"Ce n'est pas le cas, loin de là, n'est-ce pas ?","It’s not, remotely, is it?",,{{omit}},{{omit}},{{omit}},185.637;515.899
+Player_Underground_Kim_Alice_2_18,8,18,1,5,,,"I mean, no. We don’t have any live animals. \nThey don’t have any 16th century tableware.",False,Block,Normal,,,SALSA(speech/Test/Kim8);,,"Non, enfin, nous n’avons pas d’animaux vivants.\nIls n’ont pas de vaisselle du XVIe siècle. ","I mean, no. We don’t have any live animals. \nThey don’t have any 16th century tableware.",{{omit}},{{omit}},{{omit}},{{omit}},183.8979;564.3606
+Player_Underground_Kim_Alice_3_START,9,0,1,5,START,,,False,Block,Normal,,,None(),,,,{{omit}},{{omit}},{{omit}},{{omit}},158.8571;31.14285
+Player_Underground_Kim_Alice_3_So_you_don’t_live_in_London_,9,10,1,5,So you don’t live in London?,,So you don’t live in London?,False,Block,Normal,,,"SALSA(speech/Test/Kim9);\nSendMessage(PickRandomSitAnimation, , speaker);",,"Oui, je travaille à… euh… Je viens de commencer au… vous connaissez le musée Bankside ?",So you don’t live in London?,{{omit}},{{omit}},{{omit}},{{omit}},173.7761;109.9606
+Alice_Underground_Kim_Alice_3_11,9,11,5,1,,,I don’t live anywhere. I’m homeless!,False,Block,Normal,,,SALSA(speech/Test/Alice10);,,"Cool, ouais !",I don’t live anywhere. I’m homeless!,{{omit}},{{omit}},{{omit}},{{omit}},184.837;179.9607
+Player_Underground_Kim_Alice_3_12,9,12,1,5,,,\.…what?,False,Block,Normal,,,"SALSA(speech/Test/Kim10);\nSendMessage(PickRandomSitAnimation, , speaker);",,\. Le savez-vous ?,\.…what?,{{omit}},{{omit}},{{omit}},{{omit}},185.637;264.3606
+Alice_Underground_Kim_Alice_3_13,9,13,5,1,,,"God sorry, that was a stupid joke. Um I just mean I don’t have a home – a specific home – right now. I’m on my way to look at a place. A house share.",False,Block,Normal,,,SALSA(speech/Test/Alice11);,,Euh… Non. Je voulais juste paraître enthousiaste.,"God sorry, that was a stupid joke. Um I just mean I don’t have a home – a specific home – right now. I’m on my way to look at a place. A house share.",{{omit}},{{omit}},{{omit}},{{omit}},185.637;314.3606
+Player_Underground_Kim_Alice_3_14,9,14,1,5,,,"Oh right. Well, I – I hope it works out.",False,Block,Normal,,,"SALSA(speech/Test/Kim11);\nSendMessage(PickRandomSitAnimation, , speaker);",,(Rires) C'est bien vrai.,"Oh right. Well, I – I hope it works out.",{{omit}},{{omit}},{{omit}},{{omit}},190.3652;364.6491
+Alice_Underground_Kim_Alice_3_15,9,15,5,1,,,"Me too, or I might end up sleeping in the museum after you lock up.",False,Block,Normal,,,SALSA(speech/Test/Alice12);,,"Je suis déjà allé au zoo de Londres, est-ce que c'est le même genre d'endroit ?","Me too, or I might end up sleeping in the museum after you lock up.",{{omit}},{{omit}},{{omit}},{{omit}},188.7139;415.8991
+Player_Underground_Kim_Alice_3_16,9,16,1,5,,,"Um, I don’t think…",False,Block,Normal,,,"SALSA(speech/Test/Kim12);\nSendMessage(PickRandomSitAnimation, , speaker);",,Je suppose que oui.,"Um, I don’t think…",{{omit}},{{omit}},{{omit}},{{omit}},192.5935;464.3606
+Alice_Underground_Kim_Alice_3_17,9,17,5,1,,,Another stupid joke! Sorry again. I – sometimes I do that when I’m nervous.,False,Block,Normal,,,SALSA(speech/Test/Alice1);,,"Ce n'est pas le cas, loin de là, n'est-ce pas ?",Another stupid joke! Sorry again. I – sometimes I do that when I’m nervous.,,{{omit}},{{omit}},{{omit}},185.637;515.899
+Player_Underground_Kim_Alice_3_18,9,18,1,5,,,"\.\.What are you nervous about, about the… house…",False,Block,Normal,,,SALSA(speech/Test/Kim13);,,"Non, enfin, nous n’avons pas d’animaux vivants.\nIls n’ont pas de vaisselle du XVIe siècle. ","\.\.What are you nervous about, about the… house…",{{omit}},{{omit}},{{omit}},{{omit}},185.0919;564.3606
+Alice_Underground_Kim_Alice_3_19,9,19,5,1,,,"I just mean about, you know, whether I like the house.",False,Block,Normal,,,SALSA(speech/Test/Alice2);,,,"I just mean about, you know, whether I like the house.",{{omit}},{{omit}},{{omit}},{{omit}},185.0919;614.3606
+Player_Underground_Kim_Alice_3_20,9,20,1,5,,,Oh! This is you,False,Block,Normal,,,SALSA(speech/Test/Kim1);,,,Oh! This is you,{{omit}},{{omit}},{{omit}},{{omit}},186.7245;665.9932
+Player_Underground_Kim_Alice_4_START,10,0,1,5,START,,,False,Block,Normal,,,None(),,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;30
+Player_Underground_Kim_Alice_4_1,10,1,1,5,,,Good Luck!,False,Block,Normal,,,SALSA(speech/Test/Kim2);,,{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},{{omit}},160;80
+OutgoingLinks
+OriginConvID,OriginID,DestConvID,DestID,ConditionPriority
+Number,Number,Number,Number,Special
+1,0,1,1,Normal
+1,1,1,2,Normal
+1,2,1,4,Normal
+1,2,1,10,Normal
+1,4,1,5,Normal
+1,5,1,6,Normal
+1,6,1,7,Normal
+1,7,1,8,Normal
+1,8,1,9,Normal
+1,9,1,10,Normal
+2,0,2,3,Normal
+2,3,2,4,Normal
+2,3,2,5,Normal
+2,3,2,7,Normal
+2,4,2,8,Normal
+2,5,2,9,Normal
+2,7,2,10,Normal
+2,10,2,11,Normal
+3,0,3,1,Normal
+3,1,3,2,Normal
+3,2,3,3,Normal
+3,2,3,4,Normal
+3,2,3,5,Normal
+3,3,3,6,Normal
+3,4,3,7,Normal
+3,5,3,8,Normal
+3,6,3,3,Normal
+3,6,3,4,Normal
+3,6,3,5,Normal
+3,7,3,3,Normal
+3,7,3,4,Normal
+3,7,3,5,Normal
+4,0,4,3,Normal
+4,3,4,4,Normal
+4,4,4,8,Normal
+5,0,5,1,Normal
+5,1,5,2,Normal
+5,2,5,3,Normal
+5,3,5,4,Normal
+5,4,5,5,Normal
+5,5,5,6,Normal
+5,6,5,7,Normal
+5,7,5,8,Normal
+5,8,5,9,Normal
+5,9,5,10,Normal
+6,0,6,1,Normal
+6,1,6,2,Normal
+6,2,6,3,Normal
+7,0,7,1,Normal
+7,1,7,9,Normal
+7,3,7,4,Normal
+7,4,7,5,Normal
+7,5,7,6,Normal
+7,6,7,7,Normal
+7,7,7,8,Normal
+7,9,7,3,Normal
+8,0,8,9,Normal
+8,9,8,10,Normal
+8,10,8,11,Normal
+8,11,8,12,Normal
+8,12,8,13,Normal
+8,13,8,14,Normal
+8,14,8,15,Normal
+8,15,8,16,Normal
+8,16,8,17,Normal
+8,17,8,18,Normal
+9,0,9,10,Normal
+9,10,9,11,Normal
+9,11,9,12,Normal
+9,12,9,13,Normal
+9,13,9,14,Normal
+9,14,9,15,Normal
+9,15,9,16,Normal
+9,16,9,17,Normal
+9,17,9,18,Normal
+9,18,9,19,Normal
+9,19,9,20,Normal
+10,0,10,1,Normal

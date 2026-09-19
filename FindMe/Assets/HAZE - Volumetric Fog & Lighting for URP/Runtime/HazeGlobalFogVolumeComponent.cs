@@ -8,13 +8,9 @@ namespace Haze.Runtime
     [VolumeComponentMenu("Haze/Haze Global Fog")]
     [VolumeRequiresRendererFeatures(typeof(HazeRendererFeature))]
     [SupportedOnRenderPipeline(typeof(UniversalRenderPipelineAsset))]
+    [DisplayInfo(name = "Haze Global Fog")]
     public sealed class HazeGlobalFogVolumeComponent : VolumeComponent, IPostProcessComponent
     {
-        public HazeGlobalFogVolumeComponent()
-        {
-            displayName = "Haze Global Fog";
-        }
-
         [Header("Density")]
         [Tooltip("Determines the density of the global fog.")]
         [SerializeField] private MinFloatParameter _globalDensityMultiplier = new(0, 0);
@@ -38,7 +34,7 @@ namespace Haze.Runtime
 
         [Header("Lighting")]
         [Tooltip("Only available in Forward+; determines how much additional lights contribute to the color of the global fog.")]
-        [SerializeField] private MinFloatParameter _additionalLightContribution = new(1, 0);
+        [SerializeField] private MinFloatParameter _additionalLightContribution = new(0, 0);
         [Tooltip("Determines how much adaptive probe volume illumination contributes to the final color of the global fog.")]
         [SerializeField] private MinFloatParameter _probeVolumeContribution = new(0, 0);
         [Tooltip("The main light scattering amount; values closer to 1 make the main light scatter more into the global fog.")]

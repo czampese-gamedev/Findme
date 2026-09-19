@@ -454,7 +454,7 @@ PlayerSettings:
     m_Automatic: 0
   - m_BuildTarget: WindowsStandaloneSupport
     m_APIs: 1200000002000000
-    m_Automatic: 0
+    m_Automatic: 1
   m_BuildTargetVRSettings:
   - m_BuildTarget: Standalone
     m_Enabled: 0
@@ -761,8 +761,24 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Standalone: TMP_PRESENT;USE_NEW_INPUT;DECALERY_INCLUDED;CMS_SALSA;USE_TIMELINE
-    WebGL: TMP_PRESENT;USE_NEW_INPUT
+    Android: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    EmbeddedLinux: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    GameCoreScarlett: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    GameCoreXboxOne: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    Kepler: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    LinuxHeadlessSimulation: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    Nintendo Switch: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    Nintendo Switch 2: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    PS4: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    PS5: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    QNX: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    Standalone: TMP_PRESENT;USE_NEW_INPUT;DECALERY_INCLUDED;CMS_SALSA;USE_TIMELINE;TextMeshPro;USE_CINEMACHINE_3;BAKERY_INCLUDED;BAKERY_NOREIMPORT;USE_TEXT_ANIMATOR;DOTWEEN;DOTWEEN_TEXTMESHPRO;PUBLISHING_TOOLS_ASSET_STORE_RELEASE;PROCEDURAL_UI_ASSET_STORE_RELEASE;MAGICACLOTH2
+    VisionOS: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    WebGL: TMP_PRESENT;USE_NEW_INPUT;TextMeshPro;DECALERY_INCLUDED;CMS_SALSA;USE_CINEMACHINE_3;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    Windows Store Apps: DOTWEEN;DOTWEEN_TEXTMESHPRO
+    XboxOne: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    iPhone: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
+    tvOS: TextMeshPro;DOTWEEN;DOTWEEN_TEXTMESHPRO
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -874,7 +890,7 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0

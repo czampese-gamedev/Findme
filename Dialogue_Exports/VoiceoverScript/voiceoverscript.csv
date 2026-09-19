@@ -1,0 +1,372 @@
+﻿Database,FindMeDialogueDatabase
+Author,
+Version,
+Description,
+
+---Actors---
+Name,Description
+Kim,
+NPC,
+Merchant,
+MARCO,
+Alice,
+Tourist,Tourist 2016
+Kid1,Kid1 2026
+Miss Crane,Teacher2026
+CyringKid,Crying Kid 2026
+Saraswati,
+BMA,
+Waiter2026,
+Christian,
+OptionSelection,Used to display any non-dialogue option selection
+
+---Conversations---
+
+Conversation 2,MARCO_1
+Description,"Conversation with MARCO that appears when the player initiates a conversation with MARCO that is not initiated by the game. This conversation is mostly for fun, but may contain hints in particular parts of the game"
+entrytag,Actor,Description,Dialogue Text
+Kim_2_3,Kim,When the conversation starts the player will ask MARCO if he has anything useful to say using one of the MARCO Greetings (recorded separately),"[lua(RandomElement(Variable[""MarcoGreeting""]))] . Got anything useful for me? "
+MARCO_2_4,MARCO,A randomised response by MARCO,Ummm....nope
+MARCO_2_5,MARCO,A randomised response by MARCO,A cloud weighs around a million tonnes
+MARCO_2_7,MARCO,,Water might not be wet
+Kim_2_8,Kim,(sarcastic)	,"Gee, thanks"
+Kim_2_9,Kim,(mildly surprised as you have been just told an interesting fact)	,Holy Shit...well that is interesting
+Kim_2_10,Kim,,Huh?
+MARCO_2_11,MARCO,,"This is because most scientists define wetness as a liquid’s ability to maintain contact with a solid surface, meaning that water itself is not wet, but can make other objects wet."
+
+Conversation 4,1526_Marco1
+Description,	
+entrytag,Actor,Description,Dialogue Text
+Kim_4_3,Kim,,"[lua(RandomElement(Variable[""MarcoGreeting""]))] . What can you tell me about this place? "
+MARCO_4_4,MARCO,,It looks like we are in...1526
+Kim_4_8,Kim,,Ohhh...wow!
+
+Conversation 5,1526_Marco_InitialConversation
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_5_1,Kim,This is the first real interaction with MARCO,Siri… what’s the date? 
+MARCO_5_2,MARCO,First time responding - Kim has called you Siri,"This is Marco, your personal assistant app!"
+Kim_5_3,Kim,,Right. Marco. Whatever.
+MARCO_5_4,MARCO,,"It’s not really a case of ‘whatever’. I’m the most advanced AI that’s been devised. I don’t even rely on wifi, which is pretty useful given where you’ve found yourself."
+Kim_5_5,Kim,,Where <i>have</i> I…
+MARCO_5_6,MARCO,,"I’m only bringing it up because – got to address it, elephant in the room – I did hear you say earlier that I was a, quote, ‘shitty version of Siri’. I realise this was ignorance rather than malice, but of course, it hurts. I’m many more times more powerful than Siri, Alex, any of these goons."
+Kim_5_7,Kim,,"Fine. I didn’t mean to… like, I wouldn’t think it would be possible to hurt the feelings of a…"
+MARCO_5_8,MARCO,,"Of a machine. No. My super-intelligence is both blessing and curse. Anyway, what was it you wanted to ask? Another thing about my sophisticated human mimicry is that I quite often forget what the hell I’m meant to be doing."
+Kim_5_9,Kim,,"I was asking you what date it is, what… what year it is."
+MARCO_5_10,MARCO,,Oh. Easy. It’s August 5th... \. 1526.
+
+Conversation 6,MARCO_1526_Area2EnteredMultiplw
+Description,Entered 1526 area 2 multiple times
+entrytag,Actor,Description,Dialogue Text
+MARCO_6_1,MARCO,,"Excuse me for being nosy, but are you lost? "
+Kim_6_2,Kim,,What makes you say that? 
+MARCO_6_3,MARCO,,"Well, you have been here a number of times and you dont seem to be doing much"
+
+Conversation 7,May2016_cutscene/Kim_Alice_1
+Description,Cutscene 1 - Kim and Alice first meeting on a train 2016
+entrytag,Actor,Description,Dialogue Text
+Alice_7_1,Alice,[Kim just helped Alice barely squeeze onto the train],"Oh my God, <b>thank you!"
+Alice_7_3,Alice,,"Hey, does this go to Stockwell?"
+Kim_7_4,Kim,,"Um, No."
+Alice_7_5,Alice,,Oh. Probably shouldn’t have risked my life getting on.
+Kim_7_6,Kim,,"But you could actually change at – well, stay on and I’ll show you."
+Alice_7_7,Alice,,Thank you! You live in London? 
+Kim_7_8,Kim,,Um. Yep
+Kim_7_9,Kim,,You’re welcome…
+Alice_7_10,Alice,,
+
+Conversation 8,May2016_cutscene/Kim_Alice_2
+Description,First conversation Kim and Alice 
+entrytag,Actor,Description,Dialogue Text
+Alice_8_9,Alice,,"Is that your uniform? I mean, I guess it is.\nYou probably wouldn’t wear a name badge if it was your real clothes."
+Kim_8_10,Kim,,"Yes, I work at – um. I’ve just started at, do you know the Bankside Museum!"
+Alice_8_11,Alice,,"Cool, yeah!"
+Kim_8_12,Kim,,Do you know it?
+Alice_8_13,Alice,,Um. No. I just wanted to sound enthusiastic. 
+Kim_8_14,Kim,,(Laughter) Fair enough
+Alice_8_15,Alice,,I’ve been to London Zoo if that’s the same kind of thing?
+Kim_8_16,Kim,,"I guess it is, yeah."
+Alice_8_17,Alice,,"It’s not, remotely, is it?"
+Kim_8_18,Kim,,"I mean, no. We don’t have any live animals. \nThey don’t have any 16th century tableware."
+
+Conversation 9,May2016_cutscene/Kim_Alice_3
+Description,First conversation Kim and Alice 
+entrytag,Actor,Description,Dialogue Text
+Kim_9_10,Kim,,So you don’t live in London?
+Alice_9_11,Alice,,I don’t live anywhere. I’m homeless!
+Kim_9_12,Kim,,…what?
+Alice_9_13,Alice,,"God sorry, that was a stupid joke. Um I just mean I don’t have a home – a specific home – right now. I’m on my way to look at a place. A house share."
+Kim_9_14,Kim,,"Oh right. Well, I – I hope it works out."
+Alice_9_15,Alice,,"Me too, or I might end up sleeping in the museum after you lock up."
+Kim_9_16,Kim,,"Um, I don’t think…"
+Alice_9_17,Alice,,Another stupid joke! Sorry again. I – sometimes I do that when I’m nervous.
+Kim_9_18,Kim,,"What are you nervous about, about the… house…"
+Alice_9_19,Alice,,"I just mean about, you know, whether I like the house."
+Kim_9_20,Kim,,Oh! This is you
+
+Conversation 10,May2016_cutscene/Kim_Alice_4
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_10_1,Kim,,Good Luck!
+
+Conversation 11,July2016_Cutscene/Tourist1
+Description,
+entrytag,Actor,Description,Dialogue Text
+Tourist_11_1,Tourist,,"Excuse me, can I ask you a question?"
+Kim_11_2,Kim,,"Of course! It’s beautiful, isn’t it? Probably late Medieval. What would you like to know?"
+Tourist_11_3,Tourist,,Where are the toilets?
+Kim_11_4,Kim,,"Oh. Um. Down that way, first on the right."
+
+Conversation 12,July2016_Cutscene/Alice
+Description,
+entrytag,Actor,Description,Dialogue Text
+Alice_12_1,Alice,,"Hey, I had a question too"
+Kim_12_2,Kim,,Oh! – hey!
+Alice_12_3,Alice,,"Hey, we met on the…"
+Kim_12_4,Kim,,"I remember, yes. So – what was your question? Let me guess: toilets or gift shop."
+Alice_12_5,Alice,,Wrong
+Kim_12_6,Kim,,Oh! 	
+
+Conversation 13,August2026_cutscene/KimKids1
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_13_1,Kim,,"…that’s the thing, history isn’t something that’s finished, gone. It’s forever. We’re part of it right now, we take our little turn. "
+Kim_13_2,Kim,,There are things even in this room that were around long before we were born and will still be here after we’re dead.
+Kim_13_3,Kim,,
+
+Conversation 14,August2026_cutscene/KimKids2
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_14_1,Kim,,"Damn it, I thought we were going to get through one without anyone crying. OK… any questions?"
+Kim_14_2,Kim,,
+
+Conversation 15,August2026_cutscene/KimKids3
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kid1_15_1,Kid1,,Have you ever been locked in here at night and like all the mummies and the dinosaurs come to life and you have to kill them before they kill you?
+Kim_15_2,Kim,,"Haha, no, I’ve been here a few years now and I’ve never been threatened by anyone from the undead. Anyone else?<waitfor=1>yes?"
+Kid1_15_3,Kid1,,"If you did have to try and kill a mummy, what weapon would you…"
+Kim_15_4,Kim,,Has anyone got a question that isn’t about the museum turning into a horror movie?
+Kim_15_5,Kim,,"OK, well, thanks for coming to the Bankside Museum. If you’d like to leave a review… <waitfor=1> Oh, sorry. Miss Crane was it?"
+Miss_Crane_15_6,Miss Crane,,"Yes. Sorry, this might sound silly, but do you think time travel will ever be possible? Or has ever been possible. If you see what I mean."
+Kim_15_7,Kim,,Well. Good question. I guess the argument against it is – you’ve probably heard of the time travel paradox. 
+Kim_15_8,Kim,,"And in that version of the world we might not be here to go back and change that thing. So, I guess I’d say…"
+Kid1_15_9,Kid1,,"Miss, Miss, Donny’s got a nosebleed and it’s gone on a vase."
+Kim_15_10,Kim,,"If we could go back and change even the smallest thing, we’d create a different world. "
+
+Conversation 16,August2026_cutscene/KimKids_crying
+Description,
+entrytag,Actor,Description,Dialogue Text
+CyringKid_16_1,CyringKid,,waaah...
+
+Conversation 18,July2016_Cutscene/Alice2
+Description,
+entrytag,Actor,Description,Dialogue Text
+Alice_18_7,Alice,,I was going to ask if you have a café.
+Kim_18_8,Kim,,"<i>(sighs)</i> We do, but they’ll be closing, they normally close at…"
+Alice_18_10,Alice,,"OK, how about a pub?"
+Kim_18_11,Kim,,"What? We’re a museum, we…"
+Alice_18_12,Alice,,You’re not making this easy. Can I take you to the pub? 
+Alice_18_13,Alice,,For a drink? 
+Alice_18_14,Alice,,When you finish work?
+Kim_18_15,Kim,,…oh.
+Alice_18_16,Alice,,"It’s Alice, by the way. You can say no, I don’t even know if you’re… I just had to ask. And I was passing anyway."
+Kim_18_17,Kim,,<pause> Were you?
+Alice_18_18,Alice,,No. It took me an hour and a quarter to get here.
+Kim_18_19,Kim,,I’m Kim. And… yes please.
+
+Conversation 19,August2026_cutscene/KimKidsYesYou
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_19_2,Kim,,"Yes, you."
+
+Conversation 20,August2026_Office/Saraswati
+Description,
+entrytag,Actor,Description,Dialogue Text
+Saraswati_20_1,Saraswati,,GOOD DAY TO YE! LET US TALK!
+Kim_20_2,Kim,,"So, this app supposedly – they gave a free trial to everyone at the museum – they claim it can translate between modern and ancient languages. I’ve literally never opened it. "
+Kim_20_3,Kim,,"We don’t get a lot of Ancient Mesopotamians coming round. Lucky really, they might want some of their stuff back."
+
+Conversation 21,August2026_Office/BMA
+Description,
+entrytag,Actor,Description,Dialogue Text
+BMA_21_1,BMA,,"Good afternoon, how may I enlighten you?"
+Kim_21_2,Kim,,"This is basically like a tiny little Wikipedia for history stuff. Anything covered in the museum, you can find on here somewhere. Kind of makes it pointless me having spent years learning it all, I guess, but there we go."
+
+Conversation 23,August2026_Office/Today
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_23_1,Kim,,"Yeah, I’d rather not look at that right now. It’s – it just reminds you about birthdays, appointments, whatever. But today is… well. I’m not likely to forget."
+
+Conversation 24,August2026_Office/MARCO
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_24_1,Kim,,"Mobile AI Research Companion and Organiser. This is just like a shitty version of Siri. I pretty much never use it. There are aspects of my existence I’d like to subcontract to a robot, but thinking – not so much. "
+
+Conversation 25,August2026_Office/Restaurant
+Description,
+entrytag,Actor,Description,Dialogue Text
+Waiter2026_25_1,Waiter2026,,"Madame, with the greatest respect, should I take one of the menus away?"
+
+Conversation 26,August2026_Office/River
+Description,
+entrytag,Actor,Description,Dialogue Text
+Alice_26_1,Alice,,FOUND YOU!
+Kim_26_2,Kim,,What are you doing!?
+Alice_26_3,Alice,,"Um, just being a legend at hide and seek?"
+Kim_26_4,Kim,,"Chloe’s meant to be seeking! You know, the one whose eighth birthday it is?"
+Alice_26_5,Alice,,Well your niece is shit at finding people and I was missing you.
+
+Conversation 27,August2026_Office/Pub
+Description,
+entrytag,Actor,Description,Dialogue Text
+Alice_27_1,Alice,,OK gently… gently… and go for it…
+
+Conversation 28,August2026_Office/Restaurant_2
+Description,
+entrytag,Actor,Description,Dialogue Text
+Alice_28_2,Alice,,"[panel=4]God this is so embarrassing, can you come and find me?"
+Kim_28_3,Kim,,I thought you were standing me up! On a first date!
+Alice_28_4,Alice,,"[panel=4]No, I’m just an idiot"
+Kim_28_5,Kim,,"OK, what can you see?"
+Alice_28_6,Alice,,[panel=4]Um. Grass.
+Kim_28_7,Kim,,"…right, I'll just look around London for some grass."
+
+Conversation 29,August2026_Office/AllPhotos
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_29_1,Kim,,"Ok, I think thats enough of that"
+
+Conversation 30,August2026_Office/Pub2
+Description,
+entrytag,Actor,Description,Dialogue Text
+Alice_30_5,Alice,,Hey – shall we get married?
+Kim_30_6,Kim,,"Oh my god, you meant it!"
+Kim_30_7,Kim,,Because you can’t live without my amazing hand-eye coordination?
+Alice_30_8,Alice,,Ha Ha Ha...
+Kim_30_9,Kim,,......
+
+Conversation 31,August2026_Office/Stressball
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_31_2,Kim,,"[lua(RandomElement(Variable[""August2026Office.Stressball""]))]"
+
+Conversation 32,August2026_Office/Photo1Look
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_32_1,Kim,,"[panel=5][lua(RandomElement(Variable[""OfficePhoto1""]))]"
+
+Conversation 33,August2026_Office/Christian1
+Description,
+entrytag,Actor,Description,Dialogue Text
+Christian_33_1,Christian,,"Hello campers! It’s 4pm, we’re skipping off school early, it’s time to pack and hit the road!"
+Kim_33_2,Kim,,"I can’t believe this, I can’t believe you’ve talked me into this. "
+Christian_33_3,Christian,,"Do you mean ‘hi Christian, I can’t wait for our weekend camping adventure’?"
+Kim_33_4,Kim,,I must have had some sort of brain injury.
+Christian_33_5,Christian,,"I’m sure you’re not conscious of this, Kimbo, but you’re almost sounding a bit negative about the trip."
+Kim_33_6,Kim,,I mean why would I go on holiday to a place that’s worse than my actual flat? Isn’t the point of a holiday – 
+Christian_33_7,Christian,,"We’ve covered this, the ‘point’ of a holiday is to spend time with your beloved best friend…"
+Kim_33_8,Kim,,"That’s you, is it?"
+Christian_33_9,Christian,,"Unless I’ve been demoted, yes – with your beloved best friend, getting a change of scene for the weekend."
+Christian_33_30,Christian,,
+Christian_33_31,Christian,,do you still have some camping concerns? 
+Kim_33_32,Kim,,
+Kim_33_33,Kim,,"Of course, Cris. I’m just being adorably grumpy."
+Kim_33_34,Kim,,"I mean, is there a way of having a ‘change of scene’ where there’s also a proper toilet?"
+Kim_33_35,Kim,,I – I am kind of having second thoughts
+Christian_33_36,Christian,,"Ah, sorry, I missed the adorable bit"
+Christian_33_37,Christian,,On the website it says the toilets have actually gone up from two to three stars.
+Christian_33_38,Christian,,Right. Any chance you could have THIRD thoughts?
+Kim_33_39,Kim,,Shut your face!
+Kim_33_40,Kim,,"I’ll just hold on till we get home, I reckon. I’ve done 72 hours before."
+Kim_33_41,Kim,,(Sigh) Fine. I’ve had third thoughts and I’ll try not to have fourth ones in the next hour.
+Christian_33_42,Christian,,Consider it shut
+Christian_33_43,Christian,,"They don’t just give those three-star awards away, you know"
+Christian_33_44,Christian,,"If you do, just text me and we’ll see if we can get you onto fifth thoughts"
+Christian_33_45,Christian,,"OK, so I’ll see you at mine in – what, two hours? Get to the site for like half past eight, it’ll still be light for us to put the tent up"
+Kim_33_46,Kim,,Christ. I’d forgotten the tent aspect. Are you sure you wouldn’t rather go to a…
+Christian_33_47,Christian,,…and from now on I’m singing tunelessly over any further objections! La la la la la! La-la-la! 
+Kim_33_48,Kim,,
+Christian_33_50,Christian,,Remember. Two Hours. My Place. Campiiing!
+Kim_33_51,Kim,,End chat
+
+Conversation 34,TEST/ChristianTEST
+Description,
+entrytag,Actor,Description,Dialogue Text
+Christian_34_30,Christian,,Uhh...okay I guess we can chat like this...
+Kim_34_31,Kim,,What is earth?
+Kim_34_32,Kim,,What is wind?
+Kim_34_33,Kim,,What is fire?
+Christian_34_34,Christian,,Earth is a big ball of stuff that we live on. This is the first longer explanation of it	
+Christian_34_35,Christian,,Wind is a mysterious force that no one understands. 
+Christian_34_36,Christian,,Fire is fascinating and mesmerising.This is the first longer explanation of it
+Kim_34_38,Kim,,
+Kim_34_39,Kim,,
+Kim_34_41,Kim,,[em1]Remind me about wind again...
+Christian_34_42,Christian,,Wind is a mystery
+Kim_34_44,Kim,,I'm done
+Kim_34_45,Kim,,[em1]What did you say about fire?
+Christian_34_46,Christian,,I like fire a lot
+Kim_34_47,Kim,,[em1]I forgot what Earth is...
+Christian_34_48,Christian,,"Its big, and made of earth"
+Kim_34_49,Kim,,Really? Noone? Hmmm
+Christian_34_50,Christian,,"Well, maybe meatier...meteye...meteriol...weather people do"
+Kim_34_51,Kim,,Does this one work? 
+Kim_34_52,Kim,,"Okay, okay..."
+Kim_34_53,Kim,,test 1
+Kim_34_54,Kim,,test2	
+
+Conversation 35,August2026_Office/DoorOptionSelect
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_35_1,Kim,,Let Christian in
+Kim_35_2,Kim,,Ugh...people...lets just yell through the door	
+OptionSelection_35_6,OptionSelection,,
+OptionSelection_35_7,OptionSelection,,
+Kim_35_8,Kim,,
+Kim_35_9,Kim,,Exit
+
+Conversation 36,August2026_Office/PhoneUnlock
+Description,
+entrytag,Actor,Description,Dialogue Text
+Kim_36_1,Kim,,"Shoot, I just changed my PIN the other day and now I can't remember it. I'm sure I wrote it down somewhere"
+
+Conversation 37,August2026_Office/ChristianTrhoughDoor
+Description,
+entrytag,Actor,Description,Dialogue Text
+Christian_37_1,Christian,,"(MUFFLED) Hello campers! It’s 4pm, we’re skipping off school early, it’s time to pack and hit the road!"
+Kim_37_2,Kim,,"I can’t believe this, I can’t believe you’ve talked me into this. "
+Christian_37_3,Christian,,"Do you mean ‘hi Christian, I can’t wait for our weekend camping adventure’?"
+Kim_37_4,Kim,,I must have had some sort of brain injury.
+Christian_37_5,Christian,,"I’m sure you’re not conscious of this, Kimbo, but you’re almost sounding a bit negative about the trip."
+Kim_37_6,Kim,,I mean why would I go on holiday to a place that’s worse than my actual flat? Isn’t the point of a holiday – 
+Christian_37_7,Christian,,"We’ve covered this, the ‘point’ of a holiday is to spend time with your beloved best friend…"
+Kim_37_8,Kim,,"That’s you, is it?"
+Christian_37_9,Christian,,"Unless I’ve been demoted, yes – with your beloved best friend, getting a change of scene for the weekend."
+Kim_37_32,Kim,,
+Kim_37_33,Kim,,"Of course, Cris. I’m just being adorably grumpy."
+Kim_37_34,Kim,,"I mean, is there a way of having a ‘change of scene’ where there’s also a proper toilet?"
+Kim_37_35,Kim,,I – I am kind of having second thoughts
+Christian_37_36,Christian,,"Ah, sorry, I missed the adorable bit"
+Christian_37_37,Christian,,On the website it says the toilets have actually gone up from two to three stars.
+Christian_37_38,Christian,,Right. Any chance you could have THIRD thoughts?
+Kim_37_39,Kim,,Shut your face!
+Kim_37_40,Kim,,"I’ll just hold on till we get home, I reckon. I’ve done 72 hours before."
+Kim_37_41,Kim,,(Sigh) Fine. I’ve had third thoughts and I’ll try not to have fourth ones in the next hour.
+Christian_37_42,Christian,,Consider it shut
+Christian_37_43,Christian,,"They don’t just give those three-star awards away, you know"
+Christian_37_44,Christian,,"If you do, just text me and we’ll see if we can get you onto fifth thoughts"
+Christian_37_45,Christian,,"OK, so I’ll see you at mine in – what, two hours? Get to the site for like half past eight, it’ll still be light for us to put the tent up"
+Kim_37_46,Kim,,Christ. I’d forgotten the tent aspect. Are you sure you wouldn’t rather go to a…
+Christian_37_47,Christian,,…and from now on I’m singing tunelessly over any further objections! La la la la la! La-la-la! 
+Kim_37_48,Kim,,
+
+Conversation 38,Marco/AddedInventory
+Description,
+entrytag,Actor,Description,Dialogue Text
+MARCO_38_1,MARCO,,[var=global_Inventory_ItemDescription]
+
+Conversation 39,Christian/InventoryUnhandled
+Description,
+entrytag,Actor,Description,Dialogue Text
+Christian_39_1,Christian,,Now why would I want that?

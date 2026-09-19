@@ -16,6 +16,7 @@ MonoBehaviour:
   - Scripts
   - AdventureCreator/Downloads/Cinemachine integration/Assets/Scripts/CustomActions
   - Pixel Crushers/Dialogue System/Third Party Support/Adventure Creator Support/Scripts/AdventureCreatorActions
+  - ACCustomActions
   - 
   allFavouriteActionData: []
   displayActionsInInspector: 1
@@ -126,6 +127,12 @@ MonoBehaviour:
     category: 1
     title: Rotate third-person
     description: Manipulates the new third-person camera
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: SetPostProcessing
+    category: 1
+    title: Set Post Processing
+    description: Set Post Processing Layer Mask on Main Camera.
     isEnabled: 1
     color: {r: 1, g: 1, b: 1, a: 1}
   - fileName: AC.ActionCameraShake
@@ -606,6 +613,12 @@ MonoBehaviour:
     description: Checks the visibility of a GameObject.
     isEnabled: 1
     color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: DisableMenuButton
+    category: 12
+    title: Disable Menu Button
+    description: Disable a menu button.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
   - fileName: AC.ActionSpriteFade
     category: 12
     title: Fade sprite
@@ -649,6 +662,12 @@ MonoBehaviour:
       camera, or the player. For example, if the Marker's position is (0, 0, 1) and
       Positon relative to is set to Relative To Active Camera, then the object will
       be teleported in front of the camera.
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: ToggleMenuButton
+    category: 12
+    title: Toggle Menu Button
+    description: Toggle a menu button.
     isEnabled: 1
     color: {r: 1, g: 1, b: 1, a: 1}
   - fileName: AC.ActionTransform
@@ -1039,6 +1058,12 @@ MonoBehaviour:
     category: 20
     title: Set timer
     description: Starts or stops a Timer
+    isEnabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - fileName: AC.ActionCheckTemplate
+    category: 21
+    title: Check template
+    description: This is a blank 'Check' Action template.
     isEnabled: 1
     color: {r: 1, g: 1, b: 1, a: 1}
   defaultActionCategoryDatas: []

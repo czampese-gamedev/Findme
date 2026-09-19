@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cd11e06e7fc41a595e0cccca50dae3, type: 3}
   m_Name: FindMe_CursorManager
   m_EditorClassIdentifier: 
-  cursorRendering: 0
+  cursorRendering: 2
   cursorMode: 0
   uiCursorPrefab: {fileID: 1233823316936846, guid: 076f19bde373f51499e5a0162e54eb28, type: 3}
   cursorDisplay: 0
@@ -26,19 +26,19 @@ MonoBehaviour:
   addWalkPrefix: 0
   walkPrefix:
     label: Walk to
-    lineID: 172
+    lineID: -1
   addHotspotPrefix: 0
-  allowInteractionCursor: 1
+  allowInteractionCursor: 0
   allowInteractionCursorForInventory: 0
   cycleCursors: 0
   onlyAnimateOverHotspots: 0
   leftClickExamine: 1
   onlyWalkWhenOverNavMesh: 1
-  onlyShowInventoryLabelOverHotspots: 0
-  inventoryCursorSize: 0.1
+  onlyShowInventoryLabelOverHotspots: 1
+  inventoryCursorSize: 500
   allowIconInput: 1
   waitIcon:
-    texture: {fileID: 2800000, guid: 292f24e0efe50f845848d36bbc958ee3, type: 3}
+    texture: {fileID: 2800000, guid: b53806bfbed2e864aadc0684565ed71d, type: 3}
     isAnimated: 0
     numFrames: 1
     numRows: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
     frameSpeeds: []
     alwaysAnimate: 0
   pointerIcon:
-    texture: {fileID: 2800000, guid: 292f24e0efe50f845848d36bbc958ee3, type: 3}
+    texture: {fileID: 2800000, guid: b53806bfbed2e864aadc0684565ed71d, type: 3}
     isAnimated: 0
     numFrames: 1
     numRows: 1
@@ -106,31 +106,31 @@ MonoBehaviour:
     clickOffset: {x: 0, y: 0}
     frameSpeeds: []
     alwaysAnimate: 0
-  inventoryHandling: 0
+  inventoryHandling: 1
   hotspotPrefix1:
     label: Use
-    lineID: 168
+    lineID: -1
   hotspotPrefix2:
     label: on
-    lineID: 169
+    lineID: -1
   hotspotPrefix3:
     label: Give
-    lineID: 170
+    lineID: -1
   hotspotPrefix4:
     label: to
-    lineID: 171
+    lineID: -1
   displayCountSize: 1.6
   displayCountFont: {fileID: 0}
   displayCountTextEffects: 0
   displayCountColor: {r: 1, g: 1, b: 1, a: 1}
   inventoryCursorOffset: {x: 10, y: 0}
   cursorIcons:
-  - texture: {fileID: 2800000, guid: f98c4ba24cfbad84dad3a991de741c39, type: 3}
+  - texture: {fileID: 0}
     isAnimated: 0
     numFrames: 1
     numRows: 1
     numCols: 1
-    size: 0.02
+    size: 1
     animSpeed: 4
     endAnimOnLastFrame: 0
     skipFirstFrameWhenLooping: 0
@@ -139,14 +139,14 @@ MonoBehaviour:
     alwaysAnimate: 0
     dontCycle: 0
     label: Use
-    lineID: 173
+    lineID: -1
     id: 0
-  - texture: {fileID: 2800000, guid: 98631a0b098cf4c019e14d2cdaeed10d, type: 3}
+  - texture: {fileID: 0}
     isAnimated: 0
     numFrames: 1
     numRows: 1
     numCols: 1
-    size: 0.02
+    size: 1
     animSpeed: 4
     endAnimOnLastFrame: 0
     skipFirstFrameWhenLooping: 0
@@ -155,14 +155,14 @@ MonoBehaviour:
     alwaysAnimate: 0
     dontCycle: 0
     label: Talk to
-    lineID: 174
+    lineID: -1
     id: 1
-  - texture: {fileID: 2800000, guid: d56deb1f003904edeac6f2de6b998c76, type: 3}
+  - texture: {fileID: 0}
     isAnimated: 0
     numFrames: 1
     numRows: 1
     numCols: 1
-    size: 0.02
+    size: 1
     animSpeed: 4
     endAnimOnLastFrame: 0
     skipFirstFrameWhenLooping: 0
@@ -171,14 +171,14 @@ MonoBehaviour:
     alwaysAnimate: 0
     dontCycle: 0
     label: Look at
-    lineID: 175
+    lineID: -1
     id: 2
-  - texture: {fileID: 2800000, guid: c47d390228ed5b54496d75285733ccde, type: 3}
+  - texture: {fileID: 0}
     isAnimated: 0
     numFrames: 1
     numRows: 1
     numCols: 1
-    size: 0.015
+    size: 1
     animSpeed: 4
     endAnimOnLastFrame: 0
     skipFirstFrameWhenLooping: 0
@@ -187,14 +187,14 @@ MonoBehaviour:
     alwaysAnimate: 0
     dontCycle: 0
     label: Up
-    lineID: 176
+    lineID: -1
     id: 3
-  - texture: {fileID: 2800000, guid: 20886ba943a22784c8d4eadefb88d37b, type: 3}
+  - texture: {fileID: 0}
     isAnimated: 0
     numFrames: 1
     numRows: 1
     numCols: 1
-    size: 0.015
+    size: 1
     animSpeed: 4
     endAnimOnLastFrame: 0
     skipFirstFrameWhenLooping: 0
@@ -203,14 +203,14 @@ MonoBehaviour:
     alwaysAnimate: 0
     dontCycle: 0
     label: UseNoExamine
-    lineID: 177
+    lineID: -1
     id: 4
-  - texture: {fileID: 2800000, guid: 403c7131fd05444f0af1c292d633a330, type: 3}
+  - texture: {fileID: 0}
     isAnimated: 0
     numFrames: 1
     numRows: 1
     numCols: 1
-    size: 0.015
+    size: 1
     animSpeed: 4
     endAnimOnLastFrame: 0
     skipFirstFrameWhenLooping: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
     alwaysAnimate: 0
     dontCycle: 0
     label: Down
-    lineID: 240
+    lineID: -1
     id: 5
   unhandledCursorInteractions:
   - {fileID: 0}
@@ -231,7 +231,7 @@ MonoBehaviour:
   passUnhandledHotspotAsParameter: 0
   onlyShowCursorLabelOverHotspots: 0
   allowCursorCyclingWhenPaused: 0
-  lookUseCursorAction: 1
+  lookUseCursorAction: 0
   lookCursor_ID: 2
   hideCursorWhenDraggingMoveables: 1
   forceCursorInEditor: 1

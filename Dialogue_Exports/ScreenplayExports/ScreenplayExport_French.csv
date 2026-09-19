@@ -1,0 +1,958 @@
+﻿[2]	MARCO_1
+
+	Conversation with MARCO that appears when the player initiates a conversation with MARCO that is not initiated by the game. This conversation is mostly for fun, but may contain hints in particular parts of the game
+
+				KIM
+			(When the conversation starts the player will ask MARCO if he has anything useful to say using one of the MARCO Greetings (recorded separately))
+		
+
+	Responses: [4], [5], [7]
+
+				MARCO
+			(A randomised response by MARCO)
+		
+
+				KIM
+			((sarcastic)	)
+		
+
+				[END]
+
+	Entry [5]:
+
+				MARCO
+			(A randomised response by MARCO)
+		
+
+				KIM
+			((mildly surprised as you have been just told an interesting fact)	)
+		
+
+				[END]
+
+	Entry [7]:
+
+				MARCO
+		
+
+				KIM
+		
+
+				MARCO
+		
+
+				[END]
+
+
+---page---
+
+[4]	1526_MARCO1
+
+		
+
+				KIM
+		
+
+				MARCO
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[5]	1526_MARCO_INITIALCONVERSATION
+
+			(This is the first real interaction with MARCO)
+		
+
+				MARCO
+			(First time responding - Kim has called you Siri)
+		
+
+				KIM
+		
+
+				MARCO
+		
+
+				KIM
+		
+
+				MARCO
+		
+
+				KIM
+		
+
+				MARCO
+		
+
+				KIM
+		
+
+				MARCO
+		
+
+				[END]
+
+
+---page---
+
+[6]	MARCO_1526_AREA2ENTEREDMULTIPLW
+
+	Entered 1526 area 2 multiple times
+
+		
+
+				KIM
+		
+
+				MARCO
+		
+
+				[END]
+
+
+---page---
+
+[7]	MAY2016_CUTSCENE/KIM_ALICE_1
+
+	Cutscene 1 - Kim and Alice first meeting on a train 2016
+
+				ALICE
+			([Kim just helped Alice barely squeeze onto the train])
+		Oh mon Dieu, merci!
+
+				KIM
+		Vous êtes les bienvenus…
+
+				ALICE
+		Salut, est-ce que ça concerne Stockwell ?
+
+				KIM
+		Eu, Non.
+
+				ALICE
+		Oh. Je n'aurais probablement pas dû risquer ma vie en montant.
+
+				KIM
+		Mais vous pourriez en fait changer à… enfin, restez connectés et je vais vous montrer.
+
+				ALICE
+		Merci ! Vous habitez à Londres ?
+
+				KIM
+		Euh… Oui.
+
+				ALICE
+		
+
+				[END]
+
+
+---page---
+
+[8]	MAY2016_CUTSCENE/KIM_ALICE_2
+
+	First conversation Kim and Alice 
+
+		C’est votre uniforme ? Enfin, je suppose que oui.
+Vous ne porteriez probablement pas d’insigne si c’était vos vêtements de tous les jours.
+
+				KIM
+		Oui, je travaille à… euh… Je viens de commencer au… vous connaissez le musée Bankside ?
+
+				ALICE
+		Cool, ouais !
+
+				KIM
+		Le savez-vous ?
+
+				ALICE
+		Euh… Non. Je voulais juste paraître enthousiaste.
+
+				KIM
+		(Rires) C'est bien vrai.
+
+				ALICE
+		Je suis déjà allé au zoo de Londres, est-ce que c'est le même genre d'endroit ?
+
+				KIM
+		Je suppose que oui.
+
+				ALICE
+		Ce n'est pas le cas, loin de là, n'est-ce pas ?
+
+				KIM
+		Non, enfin, nous n’avons pas d’animaux vivants.
+Ils n’ont pas de vaisselle du XVIe siècle. 
+
+				[END]
+
+
+---page---
+
+[9]	MAY2016_CUTSCENE/KIM_ALICE_3
+
+	First conversation Kim and Alice 
+
+		Oui, je travaille à… euh… Je viens de commencer au… vous connaissez le musée Bankside ?
+
+				ALICE
+		Cool, ouais !
+
+				KIM
+		Le savez-vous ?
+
+				ALICE
+		Euh… Non. Je voulais juste paraître enthousiaste.
+
+				KIM
+		(Rires) C'est bien vrai.
+
+				ALICE
+		Je suis déjà allé au zoo de Londres, est-ce que c'est le même genre d'endroit ?
+
+				KIM
+		Je suppose que oui.
+
+				ALICE
+		Ce n'est pas le cas, loin de là, n'est-ce pas ?
+
+				KIM
+		Non, enfin, nous n’avons pas d’animaux vivants.
+Ils n’ont pas de vaisselle du XVIe siècle. 
+
+				ALICE
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[10]	MAY2016_CUTSCENE/KIM_ALICE_4
+
+		
+
+				[END]
+
+
+---page---
+
+[11]	JULY2016_CUTSCENE/TOURIST1
+
+				TOURIST
+		
+
+				KIM
+		
+
+				TOURIST
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[12]	JULY2016_CUTSCENE/ALICE
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[13]	AUGUST2026_CUTSCENE/KIMKIDS1
+
+		
+
+		
+
+		
+
+				[END]
+
+
+---page---
+
+[14]	AUGUST2026_CUTSCENE/KIMKIDS2
+
+		
+
+		
+
+				[END]
+
+
+---page---
+
+[15]	AUGUST2026_CUTSCENE/KIMKIDS3
+
+				KID1
+		
+
+				KIM
+		
+
+				KID1
+		
+
+				KIM
+		
+
+		
+
+				MISS CRANE
+		
+
+				KIM
+		
+
+		
+
+		
+
+	Entry [9]: (AnimatorBool(Lecturing, false))
+
+				KID1
+		
+
+				[END]
+
+
+---page---
+
+[16]	AUGUST2026_CUTSCENE/KIMKIDS_CRYING
+
+				CYRINGKID
+		
+
+				[END]
+
+
+---page---
+
+[18]	JULY2016_CUTSCENE/ALICE2
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+		
+
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[19]	AUGUST2026_CUTSCENE/KIMKIDSYESYOU
+
+		
+
+				[END]
+
+
+---page---
+
+[20]	AUGUST2026_OFFICE/SARASWATI
+
+				SARASWATI
+		
+
+				KIM
+		
+
+		
+
+				[END]
+
+
+---page---
+
+[21]	AUGUST2026_OFFICE/BMA
+
+				BMA
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[23]	AUGUST2026_OFFICE/TODAY
+
+		
+
+				[END]
+
+
+---page---
+
+[24]	AUGUST2026_OFFICE/MARCO
+
+		
+
+				[END]
+
+
+---page---
+
+[25]	AUGUST2026_OFFICE/RESTAURANT
+
+				WAITER2026
+		
+
+				[END]
+
+
+---page---
+
+[26]	AUGUST2026_OFFICE/RIVER
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				[END]
+
+
+---page---
+
+[27]	AUGUST2026_OFFICE/PUB
+
+		
+
+				[END]
+
+
+---page---
+
+[28]	AUGUST2026_OFFICE/RESTAURANT_2
+
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[29]	AUGUST2026_OFFICE/ALLPHOTOS
+
+		
+
+				[END]
+
+
+---page---
+
+[30]	AUGUST2026_OFFICE/PUB2
+
+				ALICE
+		
+
+		
+
+				KIM
+		
+
+		
+
+		
+
+				[END]
+
+
+---page---
+
+[31]	AUGUST2026_OFFICE/STRESSBALL
+
+		
+
+				[END]
+
+
+---page---
+
+[32]	AUGUST2026_OFFICE/PHOTO1LOOK
+
+		
+
+				[END]
+
+
+---page---
+
+[33]	AUGUST2026_OFFICE/CHRISTIAN1
+
+				CHRISTIAN
+		
+
+	Responses: [1], [31]
+
+	Entry [1]: (acGetBoolean("Christian_FirstPart")  == false)
+
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [32]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Responses: [33], [34], [35], [51]
+
+	Entry [33]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [48]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Responses: [45], [50]
+
+	Entry [45]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				[END]
+
+	Entry [50]: (Dialog[45].SimStatus == "WasDisplayed")
+
+		
+
+				[END]
+
+	Entry [34]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [35]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [51]:
+
+				KIM
+		
+
+				[END]
+
+	Entry [31]: (acGetBoolean("Christian_FirstPart")  == true)
+
+				CHRISTIAN
+		
+
+
+---page---
+
+[34]	TEST/CHRISTIANTEST
+
+		
+
+	Entry [38]:
+
+				KIM
+		(responses)
+
+	Responses: [52], [31], [47], [33], [45], [32], [41], [44], [53], [54]
+
+	Entry [52]: (Dialog[45].SimStatus == "WasOffered" and (Dialog[41].SimStatus == "WasOffered") and  (Dialog[47].SimStatus == "WasOffered"))
+
+		
+
+				[END]
+
+	Entry [31]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+	Entry [39]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Entry [47]: (Dialog[31].SimStatus == "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+	Entry [33]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+	Entry [45]: (Dialog[33].SimStatus == "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+	Entry [32]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [41]: (Dialog[32].SimStatus == "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [44]:
+
+				KIM
+		
+
+				[END]
+
+	Entry [53]:
+
+		
+
+				[END]
+
+	Entry [54]:
+
+		
+
+				[END]
+
+
+---page---
+
+[35]	AUGUST2026_OFFICE/DOOROPTIONSELECT
+
+				OPTIONSELECTION
+		(Group entry; no dialogue)
+
+	Responses: [1], [2], [8], [9]
+
+	Entry [1]: (acGetInteger("Christian_ThroughDoor") == 0)
+
+				KIM
+		
+
+	Entry [7]:
+
+				OPTIONSELECTION
+		
+
+				[END]
+
+	Entry [2]: (acGetInteger("Christian_ThroughDoor") == 0)
+
+				KIM
+		
+
+	Entry [8]: ((acGetInteger("Christian_ThroughDoor") ~= 0))
+
+		
+
+				[END]
+
+	Entry [9]:
+
+		
+
+				[END]
+
+
+---page---
+
+[36]	AUGUST2026_OFFICE/PHONEUNLOCK
+
+		
+
+				[END]
+
+
+---page---
+
+[37]	AUGUST2026_OFFICE/CHRISTIANTRHOUGHDOOR
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [33]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [48]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Entry [45]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				[END]
+
+	Unconnected entry [32]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Responses: [33], [34], [35]
+
+	Entry [34]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [35]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+
+---page---
+
+[38]	MARCO/ADDEDINVENTORY
+
+				MARCO
+		
+
+				[END]
+
+
+---page---
+
+[39]	CHRISTIAN/INVENTORYUNHANDLED
+
+				CHRISTIAN
+		
+
+				[END]
+
+
+---page---
+

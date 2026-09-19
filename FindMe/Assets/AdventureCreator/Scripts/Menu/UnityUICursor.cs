@@ -33,7 +33,7 @@ namespace AC
 		[SerializeField] private RawImage rawImageForInventory = null;
 		[SerializeField] private bool updateImageNativeSize = true;
 		[SerializeField] private RectTransform rectTransformToPosition = null;
-		private CanvasScaler rootCanvasScaler;
+        private CanvasScaler rootCanvasScaler;
 		#if TextMeshProIsPresent
 		[SerializeField] private bool useTextMeshPro;
 		public TMPro.TextMeshProUGUI itemCountTextTMP;
@@ -59,7 +59,9 @@ namespace AC
 			EventManager.OnInventorySelect_Alt += OnInventorySelect;
 			EventManager.OnInventoryDeselect_Alt += OnInventoryDeselect;
 			rootCanvasScaler = GetComponent<CanvasScaler> ();
-		}
+            Color currentColor = rawImageForInventory.color;
+            rawImageForInventory.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0f);
+        }
 
 
 		private void OnDisable ()
@@ -69,6 +71,7 @@ namespace AC
 			EventManager.OnInventoryDeselect_Alt -= OnInventoryDeselect;
 		}
 
+	
 
 		private void Update ()
 		{
@@ -143,8 +146,11 @@ namespace AC
 			if (rawImageForInventory)
 			{
 				rawImageForInventory.texture = invInstance.CursorIcon.texture ? invInstance.CursorIcon.texture : invInstance.Tex;
+				Color currentColor = rawImageForInventory.color;
 
-				if (updateImageNativeSize)
+				rawImageForInventory.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
+                KickStarter.cursorManager.cursorDisplay = CursorDisplay.Never;
+                if (updateImageNativeSize)
 				{
 					rawImageForInventory.SetNativeSize ();
 				}
@@ -154,16 +160,22 @@ namespace AC
 
 		private void OnInventoryDeselect (InvCollection invCollection, InvInstance invInstance)
 		{
+
 			if (KickStarter.cursorManager.inventoryHandling == InventoryHandling.ChangeCursor || KickStarter.cursorManager.inventoryHandling == InventoryHandling.ChangeCursorAndHotspotLabel)
 			{
 				if (KickStarter.cursorManager.cursorDisplay == CursorDisplay.Never)
 				{
 					OnSetHardwareCursor (null, Vector2.zero);
-				}
+                    
+                }
 			}
 
-			#if TextMeshProIsPresent
-			if (itemCountTextTMP && useTextMeshPro)
+            Color currentColor = rawImageForInventory.color;
+            rawImageForInventory.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0f);
+            KickStarter.cursorManager.cursorDisplay = CursorDisplay.Always;
+
+#if TextMeshProIsPresent
+            if (itemCountTextTMP && useTextMeshPro)
 			{
 				itemCountTextTMP.text = string.Empty;
 			}

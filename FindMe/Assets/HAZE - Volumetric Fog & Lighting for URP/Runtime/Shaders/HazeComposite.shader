@@ -18,7 +18,7 @@ Shader "Hidden/Haze/Composite"
             #pragma vertex Vert
             #pragma fragment frag
 
-            #pragma shader_feature_local_fragment TRICUBIC_SAMPLING
+            #pragma multi_compile_local_fragment _ TRICUBIC_SAMPLING TRILINEAR_SAMPLING POINT_SAMPLING
 
             TEXTURE3D(_ScatterBuffer);
             TEXTURE2D(_GLOBAL_BloomTexture);
@@ -46,6 +46,8 @@ Shader "Hidden/Haze/Composite"
                 uvw.xyz += IGN(input.texcoord.x * _BlitTexture_TexelSize.z, input.texcoord.y * _BlitTexture_TexelSize.w, _Time.y * unity_DeltaTime.w) * 0.01 * _IGNStrength;
 #ifdef TRICUBIC_SAMPLING
                 float4 scatterBuffer = SampleTexture3DBicubic(_ScatterBuffer, uvw, float3(bufferWidth, bufferHeight, bufferDepth));
+#elif POINT_SAMPLING
+                float4 scatterBuffer = SAMPLE_TEXTURE3D_LOD(_ScatterBuffer, sampler_PointClamp, uvw, 0);
 #else
                 float4 scatterBuffer = SAMPLE_TEXTURE3D_LOD(_ScatterBuffer, sampler_TrilinearClamp, uvw, 0);
 #endif

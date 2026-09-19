@@ -132,7 +132,7 @@ MonoBehaviour:
     x: 14
     y: 14
     width: 300
-    height: 193
+    height: 133
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   constantID: 0
   parameterID: 1
   linkedCamera: {fileID: 0}
-  transitionTime: 1
+  transitionTime: 0
   transitionTimeParameterID: -1
   timeCurve:
     serializedVersion: 2
@@ -203,8 +203,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 104
-    y: 299
+    x: 93.600006
+    y: 276.6
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}

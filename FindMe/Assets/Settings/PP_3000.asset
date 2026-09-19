@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Bloom
   m_EditorClassIdentifier: 
   active: 0
+  skipIterations:
+    m_OverrideState: 1
+    m_Value: 2
   threshold:
     m_OverrideState: 1
     m_Value: 0.24
@@ -31,9 +34,15 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
-  skipIterations:
-    m_OverrideState: 1
-    m_Value: 2
+  filter:
+    m_OverrideState: 0
+    m_Value: 0
+  downscale:
+    m_OverrideState: 0
+    m_Value: 0
+  maxIterations:
+    m_OverrideState: 0
+    m_Value: 6
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 2800000, guid: 62f8dda50382d487597224e197cbd34f, type: 3}
@@ -53,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {x: 0.7368526, y: 0.7115139, z: 1, w: -0.6122449}
@@ -75,6 +84,61 @@ MonoBehaviour:
   highlightsEnd:
     m_OverrideState: 1
     m_Value: 1.15
+--- !u!114 &-7158026437730245045
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d468b943de483f641a8eb80fcd52e584, type: 3}
+  m_Name: SSCC
+  m_EditorClassIdentifier: SSCC.Universal.Runtime::ScreenSpaceCavityCurvature.Universal.SSCC
+  active: 1
+  effectIntensity:
+    m_OverrideState: 1
+    m_Value: 0.28
+  distanceFade:
+    m_OverrideState: 1
+    m_Value: 0
+  curvaturePixelRadius:
+    m_OverrideState: 1
+    m_Value: 2
+  curvatureBrights:
+    m_OverrideState: 1
+    m_Value: 3
+  curvatureDarks:
+    m_OverrideState: 1
+    m_Value: 3
+  cavitySamples:
+    m_OverrideState: 1
+    m_Value: 1
+  saturateCavity:
+    m_OverrideState: 1
+    m_Value: 1
+  cavityRadius:
+    m_OverrideState: 1
+    m_Value: 0.25
+  cavityBrights:
+    m_OverrideState: 1
+    m_Value: 1.08
+  cavityDarks:
+    m_OverrideState: 1
+    m_Value: 2
+  cavityResolution:
+    m_OverrideState: 1
+    m_Value: 1
+  normalsSource:
+    m_OverrideState: 1
+    m_Value: 1
+  debugMode:
+    m_OverrideState: 1
+    m_Value: 0
+  output:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-7137780532826004894
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -171,10 +235,10 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: -21
+    m_Value: 18
   tint:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 100
 --- !u!114 &-5887933750387933756
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -215,19 +279,19 @@ MonoBehaviour:
     m_Value: 2
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 19.3
+    m_Value: 1.26
   gaussianMaxRadius:
     m_OverrideState: 1
-    m_Value: 0.979
+    m_Value: 1.5
   highQualitySampling:
     m_OverrideState: 0
     m_Value: 1
   focusDistance:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.6
   aperture:
     m_OverrideState: 1
     m_Value: 5.6
@@ -259,6 +323,30 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 2
+  neutralHDRRangeReductionMode:
+    m_OverrideState: 0
+    m_Value: 2
+  acesPreset:
+    m_OverrideState: 0
+    m_Value: 3
+  hueShiftAmount:
+    m_OverrideState: 0
+    m_Value: 0
+  detectPaperWhite:
+    m_OverrideState: 0
+    m_Value: 0
+  paperWhite:
+    m_OverrideState: 0
+    m_Value: 300
+  detectBrightnessLimits:
+    m_OverrideState: 0
+    m_Value: 1
+  minNits:
+    m_OverrideState: 0
+    m_Value: 0.005
+  maxNits:
+    m_OverrideState: 0
+    m_Value: 1000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +370,7 @@ MonoBehaviour:
   - {fileID: -8645655610014948807}
   - {fileID: 6107344497176604921}
   - {fileID: -6300291958703200268}
+  - {fileID: -7158026437730245045}
 --- !u!114 &6107344497176604921
 MonoBehaviour:
   m_ObjectHideFlags: 3

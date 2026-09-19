@@ -8,18 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 76800e94c60f2c94f91977fc890a64a6
-  - enabled: 0
-    path: Assets/Scenes/OpeningScene.unity
-    guid: f5e7a5f46d29a3e449cefb273e0094b6
-  - enabled: 0
-    path: Assets/Scenes/MuseumExterior2024.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/MuseumInterior2024.unity
-    guid: c70204939fc74684d9428d0cb4f0740c
-  - enabled: 0
-    path: Assets/Scenes/TestInterior.unity
-    guid: 36d06907cfc4ca84dabeff9cc3fb75b1
   - enabled: 1
     path: Assets/Scenes/1526_Street.unity
     guid: bba56ddc64ee12d4dbb5d79f2b4aea1b
@@ -29,6 +17,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: 73f25ec8d8755d14489c0808b91e3a91
+  - enabled: 1
+    path: Assets/Scenes/MuseumInterior2016.unity
+    guid: c70204939fc74684d9428d0cb4f0740c
+  - enabled: 1
+    path: Assets/Scenes/MuseumInterior2026.unity
+    guid: 85534cf6e0a4e1f4f9d7b211f5cf2c90
+  - enabled: 1
+    path: Assets/Scenes/MuseumOffice2026.unity
+    guid: 36d06907cfc4ca84dabeff9cc3fb75b1
+  - enabled: 0
+    path: Assets/Scenes/PhotoRestaurant.unity
+    guid: a8218f2aecdf8314f80869bfb58c6bd4
+  - enabled: 1
+    path: Assets/Scenes/Flashback_Restaurant.unity
+    guid: 076b3c23439e59844b07e497a78a65db
+  - enabled: 1
+    path: Assets/Scenes/Flashback_Pub.unity
+    guid: f771f68bcfe1b5c4ca8c0f3f2b903463
+  - enabled: 1
+    path: Assets/Scenes/Flashback_River.unity
+    guid: 7968ca8fd7c9b28499409ac24c0a007d
+  - enabled: 1
+    path: Assets/Scenes/TEST_HUB.unity
+    guid: f3b8b3958044b6c4da94ec00da0ebb97
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e8baea42ae441614f91a52da5d84f75b, type: 2}
   m_UseUCBPForAssetBundles: 0

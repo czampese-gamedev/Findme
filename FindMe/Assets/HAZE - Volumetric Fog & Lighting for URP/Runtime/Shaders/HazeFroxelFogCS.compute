@@ -22,6 +22,7 @@ RWTexture3D<float4> _ScatterBuffer;
 Texture3D _ColorDensityReadBuffer;
 Texture3D _GlobalNoiseTexture;
 float4 _AmbientColor;
+float _MainLightShadowBias;
 float _LightScattering;
 
 float _GlobalDensityMultiplier;
@@ -41,6 +42,7 @@ float4x4 _PrevViewProjectionMatrix;
 float4 _ZBufferParameters;
 float _TemporalReprojection;
 float _TemporalAccumulationBlending;
+float _JitterNoiseMotion;
 StructuredBuffer<float> _SecondaryLightAlphaBuffer;
 
 #define NEAR_CLIP _ZBufferParameters.z
@@ -50,17 +52,25 @@ struct HazeDensityVolume
 {
     float4x4 worldToLocal;
     float shape;
-    float density;
-    float mainLightDensityBoost;
-    float secondaryLightDensityBoost;
-    float noiseThreshold;
+    /*
+     * X -> Density
+     * Y -> Noise Threshold
+     * Z -> Main light density boost
+     * W -> Secondary light density boost
+     */
+    float4 densitySettings;
     float3 ambientColor;
     float3 lightContribution;
     float4 heightFog;
-    float additionalLightContribution;
-    float probeVolumeContribution;
-    float mainLightScattering;
-    float gradientSamplingIndex;
+    /*
+     * X -> Additional light contribution
+     * Y -> Probe volume contribution
+     * Z -> Main light phase
+     * W -> Gradient sampling index
+     */
+    float4 lightAndGradientSettings;
+    float gradientMappingMethod;
+    float override;
 };
 
 StructuredBuffer<HazeDensityVolume> _HazeDensityVolumeBuffer;
@@ -85,7 +95,7 @@ void ColorDensityGatherCore(uint3 id)
     }
     float3 dim = float3(width, height, depth);
     float3 gid = float3(id.xyz);
-    float ditherNoise = IGN(gid.x, gid.y, gid.z + _Time.y * unity_DeltaTime.w) * 0.999;
+    float ditherNoise = IGN(gid.x, gid.y, gid.z + _Time.y * unity_DeltaTime.w * _JitterNoiseMotion) * 0.999f;
     // gid.z += ditherNoise;
     
     float3 uvw = (gid + 0.5) / dim;
@@ -94,10 +104,12 @@ void ColorDensityGatherCore(uint3 id)
 
     //Main light settings
     Light mainLight = GetCustomMainLight(pos);
-    float lightScattering = LightScattering(normalize(_WorldSpaceCameraPos - pos), mainLight.direction, _LightScattering);
+    float3 viewDir = normalize(_WorldSpaceCameraPos - pos);
+    float lightScattering = LightScattering(viewDir, mainLight.direction, _LightScattering);
 
-#if defined(_MAIN_LIGHT_SHADOWS) || defined (_MAIN_LIGHT_SHADOWS_CASCADE)
-    float4 shadowCoord = TransformWorldToShadowCoord(pos);
+#if defined(_MAIN_LIGHT_SHADOWS) || defined(_MAIN_LIGHT_SHADOWS_CASCADE) || defined(_MAIN_LIGHT_SHADOWS_SCREEN)
+    float4 shadowCoord = CustomTransformWorldToShadowCoord(pos);
+    shadowCoord.z -= _MainLightShadowBias;
     float shadow = CustomSampleShadowmap(TEXTURE2D_ARGS(_MainLightShadowmapTexture, sampler_LinearClampCompare), shadowCoord, GetMainLightShadowSamplingData(), GetMainLightShadowParams(), false);
 #else
     float shadow = 1;
@@ -121,7 +133,7 @@ void ColorDensityGatherCore(uint3 id)
         InputData inputData = GetInputData(pos, uvw.xy);
         LIGHT_LOOP_BEGIN(additionalLightsCount)
             float lightAlpha = _SecondaryLightAlphaBuffer[lightIndex];
-            Light light = GetAdditionalLight(lightIndex, pos);
+            Light light = CustomGetAdditionalPerObjectLight(lightIndex, pos);
             light.shadowAttenuation = CustomAdditionalLightRealtimeShadow(lightIndex, pos, light.direction);
             additionalLights += light.color * light.shadowAttenuation * saturate(light.distanceAttenuation) * lightAlpha;
             additionalLightDensity += light.shadowAttenuation * pow(light.distanceAttenuation, 0.1) * lightAlpha;
@@ -153,30 +165,79 @@ void ColorDensityGatherCore(uint3 id)
             float localHeightFogPos = lerp(pos.y - _WorldSpaceCameraPos.y * (volume.heightFog.w / 2), objPos.y, volume.heightFog.w % 2);
 
             float heightFog = saturate(InverseLerp(volume.heightFog.x - volume.heightFog.y, volume.heightFog.x + volume.heightFog.y, localHeightFogPos)) * volume.heightFog.z;
-            float4 gradientColor = _VolumeGradientTexture.SampleLevel(sampler_LinearClamp, float2(objPos.z * 0.5 + 0.5, volume.gradientSamplingIndex / (volumeGradientTextureDimensions.y * 0.5) + rcp(volumeGradientTextureDimensions.y)), 0);
-            float localNoiseAndHeightDensity = max(0, weightedNoise - volume.noiseThreshold - (1.0 - gradientColor.a) * 2 - heightFog + accumulatedSubtractiveDensity * saturate(sign(volume.density + 0.0001)));
-            float volumeDensity = localNoiseAndHeightDensity * volume.density;
+
+            float gradientMappingFactor = objPos.z * 0.5 + 0.5;
+
+            [branch]
+            switch (floor(volume.gradientMappingMethod))
+            {
+                case 0:
+                    gradientMappingFactor = objPos.z * 0.5 + 0.5;
+                break;
+                case 1:
+                    gradientMappingFactor = objPos.y * 0.5 + 0.5;
+                break;
+                case 2:
+                    gradientMappingFactor = objPos.x * 0.5 + 0.5;
+                break;
+                case 3:
+                    gradientMappingFactor = (objPos.z * 0.5 + 0.5 + (objPos.y * 0.5 + 0.5)) * 0.5;
+                break;
+                case 4:
+                    gradientMappingFactor = uvw.x;
+                break;
+                case 5:
+                    gradientMappingFactor = uvw.y;
+                break;
+                case 6:
+                    gradientMappingFactor = LightScattering(viewDir, mainLight.direction, frac(volume.gradientMappingMethod));
+                break;
+                default:
+                    gradientMappingFactor = objPos.z * 0.5 + 0.5;
+                break;
+            }
+            
+            float4 gradientColor = _VolumeGradientTexture.SampleLevel(sampler_LinearClamp, float2(gradientMappingFactor, volume.lightAndGradientSettings.w / (volumeGradientTextureDimensions.y * 0.5) + rcp(volumeGradientTextureDimensions.y)), 0);
+            float localNoiseAndHeightDensity = max(0, weightedNoise - volume.densitySettings.y - (1.0 - gradientColor.a) * 2 - heightFog + accumulatedSubtractiveDensity * saturate(sign(volume.densitySettings.x + 0.0001)));
+            float volumeDensity = localNoiseAndHeightDensity * volume.densitySettings.x;
             float localDensity = shapeDensity * volumeDensity;
             //Only contribute ambient color to main fog body
-            volumeAmbientColor += localDensity * volume.ambientColor * gradientColor.rgb;
+            float3 localVolumeAmbientColor = localDensity * volume.ambientColor * gradientColor.rgb; 
 
             //Additional density from main/secondary lights
-            volumeDensity += shadow * localNoiseAndHeightDensity * volume.mainLightDensityBoost * volume.mainLightScattering;
-            volumeDensity += additionalLightDensity * localNoiseAndHeightDensity * volume.secondaryLightDensityBoost * sign(volume.density + 0.0001);
-            
+            float mainLightDensity = shadow * localNoiseAndHeightDensity * volume.densitySettings.z * volume.lightAndGradientSettings.z;
+            float secondaryLightDensity = additionalLightDensity * localNoiseAndHeightDensity * volume.densitySettings.w * sign(volume.densitySettings.x + 0.0001);
+            float lightDensity = mainLightDensity + secondaryLightDensity;
+            volumeDensity += lightDensity;
             localDensity = shapeDensity * volumeDensity;
-            if (volume.density >= 0)
+            
+            float volumeMainLightScattering = LightScattering(viewDir, mainLight.direction, volume.lightAndGradientSettings.z);
+            float3 localLightCol = (mainLightColorTerm * volumeMainLightScattering * volume.lightContribution + additionalLights * volume.lightAndGradientSettings.x) * localDensity; 
+            float3 localProbeVolumeLight = bakedLight * volume.lightAndGradientSettings.y * localDensity;
+
+            [branch]
+            if (volume.override)
             {
-                accumulatedVolumeDensity += localDensity;
+                float shapeMask = smoothstep(0.01, 0.1, shapeDensity);
+                accumulatedVolumeDensity = lerp(accumulatedVolumeDensity, localDensity, shapeMask);
+                volumeAmbientColor = lerp(volumeAmbientColor, localVolumeAmbientColor, shapeMask);
+                lightCol = lerp(lightCol, localLightCol, shapeMask); 
+                probeVolumeLight = lerp(probeVolumeLight, localProbeVolumeLight, shapeMask);
             } else
             {
-                accumulatedSubtractiveDensity += localDensity;
-            }
+                [branch]
+                if (volume.densitySettings.x >= 0)
+                {
+                    accumulatedVolumeDensity += localDensity;
+                } else
+                {
+                    accumulatedSubtractiveDensity += localDensity;
+                }
 
-            float volumeMainLightScattering = LightScattering(normalize(_WorldSpaceCameraPos - pos), mainLight.direction, volume.mainLightScattering);
-            lightCol += (mainLightColorTerm * volumeMainLightScattering * volume.lightContribution + additionalLights * volume.additionalLightContribution) * localDensity;
-            
-            probeVolumeLight += bakedLight * volume.probeVolumeContribution * localDensity;
+                volumeAmbientColor += localVolumeAmbientColor;
+                lightCol += localLightCol; 
+                probeVolumeLight += localProbeVolumeLight;
+            }
         }
     }
 

@@ -9,12 +9,13 @@ namespace Haze.Editor
     {
         public override void OnInspectorGUI()
         {
-            var densityVolumeMode = ((HazeDensityVolume)target).DensityMode;
+            var volume = (HazeDensityVolume)target;
+            var densityVolumeMode = volume.DensityMode;
             var serializedProperty = serializedObject.GetIterator();
             var isSubtractive = densityVolumeMode == HazeDensityVolume.VolumeDensityMode.Subtractive;
             serializedProperty.NextVisible(true);
             
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < 5; i++)
             {
                 serializedProperty.NextVisible(false);
                 EditorGUILayout.PropertyField(serializedProperty, true);
@@ -23,6 +24,12 @@ namespace Haze.Editor
             while (serializedProperty.NextVisible(false))
             {
                 if (isSubtractive && !serializedProperty.name.Contains("Height", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                if (volume.GradientMappingMethod != HazeDensityVolume.GradientMapping.MainLightDirection &&
+                    string.Compare(serializedProperty.name, "_gradientLightScattering", StringComparison.Ordinal) == 0)
                 {
                     continue;
                 }

@@ -12,6 +12,7 @@ public class SetPlayerTarget : MonoBehaviour
     {
        // GetComponent<CinemachineVirtualCam>().m_Follow = player.transform;
         GetComponent<CinemachineCamera>().LookAt = player.transform;
+        GetComponent<CinemachineCamera>().Follow = player.transform;
     }
 
 }

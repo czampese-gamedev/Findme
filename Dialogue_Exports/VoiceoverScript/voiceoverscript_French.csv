@@ -1,0 +1,372 @@
+﻿Database,FindMeDialogueDatabase
+Author,
+Version,
+Description,
+
+---Actors---
+Name,Description
+Kim,
+NPC,
+Merchant,
+MARCO,
+Alice,
+Tourist,Tourist 2016
+Kid1,Kid1 2026
+Miss Crane,Teacher2026
+CyringKid,Crying Kid 2026
+Saraswati,
+BMA,
+Waiter2026,
+Christian,
+OptionSelection,Used to display any non-dialogue option selection
+
+---Conversations---
+
+Conversation 2,MARCO_1
+Description,"Conversation with MARCO that appears when the player initiates a conversation with MARCO that is not initiated by the game. This conversation is mostly for fun, but may contain hints in particular parts of the game"
+entrytag,Actor,Description,French
+Kim_2_3,Kim,When the conversation starts the player will ask MARCO if he has anything useful to say using one of the MARCO Greetings (recorded separately),
+MARCO_2_4,MARCO,A randomised response by MARCO,
+MARCO_2_5,MARCO,A randomised response by MARCO,
+MARCO_2_7,MARCO,,
+Kim_2_8,Kim,(sarcastic)	,
+Kim_2_9,Kim,(mildly surprised as you have been just told an interesting fact)	,
+Kim_2_10,Kim,,
+MARCO_2_11,MARCO,,
+
+Conversation 4,1526_Marco1
+Description,	
+entrytag,Actor,Description,French
+Kim_4_3,Kim,,
+MARCO_4_4,MARCO,,
+Kim_4_8,Kim,,
+
+Conversation 5,1526_Marco_InitialConversation
+Description,
+entrytag,Actor,Description,French
+Kim_5_1,Kim,This is the first real interaction with MARCO,
+MARCO_5_2,MARCO,First time responding - Kim has called you Siri,
+Kim_5_3,Kim,,
+MARCO_5_4,MARCO,,
+Kim_5_5,Kim,,
+MARCO_5_6,MARCO,,
+Kim_5_7,Kim,,
+MARCO_5_8,MARCO,,
+Kim_5_9,Kim,,
+MARCO_5_10,MARCO,,
+
+Conversation 6,MARCO_1526_Area2EnteredMultiplw
+Description,Entered 1526 area 2 multiple times
+entrytag,Actor,Description,French
+MARCO_6_1,MARCO,,
+Kim_6_2,Kim,,
+MARCO_6_3,MARCO,,
+
+Conversation 7,May2016_cutscene/Kim_Alice_1
+Description,Cutscene 1 - Kim and Alice first meeting on a train 2016
+entrytag,Actor,Description,French
+Alice_7_1,Alice,[Kim just helped Alice barely squeeze onto the train],"Oh mon Dieu, merci!"
+Alice_7_3,Alice,,"Salut, est-ce que ça concerne Stockwell ?"
+Kim_7_4,Kim,,"Eu, Non."
+Alice_7_5,Alice,,Oh. Je n'aurais probablement pas dû risquer ma vie en montant.
+Kim_7_6,Kim,,"Mais vous pourriez en fait changer à… enfin, restez connectés et je vais vous montrer."
+Alice_7_7,Alice,,Merci ! Vous habitez à Londres ?
+Kim_7_8,Kim,,Euh… Oui.
+Kim_7_9,Kim,,Vous êtes les bienvenus…
+Alice_7_10,Alice,,
+
+Conversation 8,May2016_cutscene/Kim_Alice_2
+Description,First conversation Kim and Alice 
+entrytag,Actor,Description,French
+Alice_8_9,Alice,,"C’est votre uniforme ? Enfin, je suppose que oui.\nVous ne porteriez probablement pas d’insigne si c’était vos vêtements de tous les jours."
+Kim_8_10,Kim,,"Oui, je travaille à… euh… Je viens de commencer au… vous connaissez le musée Bankside ?"
+Alice_8_11,Alice,,"Cool, ouais !"
+Kim_8_12,Kim,,Le savez-vous ?
+Alice_8_13,Alice,,Euh… Non. Je voulais juste paraître enthousiaste.
+Kim_8_14,Kim,,(Rires) C'est bien vrai.
+Alice_8_15,Alice,,"Je suis déjà allé au zoo de Londres, est-ce que c'est le même genre d'endroit ?"
+Kim_8_16,Kim,,Je suppose que oui.
+Alice_8_17,Alice,,"Ce n'est pas le cas, loin de là, n'est-ce pas ?"
+Kim_8_18,Kim,,"Non, enfin, nous n’avons pas d’animaux vivants.\nIls n’ont pas de vaisselle du XVIe siècle. "
+
+Conversation 9,May2016_cutscene/Kim_Alice_3
+Description,First conversation Kim and Alice 
+entrytag,Actor,Description,French
+Kim_9_10,Kim,,"Oui, je travaille à… euh… Je viens de commencer au… vous connaissez le musée Bankside ?"
+Alice_9_11,Alice,,"Cool, ouais !"
+Kim_9_12,Kim,,Le savez-vous ?
+Alice_9_13,Alice,,Euh… Non. Je voulais juste paraître enthousiaste.
+Kim_9_14,Kim,,(Rires) C'est bien vrai.
+Alice_9_15,Alice,,"Je suis déjà allé au zoo de Londres, est-ce que c'est le même genre d'endroit ?"
+Kim_9_16,Kim,,Je suppose que oui.
+Alice_9_17,Alice,,"Ce n'est pas le cas, loin de là, n'est-ce pas ?"
+Kim_9_18,Kim,,"Non, enfin, nous n’avons pas d’animaux vivants.\nIls n’ont pas de vaisselle du XVIe siècle. "
+Alice_9_19,Alice,,
+Kim_9_20,Kim,,
+
+Conversation 10,May2016_cutscene/Kim_Alice_4
+Description,
+entrytag,Actor,Description,French
+Kim_10_1,Kim,,
+
+Conversation 11,July2016_Cutscene/Tourist1
+Description,
+entrytag,Actor,Description,French
+Tourist_11_1,Tourist,,
+Kim_11_2,Kim,,
+Tourist_11_3,Tourist,,
+Kim_11_4,Kim,,
+
+Conversation 12,July2016_Cutscene/Alice
+Description,
+entrytag,Actor,Description,French
+Alice_12_1,Alice,,
+Kim_12_2,Kim,,
+Alice_12_3,Alice,,
+Kim_12_4,Kim,,
+Alice_12_5,Alice,,
+Kim_12_6,Kim,,
+
+Conversation 13,August2026_cutscene/KimKids1
+Description,
+entrytag,Actor,Description,French
+Kim_13_1,Kim,,
+Kim_13_2,Kim,,
+Kim_13_3,Kim,,
+
+Conversation 14,August2026_cutscene/KimKids2
+Description,
+entrytag,Actor,Description,French
+Kim_14_1,Kim,,
+Kim_14_2,Kim,,
+
+Conversation 15,August2026_cutscene/KimKids3
+Description,
+entrytag,Actor,Description,French
+Kid1_15_1,Kid1,,
+Kim_15_2,Kim,,
+Kid1_15_3,Kid1,,
+Kim_15_4,Kim,,
+Kim_15_5,Kim,,
+Miss_Crane_15_6,Miss Crane,,
+Kim_15_7,Kim,,
+Kim_15_8,Kim,,
+Kid1_15_9,Kid1,,
+Kim_15_10,Kim,,
+
+Conversation 16,August2026_cutscene/KimKids_crying
+Description,
+entrytag,Actor,Description,French
+CyringKid_16_1,CyringKid,,
+
+Conversation 18,July2016_Cutscene/Alice2
+Description,
+entrytag,Actor,Description,French
+Alice_18_7,Alice,,
+Kim_18_8,Kim,,
+Alice_18_10,Alice,,
+Kim_18_11,Kim,,
+Alice_18_12,Alice,,
+Alice_18_13,Alice,,
+Alice_18_14,Alice,,
+Kim_18_15,Kim,,
+Alice_18_16,Alice,,
+Kim_18_17,Kim,,
+Alice_18_18,Alice,,
+Kim_18_19,Kim,,
+
+Conversation 19,August2026_cutscene/KimKidsYesYou
+Description,
+entrytag,Actor,Description,French
+Kim_19_2,Kim,,
+
+Conversation 20,August2026_Office/Saraswati
+Description,
+entrytag,Actor,Description,French
+Saraswati_20_1,Saraswati,,
+Kim_20_2,Kim,,
+Kim_20_3,Kim,,
+
+Conversation 21,August2026_Office/BMA
+Description,
+entrytag,Actor,Description,French
+BMA_21_1,BMA,,
+Kim_21_2,Kim,,
+
+Conversation 23,August2026_Office/Today
+Description,
+entrytag,Actor,Description,French
+Kim_23_1,Kim,,
+
+Conversation 24,August2026_Office/MARCO
+Description,
+entrytag,Actor,Description,French
+Kim_24_1,Kim,,
+
+Conversation 25,August2026_Office/Restaurant
+Description,
+entrytag,Actor,Description,French
+Waiter2026_25_1,Waiter2026,,
+
+Conversation 26,August2026_Office/River
+Description,
+entrytag,Actor,Description,French
+Alice_26_1,Alice,,
+Kim_26_2,Kim,,
+Alice_26_3,Alice,,
+Kim_26_4,Kim,,
+Alice_26_5,Alice,,
+
+Conversation 27,August2026_Office/Pub
+Description,
+entrytag,Actor,Description,French
+Alice_27_1,Alice,,
+
+Conversation 28,August2026_Office/Restaurant_2
+Description,
+entrytag,Actor,Description,French
+Alice_28_2,Alice,,
+Kim_28_3,Kim,,
+Alice_28_4,Alice,,
+Kim_28_5,Kim,,
+Alice_28_6,Alice,,
+Kim_28_7,Kim,,
+
+Conversation 29,August2026_Office/AllPhotos
+Description,
+entrytag,Actor,Description,French
+Kim_29_1,Kim,,
+
+Conversation 30,August2026_Office/Pub2
+Description,
+entrytag,Actor,Description,French
+Alice_30_5,Alice,,
+Kim_30_6,Kim,,
+Kim_30_7,Kim,,
+Alice_30_8,Alice,,
+Kim_30_9,Kim,,
+
+Conversation 31,August2026_Office/Stressball
+Description,
+entrytag,Actor,Description,French
+Kim_31_2,Kim,,
+
+Conversation 32,August2026_Office/Photo1Look
+Description,
+entrytag,Actor,Description,French
+Kim_32_1,Kim,,
+
+Conversation 33,August2026_Office/Christian1
+Description,
+entrytag,Actor,Description,French
+Christian_33_1,Christian,,
+Kim_33_2,Kim,,
+Christian_33_3,Christian,,
+Kim_33_4,Kim,,
+Christian_33_5,Christian,,
+Kim_33_6,Kim,,
+Christian_33_7,Christian,,
+Kim_33_8,Kim,,
+Christian_33_9,Christian,,
+Christian_33_30,Christian,,
+Christian_33_31,Christian,,
+Kim_33_32,Kim,,
+Kim_33_33,Kim,,
+Kim_33_34,Kim,,
+Kim_33_35,Kim,,
+Christian_33_36,Christian,,
+Christian_33_37,Christian,,
+Christian_33_38,Christian,,
+Kim_33_39,Kim,,
+Kim_33_40,Kim,,
+Kim_33_41,Kim,,
+Christian_33_42,Christian,,
+Christian_33_43,Christian,,
+Christian_33_44,Christian,,
+Christian_33_45,Christian,,
+Kim_33_46,Kim,,
+Christian_33_47,Christian,,
+Kim_33_48,Kim,,
+Christian_33_50,Christian,,
+Kim_33_51,Kim,,
+
+Conversation 34,TEST/ChristianTEST
+Description,
+entrytag,Actor,Description,French
+Christian_34_30,Christian,,
+Kim_34_31,Kim,,
+Kim_34_32,Kim,,
+Kim_34_33,Kim,,
+Christian_34_34,Christian,,
+Christian_34_35,Christian,,
+Christian_34_36,Christian,,
+Kim_34_38,Kim,,
+Kim_34_39,Kim,,
+Kim_34_41,Kim,,
+Christian_34_42,Christian,,
+Kim_34_44,Kim,,
+Kim_34_45,Kim,,
+Christian_34_46,Christian,,
+Kim_34_47,Kim,,
+Christian_34_48,Christian,,
+Kim_34_49,Kim,,
+Christian_34_50,Christian,,
+Kim_34_51,Kim,,
+Kim_34_52,Kim,,
+Kim_34_53,Kim,,
+Kim_34_54,Kim,,
+
+Conversation 35,August2026_Office/DoorOptionSelect
+Description,
+entrytag,Actor,Description,French
+Kim_35_1,Kim,,
+Kim_35_2,Kim,,
+OptionSelection_35_6,OptionSelection,,
+OptionSelection_35_7,OptionSelection,,
+Kim_35_8,Kim,,
+Kim_35_9,Kim,,
+
+Conversation 36,August2026_Office/PhoneUnlock
+Description,
+entrytag,Actor,Description,French
+Kim_36_1,Kim,,
+
+Conversation 37,August2026_Office/ChristianTrhoughDoor
+Description,
+entrytag,Actor,Description,French
+Christian_37_1,Christian,,
+Kim_37_2,Kim,,
+Christian_37_3,Christian,,
+Kim_37_4,Kim,,
+Christian_37_5,Christian,,
+Kim_37_6,Kim,,
+Christian_37_7,Christian,,
+Kim_37_8,Kim,,
+Christian_37_9,Christian,,
+Kim_37_32,Kim,,
+Kim_37_33,Kim,,
+Kim_37_34,Kim,,
+Kim_37_35,Kim,,
+Christian_37_36,Christian,,
+Christian_37_37,Christian,,
+Christian_37_38,Christian,,
+Kim_37_39,Kim,,
+Kim_37_40,Kim,,
+Kim_37_41,Kim,,
+Christian_37_42,Christian,,
+Christian_37_43,Christian,,
+Christian_37_44,Christian,,
+Christian_37_45,Christian,,
+Kim_37_46,Kim,,
+Christian_37_47,Christian,,
+Kim_37_48,Kim,,
+
+Conversation 38,Marco/AddedInventory
+Description,
+entrytag,Actor,Description,French
+MARCO_38_1,MARCO,,
+
+Conversation 39,Christian/InventoryUnhandled
+Description,
+entrytag,Actor,Description,French
+Christian_39_1,Christian,,

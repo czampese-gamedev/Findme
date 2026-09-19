@@ -17,12 +17,27 @@ namespace Haze.Runtime
 
       public enum VolumeDensityMode
       {
-         Additive,
-         Subtractive
+         Additive = 0,
+         Subtractive = 1,
+         Override = 2
+      }
+      
+      public enum GradientMapping
+      {
+         LocalZ = 0,
+         LocalY = 1,
+         LocalX = 2,
+         LocalZY = 3,
+         ScreenSpaceX = 4,
+         ScreenSpaceY = 5,
+         MainLightDirection = 6
       }
       
       [Tooltip("The shape of the density volume.")]
       [SerializeField] private Shape _shape = Shape.Cube;
+
+      [Tooltip("Rendering priority to sort volumes in case override volumes are used.")]
+      [SerializeField] private int _priority = 0;
 
       [Header("Density")]
       [Tooltip("Determines the density of the fog inside the volume.")]
@@ -38,6 +53,11 @@ namespace Haze.Runtime
       [SerializeField, ColorUsage(false, true)] private Color _ambientColor = Color.white;
       [Tooltip("The color gradient the volume uses to modify the fog's ambient color")]
       [SerializeField] private Gradient _colorGradient = new();
+
+      [Tooltip("The method of mapping the gradient color.")]
+      [SerializeField] private GradientMapping _gradientMapping = GradientMapping.LocalZ;
+      [Tooltip("Gradient light scattering value when \"Main Light Direction\" mapping method is selected.")]
+      [SerializeField, Range(0, 0.9999f)] private float _gradientLightScattering = 0.5f;
       [Tooltip("The additional color that gets multiplied by the sun light. Increase the HDR intensity for more intense sun rays.")]
       [SerializeField, ColorUsage(false, true)] private Color _mainLightContribution = Color.white;
       
@@ -70,11 +90,14 @@ namespace Haze.Runtime
       private int _volumeIndex;
 
       public Shape VolumeShape => _shape;
+      public int Priority => _priority;
       public float Density => _densityMode == VolumeDensityMode.Subtractive ?  math.min(-0.01f, -_density) : _density;
       public float NoiseThreshold => _noiseThreshold;
       public VolumeDensityMode DensityMode => _densityMode;
       public Color AmbientColor => _densityMode == VolumeDensityMode.Subtractive ? Color.black : _ambientColor;
       public Gradient ColorGradient => _colorGradient;
+      public GradientMapping GradientMappingMethod => _gradientMapping;
+      public float GradientLightScattering => _gradientLightScattering;
       public Color MainLightContribution => _densityMode == VolumeDensityMode.Subtractive ? Color.black : _mainLightContribution;
       public float HeightFogFactor => _heightFogFactor;
       public float MaxFogHeight => _maxFogHeight;
@@ -87,10 +110,8 @@ namespace Haze.Runtime
       public float MainLightScattering => _densityMode == VolumeDensityMode.Subtractive ?  1 : _mainLightScattering;
       public float MainLightDensityBoost => _densityMode == VolumeDensityMode.Subtractive ?  0 : _mainLightDensityBoost;
       public float SecondaryLightDensityBoost => _secondaryLightDensityBoost;
-      public int VolumeIndex
-      {
-         get => _volumeIndex;
-      }
+      public int VolumeIndex => _volumeIndex;
+      public Bounds VolumeBounds => _bounds;
 
       private void Update()
       {
@@ -125,6 +146,12 @@ namespace Haze.Runtime
       public bool IsWithinCameraFrustum(Plane[] cameraPlanes)
       {
          return _density == 0 || GeometryUtility.TestPlanesAABB(cameraPlanes, _bounds);
+      }
+      
+              
+      public bool IsWithinRange(Vector3 position, float distance)
+      {
+         return _bounds.Contains(position) || Vector3.Distance(_bounds.ClosestPoint(position), position) < distance;
       }
 
       public void ReassignIndex(int index)

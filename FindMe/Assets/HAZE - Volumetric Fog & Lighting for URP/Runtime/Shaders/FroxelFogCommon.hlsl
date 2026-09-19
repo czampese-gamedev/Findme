@@ -35,6 +35,50 @@ Light GetCustomMainLight(float3 positionWS)
     return light;
 }
 
+Light CustomGetAdditionalPerObjectLight(int perObjectLightIndex, float3 positionWS)
+{
+    // Abstraction over Light input constants
+    #if USE_STRUCTURED_BUFFER_FOR_LIGHT_DATA
+    float4 lightPositionWS = _AdditionalLightsBuffer[perObjectLightIndex].position;
+    half3 color = _AdditionalLightsBuffer[perObjectLightIndex].color.rgb;
+    half4 distanceAndSpotAttenuation = _AdditionalLightsBuffer[perObjectLightIndex].attenuation;
+    half4 spotDirection = _AdditionalLightsBuffer[perObjectLightIndex].spotDirection;
+    uint lightLayerMask = _AdditionalLightsBuffer[perObjectLightIndex].layerMask;
+    #else
+    float4 lightPositionWS = _AdditionalLightsPosition[perObjectLightIndex];
+    half3 color = _AdditionalLightsColor[perObjectLightIndex].rgb;
+    half4 distanceAndSpotAttenuation = _AdditionalLightsAttenuation[perObjectLightIndex];
+    half4 spotDirection = _AdditionalLightsSpotDir[perObjectLightIndex];
+    uint lightLayerMask = asuint(_AdditionalLightsLayerMasks[perObjectLightIndex]);
+    #endif
+
+    // Directional lights store direction in lightPosition.xyz and have .w set to 0.0.
+    // This way the following code will work for both directional and punctual lights.
+    float3 lightVector = lightPositionWS.xyz - positionWS * lightPositionWS.w;
+    float distanceSqr = max(dot(lightVector, lightVector), HALF_MIN);
+
+    half3 lightDirection = half3(lightVector * rsqrt(distanceSqr));
+    // full-float precision required on some platforms
+    float attenuation = DistanceAttenuation(distanceSqr, distanceAndSpotAttenuation.xy) * AngleAttenuation(spotDirection.xyz, lightDirection, distanceAndSpotAttenuation.zw);
+    //Spotlight razor
+    // attenuation *= step(0.1, distanceSqr);
+
+    Light light;
+    light.direction = lightDirection;
+    light.distanceAttenuation = attenuation;
+    light.shadowAttenuation = 1.0; // This value can later be overridden in GetAdditionalLight(uint i, float3 positionWS, half4 shadowMask)
+    light.color = color;
+    light.layerMask = lightLayerMask;
+
+    #if defined(_LIGHT_COOKIES)
+    real3 cookieColor = SampleAdditionalLightCookie(perObjectLightIndex, positionWS);
+    light.color *= cookieColor;
+    #endif
+
+    return light;
+}
+
+
 real CustomSampleShadowmap(TEXTURE2D_SHADOW_PARAM(ShadowMap, sampler_ShadowMap), float4 shadowCoord, ShadowSamplingData samplingData, half4 shadowParams, bool isPerspectiveProjection = true)
 {
     if (isPerspectiveProjection)

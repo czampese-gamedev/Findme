@@ -112,7 +112,8 @@ namespace AC
 
 			if (character.charState == CharState.Move && !character.IsJumping)
 			{
-				delayTime -= Time.deltaTime;
+               
+                delayTime -= Time.deltaTime;
 
 				if (delayTime <= 0f)
 				{
@@ -189,7 +190,8 @@ namespace AC
 		{
 			if (autoDetectSurface)
 			{
-				Vector3 origin = character ? character.transform.position : transform.position;
+              
+                Vector3 origin = character ? character.transform.position : transform.position;
 
 				if (SceneSettings.IsUnity2D ())
 				{
@@ -201,7 +203,8 @@ namespace AC
 				}
 				else
 				{
-					Vector3 up = character ? character.UpDirection : Vector3.up;
+
+                    Vector3 up = character ? character.UpDirection : Vector3.up;
 					RaycastHit hit;
 					if (Physics.Raycast (origin + (raycastLength * 0.5f * up), -up, out hit, raycastLength * 1.5f, layerMask))
 					{
@@ -219,7 +222,8 @@ namespace AC
 
 		protected void ProcessCollider (Collider collider)
 		{
-			if (collider.sharedMaterial == null) return;
+  
+            if (collider.sharedMaterial == null) return;
 			ProcessName (collider.sharedMaterial.name);
 		}
 
@@ -233,7 +237,8 @@ namespace AC
 
 		protected void ProcessName (string name)
 		{
-			string[] nameArray = name.Split ("_"[0]);
+       
+            string[] nameArray = name.Split ("_"[0]);
 			if (nameArray.Length > 0)
 			{
 				string label = nameArray[nameArray.Length - 1];

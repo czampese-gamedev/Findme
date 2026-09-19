@@ -1,0 +1,957 @@
+﻿[2]	MARCO_1
+
+	Conversation with MARCO that appears when the player initiates a conversation with MARCO that is not initiated by the game. This conversation is mostly for fun, but may contain hints in particular parts of the game
+
+				KIM
+			(When the conversation starts the player will ask MARCO if he has anything useful to say using one of the MARCO Greetings (recorded separately))
+		[lua(RandomElement(Variable["MarcoGreeting"]))] . Got anything useful for me? 
+
+	Responses: [4], [5], [7]
+
+				MARCO
+			(A randomised response by MARCO)
+		Ummm....nope
+
+				KIM
+			((sarcastic)	)
+		Gee, thanks
+
+				[END]
+
+	Entry [5]:
+
+				MARCO
+			(A randomised response by MARCO)
+		A cloud weighs around a million tonnes
+
+				KIM
+			((mildly surprised as you have been just told an interesting fact)	)
+		Holy Shit...well that is interesting
+
+				[END]
+
+	Entry [7]:
+
+				MARCO
+		Water might not be wet
+
+				KIM
+		Huh?
+
+				MARCO
+		This is because most scientists define wetness as a liquid’s ability to maintain contact with a solid surface, meaning that water itself is not wet, but can make other objects wet.
+
+				[END]
+
+
+---page---
+
+[4]	1526_MARCO1
+
+		
+
+				KIM
+		[lua(RandomElement(Variable["MarcoGreeting"]))] . What can you tell me about this place? 
+
+				MARCO
+		It looks like we are in...1526
+
+				KIM
+		Ohhh...wow!
+
+				[END]
+
+
+---page---
+
+[5]	1526_MARCO_INITIALCONVERSATION
+
+			(This is the first real interaction with MARCO)
+		Siri… what’s the date? 
+
+				MARCO
+			(First time responding - Kim has called you Siri)
+		This is Marco, your personal assistant app!
+
+				KIM
+		Right. Marco. Whatever.
+
+				MARCO
+		It’s not really a case of ‘whatever’. I’m the most advanced AI that’s been devised. I don’t even rely on wifi, which is pretty useful given where you’ve found yourself.
+
+				KIM
+		Where <i>have</i> I…
+
+				MARCO
+		I’m only bringing it up because – got to address it, elephant in the room – I did hear you say earlier that I was a, quote, ‘shitty version of Siri’. I realise this was ignorance rather than malice, but of course, it hurts. I’m many more times more powerful than Siri, Alex, any of these goons.
+
+				KIM
+		Fine. I didn’t mean to… like, I wouldn’t think it would be possible to hurt the feelings of a…
+
+				MARCO
+		Of a machine. No. My super-intelligence is both blessing and curse. Anyway, what was it you wanted to ask? Another thing about my sophisticated human mimicry is that I quite often forget what the hell I’m meant to be doing.
+
+				KIM
+		I was asking you what date it is, what… what year it is.
+
+				MARCO
+		Oh. Easy. It’s August 5th... \. 1526.
+
+				[END]
+
+
+---page---
+
+[6]	MARCO_1526_AREA2ENTEREDMULTIPLW
+
+	Entered 1526 area 2 multiple times
+
+		Excuse me for being nosy, but are you lost? 
+
+				KIM
+		What makes you say that? 
+
+				MARCO
+		Well, you have been here a number of times and you dont seem to be doing much
+
+				[END]
+
+
+---page---
+
+[7]	MAY2016_CUTSCENE/KIM_ALICE_1
+
+	Cutscene 1 - Kim and Alice first meeting on a train 2016
+
+				ALICE
+			([Kim just helped Alice barely squeeze onto the train])
+		Oh my God, <b>thank you!
+
+				KIM
+		You’re welcome…
+
+				ALICE
+		Hey, does this go to Stockwell?
+
+				KIM
+		Um, No.
+
+				ALICE
+		Oh. Probably shouldn’t have risked my life getting on.
+
+				KIM
+		But you could actually change at – well, stay on and I’ll show you.
+
+				ALICE
+		Thank you! You live in London? 
+
+				KIM
+		Um. Yep
+
+				ALICE
+		
+
+				[END]
+
+
+---page---
+
+[8]	MAY2016_CUTSCENE/KIM_ALICE_2
+
+	First conversation Kim and Alice 
+
+		Is that your uniform? I mean, I guess it is.
+You probably wouldn’t wear a name badge if it was your real clothes.
+
+				KIM
+		Yes, I work at – um. I’ve just started at, do you know the Bankside Museum!
+
+				ALICE
+		Cool, yeah!
+
+				KIM
+		Do you know it?
+
+				ALICE
+		Um. No. I just wanted to sound enthusiastic. 
+
+				KIM
+		(Laughter) Fair enough
+
+				ALICE
+		I’ve been to London Zoo if that’s the same kind of thing?
+
+				KIM
+		I guess it is, yeah.
+
+				ALICE
+		It’s not, remotely, is it?
+
+				KIM
+		I mean, no. We don’t have any live animals. 
+They don’t have any 16th century tableware.
+
+				[END]
+
+
+---page---
+
+[9]	MAY2016_CUTSCENE/KIM_ALICE_3
+
+	First conversation Kim and Alice 
+
+		So you don’t live in London?
+
+				ALICE
+		I don’t live anywhere. I’m homeless!
+
+				KIM
+		…what?
+
+				ALICE
+		God sorry, that was a stupid joke. Um I just mean I don’t have a home – a specific home – right now. I’m on my way to look at a place. A house share.
+
+				KIM
+		Oh right. Well, I – I hope it works out.
+
+				ALICE
+		Me too, or I might end up sleeping in the museum after you lock up.
+
+				KIM
+		Um, I don’t think…
+
+				ALICE
+		Another stupid joke! Sorry again. I – sometimes I do that when I’m nervous.
+
+				KIM
+		What are you nervous about, about the… house…
+
+				ALICE
+		I just mean about, you know, whether I like the house.
+
+				KIM
+		Oh! This is you
+
+				[END]
+
+
+---page---
+
+[10]	MAY2016_CUTSCENE/KIM_ALICE_4
+
+		
+
+				[END]
+
+
+---page---
+
+[11]	JULY2016_CUTSCENE/TOURIST1
+
+				TOURIST
+		
+
+				KIM
+		
+
+				TOURIST
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[12]	JULY2016_CUTSCENE/ALICE
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[13]	AUGUST2026_CUTSCENE/KIMKIDS1
+
+		
+
+		
+
+		
+
+				[END]
+
+
+---page---
+
+[14]	AUGUST2026_CUTSCENE/KIMKIDS2
+
+		
+
+		
+
+				[END]
+
+
+---page---
+
+[15]	AUGUST2026_CUTSCENE/KIMKIDS3
+
+				KID1
+		
+
+				KIM
+		
+
+				KID1
+		
+
+				KIM
+		
+
+		
+
+				MISS CRANE
+		
+
+				KIM
+		
+
+		
+
+		
+
+	Entry [9]: (AnimatorBool(Lecturing, false))
+
+				KID1
+		
+
+				[END]
+
+
+---page---
+
+[16]	AUGUST2026_CUTSCENE/KIMKIDS_CRYING
+
+				CYRINGKID
+		
+
+				[END]
+
+
+---page---
+
+[18]	JULY2016_CUTSCENE/ALICE2
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+		
+
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[19]	AUGUST2026_CUTSCENE/KIMKIDSYESYOU
+
+		
+
+				[END]
+
+
+---page---
+
+[20]	AUGUST2026_OFFICE/SARASWATI
+
+				SARASWATI
+		
+
+				KIM
+		
+
+		
+
+				[END]
+
+
+---page---
+
+[21]	AUGUST2026_OFFICE/BMA
+
+				BMA
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[23]	AUGUST2026_OFFICE/TODAY
+
+		
+
+				[END]
+
+
+---page---
+
+[24]	AUGUST2026_OFFICE/MARCO
+
+		
+
+				[END]
+
+
+---page---
+
+[25]	AUGUST2026_OFFICE/RESTAURANT
+
+				WAITER2026
+		
+
+				[END]
+
+
+---page---
+
+[26]	AUGUST2026_OFFICE/RIVER
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				[END]
+
+
+---page---
+
+[27]	AUGUST2026_OFFICE/PUB
+
+		
+
+				[END]
+
+
+---page---
+
+[28]	AUGUST2026_OFFICE/RESTAURANT_2
+
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				ALICE
+		
+
+				KIM
+		
+
+				[END]
+
+
+---page---
+
+[29]	AUGUST2026_OFFICE/ALLPHOTOS
+
+		
+
+				[END]
+
+
+---page---
+
+[30]	AUGUST2026_OFFICE/PUB2
+
+				ALICE
+		
+
+		
+
+				KIM
+		
+
+		
+
+		
+
+				[END]
+
+
+---page---
+
+[31]	AUGUST2026_OFFICE/STRESSBALL
+
+		
+
+				[END]
+
+
+---page---
+
+[32]	AUGUST2026_OFFICE/PHOTO1LOOK
+
+		
+
+				[END]
+
+
+---page---
+
+[33]	AUGUST2026_OFFICE/CHRISTIAN1
+
+				CHRISTIAN
+		
+
+	Responses: [1], [31]
+
+	Entry [1]: (acGetBoolean("Christian_FirstPart")  == false)
+
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [32]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Responses: [33], [34], [35], [51]
+
+	Entry [33]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [48]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Responses: [45], [50]
+
+	Entry [45]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				[END]
+
+	Entry [50]: (Dialog[45].SimStatus == "WasDisplayed")
+
+		
+
+				[END]
+
+	Entry [34]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [35]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [51]:
+
+				KIM
+		
+
+				[END]
+
+	Entry [31]: (acGetBoolean("Christian_FirstPart")  == true)
+
+				CHRISTIAN
+		
+
+
+---page---
+
+[34]	TEST/CHRISTIANTEST
+
+		
+
+	Entry [38]:
+
+				KIM
+		(responses)
+
+	Responses: [52], [31], [47], [33], [45], [32], [41], [44], [53], [54]
+
+	Entry [52]: (Dialog[45].SimStatus == "WasOffered" and (Dialog[41].SimStatus == "WasOffered") and  (Dialog[47].SimStatus == "WasOffered"))
+
+		
+
+				[END]
+
+	Entry [31]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+	Entry [39]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Entry [47]: (Dialog[31].SimStatus == "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+	Entry [33]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+	Entry [45]: (Dialog[33].SimStatus == "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+	Entry [32]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [41]: (Dialog[32].SimStatus == "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [44]:
+
+				KIM
+		
+
+				[END]
+
+	Entry [53]:
+
+		
+
+				[END]
+
+	Entry [54]:
+
+		
+
+				[END]
+
+
+---page---
+
+[35]	AUGUST2026_OFFICE/DOOROPTIONSELECT
+
+				OPTIONSELECTION
+		(Group entry; no dialogue)
+
+	Responses: [1], [2], [8], [9]
+
+	Entry [1]: (acGetInteger("Christian_ThroughDoor") == 0)
+
+				KIM
+		
+
+	Entry [7]:
+
+				OPTIONSELECTION
+		
+
+				[END]
+
+	Entry [2]: (acGetInteger("Christian_ThroughDoor") == 0)
+
+				KIM
+		
+
+	Entry [8]: ((acGetInteger("Christian_ThroughDoor") ~= 0))
+
+		
+
+				[END]
+
+	Entry [9]:
+
+		
+
+				[END]
+
+
+---page---
+
+[36]	AUGUST2026_OFFICE/PHONEUNLOCK
+
+		
+
+				[END]
+
+
+---page---
+
+[37]	AUGUST2026_OFFICE/CHRISTIANTRHOUGHDOOR
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [33]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [48]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Entry [45]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				[END]
+
+	Unconnected entry [32]:
+
+				KIM
+		(Group entry; no dialogue)
+
+	Responses: [33], [34], [35]
+
+	Entry [34]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+	Entry [35]: (Dialog[thisID].SimStatus ~= "WasDisplayed")
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+				KIM
+		
+
+				CHRISTIAN
+		
+
+
+---page---
+
+[38]	MARCO/ADDEDINVENTORY
+
+				MARCO
+		
+
+				[END]
+
+
+---page---
+
+[39]	CHRISTIAN/INVENTORYUNHANDLED
+
+				CHRISTIAN
+		
+
+				[END]
+
+
+---page---
+

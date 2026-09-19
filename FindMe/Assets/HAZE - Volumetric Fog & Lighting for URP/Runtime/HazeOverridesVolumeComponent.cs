@@ -8,13 +8,9 @@ namespace Haze.Runtime
     [VolumeComponentMenu("Haze/Haze Settings Overrides")]
     [VolumeRequiresRendererFeatures(typeof(HazeRendererFeature))]
     [SupportedOnRenderPipeline(typeof(UniversalRenderPipelineAsset))]
+    [DisplayInfo(name = "Haze Settings Overrides")]
     public class HazeOverridesVolumeComponent : VolumeComponent, IPostProcessComponent
     {
-        public HazeOverridesVolumeComponent()
-        {
-            displayName = "Haze Settings Overrides";
-        }
-
         [Header("Noise Settings")]
         [Tooltip("Determines the tiling of the 3D noise. Increase for higher frequency noise.")]
         [SerializeField] private MinFloatParameter _noiseTiling = new(0.001f, 0.001f);

@@ -49,7 +49,7 @@ float4 SampleHazeTricubic(float3 worldPos, float2 screenUV)
 void ApplyHaze(float3 worldPos, float2 screenUV, inout float4 color)
 {
     float4 haze = SampleHaze(worldPos, screenUV);
-    color.rgb = lerp(GetFinalHazeColor(screenUV, color, haze).rgb, color.rgb, haze.a);
+    color.rgb = GetFinalHazeColor(screenUV, color, haze).rgb;
 }
 
 void ApplyHaze(float3 worldPos, float2 screenUV, inout float3 baseColor, inout float smoothness, inout float3 emission, inout float ambientOcclusion)
@@ -57,7 +57,7 @@ void ApplyHaze(float3 worldPos, float2 screenUV, inout float3 baseColor, inout f
     float4 haze = SampleHaze(worldPos, screenUV);
     baseColor *= haze.a;
     smoothness = saturate(smoothness * haze.a);
-    emission = lerp(GetFinalHazeColor(screenUV, float4(emission, 1), haze).rgb, emission.rgb, haze.a);
+    emission = GetFinalHazeColor(screenUV, float4(emission, 1), haze);
     ambientOcclusion = saturate(ambientOcclusion * haze.a);
 }
 

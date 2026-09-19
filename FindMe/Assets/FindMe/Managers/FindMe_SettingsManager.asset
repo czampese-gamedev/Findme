@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   separateEditorSaveFiles: 1
   saveFileName: FindMe
-  saveTimeDisplay: 0
+  saveTimeDisplay: 1
   customSaveFormat: MMMM dd, yyyy
   takeSaveScreenshots: 0
   screenshotRenderTexture: {fileID: 0}
@@ -29,11 +29,11 @@ MonoBehaviour:
   saveAssetReferencesWithAddressables: 0
   saveLabels:
     defaultSaveLabel: Save
-    saveLabelID: 145
+    saveLabelID: 0
     defaultImportLabel: Import
-    importLabelID: 146
+    importLabelID: 1
     defaultAutosaveLabel: Autosave
-    autosaveLabelID: 147
+    autosaveLabelID: 2
   referenceScenesInSave: 1
   useInvariantCulture: 1
   sceneAttributes: []
@@ -46,6 +46,11 @@ MonoBehaviour:
   - rid: 8110134286589624323
   - rid: 8110134286589624325
   - rid: 8110134286589624326
+  - rid: 5218419939856089443
+  - rid: 5218419939856089445
+  - rid: 5218419939856089475
+  - rid: 5218419939856089476
+  - rid: 2829415369461203523
   savePlayerReferencesWithAddressables: 0
   playerSwitching: 1
   legacyPlayer: {fileID: 0}
@@ -59,21 +64,21 @@ MonoBehaviour:
     useSceneDefaultPlayerStart: 0
     startingPlayerStartID: 0
   players: []
-  movementMethod: 4
+  movementMethod: 0
   inputMethod: 0
   simulatedCursorMoveSpeed: 4
-  interactionMethod: 0
+  interactionMethod: 2
   selectInteractions: 0
   autoHideInteractionIcons: 1
   cancelInteractions: 0
   seeInteractions: 1
   closeInteractionMenuIfTapHotspot: 1
   stopPlayerOnClickHotspot: 1
-  cycleInventoryCursors: 1
+  cycleInventoryCursors: 0
   scaleCursorSpeedWithScreen: 1
   autoCycleWhenInteract: 0
   showHoverInteractionInHotspotLabel: 0
-  allowDefaultinteractions: 1
+  allowDefaultinteractions: 0
   alwaysCloseInteractionMenus: 1
   whenReselectHotspot: 0
   lockCursorOnStart: 0
@@ -93,13 +98,13 @@ MonoBehaviour:
   inventoryDragDrop: 0
   dragDropThreshold: 0
   allowInventoryInteractionsDuringConversations: 0
-  inventoryDropLook: 0
+  inventoryDropLook: 1
   inventoryDropLookNoDrag: 0
   inventoryInteractions: 1
   inventoryDisableLeft: 1
-  leftClickDeselect: 1
+  leftClickDeselect: 2
   allowDefaultInventoryInteractions: 0
-  inventoryDisableUnhandled: 1
+  inventoryDisableUnhandled: 0
   inventoryDisableDefined: 1
   inventoryInteractionsHaltPlayer: 0
   activeWhenHover: 1
@@ -116,7 +121,7 @@ MonoBehaviour:
   giveInvWithUnhandled: 0
   giveInvWithIconID: 0
   autoDisableUnhandledHotspots: 0
-  autoToggleGiveMode: 1
+  autoToggleGiveMode: 0
   clickPrefab: {fileID: 0}
   showClickPrefabWithStraightToCursorHeld: 0
   clickMarkerPosition: 0
@@ -135,7 +140,7 @@ MonoBehaviour:
   directMovementPerspective: 0
   destinationAccuracy: 0.8
   experimentalAccuracy: 0
-  unityUIClicksAlwaysBlocks: 1
+  unityUIClicksAlwaysBlocks: 0
   pathfindUpdateFrequency: 0
   verticalReductionFactor: 0.7
   rotationsAffectedByVerticalReduction: 1
@@ -160,7 +165,31 @@ MonoBehaviour:
     axisThreshold: 0.2
     buttonType: 0
     hasUpgraded: 1
-  surfaces: []
+  - label: QuickSave
+    ID: 2
+    inputName: QuickSave
+    enabledOnStart: 1
+    gameState: 0
+    gameStateFlags: 1
+    actionListAsset: {fileID: 11400000, guid: d0be8f5c2fbd5504cbbeee4c3d56dd7e, type: 2}
+    inputType: 0
+    axisThreshold: 0.2
+    buttonType: 0
+    hasUpgraded: 1
+  surfaces:
+  - ID: 0
+    label: SubwayFloor
+    walkSounds:
+    - {fileID: 8300000, guid: 429adddfb3d6d2a4e8c13e0a2f40b76c, type: 3}
+    - {fileID: 8300000, guid: 98401dd29e1efa94897fccbcdbbfb4fe, type: 3}
+    - {fileID: 8300000, guid: 03b64312c7327cf4d8c6470c11ada2cc, type: 3}
+    runSounds: []
+  - ID: 1
+    label: TrainInterior
+    walkSounds:
+    - {fileID: 8300000, guid: a860f4815dceb6e409206e1493c68d51, type: 3}
+    - {fileID: 8300000, guid: 716e7f8527ae6b94398e12a1f58a44ec, type: 3}
+    runSounds: []
   freeAimTouchSpeed: 0.01
   dragWalkThreshold: 5
   dragRunThreshold: 20
@@ -189,7 +218,7 @@ MonoBehaviour:
   cursorMustBeOverNearestHotspot: 0
   hotspotsInVicinity: 0
   highlightAllHotspotsInVicinity: 1
-  hotspotIconDisplay: 3
+  hotspotIconDisplay: 0
   hotspotIcon: 1
   hotspotIconTexture: {fileID: 0}
   hotspotIconGraphic:
@@ -211,7 +240,7 @@ MonoBehaviour:
   onlyFaceHotspotOnSelect: 0
   scaleHighlightWithMouseProximity: 0
   highlightProximityFactor: 4
-  occludeIcons: 0
+  occludeIcons: 1
   hideIconUnderInteractionMenu: 0
   hotspotDrawing: 0
   hideUnhandledHotspots: 0
@@ -241,6 +270,11 @@ MonoBehaviour:
   - ID: 0
     label: TEST intro music
     audioClip: {fileID: 8300000, guid: bd77d1d54c411c04ba849984779b636c, type: 3}
+    relativeVolume: 1
+    overrideMixerGroup: {fileID: -3319318880078704915, guid: 0b97b9922595cd4438a207f9537deb59, type: 2}
+  - ID: 1
+    label: Jukebox
+    audioClip: {fileID: 8300000, guid: 1454f73ee61660d4093f0f604123bea5, type: 3}
     relativeVolume: 1
     overrideMixerGroup: {fileID: -3319318880078704915, guid: 0b97b9922595cd4438a207f9537deb59, type: 2}
   ambienceStorages:
@@ -273,7 +307,7 @@ MonoBehaviour:
   defaultSpeechVolume: 1
   showDebugLogs: 0
   printActionCommentsInConsole: 0
-  actionCommentLogging: 0
+  actionCommentLogging: 2
   showActiveActionLists: 0
   references:
     version: 2
@@ -288,6 +322,54 @@ MonoBehaviour:
         parameterIDs: 0000000001000000
         addRemove: 0
         itemID: -1
+    - rid: 2829415369461203523
+      type: {class: EventPointClick, ns: AC, asm: AC}
+      data:
+        label: CaptureLastMoveTime
+        id: 10
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: b55cbeca5e2142048ac8242fd4e5a403, type: 2}
+        parameterIDs: 0000000001000000
+    - rid: 5218419939856089443
+      type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
+      data:
+        label: WhenPhoneMenuTurnedOn
+        id: 6
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
+        parameterIDs: ffffffff
+        onOff: 0
+        menuName: Phone
+    - rid: 5218419939856089445
+      type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
+      data:
+        label: WhenPhoneMenuTurnedOff
+        id: 7
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
+        parameterIDs: ffffffff
+        onOff: 1
+        menuName: Phone
+    - rid: 5218419939856089475
+      type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
+      data:
+        label: WhenPhoneActivatedTurnedOn
+        id: 8
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
+        parameterIDs: ffffffff
+        onOff: 0
+        menuName: PhoneActivated
+    - rid: 5218419939856089476
+      type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
+      data:
+        label: WhenPhoneActivatedTurnOff
+        id: 9
+        cutscene: {fileID: 0}
+        actionListAsset: {fileID: 11400000, guid: 97d869f6ca645744ab546b28edd26773, type: 2}
+        parameterIDs: ffffffff
+        onOff: 1
+        menuName: PhoneActivated
     - rid: 8110134286589624320
       type: {class: EventMenuTurnOnOff, ns: AC, asm: AC}
       data:

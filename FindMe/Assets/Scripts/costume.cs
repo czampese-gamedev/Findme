@@ -14,18 +14,35 @@ public class costume : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-    
-        UnityEngine.SceneManagement.SceneManager.activeSceneChanged += ChangedActiveScene;
-
        
+            UnityEngine.SceneManagement.SceneManager.activeSceneChanged += ChangedActiveScene;
+        if (AC.LocalVariables.GetVariable("SceneClothes") != null)
+        {
+            ChangeCostume();
+        }
+
+
+
     }
 
     private void ChangedActiveScene(Scene current, Scene next)
     {
-  
-        sceneClothes = AC.LocalVariables.GetVariable("SceneClothes").GetValue();
 
-       
+        Debug.Log("Got in Costume-ChangedActiveScene. Current scene is " + current.name + " and next scene is " + next.name);
+        if (KickStarter.stateHandler != null)
+        {
+            if (AC.LocalVariables.GetVariable("SceneClothes") != null)
+            {
+                ChangeCostume();
+            }
+
+        }
+
+    }
+
+    private void ChangeCostume()
+    {
+        sceneClothes = AC.LocalVariables.GetVariable("SceneClothes").GetValue();
 
         foreach (GameObject go in clothing2016Uniform)
         { go.SetActive(false); }
@@ -43,19 +60,16 @@ public class costume : MonoBehaviour
                 foreach (GameObject go in clothing2016Uniform)
                 { go.SetActive(true); }
                 break;
-            case "1526":
+            case "2026Uniform":
                 foreach (GameObject go in clothes2026)
                 { go.SetActive(true); }
                 break;
 
-                default:
+            default:
                 foreach (GameObject go in clothesDefault)
                 { go.SetActive(true); }
-                break;  
+                break;
         }
-      
-        
-
     }
 
     void Start()

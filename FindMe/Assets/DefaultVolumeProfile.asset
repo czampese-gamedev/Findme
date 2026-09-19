@@ -59,6 +59,9 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 0
+  filter:
+    m_OverrideState: 1
+    m_Value: 0
   downscale:
     m_OverrideState: 1
     m_Value: 0
@@ -341,6 +344,9 @@ MonoBehaviour:
   skyOcclusionIntensityMultiplier:
     m_OverrideState: 1
     m_Value: 1
+  worldOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
 --- !u!114 &-2276225439700298962
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -597,6 +603,7 @@ MonoBehaviour:
   - {fileID: -2673214112702815555}
   - {fileID: -5420408998689854981}
   - {fileID: 1223186301474608165}
+  - {fileID: 3785921761912770877}
 --- !u!114 &1223186301474608165
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -727,6 +734,61 @@ MonoBehaviour:
     m_Value: {fileID: 0}
     dimension: 1
   contribution:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &3785921761912770877
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d468b943de483f641a8eb80fcd52e584, type: 3}
+  m_Name: SSCC
+  m_EditorClassIdentifier: SSCC.Universal.Runtime::ScreenSpaceCavityCurvature.Universal.SSCC
+  active: 1
+  effectIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+  distanceFade:
+    m_OverrideState: 1
+    m_Value: 0
+  curvaturePixelRadius:
+    m_OverrideState: 1
+    m_Value: 2
+  curvatureBrights:
+    m_OverrideState: 1
+    m_Value: 2
+  curvatureDarks:
+    m_OverrideState: 1
+    m_Value: 3
+  cavitySamples:
+    m_OverrideState: 1
+    m_Value: 2
+  saturateCavity:
+    m_OverrideState: 1
+    m_Value: 1
+  cavityRadius:
+    m_OverrideState: 1
+    m_Value: 0.25
+  cavityBrights:
+    m_OverrideState: 1
+    m_Value: 3
+  cavityDarks:
+    m_OverrideState: 1
+    m_Value: 2
+  cavityResolution:
+    m_OverrideState: 1
+    m_Value: 0
+  normalsSource:
+    m_OverrideState: 1
+    m_Value: 1
+  debugMode:
+    m_OverrideState: 1
+    m_Value: 0
+  output:
     m_OverrideState: 1
     m_Value: 0
 --- !u!114 &4038288870176380171

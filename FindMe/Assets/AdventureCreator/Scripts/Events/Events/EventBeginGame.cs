@@ -1,7 +1,7 @@
 ﻿namespace AC
 {
-
-	public class EventBeginGame : EventBase
+    [System.Serializable]
+    public class EventBeginGame : EventBase
 	{
 
 		public override string[] EditorNames { get { return new string[] { "Scene/Begin game" }; } }

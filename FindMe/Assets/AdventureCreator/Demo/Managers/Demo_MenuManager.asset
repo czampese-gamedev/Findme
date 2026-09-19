@@ -39,10 +39,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 67.2
-    y: 9.6
-    width: 1747.2001
-    height: 108.899994
+    x: 44.800003
+    y: 6.4
+    width: 1164.8
+    height: 79.2
   relativePosition: {x: 0, y: 0}
   numSlots: 13
   uiSlots:
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67059743613d4dbb8de399ec529634f, type: 3}
   m_Name: Demo_MenuManager
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 4639449620947672953, guid: 9fcb1d6086a8dc843956e1e5e072f1a6, type: 3}
   menus:
   - {fileID: 11400130}
   - {fileID: 11400002}
@@ -856,6 +856,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1178,6 +1179,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1399,6 +1401,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2083,6 +2086,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2147,6 +2151,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2313,6 +2318,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11400130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3096,6 +3102,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11414392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3444,6 +3451,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11472508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3579,6 +3587,7 @@ MonoBehaviour:
   inventoryPropertyType: 0
   selectedObjectiveLabelType: 0
   itemSlotNumber: 0
+  uiComponentHideStyle: 0
 --- !u!114 &11484604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3760,10 +3769,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 1862.4
-    y: 11.2293
-    width: 48
-    height: 108.899994
+    x: 1241.6
+    y: 8.166763
+    width: 32
+    height: 79.2
   relativePosition: {x: 97, y: 9}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -3817,7 +3826,7 @@ MonoBehaviour:
   title: Inventory
   manualSize: {x: 100, y: 12.60303}
   positionType: 1
-  manualPosition: {x: 960, y: 62.385}
+  manualPosition: {x: 640, y: 45.370907}
   positionSmoothing: 0
   alignment: 0
   toggleKey: 
@@ -3896,8 +3905,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1920
-    height: 124.77
+    width: 1280
+    height: 90.74181
 --- !u!114 &7181879884710649068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3937,10 +3946,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 9.6
-    y: 9.6
-    width: 48
-    height: 108.899994
+    x: 6.4
+    y: 6.4
+    width: 32
+    height: 79.2
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}

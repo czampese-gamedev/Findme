@@ -2,8 +2,8 @@
 
 namespace AC
 {
-
-	public class EventInventoryAddRemove : EventBase
+    [System.Serializable]
+    public class EventInventoryAddRemove : EventBase
 	{
 
 		[SerializeField] private AddRemove addRemove;

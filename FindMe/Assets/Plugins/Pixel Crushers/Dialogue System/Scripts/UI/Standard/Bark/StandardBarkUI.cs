@@ -283,6 +283,11 @@ namespace PixelCrushers.DialogueSystem
             Hide();
         }
 
+        public virtual void OnContinueFindMe()
+        {
+            GetComponent<Canvas>().enabled = false;
+        }
+
         public override void Hide()
         {
             if (!hasEverBarked)

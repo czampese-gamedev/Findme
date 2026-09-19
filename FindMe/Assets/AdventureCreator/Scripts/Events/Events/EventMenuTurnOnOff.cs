@@ -2,8 +2,8 @@
 
 namespace AC
 {
-
-	public class EventMenuTurnOnOff : EventBase
+    [System.Serializable]
+    public class EventMenuTurnOnOff : EventBase
 	{
 
 		[SerializeField] private AC_OnOff onOff;

@@ -48,6 +48,7 @@ public class ShowYearPlace : MonoBehaviour
 
     private void OnMenuTurnOn(Menu menu, bool isInstant)
     {
+
         // Check if the opened menu is the one you are interested in
         if (menu.title == "ShowYear")
         {

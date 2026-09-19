@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2084856622461774410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576f949be0794f548b825c9ce6f556db, type: 3}
+  m_Name: Flat Kit Per Object Outline
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::FlatKit.ObjectOutlineRendererFeature
+  m_Active: 1
+  settings:
+    passTag: RenderObjectsFeature
+    Event: 300
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 4294967295
+      PassNames:
+      - Outline
+    overrideMaterial: {fileID: 0}
+    overrideMaterialPassIndex: 0
+    overrideShader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
+    overrideShaderPassIndex: 1
+    overrideMode: 2
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+  materials:
+  - {fileID: 2100000, guid: bfd0b5c876f2a954983d726642097632, type: 2}
+  autoReferenceMaterials: 1
 --- !u!114 &-102204698524217688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,15 +72,6 @@ MonoBehaviour:
     BlurQuality: 0
     Falloff: 100
     SampleCount: -1
-  m_BlueNoise256Textures:
-  - {fileID: 2800000, guid: 36f118343fc974119bee3d09e2111500, type: 3}
-  - {fileID: 2800000, guid: 4b7b083e6b6734e8bb2838b0b50a0bc8, type: 3}
-  - {fileID: 2800000, guid: c06cc21c692f94f5fb5206247191eeee, type: 3}
-  - {fileID: 2800000, guid: cb76dd40fa7654f9587f6a344f125c9a, type: 3}
-  - {fileID: 2800000, guid: e32226222ff144b24bf3a5a451de54bc, type: 3}
-  - {fileID: 2800000, guid: 3302065f671a8450b82c9ddf07426f3a, type: 3}
-  - {fileID: 2800000, guid: 56a77a3e8d64f47b6afe9e3c95cb57d5, type: 3}
-  m_Shader: {fileID: 4800000, guid: 0849e84e3d62649e8882e9d6f056a017, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,11 +100,16 @@ MonoBehaviour:
   - {fileID: -102204698524217688}
   - {fileID: 8362418509956735267}
   - {fileID: 4701301692421988859}
-  m_RendererFeatureMap: a88e16425ee594fe23611f2d54470d74fb61c10efb603e41
+  - {fileID: 5127322253677252559}
+  - {fileID: -2084856622461774410}
+  m_RendererFeatureMap: a88e16425ee594fe23611f2d54470d74fb61c10efb603e41cf4f638b6ce82747
   m_UseNativeRenderPass: 0
-  xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
+  xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
-  m_AssetVersion: 2
+  m_AssetVersion: 3
+  m_PrepassLayerMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
   m_OpaqueLayerMask:
     serializedVersion: 2
     m_Bits: 2147483647
@@ -105,15 +147,18 @@ MonoBehaviour:
   _froxelFogComputeShader: {fileID: 7200000, guid: e9ff39ed12ea7bf469b0b8bce4265ab1, type: 3}
   _froxelFogCompositeShader: {fileID: 4800000, guid: b9e3eff296ab9a847ba7e2c588b7238f, type: 3}
   _bloomShader: {fileID: 4800000, guid: ee50c2823ceea334383936f8d0ff9666, type: 3}
+  _renderBeforeTransparents: 0
   _froxelBufferResolution: 3
   _aspectRatioAdjustment: 0
   _froxelBufferDepth: 2
   _froxelFogRange:
     x: 0.1
     y: 500
-  _tricubicSampling: 1
+  _bufferSampling: 0
   _interleavedGradientNoiseStrength: 1
+  _jitterNoiseMotion: 1
   _temporalAccumulationBlending: 0.95
+  _mainLightShadowBias: 0
   _maximumVolumeDistance: 100
   _noiseTexture: {fileID: 11700000, guid: 72d1c9c4660825443891c86b3f611274, type: 2}
   _noiseData:
@@ -133,6 +178,20 @@ MonoBehaviour:
     scatter: 1
     threshold: 0
     maxIterations: 5
+--- !u!114 &5127322253677252559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e6184d2ea958044a6434dca151c688, type: 3}
+  m_Name: SSCC
+  m_EditorClassIdentifier: SSCC.Universal.Runtime::ScreenSpaceCavityCurvature.Universal.SSCCRendererFeature
+  m_Active: 1
+  shader: {fileID: 4800000, guid: 62449f654265cf94e81275e55a4b1823, type: 3}
 --- !u!114 &8362418509956735267
 MonoBehaviour:
   m_ObjectHideFlags: 0
