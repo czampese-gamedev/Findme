@@ -3797,8 +3797,8 @@ MonoBehaviour:
   targetIsSelf: 0
   targetGO: {fileID: 8709002957591891296}
   tweenTargetIsTargetGO: 1
-  delay: 1.5
-  duration: 0.3
+  delay: 1.3
+  duration: 0.6
   easeType: 6
   easeCurve:
     serializedVersion: 2
@@ -3843,7 +3843,7 @@ MonoBehaviour:
   endValueFloat: 0
   endValueV3: {x: 90, y: 90, z: 90}
   endValueV2: {x: 0, y: 0}
-  endValueColor: {r: 1, g: 1, b: 1, a: 0.6666667}
+  endValueColor: {r: 1, g: 1, b: 1, a: 0.9137255}
   endValueString: 
   endValueRect:
     serializedVersion: 2
@@ -12843,7 +12843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DTT.ProceduralUI.Runtime::DTT.UI.ProceduralUI.RoundedImage
   m_Material: {fileID: 0}
-  m_Color: {r: 0.97735846, g: 0.8270745, b: 0.22682086, a: 1}
+  m_Color: {r: 0.97735846, g: 0.8270745, b: 0.22682083, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
