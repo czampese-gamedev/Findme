@@ -2724,7 +2724,7 @@ MonoBehaviour:
   fontScaleFactor: 2
   fontColor: {r: 1, g: 1, b: 1, a: 1}
   fontHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  isVisible: 1
+  isVisible: 0
   isClickable: 1
   orientation: 1
   gridWidth: 3
@@ -5342,7 +5342,7 @@ MonoBehaviour:
   fontScaleFactor: 2
   fontColor: {r: 1, g: 1, b: 1, a: 1}
   fontHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  isVisible: 1
+  isVisible: 0
   isClickable: 1
   orientation: 1
   gridWidth: 3
@@ -5435,8 +5435,6 @@ MonoBehaviour:
   - {fileID: -8542510100376753772}
   - {fileID: 1979288783873255180}
   - {fileID: 1307339500439795305}
-  - {fileID: -5716692392018986416}
-  - {fileID: -3034332476303300634}
   - {fileID: 89369501382567405}
   - {fileID: -402322044433753650}
   - {fileID: 2840766982889015701}
@@ -8131,7 +8129,7 @@ MonoBehaviour:
   uiImage: {fileID: 2903757334912652174, guid: 30f11f8d753646946be7464e86087367, type: 3}
   graphicType: 0
   graphic:
-    texture: {fileID: 2800000, guid: 4c18e768f1bef4f0cb3c66642e3c2e2c, type: 3}
+    texture: {fileID: 2800000, guid: 76c3d10e0f9b1744089a1f733e5c26cf, type: 3}
     isAnimated: 0
     numFrames: 1
     numRows: 1

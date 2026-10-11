@@ -28,7 +28,7 @@ public class costume : MonoBehaviour
     private void ChangedActiveScene(Scene current, Scene next)
     {
 
-        Debug.Log("Got in Costume-ChangedActiveScene. Current scene is " + current.name + " and next scene is " + next.name);
+      //  Debug.Log("Got in Costume-ChangedActiveScene. Current scene is " + current.name + " and next scene is " + next.name);
         if (KickStarter.stateHandler != null)
         {
             if (AC.LocalVariables.GetVariable("SceneClothes") != null)

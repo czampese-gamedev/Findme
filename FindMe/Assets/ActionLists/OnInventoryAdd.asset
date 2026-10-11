@@ -55,6 +55,62 @@ MonoBehaviour:
   journalPageIndex: -1
   journalPageIndexParameterID: -1
   preprocessTextTokens: 0
+--- !u!114 &-6345111018400952741
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229b38d3929e85a429ba40524e5f220d, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: Assembly-CSharp::AC.ActionDialogueSystemConversation
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 1
+    skipAction: 2
+    skipActionActual: {fileID: -3807170217664898035}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 1
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 1220.0001
+    y: 821.2557
+    width: 300
+    height: 292
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 0}
+  groupID: 0
+  actionMode: 0
+  constantID: 0
+  conversationParameterID: -1
+  conversationFromParameter: 0
+  conversation: AddInventory_KIM
+  specifyEntryID: 0
+  entryID: -1
+  actorIsPlayer: 0
+  actor: {fileID: 0}
+  conversant: {fileID: 0}
+  overrideBridge: 0
+  useDialogState: 1
+  takeCameraControl: 1
+  waitUntilFinish: 1
+  stopConversationOnSkip: 1
 --- !u!114 &-5041480917084356686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,8 +135,8 @@ MonoBehaviour:
   linkedAsset: {fileID: 0}
   endings:
   - resultAction: 2
-    skipAction: 8
-    skipActionActual: {fileID: 6513297865122583717}
+    skipAction: 13
+    skipActionActual: {fileID: -1053691860054178594}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -107,9 +163,66 @@ MonoBehaviour:
   containerConstantID: 0
   containerParameterID: -1
   multiplyByItemCount: 0
-  invID: 2
+  invID: 5
   invParameterID: 0
   propertyID: 0
+  variables: {fileID: 0}
+  variablesConstantID: 0
+--- !u!114 &-3954932366995328730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab451b968b534e26b7423dfe207f73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AC::AC.ActionInvProperty
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 0
+    skipAction: -1
+    skipActionActual: {fileID: 0}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 1
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 785.2001
+    y: 398.9801
+    width: 300
+    height: 221
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 0}
+  groupID: 0
+  varParameterID: -1
+  variableID: 29
+  varLocation: 0
+  method: 0
+  setVarAsPropertyMethod: 0
+  useLiveValues: 0
+  itemSource: 0
+  container: {fileID: 0}
+  containerConstantID: 0
+  containerParameterID: -1
+  multiplyByItemCount: 0
+  invID: 5
+  invParameterID: 0
+  propertyID: 1
   variables: {fileID: 0}
   variablesConstantID: 0
 --- !u!114 &-3807170217664898035
@@ -229,6 +342,53 @@ MonoBehaviour:
     loadScene: 1
     loadSubScenes: 1
     loadSceneObjects: 1
+--- !u!114 &-1053691860054178594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dacbb59e20dd44feeb6ee4372547b66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AC::AC.ActionParallel
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -99
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 2
+    skipAction: 8
+    skipActionActual: {fileID: 6513297865122583717}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  - resultAction: 2
+    skipAction: 2
+    skipActionActual: {fileID: -3807170217664898035}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 1
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 28.40001
+    y: 779.80005
+    width: 300
+    height: 160
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 0}
+  groupID: 0
+  numSockets: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +412,10 @@ MonoBehaviour:
   - {fileID: 1527664281736297853}
   - {fileID: 6513297865122583717}
   - {fileID: -1803859362333966882}
+  - {fileID: -3954932366995328730}
+  - {fileID: 1716094855499137570}
+  - {fileID: -6345111018400952741}
+  - {fileID: -1053691860054178594}
   isSkippable: 1
   actionListType: 1
   unfreezePauseMenus: 1
@@ -314,7 +478,7 @@ MonoBehaviour:
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
   endings:
-  - resultAction: 2
+  - resultAction: 1
     skipAction: 2
     skipActionActual: {fileID: -3807170217664898035}
     linkedCutscene: {fileID: 0}
@@ -324,10 +488,10 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 738.80005
-    y: 730.6559
+    x: 754.80005
+    y: 965.85596
     width: 300
-    height: 312
+    height: 292
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
@@ -347,6 +511,86 @@ MonoBehaviour:
   takeCameraControl: 1
   waitUntilFinish: 1
   stopConversationOnSkip: 1
+--- !u!114 &1716094855499137570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdaacaae7eb224bd2b2b6d336bb7b1a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AC::AC.ActionVarCheck
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 2
+    skipAction: 12
+    skipActionActual: {fileID: -6345111018400952741}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  - resultAction: 2
+    skipAction: 7
+    skipActionActual: {fileID: 1527664281736297853}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 1
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 741.2001
+    y: 682.856
+    width: 300
+    height: 240
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 0}
+  groupID: 0
+  resultActionTrue: 0
+  skipActionTrue: -1
+  skipActionTrueActual: {fileID: 0}
+  linkedCutsceneTrue: {fileID: 0}
+  linkedAssetTrue: {fileID: 0}
+  resultActionFail: 1
+  skipActionFail: -1
+  skipActionFailActual: {fileID: 0}
+  linkedCutsceneFail: {fileID: 0}
+  linkedAssetFail: {fileID: 0}
+  parameterID: -1
+  variableID: 29
+  checkParameterID: -1
+  getVarMethod: 0
+  compareVariableID: 0
+  intValue: 0
+  floatValue: 0
+  intCondition: 0
+  isAdditive: 0
+  boolValue: 1
+  boolCondition: 0
+  stringValue: 
+  checkCase: 1
+  vector3Value: {x: 0, y: 0, z: 0}
+  vectorCondition: 0
+  gameObjectValue: {fileID: 0}
+  unityObjectValue: {fileID: 0}
+  location: 0
+  variables: {fileID: 0}
+  variablesConstantID: 0
+  compareVariables: {fileID: 0}
+  compareVariablesConstantID: 0
+  placeholderType: 0
+  placeholderPopUpLabelDataID: 0
 --- !u!114 &3384959677900626926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -557,8 +801,8 @@ MonoBehaviour:
   linkedAsset: {fileID: 0}
   endings:
   - resultAction: 2
-    skipAction: 7
-    skipActionActual: {fileID: 1527664281736297853}
+    skipAction: 10
+    skipActionActual: {fileID: -3954932366995328730}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   - resultAction: 2
